@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboradController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminAuthController;
@@ -15,6 +16,8 @@ use App\Http\Controllers\Admin\AdminAuthController;
 |
 */
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
+Route::get('/admin/dashboard',[DashboradController::class,'index'])->name('admin.dashboard.index')->middleware(['auth','user.type:admin']);
+
 Route::get('/', function () {
     return view('welcome');
 });
