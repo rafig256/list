@@ -2,11 +2,14 @@
 use App\Http\Controllers\Admin\DashboradController;
 use App\Http\Controllers\Admin\AdminAuthController;
 
+
+Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
+Route::get('/admin/forget',[AdminAuthController::class,'forget'])->name('admin.forget');
+
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
     'middleware'=>['auth','user.type:admin']
 ],function(){
-    Route::get('/login',[AdminAuthController::class,'login'])->name('login');
     Route::get('/dashboard',[DashboradController::class,'index'])->name('dashboard.index');
 });

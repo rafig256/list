@@ -22,4 +22,9 @@ class AdminAuthController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    public function forget() :View
+    {
+        return view('admin.auth.forgot-password');
+    }
 }
