@@ -12,4 +12,5 @@ Route::group([
     'middleware'=>['auth','user.type:admin']
 ],function(){
     Route::get('/dashboard',[DashboradController::class,'index'])->name('dashboard.index');
+    Route::get('/logout',[AdminAuthController::class,'logout'])->name('logout');
 });

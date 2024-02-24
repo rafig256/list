@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class AdminAuthController extends Controller
@@ -13,15 +14,16 @@ class AdminAuthController extends Controller
         return view('admin.auth.login');
     }
 
-    public function logout()
-    {
-        //
+    public function logout() {
+        Auth::logout();
+        return redirect('/admin/login');
     }
 
-    public function dashboard()
-    {
-        return view('admin.dashboard');
-    }
+
+//    public function dashboard()
+//    {
+//        return view('admin.dashboard');
+//    }
 
     public function forget() :View
     {
