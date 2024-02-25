@@ -18,7 +18,9 @@
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="{{asset('admin/plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('admin/assets/css/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" class="rel">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    @stack('css')
 
 </head>
 <body class="alt-menu sidebar-noneoverflow">
@@ -76,6 +78,15 @@
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 <script src="{{asset('admin/plugins/apex/apexcharts.min.js')}}"></script>
 <script src="{{asset('admin/assets/js/dashboard/dash_2.js')}}"></script>
-<!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+<!-- BEGIN TOASTR SCRIPTS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+@if($errors->any())
+    <script>
+        @foreach($errors->all() as $error)
+             toastr.error('{{$error}}')
+        @endforeach
+    </script>
+@endif
+@stack('scripts')
 </body>
 </html>
