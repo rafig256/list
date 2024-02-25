@@ -14,8 +14,17 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('mobile')->nullable();
             $table->string('avatar')->default('/default/avatar.png');
+            $table->string('banner')->default('/default/breadcroumb_bg.jpg');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->text('website')->nullable();
+            $table->text('fb_link')->nullable()->comment('faceBook');
+            $table->text('x_link')->nullable()->comment('twitter');
+            $table->text('in_link')->nullable()->comment('linkedIn');
+            $table->text('wa_link')->nullable()->comment('whats up');
+            $table->text('instagram_link')->nullable()->comment('instagram');
+            $table->text('about')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
