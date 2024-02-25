@@ -341,7 +341,7 @@
                         <a href="pages_coming_soon.html"> Coming Soon </a>
                     </li>
                     <li>
-                        <a href="user_profile.html"> Profile </a>
+                        <a href="{{route('admin.profile.index')}}"> Profile </a>
                     </li>
                     <li>
                         <a href="user_account_setting.html"> Account Settings </a>
