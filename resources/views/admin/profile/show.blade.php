@@ -208,7 +208,7 @@
                     <div class="widget-content widget-content-area">
                         <h3 class="">Bio</h3>
                         <div class="bio-skill-box">
-                            <p>{{auth()->user()->about}}</p>
+                            <p>{!! auth()->user()->about !!}}</p>
                         </div>
 
                     </div>

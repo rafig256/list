@@ -80,7 +80,7 @@
                                                                         <div class="col-md-12">
                                                                             <div class="form-group">
                                                                                 <label for="about">About</label>
-                                                                                <textarea class="form-control" name="about" id="about">{{auth()->user()->about ?? ""}}</textarea>
+                                                                                <textarea class="form-control" name="about" id="about">{!! auth()->user()->about !!}</textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
