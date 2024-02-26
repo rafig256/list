@@ -162,6 +162,35 @@
                                     </div>
                                 </div>
                             </form>
+                            <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing section general-info mt-3">
+                                <div class="info">
+                                    <h5 class="">Change Password</h5>
+                                    <form name="changePassword" method="POST" action="{{route('admin.profile.changPassword')}}" onsubmit="return confirm('are you sure?')">
+                                        @csrf
+                                        @method('PUT')
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="password">Password <span class="text-danger">*</span></label>
+                                                <input type="password" name="password" class="form-control mb-4" id="password" required>
+                                                <small class="text-danger">The password must be at least 5 characters </small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="password_confirmation">repeat Password</label>
+                                                <input type="password" name="password_confirmation" class="form-control mb-4" id="password_confirmation" required >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group social-tweet mb-3">
+                                                <button class="btn btn-success" type="submit" >change password</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

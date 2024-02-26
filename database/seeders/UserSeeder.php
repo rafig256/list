@@ -22,6 +22,8 @@ class UserSeeder extends Seeder
                 'phone'=>'09127846225',
                 'address'=>'iran',
                 'website'=>'https://rafig256.ir',
+                'avatar'=>'/default/avatar.png',
+                'banner'=>'/default/breadcroumb_bg.jpg'
             ],
             [
                 'name'=>'user',
@@ -31,6 +33,8 @@ class UserSeeder extends Seeder
                 'phone'=>'09991112222',
                 'address'=>'iran',
                 'website'=>'https://rafig256.ir',
+                'avatar'=>'/default/avatar.png',
+                'banner'=>'/default/breadcroumb_bg.jpg'
             ]
         ]);
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProfileUpdateRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use App\Traits\FileUploadTrait;
@@ -52,6 +53,16 @@ class ProfileController extends Controller
             'wa_link' => $request->wa_link,
         ]);
         toastr()->success('Profile updated successfully!');
+        return redirect()->back();
+    }
+
+    public function changPassword(Request $request)
+    {
+        $request->validate(['password'=>'required|min:5|confirmed']);
+        $user = Auth::user();
+        $user->password = bcrypt($request->password);
+        $user->save();
+        toastr()->warning('Password updated successfully!');
         return redirect()->back();
     }
 }
