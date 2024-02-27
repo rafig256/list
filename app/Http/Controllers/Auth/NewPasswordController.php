@@ -47,6 +47,7 @@ class NewPasswordController extends Controller
                 ])->save();
 
                 event(new PasswordReset($user));
+                toastr()->success('Password reset successfully!');
             }
         );
 

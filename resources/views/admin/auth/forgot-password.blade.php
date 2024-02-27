@@ -26,6 +26,11 @@
 
                     <h1 class="">Password Recovery</h1>
                     <p class="signup-link recovery"> Enter your email and instructions will send to you!</p>
+                    @if(session('status'))
+                        <div class="alert alert-success">
+                            {{session('status')}}
+                        </div>
+                    @endif
                     <form class="text-left" method="POST" action="{{ route('password.email') }}">
                         @csrf
                         <div class="form">
