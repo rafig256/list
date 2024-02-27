@@ -18,8 +18,9 @@
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="{{asset('admin/plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('admin/assets/css/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" class="rel">
-    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <!--    toastr  -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" class="rel">
+        <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     @stack('css')
 
 </head>

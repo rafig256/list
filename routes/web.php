@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\DashboradController;
+use App\Http\Controllers\Frontend\ProfileController as FrontendProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,9 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function (){
     Route::get('/dashboard', [DashboradController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [FrontendProfileController::class, 'index'])->name('profile.index');
+    Route::put('/profile', [FrontendProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile-password', [FrontendProfileController::class, 'updatePassword'])->name('profile.password');
 });
 
 require __DIR__.'/auth.php';
