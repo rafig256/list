@@ -2,7 +2,7 @@
     <span class="close_icon"><i class="far fa-times"></i></span>
     <a href="dsahboard.html" class="dash_logo"><img src="{{auth()->user()->avatar}}" alt="avatar" class="img-fluid"></a>
     <ul class="dashboard_link">
-        <li><a href="dsahboard.html"><i class="fas fa-tachometer"></i>Dashboard</a></li>
+        <li><a href="{{route('user.dashboard')}}"><i class="fas fa-tachometer"></i>Dashboard</a></li>
         <li><a href="{{route('user.profile.index')}}"><i class="far fa-user"></i> My Profile</a></li>
         <li><a href="dsahboard_listing.html"><i class="fas fa-list-ul"></i> My Listing</a></li>
         <li><a href="dsahboard_create_listing.html"><i class="fal fa-plus-circle"></i> Create Listing</a></li>
