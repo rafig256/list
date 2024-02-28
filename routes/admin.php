@@ -2,6 +2,7 @@
 use App\Http\Controllers\Admin\DashboradController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\HeroController;
 
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -20,4 +21,8 @@ Route::group([
     Route::get('/profile/edit',[ProfileController::class,'edit'])->name('profile.edit');
     Route::post('/profile/update',[ProfileController::class,'update'])->name('profile.update');
     Route::put('/profile/change-password',[ProfileController::class,'changPassword'])->name('profile.changPassword');
+
+    // Hero Route
+    Route::get('/hero',[HeroController::class,'index'])->name('hero.index');
+    Route::put('/hero',[HeroController::class,'update'])->name('hero.update');
 });

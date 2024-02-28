@@ -9,11 +9,11 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center text-white">
-                        <h4>sign in</h4>
+                        <h4>Forget Password</h4>
                         <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#"> Home </a></li>
-                                <li class="breadcrumb-item active" aria-current="page"> sign in </li>
+                                <li class="breadcrumb-item active" aria-current="page"> Forget Password </li>
                             </ol>
                         </nav>
                     </div>
