@@ -494,7 +494,6 @@ button {
    BANNER PART START
 =====================*/
 #wsus__banner {
-	background: url(../images/banner_bg.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -1759,7 +1758,7 @@ FEATURED LISTING  END
 }
 
 /*===================
-   OUR PACKAGE END	
+   OUR PACKAGE END
 =====================*/
 
 
@@ -1956,7 +1955,7 @@ FEATURED LISTING  END
 
 
 /*===================
-TESTIMONIAL PART START	
+TESTIMONIAL PART START
 =====================*/
 #wsus__testimonial {
 	background: #f9fafc;
