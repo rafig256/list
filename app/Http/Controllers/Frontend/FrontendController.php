@@ -15,5 +15,6 @@ class FrontendController extends Controller
         return view('frontend.home.index',[
             'hero'=>$hero
         ]);
+        $x = request()->routeIs($route);
     }
 }

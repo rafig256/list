@@ -3,6 +3,7 @@
 @section('title', 'Home Page')
 
 @section('content')
+
     <!--==========================
     BANNER PART START
 ===========================-->
@@ -16,6 +17,7 @@
     <!--==========================
         CATEGORY SLIDER START
     ===========================-->
+
     @include('frontend.home.sections.slider')
     <!--==========================
         CATEGORY SLIDER END
