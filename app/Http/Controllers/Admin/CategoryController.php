@@ -50,28 +50,42 @@ class CategoryController extends Controller
         return to_route('admin.category.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoryStoreRequest $request, Category $category)
     {
-        //
+        if ($request->image_icon){
+            $image_icon = $this->uploadImage($request,'image_icon',$request->image_icon);
+        }else{
+            $image_icon = $category->image_icon;
+        }
+        if ($request->background_image){
+            $background_image = $this->uploadImage($request,'background_image',$request->background_image);
+        }
+        else{
+            $background_image = $category->background_image;
+        }
+
+        $category->update([
+            'name'=> $request->name,
+            'slug'=> $request->slug,
+            'image_icon'=> $image_icon,
+            'background_image'=> $background_image,
+            'show_at_home'=> Str::slug($request->show_at_home),
+            'status'=> $request->status,
+        ]);
+        toastr()->success('Category Update Successfully');
+        return to_route('admin.category.index');
     }
 
     /**

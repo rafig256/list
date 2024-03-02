@@ -29,5 +29,5 @@ Route::group([
     Route::put('/hero',[HeroController::class,'update'])->name('hero.update');
 
     //Category Route
-    Route::resource('/category',CategoryController::class);
+    Route::resource('/category',CategoryController::class)->except(['show']);
 });
