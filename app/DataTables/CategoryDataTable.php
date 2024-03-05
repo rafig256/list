@@ -21,20 +21,27 @@ class CategoryDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
+
         return (new EloquentDataTable($query))
-            ->addColumn('action', function ($query){
-                $edit = '<a href="'.route('admin.category.edit',$query->id).'" class="btn btn-primary">Edit</a>';
-                $delete = '<a href="'.route('admin.category.destroy',$query->id).'" class="btn btn-danger ml-2">Delete</a>';
-                return $edit . $delete ;
+            ->addColumn('action', function ($query) {
+                $edit = '<a href="' . route('admin.category.edit', $query->id) . '" class="btn btn-primary">Edit</a>';
+                $delete = '<form action="' . route('admin.category.destroy', $query->id) . '" method="POST" style="display: inline;">
+
+                    ' . csrf_field() . '
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger ml-2" onclick="return confirm(\'آیا مطمئن هستید؟\')">Delete</button>
+                </form>';
+        return $edit . $delete;
+    })
+            ->addColumn('icon', function ($query) {
+                return "<img width='150' src='" . asset($query->image_icon) . "'/>";
             })
-            ->addColumn('icon', function ($query){
-                return "<img width='150' src='".asset($query->image_icon)."'/>";
+            ->addColumn('background', function ($query) {
+                return "<img width='150' src='" . asset($query->background_image) . "'/>";
             })
-            ->addColumn('background', function ($query){
-                return "<img width='150' src='".asset($query->background_image)."'/>";
-            })
-            ->rawColumns(['icon','background','action'])
+            ->rawColumns(['icon', 'background', 'action'])
             ->setRowId('id');
+
     }
 
     /**

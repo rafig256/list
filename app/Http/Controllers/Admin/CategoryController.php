@@ -91,8 +91,12 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $this->deleteFile($category->image_icon);
+        $this->deleteFile($category->background_image);
+        $category->delete();
+        toastr()->info('Category Delete Successfully');
+        return to_route('admin.category.index');
     }
 }
