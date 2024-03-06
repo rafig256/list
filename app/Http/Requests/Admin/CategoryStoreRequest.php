@@ -28,7 +28,7 @@ class CategoryStoreRequest extends FormRequest
             'image_icon' => $rule . '|image|max:1000',
             'background_image' => $rule . '|image|max:3000',
             'status' => 'required|boolean',
-            'show_at_home' => 'required|boolean',
+            'show_at_home' => 'boolean',
         ];
     }
 

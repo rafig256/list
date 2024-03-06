@@ -78,10 +78,10 @@ class CategoryController extends Controller
 
         $category->update([
             'name'=> $request->name,
-            'slug'=> $request->slug,
+            'slug'=> Str::slug($request->slug),
             'image_icon'=> $image_icon,
             'background_image'=> $background_image,
-            'show_at_home'=> Str::slug($request->show_at_home),
+            'show_at_home'=> $request->show_at_home ? $request->show_at_home : 0,
             'status'=> $request->status,
         ]);
         toastr()->success('Category Update Successfully');

@@ -39,6 +39,12 @@ class CategoryDataTable extends DataTable
             ->addColumn('background', function ($query) {
                 return "<img width='150' src='" . asset($query->background_image) . "'/>";
             })
+            ->addColumn('show_at_home', function ($query) {
+                return $query->show_at_home == 1 ? 'Yes' : 'No';
+            })
+            ->addColumn('status', function ($query) {
+                return $query->status== 1 ? 'Active' : 'Inactive';
+            })
             ->rawColumns(['icon', 'background', 'action'])
             ->setRowId('id');
 
@@ -84,6 +90,8 @@ class CategoryDataTable extends DataTable
             Column::make('name'),
             Column::make('slug'),
             Column::make('icon'),
+            Column::make('show_at_home'),
+            Column::make('status'),
             Column::make('background'),
             Column::make('created_at'),
             Column::computed('action')
