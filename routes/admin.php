@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboradController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\LocationController;
 
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -30,4 +31,8 @@ Route::group([
 
     //Category Route
     Route::resource('/category',CategoryController::class)->except(['show']);
+
+    //Location Route
+    Route::resource('/location',LocationController::class);
+
 });

@@ -124,13 +124,13 @@
                 <a href="#uiKit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                        <span>UI Kit</span>
+                        <span>Location</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="uiKit" data-parent="#topAccordion">
                     <li>
-                        <a href="ui_alerts.html"> Alerts </a>
+                        <a href="{{route('admin.location.index')}}"> Locations </a>
                     </li>
                     <li>
                         <a href="ui_avatar.html"> Avatar </a>
