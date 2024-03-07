@@ -9,10 +9,13 @@
 @section('content')
     <div id="tableProgress" class="col-lg-12 col-12 layout-spacing mt-5">
         <div class="statbox widget box box-shadow">
-            <div class="widget-header">
+            <div class="widget-header p-3">
                 <div class="row">
-                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                    <div class="col-xl-8 col-md-8 col-sm-8 col-8">
                         <h4>Location Table</h4>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-4 col-4">
+                        <a href="{{route('admin.location.create')}}" class="btn btn-primary mt-2 float-right">Add New Location</a>
                     </div>
                 </div>
             </div>

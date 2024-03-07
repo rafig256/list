@@ -133,7 +133,7 @@
                         <a href="{{route('admin.location.index')}}"> Locations </a>
                     </li>
                     <li>
-                        <a href="ui_avatar.html"> Avatar </a>
+                        <a href="{{route('admin.location.create')}}"> Create </a>
                     </li>
                     <li>
                         <a href="ui_badges.html"> Badges </a>
