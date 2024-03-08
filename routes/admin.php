@@ -33,6 +33,6 @@ Route::group([
     Route::resource('/category',CategoryController::class)->except(['show']);
 
     //Location Route
-    Route::resource('/location',LocationController::class);
+    Route::resource('/location',LocationController::class)->except(['show']);
 
 });
