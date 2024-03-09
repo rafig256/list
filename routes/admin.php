@@ -37,6 +37,6 @@ Route::group([
     Route::resource('/location',LocationController::class)->except(['show']);
 
     //Amenity Route
-    Route::resource('/amenity',AmenityController::class);
+    Route::resource('/amenity',AmenityController::class)->except(['show']);
 
 });

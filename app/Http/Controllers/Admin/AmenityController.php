@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AmenityStoreRequest;
+use App\Http\Requests\Admin\AmenityUpdateRequest;
 use App\Models\Amenity;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -43,35 +44,37 @@ class AmenityController extends Controller
         return to_route('admin.amenity.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Amenity $amenity)
     {
-        //
+        return view('admin.amenity.edit',['amenity'=>$amenity]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AmenityUpdateRequest $request, Amenity $amenity)
     {
-        //
+        $amenity->update([
+            'name' => $request->name,
+            'slug'=> \Str::slug($request->slug),
+            'icon' => $request->filled('icon') ? $request->icon : $amenity->icon,
+            'status' => $request->status,
+        ]);
+        toastr()->success('Amenity updated successfully.');
+        return to_route('admin.amenity.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Amenity $amenity)
     {
-        //
+        $amenity->delete();
+        toastr()->warning('Amenity deleted successfully.');
+        return to_route('admin.amenity.index');
     }
 }
