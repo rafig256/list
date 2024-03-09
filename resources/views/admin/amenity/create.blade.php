@@ -6,6 +6,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin/plugins/dropify/dropify.min.css')}}">
     <link href="{{asset('admin/assets/css/users/account-setting.css')}}" rel="stylesheet" type="text/css" />
     <!--  END CUSTOM STYLE FILE  -->
+
+    <!-- Start Icon Picker And FontAwesome -->
+    <link rel="stylesheet" href="{{asset('admin/assets/css/bootstrap-iconpicker.min.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+    <!-- End Icon Picker And FontAwsome -->
 @endpush
 @section('content')
     <div id="content" class="main-content">
@@ -20,19 +25,8 @@
                                     <div class="info">
                                         <h6 class="">Amenity Information</h6>
                                         <div class="row">
-                                            <div class="col-lg-11 mx-auto">
-                                                <div class="row">
-                                                    <div class="col-xl-2 col-lg-12 col-md-4">
-                                                        <div class="upload mt-4 pr-md-4">
-                                                            <input type="file" name="image_icon" id="input-file-max-fs" class="dropify" data-default-file="{{asset('default/default_upload.jpg')}}" data-max-file-size="1M" />
-                                                            <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> Upload Icon</p>
-                                                        </div>
-
-                                                        <div class="upload mt-4 pr-md-4">
-                                                            <input type="file" name="background_image" id="input-file-max-fs" class="dropify" data-default-file="{{asset('default/default_upload.jpg')}}" data-max-file-size="2M" />
-                                                            <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> Upload Background</p>
-                                                        </div>
-                                                    </div>
+                                            <div class="col-lg-12 mx-auto">
+                                                    <div class="row">
                                                     <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
                                                         <div class="row">
                                                             <div class="col-md-11 mx-auto">
@@ -51,8 +45,9 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="show_at_home">Show At Home</label>
-                                                                            <input type="checkbox" name="show_at_home" id="show_at_home" value="1">
+                                                                            <label for="icon">Icon <span class="text-danger">*</span></label>
+                                                                            <div data-selected-class="btn-danger" data-unselected-class="btn-info" role="iconpicker"></div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -98,4 +93,7 @@
     <!-- <script src="plugins/tagInput/tags-input.js"></script> -->
     <script src="{{asset('admin/assets/js/users/account-settings.js')}}"></script>
     <!--  END CUSTOM SCRIPTS FILE  -->
+
+    <!-- Start Icon Picker -->
+    <script src="{{asset('admin/assets/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
 @endpush
