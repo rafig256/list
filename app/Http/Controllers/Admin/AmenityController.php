@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AmenityStoreRequest;
+use App\Models\Amenity;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -13,7 +16,8 @@ class AmenityController extends Controller
      */
     public function index(): View
     {
-        return view('admin.amenity.index');
+        $amenities = Amenity::all();
+        return view('admin.amenity.index',['amenities'=>$amenities]);
     }
 
     /**
@@ -27,9 +31,16 @@ class AmenityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AmenityStoreRequest $request):RedirectResponse
     {
-        //
+        $amenity = Amenity::query()->create([
+            'name' => $request->name,
+            'slug' => \Str::slug($request->slug),
+            'icon' => $request->icon,
+            'status' => $request->status,
+        ]);
+        toastr()->success('Amenity created successfully.');
+        return to_route('admin.amenity.index');
     }
 
     /**

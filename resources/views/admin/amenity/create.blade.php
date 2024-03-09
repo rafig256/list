@@ -10,7 +10,7 @@
     <!-- Start Icon Picker And FontAwesome -->
     <link rel="stylesheet" href="{{asset('admin/assets/css/bootstrap-iconpicker.min.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <!-- End Icon Picker And FontAwsome -->
+    <!-- End Icon Picker And FontAwesome -->
 @endpush
 @section('content')
     <div id="content" class="main-content">
@@ -19,7 +19,7 @@
                 <div class="account-content">
                     <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
                         <div class="">
-                            <form id="general-info" class="" enctype="multipart/form-data" method="POST" action="{{route('admin.amenity.store')}}">
+                            <form id="general-info" class="" method="POST" action="{{route('admin.amenity.store')}}">
                                 @csrf
                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing section general-info">
                                     <div class="info">
@@ -46,7 +46,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="icon">Icon <span class="text-danger">*</span></label>
-                                                                            <div data-selected-class="btn-danger" data-unselected-class="btn-info" role="iconpicker"></div>
+                                                                            <div name="icon" data-selected-class="btn-danger" data-unselected-class="btn-info" role="iconpicker"></div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -58,7 +58,7 @@
                                                                                     <input type="radio" class="mr-2" name="status" id="status" value="1" checked><span>Active</span>
                                                                                 </div>
                                                                                 <div class="col-4">
-                                                                                    <input type="radio" class="mr-2" name="status" id="status" value="0"><span>Inactive</span>
+                                                                                    <input type="radio" class="mr-2" name="status" value="0"><span>Inactive</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
