@@ -21,6 +21,11 @@
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
+                <ul class="collapse submenu list-unstyled" id="app" data-parent="#topAccordion">
+                    <li>
+                        <a href="{{route('admin.dashboard.index')}}"> Dashboard </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="menu single-menu">
@@ -34,27 +39,6 @@
                 <ul class="collapse submenu list-unstyled" id="app" data-parent="#topAccordion">
                     <li>
                         <a href="{{route('admin.hero.index')}}"> hero </a>
-                    </li>
-                    <li>
-                        <a href="apps_mailbox.html"> Mailbox </a>
-                    </li>
-                    <li>
-                        <a href="apps_todoList.html"> Todo List </a>
-                    </li>
-                    <li>
-                        <a href="apps_notes.html">Notes</a>
-                    </li>
-                    <li>
-                        <a href="apps_scrumboard.html">Task Board</a>
-                    </li>
-                    <li>
-                        <a href="apps_contacts.html">Contacts</a>
-                    </li>
-                    <li>
-                        <a href="apps_invoice.html">Invoice List</a>
-                    </li>
-                    <li>
-                        <a href="apps_calendar.html"> Calendar</a>
                     </li>
                 </ul>
             </li>
@@ -72,49 +56,13 @@
                         <a href="{{route('admin.category.index')}}"> Categories </a>
                     </li>
                     <li>
-                        <a href="component_accordion.html"> Accordions  </a>
+                        <a href="{{route('admin.location.index')}}"> Locations </a>
                     </li>
                     <li>
-                        <a href="component_modal.html"> Modals </a>
+                        <a href="{{route('admin.location.create')}}"> Create Location </a>
                     </li>
                     <li>
-                        <a href="component_cards.html"> Cards </a>
-                    </li>
-                    <li>
-                        <a href="component_bootstrap_carousel.html">Carousel</a>
-                    </li>
-                    <li>
-                        <a href="component_blockui.html"> Block UI </a>
-                    </li>
-                    <li>
-                        <a href="component_countdown.html"> Countdown </a>
-                    </li>
-                    <li>
-                        <a href="component_counter.html"> Counter </a>
-                    </li>
-                    <li>
-                        <a href="component_sweetalert.html"> Sweet Alerts </a>
-                    </li>
-                    <li>
-                        <a href="component_timeline.html"> Timeline </a>
-                    </li>
-                    <li>
-                        <a href="component_snackbar.html"> Notifications </a>
-                    </li>
-                    <li>
-                        <a href="component_session_timeout.html"> Session Timeout </a>
-                    </li>
-                    <li>
-                        <a href="component_media_object.html"> Media Object </a>
-                    </li>
-                    <li>
-                        <a href="component_list_group.html"> List Group </a>
-                    </li>
-                    <li>
-                        <a href="component_pricing_table.html"> Pricing Tables </a>
-                    </li>
-                    <li>
-                        <a href="component_lightbox.html"> Lightbox </a>
+                        <a href="{{route('admin.amenity.index')}}"> Amenity </a>
                     </li>
                 </ul>
             </li>
@@ -133,70 +81,22 @@
                         <a href="{{route('admin.location.index')}}"> Locations </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.location.create')}}"> Create </a>
-                    </li>
-                    <li>
-                        <a href="ui_badges.html"> Badges </a>
-                    </li>
-                    <li>
-                        <a href="ui_breadcrumbs.html"> Breadcrumbs </a>
-                    </li>
-                    <li>
-                        <a href="ui_buttons.html"> Buttons </a>
-                    </li>
-                    <li>
-                        <a href="ui_buttons_group.html"> Button Groups </a>
-                    </li>
-                    <li>
-                        <a href="ui_color_library.html"> Color Library </a>
-                    </li>
-                    <li>
-                        <a href="ui_dropdown.html"> Dropdown </a>
-                    </li>
-                    <li>
-                        <a href="ui_infobox.html"> Infobox </a>
-                    </li>
-                    <li>
-                        <a href="ui_jumbotron.html"> Jumbotron </a>
-                    </li>
-                    <li>
-                        <a href="ui_loader.html"> Loader </a>
-                    </li>
-                    <li>
-                        <a href="ui_pagination.html"> Pagination </a>
-                    </li>
-                    <li>
-                        <a href="ui_popovers.html"> Popovers </a>
-                    </li>
-                    <li>
-                        <a href="ui_progress_bar.html"> Progress Bar </a>
-                    </li>
-                    <li>
-                        <a href="ui_search.html"> Search </a>
-                    </li>
-                    <li>
-                        <a href="ui_tooltips.html"> Tooltips </a>
-                    </li>
-                    <li>
-                        <a href="ui_treeview.html"> Treeview </a>
-                    </li>
-                    <li>
-                        <a href="ui_typography.html"> Typography </a>
+                        <a href="{{route('admin.location.create')}}"> Create Location </a>
                     </li>
                 </ul>
             </li>
 
             <li class="menu single-menu">
-                <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#amenity" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                        <span>Tables</span>
+                        <span>Amenity</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="tables"  data-parent="#topAccordion">
                     <li>
-                        <a href="table_basic.html"> Basic </a>
+                        <a href="{{route('admin.amenity.index')}}"> Amenity </a>
                     </li>
                     <li class="sub-sub-submenu-list">
                         <a href="#datatable" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> DataTables <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
@@ -209,30 +109,6 @@
                             </li>
                             <li>
                                 <a href="table_dt_ordering_sorting.html"> Order Sorting </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_multi-column_ordering.html"> Multi-Column </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_multiple_tables.html"> Multiple Tables</a>
-                            </li>
-                            <li>
-                                <a href="table_dt_alternative_pagination.html"> Alt. Pagination</a>
-                            </li>
-                            <li>
-                                <a href="table_dt_custom.html"> Custom </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_range_search.html"> Range Search </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_html5.html"> HTML5 Export </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_live_dom_ordering.html"> Live DOM ordering </a>
-                            </li>
-                            <li>
-                                <a href="table_dt_miscellaneous.html"> Miscellaneous </a>
                             </li>
                         </ul>
                     </li>

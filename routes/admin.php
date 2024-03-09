@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\AmenityController;
 
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -34,5 +35,8 @@ Route::group([
 
     //Location Route
     Route::resource('/location',LocationController::class)->except(['show']);
+
+    //Amenity Route
+    Route::resource('/amenity',AmenityController::class);
 
 });
