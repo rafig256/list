@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class LocationCreateRequest extends FormRequest
 {
@@ -19,11 +20,11 @@ class LocationCreateRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                'unique:locations,name,'.$this->location->id
+                Rule::unique('locations')->ignore($this->location),
             ],
-            'slug'=>'required|min:3',
-            'show_at_home'=>'boolean',
-            'status'=>'boolean',
+            'slug' => 'required|min:3',
+            'show_at_home' => 'boolean',
+            'status' => 'boolean',
         ];
     }
 }

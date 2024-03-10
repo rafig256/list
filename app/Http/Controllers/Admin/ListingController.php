@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Amenity;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -21,7 +23,14 @@ class ListingController extends Controller
      */
     public function create():View
     {
-        return view('admin.listing.create');
+        $categories = \App\Models\Category::all();
+        $locations = Location::all();
+        $amenity = Amenity::all();
+        return view('admin.listing.create',[
+            'categories'=>$categories,
+            'locations'=>$locations,
+            'amenities'=>$amenity
+        ]);
     }
 
     /**
