@@ -17,106 +17,145 @@
 
         <div class="account-content">
             <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
+                <form id="general-info" action="{{route('admin.listing.store')}}" enctype="multipart/form-data" method="POST" class="">
+                    @csrf
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                        <form id="general-info" action="{{route('admin.listing.store')}}" enctype="multipart/form-data" method="POST" class="section general-info">
-                            @csrf
-                            <div class="info">
-                                <h6 class="">General Listing Information</h6>
-                                <div class="row">
-                                    <div class="col-lg-11 mx-auto">
-                                        <div class="row">
-                                            <div class="col-xl-2 col-lg-12 col-md-4">
-                                                <div class="upload mt-4 pr-md-4">
-                                                    <input type="file" name="image" id="input-file-max-fs" class="dropify" data-default-file="{{asset('default/default_upload.jpg')}}" data-max-file-size="2M" />
-                                                    <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> Upload Image</p>
+                            <div class="section social">
+                                <div class="info">
+                                    <h5 class="">General Listing Information</h5>
+                                    <div class="row">
+                                        <div class="col-lg-11 mx-auto">
+                                            <div class="row">
+                                                <div class="col-xl-2 col-lg-12 col-md-4">
+                                                    <div class="upload mt-4 pr-md-4">
+                                                        <input type="file" name="image" id="input-file-max-fs" class="dropify" data-default-file="{{asset('default/default_upload.jpg')}}" data-max-file-size="2M" required/>
+                                                        <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> Upload Image</p>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="upload mt-4 pr-md-4">
+                                                        <input type="file" name="thumbnail_image" id="input-file-max-fs" class="dropify" data-default-file="{{asset('default/default_upload.jpg')}}" data-max-file-size="1M" required />
+                                                        <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> Upload Thumbnail Image</p>
+                                                    </div>
                                                 </div>
-                                                <hr>
-                                                <div class="upload mt-4 pr-md-4">
-                                                    <input type="file" name="thumbnail_image" id="input-file-max-fs" class="dropify" data-default-file="{{asset('default/default_upload.jpg')}}" data-max-file-size="1M" />
-                                                    <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> Upload Thumbnail Image</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
-                                                <div class="form">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="title">Title <span class="text-danger">*</span> </label>
-                                                                <input type="text" name="title" class="form-control mb-4" id="title" placeholder="Title" value="{{old('title')}}" required>
+                                                <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
+                                                    <div class="form">
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="title">Title <span class="text-danger">*</span> </label>
+                                                                    <input type="text" name="title" class="form-control mb-4" id="title" placeholder="Title" value="{{old('title')}}" required>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="slug">Slug <span class="text-danger">*</span> </label>
-                                                                <input type="text" name="slug" class="form-control mb-4" id="slug" value="{{old('slug')}}" required>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="slug">Slug <span class="text-danger">*</span> </label>
+                                                                    <input type="text" name="slug" class="form-control mb-4" id="slug" value="{{old('slug')}}" required>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <label for="category_id" class="dob-input"> Category <span class="text-danger">*</span> </label>
-                                                            <div class="form-group mr-1">
-                                                                <select class="form-control" name="category_id" id="category_id" required>
-                                                                    <option value="">Select</option>
-                                                                    @foreach($categories as $category)
-                                                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                                                    @endforeach
-                                                                </select>
+                                                            <div class="col-sm-6">
+                                                                <label for="category_id" class="dob-input"> Category <span class="text-danger">*</span> </label>
+                                                                <div class="form-group mr-1">
+                                                                    <select class="form-control" name="category_id" id="category_id" required>
+                                                                        <option value="">Select</option>
+                                                                        @foreach($categories as $category)
+                                                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <label for="location_id" class="dob-input"> Location <span class="text-danger">*</span> </label>
-                                                            <div class="form-group mr-1">
-                                                                <select class="form-control" name="location_id" id="location_id" required>
-                                                                    <option value="">Select</option>
-                                                                    @foreach($locations as $location)
-                                                                        <option value="{{$location->id}}">{{$location->name}}</option>
-                                                                    @endforeach
-                                                                </select>
+                                                            <div class="col-sm-6">
+                                                                <label for="location_id" class="dob-input"> Location <span class="text-danger">*</span> </label>
+                                                                <div class="form-group mr-1">
+                                                                    <select class="form-control" name="location_id" id="location_id" required>
+                                                                        <option value="">Select</option>
+                                                                        @foreach($locations as $location)
+                                                                            <option value="{{$location->id}}">{{$location->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
                                                             </div>
-                                                        </div>
 
-                                                        <div class="col-sm-12">
-                                                            <div class="form-group">
-                                                                <label for="address">Address <span class="text-danger">*</span> </label>
-                                                                <input type="text" name="address" class="form-control mb-4" id="address" placeholder="Address" value="{{old('address')}}" required>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label for="address">Address <span class="text-danger">*</span> </label>
+                                                                    <input type="text" name="address" class="form-control mb-4" id="address" placeholder="Address" value="{{old('address')}}" required>
+                                                                </div>
                                                             </div>
-                                                        </div>
 
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="phone">Phone <span class="text-danger">*</span> </label>
-                                                                <input type="number" name="phone" class="form-control mb-4" id="phone" placeholder="Phone" value="{{old('phone')}}" required>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="phone">Phone <span class="text-danger">*</span> </label>
+                                                                    <input type="number" name="phone" class="form-control mb-4" id="phone" placeholder="Phone" value="{{old('phone')}}" required>
+                                                                </div>
                                                             </div>
-                                                        </div>
 
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="email">Email <span class="text-danger">*</span> </label>
-                                                                <input type="email" name="email" class="form-control mb-4" id="email" placeholder="Email" value="{{old('email')}}" required>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="email">Email <span class="text-danger">*</span> </label>
+                                                                    <input type="email" name="email" class="form-control mb-4" id="email" placeholder="Email" value="{{old('email')}}" required>
+                                                                </div>
                                                             </div>
-                                                        </div>
 
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="amenity_id">Amenity </label>
-                                                                <select name="amenity_id" id="amenity_id" class="form-control tagging" multiple="multiple">
-                                                                    <option value="">select</option>
-                                                                    @foreach($amenities as $amenity)
-                                                                        <option value="{{$amenity->id}}">{{$amenity->name}}</option>
-                                                                    @endforeach
-                                                                </select>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label for="map_embed_code">Map Embed Code </label>
+                                                                    <input type="text" name="map_embed_code" class="form-control mb-4" id="map_embed_code" placeholder="Map Embed Code" value="{{old('map_embed_code')}}">
+                                                                </div>
                                                             </div>
+
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label for="amenity_id">Amenity </label>
+                                                                    <select name="amenity_id" id="amenity_id" class="form-control tagging" multiple="multiple">
+                                                                        <option value="">select</option>
+                                                                        @foreach($amenities as $amenity)
+                                                                            <option value="{{$amenity->id}}">{{$amenity->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <label>Status <span class="text-danger">*</span> </label>
+                                                                    <div class="row mt-2">
+                                                                        <input type="radio" name="status" class=" mb-4" id="status_active" value="1" checked> <label for="status_active" class="text-success ml-1 mr-1">Active</label>
+                                                                        <input type="radio" name="status" class=" mb-4 ml-5" id="status_inactive" value="0" ><label for="status_inactive" class="text-danger ml-1 mr-1">Inactive</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <label>Is Featured <span class="text-danger">*</span> </label>
+                                                                    <div class="row mt-2">
+                                                                        <input type="radio" name="is_featured" class=" mb-4 " id="is_featured_inactive" value="0" checked><label for="is_featured_inactive" class="text-danger ml-1 mr-1">No</label>
+                                                                        <input type="radio" name="is_featured" class=" mb-4 ml-5" id="is_featured_active" value="1" > <label for="is_featured_active" class="text-success ml-1 mr-1">Yes</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <label>Is Verified <span class="text-danger">*</span> </label>
+                                                                    <div class="row mt-2">
+                                                                        <input type="radio" name="is_verified" class=" mb-4" id="is_verified_yes" value="1" checked> <label for="is_verified_yes" class="text-success ml-1 mr-1">Yes</label>
+                                                                        <input type="radio" name="is_verified" class=" mb-4 ml-5" id="is_verified_no" value="0" ><label for="is_verified_no" class="text-danger ml-1 mr-1">No</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
 
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
 
                     <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing ">
@@ -200,157 +239,14 @@
                     </div>
 
                     <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                        <form id="about" class="section about">
+                        <div class="section social">
                             <div class="info">
                                 <h5 class="">About</h5>
                                 <div class="row">
                                     <div class="col-md-11 mx-auto">
                                         <div class="form-group">
-                                            <label for="aboutBio">Bio</label>
-                                            <textarea class="form-control" id="aboutBio" placeholder="Tell something interesting about yourself" rows="10">I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media. I enjoy turning complex problems into simple, beautiful and intuitive designs.
-
-My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring across your message and identity in the most creative way. I created web design for many famous brand companies.</textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                        <form id="work-platforms" class="section work-platforms">
-                            <div class="info">
-                                <h5 class="">Work Platforms</h5>
-                                <div class="row">
-                                    <div class="col-md-12 text-right mb-5">
-                                        <button id="add-work-platforms" class="btn btn-primary">Add</button>
-                                    </div>
-                                    <div class="col-md-11 mx-auto">
-
-                                        <div class="platform-div">
-                                            <div class="form-group">
-                                                <label for="platform-title">Platforms Title</label>
-                                                <input type="text" class="form-control mb-4" id="platform-title" placeholder="Platforms Title" value="Web Design" >
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="platform-description">Description</label>
-                                                <textarea class="form-control mb-4" id="platform-description" placeholder="Platforms Description" rows="10">Duis aute irure dolor in reprehenderit in voluptate velit esse eu fugiat nulla pariatur.</textarea>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                        <form id="contact" class="section contact">
-                            <div class="info">
-                                <h5 class="">Contact</h5>
-                                <div class="row">
-                                    <div class="col-md-11 mx-auto">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="country">Country</label>
-                                                    <select class="form-control" id="country">
-                                                        <option>All Countries</option>
-                                                        <option selected>United States</option>
-                                                        <option>India</option>
-                                                        <option>Japan</option>
-                                                        <option>China</option>
-                                                        <option>Brazil</option>
-                                                        <option>Norway</option>
-                                                        <option>Canada</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="address">Address</label>
-                                                    <input type="text" class="form-control mb-4" id="address" placeholder="Address" value="New York" >
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="location">Location</label>
-                                                    <input type="text" class="form-control mb-4" id="location" placeholder="Location">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="phone">Phone</label>
-                                                    <input type="text" class="form-control mb-4" id="phone" placeholder="Write your phone number here" value="+1 (530) 555-12121">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="email">Email</label>
-                                                    <input type="text" class="form-control mb-4" id="email" placeholder="Write your email here" value="Jimmy@gmail.com">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="website1">Website</label>
-                                                    <input type="text" class="form-control mb-4" id="website1" placeholder="Write your website here">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                        <div id="skill" class="section skill">
-                            <div class="info">
-                                <h5 class="">Skills</h5>
-                                <div class="row progress-bar-section">
-
-                                    <div class="col-md-12 mx-auto">
-                                        <div class="form-group">
-
-                                            <div class="row">
-                                                <div class="col-md-11 mx-auto">
-                                                    <div class="input-form">
-                                                        <input type="text" class="form-control" id="skills" placeholder="Add Your Skills Here" value="">
-                                                        <button id="add-skills" class="btn btn-primary">Add</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-11 mx-auto">
-                                        <div class="custom-progress top-right progress-up" style="width: 100%">
-                                            <p class="skill-name">PHP</p>
-                                            <input type="range" min="0" max="100" class="custom-range progress-range-counter" value="25">
-                                            <div class="range-count"><span class="range-count-number" data-rangecountnumber="25">25</span> <span class="range-count-unit">%</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11 mx-auto">
-                                        <div class="custom-progress top-right progress-up" style="width: 100%">
-                                            <p class="skill-name">Wordpress</p>
-                                            <input type="range" min="0" max="100" class="custom-range progress-range-counter" value="50">
-                                            <div class="range-count"><span class="range-count-number" data-rangecountnumber="50">50</span> <span class="range-count-unit">%</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11 mx-auto">
-                                        <div class="custom-progress top-right progress-up" style="width: 100%">
-                                            <p class="skill-name">Javascript</p>
-                                            <input type="range" min="0" max="100" class="custom-range progress-range-counter" value="70">
-                                            <div class="range-count"><span class="range-count-number" data-rangecountnumber="70">70</span> <span class="range-count-unit">%</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11 mx-auto">
-                                        <div class="custom-progress top-right progress-up" style="width: 100%">
-                                            <p class="skill-name">jQuery</p>
-                                            <input type="range" min="0" max="100" class="custom-range progress-range-counter" value="60">
-                                            <div class="range-count"><span class="range-count-number" data-rangecountnumber="60">60</span> <span class="range-count-unit">%</span></div>
+                                            <label for="description">Description</label>
+                                            <textarea class="form-control" name="description" id="description" placeholder="about listing" rows="10"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -359,350 +255,33 @@ My job is to build your website so that it is functional and user-friendly but a
                     </div>
 
                     <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                        <form id="edu-experience" class="section edu-experience">
+                        <div class="section social">
                             <div class="info">
-                                <h5 class="">Education</h5>
+                                <h5 class="">Seo (Search Engine Optimization)</h5>
                                 <div class="row">
-                                    <div class="col-md-12 text-right mb-5">
-                                        <button id="add-education" class="btn btn-primary">Add</button>
-                                    </div>
                                     <div class="col-md-11 mx-auto">
-
-                                        <div class="edu-section">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="degree1">Enter Your Collage Name</label>
-                                                        <input type="text" class="form-control mb-4" id="degree1" placeholder="Add your education here" value="Royal Collage of Art Designer Illustrator">
-                                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="seo_title">Seo Title <span class="text-danger">*</span></label>
+                                                    <input type="text" name="seo_title" class="form-control mb-4" id="seo_title" placeholder="Seo Title" required>
                                                 </div>
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>Starting From</label>
-
-                                                                <div class="row">
-
-                                                                    <div class="col-md-6">
-                                                                        <select class="form-control mb-4" id="s-from1">
-                                                                            <option>Month</option>
-                                                                            <option>Jan</option>
-                                                                            <option>Feb</option>
-                                                                            <option>Mar</option>
-                                                                            <option>Apr</option>
-                                                                            <option selected="selected">May</option>
-                                                                            <option>Jun</option>
-                                                                            <option>Jul</option>
-                                                                            <option>Aug</option>
-                                                                            <option>Sep</option>
-                                                                            <option>Oct</option>
-                                                                            <option>Nov</option>
-                                                                            <option>Dec</option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                    <div class="col-md-6">
-                                                                        <select class="form-control mb-4" id="s-from2">
-                                                                            <option>Year</option>
-                                                                            <option>2020</option>
-                                                                            <option>2019</option>
-                                                                            <option>2018</option>
-                                                                            <option>2017</option>
-                                                                            <option>2016</option>
-                                                                            <option>2015</option>
-                                                                            <option>2014</option>
-                                                                            <option>2013</option>
-                                                                            <option>2012</option>
-                                                                            <option>2011</option>
-                                                                            <option>2010</option>
-                                                                            <option selected="selected">2009</option>
-                                                                            <option>2008</option>
-                                                                            <option>2007</option>
-                                                                            <option>2006</option>
-                                                                            <option>2005</option>
-                                                                            <option>2004</option>
-                                                                            <option>2003</option>
-                                                                            <option>2002</option>
-                                                                            <option>2001</option>
-                                                                            <option>2000</option>
-                                                                            <option>1999</option>
-                                                                            <option>1998</option>
-                                                                            <option>1997</option>
-                                                                            <option>1996</option>
-                                                                            <option>1995</option>
-                                                                            <option>1994</option>
-                                                                            <option>1993</option>
-                                                                            <option>1992</option>
-                                                                            <option>1991</option>
-                                                                            <option>1990</option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>Ending In</label>
-
-                                                                <div class="row">
-
-                                                                    <div class="col-md-6 mb-4">
-                                                                        <select class="form-control" id="end-in1">
-                                                                            <option>Month</option>
-                                                                            <option>Jan</option>
-                                                                            <option>Feb</option>
-                                                                            <option>Mar</option>
-                                                                            <option>Apr</option>
-                                                                            <option>May</option>
-                                                                            <option>Jun</option>
-                                                                            <option>Jul</option>
-                                                                            <option>Aug</option>
-                                                                            <option>Sep</option>
-                                                                            <option>Oct</option>
-                                                                            <option>Nov</option>
-                                                                            <option>Dec</option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                    <div class="col-md-6">
-                                                                        <select class="form-control input-sm" id="end-in2">
-                                                                            <option>Year</option>
-                                                                            <option>2020</option>
-                                                                            <option>2019</option>
-                                                                            <option>2018</option>
-                                                                            <option>2017</option>
-                                                                            <option>2016</option>
-                                                                            <option>2015</option>
-                                                                            <option>2014</option>
-                                                                            <option>2013</option>
-                                                                            <option>2012</option>
-                                                                            <option>2011</option>
-                                                                            <option>2010</option>
-                                                                            <option>2009</option>
-                                                                            <option>2008</option>
-                                                                            <option>2007</option>
-                                                                            <option>2006</option>
-                                                                            <option>2005</option>
-                                                                            <option>2004</option>
-                                                                            <option>2003</option>
-                                                                            <option>2002</option>
-                                                                            <option>2001</option>
-                                                                            <option>2000</option>
-                                                                            <option>1999</option>
-                                                                            <option>1998</option>
-                                                                            <option>1997</option>
-                                                                            <option>1996</option>
-                                                                            <option>1995</option>
-                                                                            <option>1994</option>
-                                                                            <option>1993</option>
-                                                                            <option>1992</option>
-                                                                            <option>1991</option>
-                                                                            <option>1990</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <textarea class="form-control" placeholder="Description" rows="10"></textarea>
-                                                </div>
-
                                             </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                        <form id="work-experience" class="section work-experience">
-                            <div class="info">
-                                <h5 class="">Work Experience</h5>
-                                <div class="row">
-                                    <div class="col-md-12 text-right mb-5">
-                                        <button id="add-work-exp" class="btn btn-primary">Add</button>
-                                    </div>
-                                    <div class="col-md-11 mx-auto">
-
-                                        <div class="work-section">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="degree2">Company Name</label>
-                                                        <input type="text" class="form-control mb-4" id="degree2" placeholder="Add your work here" value="Netfilx Inc.">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="degree3">Job Tilte</label>
-                                                                <input type="text" class="form-control mb-4" id="degree3" placeholder="Add your work here" value="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="degree4">Location</label>
-                                                                <input type="text" class="form-control mb-4" id="degree4" placeholder="Add your work here" value="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>Starting From</label>
-
-                                                                <div class="row">
-
-                                                                    <div class="col-md-6">
-                                                                        <select class="form-control mb-4" id="wes-from1">
-                                                                            <option>Month</option>
-                                                                            <option>Jan</option>
-                                                                            <option>Feb</option>
-                                                                            <option>Mar</option>
-                                                                            <option>Apr</option>
-                                                                            <option>May</option>
-                                                                            <option>Jun</option>
-                                                                            <option>Jul</option>
-                                                                            <option>Aug</option>
-                                                                            <option>Sep</option>
-                                                                            <option>Oct</option>
-                                                                            <option>Nov</option>
-                                                                            <option>Dec</option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                    <div class="col-md-6">
-                                                                        <select class="form-control mb-4" id="wes-from2">
-                                                                            <option>Year</option>
-                                                                            <option>2020</option>
-                                                                            <option>2019</option>
-                                                                            <option>2018</option>
-                                                                            <option>2017</option>
-                                                                            <option>2016</option>
-                                                                            <option>2015</option>
-                                                                            <option>2014</option>
-                                                                            <option>2013</option>
-                                                                            <option>2012</option>
-                                                                            <option>2011</option>
-                                                                            <option>2010</option>
-                                                                            <option>2009</option>
-                                                                            <option>2008</option>
-                                                                            <option>2007</option>
-                                                                            <option>2006</option>
-                                                                            <option>2005</option>
-                                                                            <option>2004</option>
-                                                                            <option>2003</option>
-                                                                            <option>2002</option>
-                                                                            <option>2001</option>
-                                                                            <option>2000</option>
-                                                                            <option>1999</option>
-                                                                            <option>1998</option>
-                                                                            <option>1997</option>
-                                                                            <option>1996</option>
-                                                                            <option>1995</option>
-                                                                            <option>1994</option>
-                                                                            <option>1993</option>
-                                                                            <option>1992</option>
-                                                                            <option>1991</option>
-                                                                            <option>1990</option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>Ending In</label>
-
-                                                                <div class="row">
-
-                                                                    <div class="col-md-6 mb-4">
-                                                                        <select class="form-control" id="eiend-in1">
-                                                                            <option>Month</option>
-                                                                            <option>Jan</option>
-                                                                            <option>Feb</option>
-                                                                            <option>Mar</option>
-                                                                            <option>Apr</option>
-                                                                            <option>May</option>
-                                                                            <option>Jun</option>
-                                                                            <option>Jul</option>
-                                                                            <option>Aug</option>
-                                                                            <option>Sep</option>
-                                                                            <option>Oct</option>
-                                                                            <option>Nov</option>
-                                                                            <option>Dec</option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                    <div class="col-md-6">
-                                                                        <select class="form-control input-sm" id="eiend-in2">
-                                                                            <option>Year</option>
-                                                                            <option>2020</option>
-                                                                            <option>2019</option>
-                                                                            <option>2018</option>
-                                                                            <option>2017</option>
-                                                                            <option>2016</option>
-                                                                            <option>2015</option>
-                                                                            <option>2014</option>
-                                                                            <option>2013</option>
-                                                                            <option>2012</option>
-                                                                            <option>2011</option>
-                                                                            <option>2010</option>
-                                                                            <option>2009</option>
-                                                                            <option>2008</option>
-                                                                            <option>2007</option>
-                                                                            <option>2006</option>
-                                                                            <option>2005</option>
-                                                                            <option>2004</option>
-                                                                            <option>2003</option>
-                                                                            <option>2002</option>
-                                                                            <option>2001</option>
-                                                                            <option>2000</option>
-                                                                            <option>1999</option>
-                                                                            <option>1998</option>
-                                                                            <option>1997</option>
-                                                                            <option>1996</option>
-                                                                            <option>1995</option>
-                                                                            <option>1994</option>
-                                                                            <option>1993</option>
-                                                                            <option>1992</option>
-                                                                            <option>1991</option>
-                                                                            <option>1990</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <textarea class="form-control" placeholder="Description" rows="10"></textarea>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="seo_description">Seo Description <span class="text-danger">*</span></label>
+                                                    <input type="text" name="seo_description" class="form-control mb-4" id="seo_description" placeholder="Location" required>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
 
+                            </div>
+                    </div>
                 </div>
+                </form>
             </div>
         </div>
 
