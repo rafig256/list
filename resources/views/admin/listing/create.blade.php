@@ -17,7 +17,7 @@
 
         <div class="account-content">
             <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
-                <form id="general-info" action="{{route('admin.listing.store')}}" enctype="multipart/form-data" method="POST" class="">
+                <form id="listing" action="{{route('admin.listing.store')}}" enctype="multipart/form-data" method="POST" class="">
                     @csrf
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
@@ -107,7 +107,7 @@
                                                             <div class="col-sm-12">
                                                                 <div class="form-group">
                                                                     <label for="amenity_id">Amenity </label>
-                                                                    <select name="amenity_id" id="amenity_id" class="form-control tagging" multiple="multiple">
+                                                                    <select name="amenity_id[]" id="amenity_id" class="form-control tagging" multiple="multiple">
                                                                         <option value="">select</option>
                                                                         @foreach($amenities as $amenity)
                                                                             <option value="{{$amenity->id}}">{{$amenity->name}}</option>
@@ -289,11 +289,8 @@
 
             <div class="as-footer-container">
 
-                <button id="multiple-reset" class="btn btn-warning">Reset All</button>
-                <div class="blockui-growl-message">
-                    <i class="flaticon-double-check"></i>&nbsp; Settings Saved Successfully
-                </div>
-                <button id="multiple-messages" class="btn btn-primary">Save </button>
+                <button type="reset" form="listing" class="btn btn-warning">Reset All</button>
+                <button type="submit" form="listing" class="btn btn-primary">Save </button>
 
             </div>
 
