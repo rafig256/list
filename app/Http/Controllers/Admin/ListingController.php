@@ -89,9 +89,18 @@ class ListingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Listing $listing)
     {
-        //
+//        dd($listing->amenities());
+        $categories = \App\Models\Category::all();
+        $locations = Location::all();
+        $amenity = Amenity::all();
+        return view('admin.listing.edit',[
+            'listing'=>$listing,
+            'categories' => $categories,
+            'locations' => $locations,
+            'amenities' => $amenity
+            ]);
     }
 
     /**
