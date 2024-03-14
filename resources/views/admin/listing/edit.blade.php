@@ -30,12 +30,12 @@
                                             <div class="row">
                                                 <div class="col-xl-2 col-lg-12 col-md-4">
                                                     <div class="upload mt-4 pr-md-4">
-                                                        <input type="file" name="image" id="input-file-max-fs" class="dropify" data-default-file="{{asset($listing->image)}}" data-max-file-size="2M" required/>
+                                                        <input type="file" name="image" id="input-file-max-fs" class="dropify" data-default-file="{{asset($listing->image)}}" data-max-file-size="2M" />
                                                         <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> Cahnge Image</p>
                                                     </div>
                                                     <hr>
                                                     <div class="upload mt-4 pr-md-4">
-                                                        <input type="file" name="thumbnail_image" id="input-file-max-fs" class="dropify" data-default-file="{{asset($listing->thumbnail_image)}}" data-max-file-size="1M" required />
+                                                        <input type="file" name="thumbnail_image" id="input-file-max-fs" class="dropify" data-default-file="{{asset($listing->thumbnail_image)}}" data-max-file-size="1M" />
                                                         <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> Change Thumbnail Image</p>
                                                     </div>
                                                 </div>
@@ -109,7 +109,6 @@
                                                                 <div class="form-group">
                                                                     <label for="amenity_id">Amenity</label>
                                                                     <select name="amenity_id[]" id="amenity_id" class="form-control tagging" multiple="multiple">
-                                                                        <option value="">Select</option>
                                                                         @foreach($amenities as $amenity)
                                                                             <option value="{{ $amenity->id }}"
                                                                                     @if($listing->amenities->contains($amenity->id)) selected @endif>

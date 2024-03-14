@@ -108,7 +108,6 @@
                                                                 <div class="form-group">
                                                                     <label for="amenity_id">Amenity </label>
                                                                     <select name="amenity_id[]" id="amenity_id" class="form-control tagging" multiple="multiple">
-                                                                        <option value="">select</option>
                                                                         @foreach($amenities as $amenity)
                                                                             <option value="{{$amenity->id}}">{{$amenity->name}}</option>
                                                                         @endforeach
