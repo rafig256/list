@@ -17,15 +17,15 @@ class ListingStoreRequest extends FormRequest
         return [
             "image" => "required|image|max:2000",
             "thumbnail_image" => 'required|image|max:1000',
-            "title" => "required|string|max:255",
+            "title" => "required|string|max:255|unique:listings,title",
             "slug" => "required|string|max:255",
             "category_id" => "required|integer|exists:categories,id",
             "location_id" => "required|integer|exists:locations,id",
             "address" => "required|string|max:255",
-            "phone" => "required|numeric|max:14",
+            'phone' => 'required|string|min:6|max:14',
             "email" => "required|email",
             "map_embed_code" => 'nullable|string|max:255',
-            "website" => "url",
+            "website" => "nullable|url",
             "amenity_id.*" => "integer",
             "status" => "required|boolean",
             "is_featured" => "required|boolean",
@@ -36,8 +36,8 @@ class ListingStoreRequest extends FormRequest
             "instagram_link" => 'nullable',
             "whatsapp_link" => 'nullable',
             "description" => 'required',
-            "seo_title" => "required|string|max:255",
-            "seo_description" => "required|string|max:255",
+            "seo_title" => "nullable|string|max:255",
+            "seo_description" => "nullable|string|max:255",
         ];
     }
 }

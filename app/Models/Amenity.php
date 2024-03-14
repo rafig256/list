@@ -10,4 +10,8 @@ class Amenity extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function listings(){
+        return $this->belongsToMany(Listing::class)->withTimestamps();
+    }
 }
