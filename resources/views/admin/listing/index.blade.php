@@ -64,11 +64,7 @@
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                                                 </button>
                                                 <div class="dropdown-menu" style="will-change: transform;">
-                                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                                    <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                                    <a href="javascript:void(0);" class="dropdown-item">Something else here</a>
-                                                    <div class="divider dropdown-item"></div>
-                                                    <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                                    <a href="{{route('admin.image-gallery.create',['listing'=>$listing->id])}}" class="dropdown-item">Image Gallery</a>
                                                 </div>
                                             </div>
                                         </li>

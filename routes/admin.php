@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\AmenityController;
 use App\Http\Controllers\Admin\ListingController;
+use App\Http\Controllers\Admin\ImageGalleryController;
 
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -42,5 +43,11 @@ Route::group([
 
     //Listing Route
     Route::resource('/listing',ListingController::class);
+
+    //Image Gallery Routes
+    Route::get('/image-gallery/{listing}',[ImageGalleryController::class,'create'])->name('image-gallery.create');
+    Route::post('/image-gallery',[ImageGalleryController::class,'store'])->name('image-gallery.store');
+    Route::get('/image-gallery/delete/{imageGallery}',[ImageGalleryController::class,'destroy'])->name('image-gallery.destroy');
+    Route::put('/image-gallery',[ImageGalleryController::class,'store'])->name('image-gallery.store');
 
 });
