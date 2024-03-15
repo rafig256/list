@@ -29,6 +29,7 @@
                             <th>Category</th>
                             <th>Location</th>
                             <th>Is Verified</th>
+                            <th>Gallery</th>
                             <th>status</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -45,6 +46,7 @@
                                     {{$listing->location->name}}
                                 </td>
                                 <td>{!! $listing->is_verified ? '<span class="badge badge-success"> At Home </span>' : '<span class="badge badge-danger"> No </span>' !!}</td>
+                                <td>{{$listing->ImagesGallery->count()}} Image/s</td>
                                 <td>{!! $listing->status ? '<span class="badge badge-success"> Active </span>' : '<span class="badge badge-danger"> DeActive </span>' !!}</td>
                                 <td class="text-center">
                                     <ul class="table-controls">
@@ -65,6 +67,7 @@
                                                 </button>
                                                 <div class="dropdown-menu" style="will-change: transform;">
                                                     <a href="{{route('admin.image-gallery.create',['listing'=>$listing->id])}}" class="dropdown-item">Image Gallery</a>
+                                                    <a href="{{route('admin.schedule.create',['listing'=>$listing->id])}}" class="dropdown-item">Schedule</a>
                                                 </div>
                                             </div>
                                         </li>

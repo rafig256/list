@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\AmenityController;
 use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\ImageGalleryController;
+use App\Http\Controllers\Admin\ScheduleController;
 
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -49,5 +50,8 @@ Route::group([
     Route::post('/image-gallery',[ImageGalleryController::class,'store'])->name('image-gallery.store');
     Route::get('/image-gallery/delete/{imageGallery}',[ImageGalleryController::class,'destroy'])->name('image-gallery.destroy');
     Route::put('/image-gallery',[ImageGalleryController::class,'store'])->name('image-gallery.store');
+
+    //Listing Schedule Routes
+    Route::get('/schedule/{listing}',[ScheduleController::class,'create'])->name('schedule.create');
 
 });
