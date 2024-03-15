@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('listing_id')->constrained()->onDelete('cascade');
+            $table->string('day');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

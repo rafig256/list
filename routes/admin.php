@@ -53,5 +53,6 @@ Route::group([
 
     //Listing Schedule Routes
     Route::get('/schedule/{listing}',[ScheduleController::class,'create'])->name('schedule.create');
+    Route::post('/schedule/{listing}',[ScheduleController::class,'store'])->name('schedule.store');
 
 });
