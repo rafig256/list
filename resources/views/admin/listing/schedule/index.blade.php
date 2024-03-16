@@ -5,7 +5,9 @@
 @push('css')
     <link href="{{asset('admin/assets/css/tables/table-basic.css')}}" rel="stylesheet" type="text/css" />
 @endpush
-
+<!--  BEGIN CUSTOM STYLE FILE  -->
+<link href="{{asset('admin/assets/css/elements/custom-pagination.css')}}" rel="stylesheet" type="text/css" />
+<!--  END CUSTOM STYLE FILE  -->
 @section('content')
     <div id="tableProgress" class="col-lg-12 col-12 layout-spacing mt-5">
         <div class="statbox widget box box-shadow">
@@ -60,9 +62,32 @@
                                     </ul>
                                 </td>
                             </tr>
+
                         @endforeach
                         </tbody>
                     </table>
+
+
+                </div>
+
+                <div class="paginating-container pagination-default">
+                    <ul class="pagination">
+                        <li class="prev"><a href="{{ $schedules->url(1) }}">first</a></li>
+                        @foreach ($schedules->items() as $page =>$schedule)
+                            @if ($page > 0)
+                                @if($schedules->currentPage() > 1)
+                                    <li><a href="{{$schedules->previousPageUrl()}}">{{$schedules->currentPage() - 1}}</a> </li>
+                                @endif
+                                <li class="active">
+                                    <a href="">{{ $schedules->currentPage() }}</a>
+                                </li>
+                                @if(!$schedules->onLastPage())
+                                    <li><a href="{{$schedules->nextPageUrl()}}">{{$schedules->currentPage() + 1}}</a> </li>
+                                @endif
+                            @endif
+                        @endforeach
+                        <li class="next"><a href="{{ $schedules->url($schedules->lastPage()) }}">Last</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

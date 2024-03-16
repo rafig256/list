@@ -28,6 +28,7 @@
                             <th>Name</th>
                             <th>Category</th>
                             <th>Location</th>
+                            <th>User</th>
                             <th>Is Verified</th>
                             <th>Gallery</th>
                             <th>status</th>
@@ -45,6 +46,8 @@
                                 <td>
                                     {{$listing->location->name}}
                                 </td>
+                                <td> {{$listing->user?->name}}</td>
+
                                 <td>{!! $listing->is_verified ? '<span class="badge badge-success"> At Home </span>' : '<span class="badge badge-danger"> No </span>' !!}</td>
                                 <td>{{$listing->ImagesGallery->count()}} Image/s</td>
                                 <td>{!! $listing->status ? '<span class="badge badge-success"> Active </span>' : '<span class="badge badge-danger"> DeActive </span>' !!}</td>

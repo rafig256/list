@@ -13,7 +13,7 @@ class ScheduleController extends Controller
     public function index()
     {
         //All Schedule Show
-        $schedules = Schedule::all();
+        $schedules = Schedule::query()->paginate(2);
         return view('admin.listing.schedule.index',compact('schedules',));
     }
     public function create(Listing $listing)
