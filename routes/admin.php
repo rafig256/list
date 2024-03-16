@@ -55,5 +55,6 @@ Route::group([
     Route::get('/schedule',[ScheduleController::class,'index'])->name('schedule.index');
     Route::get('/schedule/{listing}',[ScheduleController::class,'create'])->name('schedule.create');
     Route::post('/schedule/{listing}',[ScheduleController::class,'store'])->name('schedule.store');
+    Route::put('/schedule/{listing}',[ScheduleController::class,'update'])->name('schedule.update');
 
 });

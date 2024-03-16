@@ -67,7 +67,7 @@
                                                 </button>
                                                 <div class="dropdown-menu" style="will-change: transform;">
                                                     <a href="{{route('admin.image-gallery.create',['listing'=>$listing->id])}}" class="dropdown-item">Image Gallery</a>
-                                                    <a href="{{route('admin.schedule.create',['listing'=>$listing->id])}}" class="dropdown-item">Schedule</a>
+                                                    <a href="{{route('admin.schedule.create',['listing'=>$listing->id])}}" class="dropdown-item">{{$listing->schedules->count() > 0 ? 'Edit Schedule' : 'Record schedule'}}</a>
                                                 </div>
                                             </div>
                                         </li>
