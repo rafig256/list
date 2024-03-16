@@ -27,4 +27,8 @@ class Listing extends Model
     public function ImagesGallery(){
         return $this->hasMany(ImageGallery::class);
     }
+
+    public function schedules(){
+        return $this->hasMany(Schedule::class);
+    }
 }

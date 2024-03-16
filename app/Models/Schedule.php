@@ -10,4 +10,8 @@ class Schedule extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function listing(){
+        return $this->belongsTo(Listing::class);
+    }
 }

@@ -9,8 +9,20 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
+
+    public function index()
+    {
+        //All Schedule Show
+        $schedules = Schedule::all();
+        return view('admin.listing.schedule.index',compact('schedules',));
+    }
     public function create(Listing $listing)
     {
+        if (Schedule::query()->where('listing_id', $listing->id)->exists()){
+            //Edit Schedule
+            return view('admin.listing.schedule.edit',compact(['listing']));
+        }
+        //create new Schedule
         return view('admin.listing.schedule.create',compact('listing'));
     }
 

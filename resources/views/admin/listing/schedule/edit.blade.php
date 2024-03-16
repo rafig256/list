@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', ' Create Schedule Gallery ')
+@section('title', ' Edit Schedule Gallery ')
 
 @section('content')
     <!--  BEGIN CONTENT AREA  -->
@@ -15,6 +15,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="widget-content widget-content-area">
                         <form method="POST" action="{{route('admin.schedule.store',$listing->id)}}" >
                             @csrf
@@ -25,12 +26,12 @@
                                     <th>End Time</th>
                                     <th>Close</th>
                                 </tr>
-                                @foreach(['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'] as $day)
+                                @foreach($listing->schedules as $schedule)
                                     <tr>
-                                        <td>{{ $day }}</td>
-                                        <td><input class="form-control" type="time" name="start_time[{{ $day }}]" value="08:00"></td>
-                                        <td><input class="form-control" type="time" name="end_time[{{ $day }}]" value="20:00"></td>
-                                        <td><input type="checkbox" name="close[{{ $day }}]"></td>
+                                        <td>{{ $schedule->day }}</td>
+                                        <td><input class="form-control" type="time" name="start_time[{{ $schedule->day }}]" value="{{$schedule->start_time}}"></td>
+                                        <td><input class="form-control" type="time" name="end_time[{{ $schedule->day }}]" value="{{$schedule->end_time}}"></td>
+                                        <td><input type="checkbox" name="close[{{ $schedule->day }}]" @checked($schedule->status)  ></td>
                                     </tr>
                                 @endforeach
 

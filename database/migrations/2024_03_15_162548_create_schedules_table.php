@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('day');
             $table->time('start_time');
             $table->time('end_time');
-            $table->boolean('status')->default(1);
+            $table->boolean('status')->default(0)->comment('0= open | 1=close');
             $table->timestamps();
         });
     }

@@ -52,6 +52,7 @@ Route::group([
     Route::put('/image-gallery',[ImageGalleryController::class,'store'])->name('image-gallery.store');
 
     //Listing Schedule Routes
+    Route::get('/schedule',[ScheduleController::class,'index'])->name('schedule.index');
     Route::get('/schedule/{listing}',[ScheduleController::class,'create'])->name('schedule.create');
     Route::post('/schedule/{listing}',[ScheduleController::class,'store'])->name('schedule.store');
 
