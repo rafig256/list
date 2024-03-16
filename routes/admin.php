@@ -43,7 +43,7 @@ Route::group([
     Route::resource('/amenity',AmenityController::class)->except(['show']);
 
     //Listing Route
-    Route::resource('/listing',ListingController::class);
+    Route::resource('/listing',ListingController::class)->except(['show']);
 
     //Image Gallery Routes
     Route::get('/image-gallery/{listing}',[ImageGalleryController::class,'create'])->name('image-gallery.create');
@@ -56,5 +56,6 @@ Route::group([
     Route::get('/schedule/{listing}',[ScheduleController::class,'create'])->name('schedule.create');
     Route::post('/schedule/{listing}',[ScheduleController::class,'store'])->name('schedule.store');
     Route::put('/schedule/{listing}',[ScheduleController::class,'update'])->name('schedule.update');
+    Route::get('/schedule/delete/{schedule}',[ScheduleController::class,'destroy'])->name('schedule.destroy');
 
 });

@@ -80,13 +80,6 @@ class ListingController extends Controller
         return to_route('admin.listing.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -148,8 +141,11 @@ class ListingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Listing $listing)
     {
-        //
+        $listing->delete();
+
+        toastr()->warning('Listing Delete Successfully!');
+        return to_route('admin.listing.index');
     }
 }

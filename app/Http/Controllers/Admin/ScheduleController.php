@@ -52,7 +52,6 @@ class ScheduleController extends Controller
 
     public function update(Request $request, Listing $listing)
     {
-//        dd($request->all());
         // Validate input (you can add other validation rules as needed)
         $request->validate([
             'start_time.*' => 'nullable|string',
@@ -71,6 +70,18 @@ class ScheduleController extends Controller
         }
         toastr()->success('Schedule Update successfully.');
 
-        return to_route('admin.listing.index');
+        return to_route('admin.schedule.index');
     }
+
+    public function destroy(Schedule $schedule)
+    {
+        $schedule->update([
+            'status'=> 1
+        ]);
+
+        toastr()->success("The schedule for ".$schedule->day." was closed.");
+
+        return redirect()->back();
+    }
+
 }
