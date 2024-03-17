@@ -8,7 +8,8 @@
 
 @section('content')
     <div class="my_listing schedule">
-        <h4>Listing</h4>
+        <h4 style="justify-content: space-between">Listing<a href="{{route('user.listing.create')}}" class="btn btn-sm btn-primary">create</a></h4>
+
         <div class="">
             <table class="table table-bordered">
                 <thead>

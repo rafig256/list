@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Amenity;
+use App\Models\Category;
 use App\Models\Listing;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -24,7 +27,10 @@ class ListingController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $locations = Location::all();
+        $amenities = Amenity::all();
+        return view('frontend.dashboard.listing.create',compact('locations','categories','amenities'));
     }
 
     /**
@@ -32,7 +38,7 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
