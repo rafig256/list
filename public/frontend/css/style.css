@@ -4684,29 +4684,7 @@ PAGINATION PART END
 	display: flex;
 	justify-content: center;
 }
-
-.schedule ul li a {
-	width: 35px;
-	height: 35px;
-	background: var(--colorBlack);
-	color: var(--colorWhite);
-	display: inline-block;
-	text-align: center;
-	line-height: 35px;
-	margin: 0px 5px;
-	border-radius: 3px;
-	font-size: 14px;
-	transition: all linear .3s;
-	-webkit-transition: all linear .3s ease;
-	-moz-transition: all linear .3s ease;
-	-ms-transition: all linear .3s ease;
-	-o-transition: all linear .3s ease;
-}
-
-.schedule ul li:last-child a {
-	background: red;
-}
-
+-
 .wsus_schedule_create_single {
 	margin-bottom: 25px;
 }
@@ -5805,4 +5783,25 @@ AGENT PROFILE END
 
 .tf__massage_btn:hover {
 	background: var(--colorBlack);
+}
+
+button.trashIcon, a.editIcon{
+    background: red;
+    width: 35px;
+    height: 35px;
+    color: var(--colorWhite);
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+    margin: 0px 5px;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: all linear .3s;
+    -webkit-transition: all linear .3s ease;
+    -moz-transition: all linear .3s ease;
+    -ms-transition: all linear .3s ease;
+    -o-transition: all linear .3s ease;
+}
+a.editIcon{
+    background: black !important;
 }
