@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.dashboard.layouts.master')
 @section('title','Profile')
 @push('css')
     <!--  BEGIN CUSTOM STYLE FILE  -->

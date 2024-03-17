@@ -44,7 +44,20 @@
 ===========================-->
 
 <!-- Start Content -->
-@yield('content')
+<section id="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                @include('frontend.dashboard.sidebar')
+            </div>
+            <div class="col-lg-9">
+                <div class="dashboard_content">
+                        @yield('content')
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- End Content -->
 
 

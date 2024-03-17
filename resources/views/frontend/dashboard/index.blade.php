@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.dashboard.layouts.master')
 @section('title', 'Dashboard')
 @section('content')
 <div class="col-lg-12">

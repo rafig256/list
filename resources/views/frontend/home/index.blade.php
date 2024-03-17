@@ -8,7 +8,6 @@
     BANNER PART START
 ===========================-->
     @include('frontend.home.sections.banner')
-
     <!--==========================
         BANNER PART END
     ===========================-->
@@ -17,7 +16,6 @@
     <!--==========================
         CATEGORY SLIDER START
     ===========================-->
-
     @include('frontend.home.sections.slider')
     <!--==========================
         CATEGORY SLIDER END
