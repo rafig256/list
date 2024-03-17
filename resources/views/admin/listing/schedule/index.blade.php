@@ -72,9 +72,7 @@
 
                 <div class="paginating-container pagination-default">
                     <ul class="pagination">
-                        <li class="prev"><a href="{{ $schedules->url(1) }}">first</a></li>
-                        @foreach ($schedules->items() as $page =>$schedule)
-                            @if ($page > 0)
+                        <li class="prev"><a href="{{ $schedules->url(1) }}">First</a></li>
                                 @if($schedules->currentPage() > 1)
                                     <li><a href="{{$schedules->previousPageUrl()}}">{{$schedules->currentPage() - 1}}</a> </li>
                                 @endif
@@ -84,8 +82,6 @@
                                 @if(!$schedules->onLastPage())
                                     <li><a href="{{$schedules->nextPageUrl()}}">{{$schedules->currentPage() + 1}}</a> </li>
                                 @endif
-                            @endif
-                        @endforeach
                         <li class="next"><a href="{{ $schedules->url($schedules->lastPage()) }}">Last</a></li>
                     </ul>
                 </div>

@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Frontend\ListingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -32,6 +33,9 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
     Route::get('/profile', [FrontendProfileController::class, 'index'])->name('profile.index');
     Route::put('/profile', [FrontendProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile-password', [FrontendProfileController::class, 'updatePassword'])->name('profile.password');
+
+    //Listing Route
+    Route::resource('/listing', ListingController::class);
 });
 
 require __DIR__.'/auth.php';
