@@ -11,7 +11,11 @@
 
 @section('content')
     <div class="my_listing">
-        <h4>Add Image Gallery to <span class="text-danger" style="font-size: 22px">{{$listing->title}}</span></h4>
+        <div class="d-flex justify-content-between">
+            <h4>Add Image Gallery to <span class="text-danger" style="font-size: 22px">{{$listing->title}}</span></h4>
+            <span>Go To <a href="{{route('user.listing.show',$listing->id)}}">{{$listing->title}}</a></span>
+        </div>
+
         <form method="POST" action="{{route('user.gallery.store')}}" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="listing_id" value="{{$listing->id}}">
