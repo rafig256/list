@@ -39,8 +39,6 @@
                                     <button type="submit" class="btn btn-primary mt-4 mb-4">Upload Images</button>
                                 </div>
                             </form>
-
-
                             <div>
                                 <table class="table table-bordered table-hover table-striped">
                                     <thead>

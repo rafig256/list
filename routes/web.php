@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\DashboradController;
 use App\Http\Controllers\Frontend\ProfileController as FrontendProfileController;
+use App\Http\Controllers\Frontend\AgentListingGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
 
     //Listing Route
     Route::resource('/listing', ListingController::class);
+    Route::resource('/gallery',AgentListingGalleryController::class);
 });
 
 require __DIR__.'/auth.php';
