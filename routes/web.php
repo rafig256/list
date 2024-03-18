@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\DashboradController;
 use App\Http\Controllers\Frontend\ProfileController as FrontendProfileController;
 use App\Http\Controllers\Frontend\AgentListingGalleryController;
+use App\Http\Controllers\Frontend\AgentScheduleConrtoller;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,9 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
 
     //Listing Route
     Route::resource('/listing', ListingController::class);
-    Route::resource('/gallery',AgentListingGalleryController::class);
+    Route::resource('/gallery',AgentListingGalleryController::class)->except(['index','update','edit','show']);
+    Route::get('/schedule/{listing}',[AgentScheduleConrtoller::class,'create'])->name('schedule.create');
+    Route::post('/schedule/{listing}',[AgentScheduleConrtoller::class,'store'])->name('schedule.store');
 });
 
 require __DIR__.'/auth.php';

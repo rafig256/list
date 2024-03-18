@@ -63,7 +63,7 @@
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item" href="{{route('user.gallery.create',['listing_id'=>$listing->id])}}">Image Gallery</a>
-                                                <a class="dropdown-item" href="#">Schedule</a>
+                                                <a href="{{route('user.schedule.create',['listing'=>$listing->id])}}" class="dropdown-item">{{$listing->schedules->count() > 0 ? 'Edit Schedule' : 'Record schedule'}}</a>
                                             </div>
                                         </div>
                                     </div>
