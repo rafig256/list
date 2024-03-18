@@ -43,7 +43,7 @@
                         </td>
                         <td class="text-center action">
                             <ul class="table-controls">
-                                <li><a href="{{route('admin.listing.edit',$listing->id)}}" class="editIcon" title="Edit" >
+                                <li><a href="{{route('user.listing.edit',$listing->id)}}" class="editIcon" title="Edit" >
                                         <i class="fal fa-edit"></i>
                                     </a>
                                 </li>

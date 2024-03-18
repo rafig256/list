@@ -4,7 +4,7 @@ namespace App\Http\Requests\Frontend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AgentListingRequest extends FormRequest
+class AgentListingUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,9 @@ class AgentListingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "image" => "required|image|max:2000",
-            "thumbnail_image" => 'required|image|max:1000',
-            "title" => "required|string|max:255|unique:listings,title",
+            "image" => "nullable|image|max:2000",
+            "thumbnail_image" => 'nullable|image|max:1000',
+            "title" => "required|string|max:255|unique:listings,title,".$this->listing->id,
             "slug" => "required|string|max:255",
             "category_id" => "required|integer|exists:categories,id",
             "location_id" => "required|integer|exists:locations,id",
