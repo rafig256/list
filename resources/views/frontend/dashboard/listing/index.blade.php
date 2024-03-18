@@ -39,6 +39,7 @@
                             {!! $listing->status ? '<span class="badge bg-success"> Active </span>' : '<span class="badge bg-danger"> DeActive </span>' !!}
                             {!! $listing->is_verified ? '<span class="badge bg-info"> Verified </span>' : '<span class="badge bg-danger"> No Verify </span>' !!}
                             {!! $listing->is_featured ? '<span class="badge bg-primary"> Featured </span>' : '<span class="badge bg-danger"> No Featured </span>' !!}
+                            {!! $listing->is_approved ? '' : '<span class="badge bg-danger"> Not Yet Approve </span>' !!}
                         </td>
                         <td class="text-center action">
                             <ul class="table-controls">

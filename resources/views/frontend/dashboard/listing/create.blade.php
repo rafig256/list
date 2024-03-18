@@ -262,7 +262,7 @@
                                 <div class="col-md-11 mx-auto">
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <textarea class="form-control" name="description" id="description" placeholder="about listing" rows="10"></textarea>
+                                        <textarea class="form-control" name="description" id="description" placeholder="about listing" rows="10">{{old('descriiption')}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -285,7 +285,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="seo_description">Seo Description <span class="text-danger">*</span></label>
+                                                <label for="seo_description">Seo Description </label>
                                                 <input type="text" name="seo_description" class="form-control mb-4" id="seo_description" placeholder="seo description" value="{{old('seo_description')}}" >
                                             </div>
                                         </div>

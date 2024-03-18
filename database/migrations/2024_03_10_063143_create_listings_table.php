@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('whatsapp_link')->nullable();
             $table->boolean('is_verified')->default(0);
             $table->boolean('is_featured')->default(0);
+            $table->boolean('is_approved');
             $table->integer('views')->default(0);
             $table->text('map_embed_code')->nullable();
             $table->string('file')->nullable();

@@ -67,6 +67,7 @@ class ListingController extends Controller
             'linkedin_link'=>$request->linkedin_link,
             'is_verified'=>$request->is_verified,
             'is_featured'=>$request->is_featured,
+            'is_approved'=>1,
             'map_embed_code'=>$request->map_embed_code,
             'seo_title'=>$request->seo_title,
             'seo_description'=>$request->seo_description,

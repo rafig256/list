@@ -50,7 +50,10 @@
 
                                 <td>{!! $listing->is_verified ? '<span class="badge badge-success"> At Home </span>' : '<span class="badge badge-danger"> No </span>' !!}</td>
                                 <td>{{$listing->ImagesGallery->count()}} Image/s</td>
-                                <td>{!! $listing->status ? '<span class="badge badge-success"> Active </span>' : '<span class="badge badge-danger"> DeActive </span>' !!}</td>
+                                <td>
+                                    {!! $listing->status ? '<span class="badge badge-success"> Active </span>' : '<span class="badge badge-danger"> DeActive </span>' !!}
+                                    {!! $listing->is_approved ? '' : '<span class="badge bg-danger"> Not Yet Approve </span>' !!}
+                                </td>
                                 <td class="text-center">
                                     <ul class="table-controls">
                                         <li><a href="{{route('admin.listing.edit',$listing->id)}}"  data-toggle="tooltip" data-placement="top" title="Edit" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a></li>
