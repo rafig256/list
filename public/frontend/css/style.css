@@ -68,6 +68,9 @@ textarea {
 	font-weight: 400;
 }
 
+input[type='email'],input[type='password'],input[type='text']
+{padding: 12px 20px;}
+
 input::placeholder,
 textarea::placeholder {
 	color: #a6a6ac;

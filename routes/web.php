@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
     Route::resource('/gallery',AgentListingGalleryController::class)->except(['index','update','edit','show']);
     Route::get('/schedule/{listing}',[AgentScheduleConrtoller::class,'create'])->name('schedule.create');
     Route::post('/schedule/{listing}',[AgentScheduleConrtoller::class,'store'])->name('schedule.store');
+    Route::put('/schedule/{listing}',[AgentScheduleConrtoller::class,'update'])->name('schedule.update');
 });
 
 require __DIR__.'/auth.php';
