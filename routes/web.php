@@ -37,8 +37,9 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
     Route::put('/profile-password', [FrontendProfileController::class, 'updatePassword'])->name('profile.password');
 
     //Listing Route
-    Route::resource('/listing', ListingController::class);
+    Route::resource('/listing', ListingController::class)->except('show');
     Route::resource('/gallery',AgentListingGalleryController::class)->except(['index','update','edit','show']);
+    //Schedule Route
     Route::get('/schedule/{listing}',[AgentScheduleConrtoller::class,'create'])->name('schedule.create');
     Route::post('/schedule/{listing}',[AgentScheduleConrtoller::class,'store'])->name('schedule.store');
     Route::put('/schedule/{listing}',[AgentScheduleConrtoller::class,'update'])->name('schedule.update');

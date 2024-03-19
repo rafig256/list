@@ -47,7 +47,7 @@
                                         <i class="fal fa-edit"></i>
                                     </a>
                                 </li>
-                                <li><form action="{{route('admin.listing.destroy',$listing->id)}}" method="post">
+                                <li><form action="{{route('user.listing.destroy',$listing->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="trashIcon" type="submit" title="Delete">

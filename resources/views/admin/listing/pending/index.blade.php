@@ -12,10 +12,7 @@
             <div class="widget-header p-3">
                 <div class="row">
                     <div class="col-xl-8 col-md-8 col-sm-8 col-8">
-                        <h4>Lsiting Table</h4>
-                    </div>
-                    <div class="col-xl-4 col-md-4 col-sm-4 col-4">
-                        <a href="{{route('admin.listing.create')}}" class="btn btn-primary mt-2 float-right">Add New Listing</a>
+                        <h4>Listing Pending Table</h4>
                     </div>
                 </div>
             </div>
