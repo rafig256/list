@@ -85,6 +85,10 @@
                         <a href="{{route('admin.listing.create')}}"> create listing </a>
                     </li>
                     <li>
+                        <a href="{{route('admin.listing.pending.index')}}"> Pending listing </a>
+                    </li>
+
+                    <li>
                         <a href="{{route('admin.schedule.index')}}"> All Schedule </a>
                     </li>
 

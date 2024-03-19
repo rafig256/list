@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboradController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\PendingListingController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\LocationController;
@@ -43,6 +44,7 @@ Route::group([
     Route::resource('/amenity',AmenityController::class)->except(['show']);
 
     //Listing Route
+    Route::get('/listing/pending',[PendingListingController::class,'index'])->name('listing.pending.index');
     Route::resource('/listing',ListingController::class)->except(['show']);
 
     //Image Gallery Routes

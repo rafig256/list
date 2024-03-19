@@ -11,6 +11,7 @@ class AgentScheduleConrtoller extends Controller
 {
     public function create(Listing $listing)
     {
+        if (\Auth::user()->id !== $listing->user_id){abort(403);}
         if (Schedule::query()->where('listing_id', $listing->id)->exists()){
             //Edit Schedule
             return view('frontend.dashboard.listing.schedule.edit',compact(['listing']));
@@ -26,6 +27,7 @@ class AgentScheduleConrtoller extends Controller
             'start_time.*' => 'nullable|date_format:H:i',
             'end_time.*' => 'nullable|date_format:H:i',
         ]);
+        if (\Auth::user()->id !== $listing->user_id){abort(403);}
         // Save business hours data to the database
         foreach ($request->input('start_time') as $day => $startTime) {
             $endTime = $request->input('end_time')[$day];
@@ -46,11 +48,13 @@ class AgentScheduleConrtoller extends Controller
 
     public function update(Request $request, Listing $listing)
     {
+        if (\Auth::user()->id !== $listing->user_id){abort(403);}
         // Validate input (you can add other validation rules as needed)
         $request->validate([
             'start_time.*' => 'nullable|string',
             'end_time.*' => 'nullable|string',
         ]);
+
         // Save business hours data to the database
         foreach ($request->input('start_time') as $day => $startTime) {
             $endTime = $request->input('end_time')[$day];
