@@ -22,6 +22,7 @@ use App\Http\Controllers\Frontend\AgentScheduleConrtoller;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/listing', [FrontendController::class, 'listing'])->name('listing');
 
 
 Route::middleware('auth')->group(function () {
