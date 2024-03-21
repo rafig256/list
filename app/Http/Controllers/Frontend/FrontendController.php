@@ -8,6 +8,7 @@ use App\Models\Hero;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use function PHPUnit\Framework\assertDirectoryDoesNotExist;
 
 class FrontendController extends Controller
 {
@@ -34,5 +35,10 @@ class FrontendController extends Controller
 
         $listings = $listings->paginate(6);
         return view('frontend.pages.listing',compact('listings'));
+    }
+
+    public function listingAjaxModal(Listing $listing)
+    {
+        return view('frontend.layouts.listing-modal',compact('listing') )->render();
     }
 }
