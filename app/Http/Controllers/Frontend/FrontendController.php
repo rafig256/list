@@ -41,4 +41,9 @@ class FrontendController extends Controller
     {
         return view('frontend.layouts.listing-modal',compact('listing') )->render();
     }
+
+    public function showListing(Listing $listing) :view
+    {
+        return view('frontend.pages.lisiting-view',compact('listing'));
+    }
 }

@@ -1537,6 +1537,9 @@ FEATURED LISTING START
 	background: #00AF3C;
 }
 
+.map_popup_text .orange{
+    background: orange;
+}
 
 .map_popup_text .read_btn::after {
 	display: none;
