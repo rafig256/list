@@ -212,24 +212,20 @@
                                     <p><i class="fal fa-globe"></i> {{$listing->website}}</p>
                                     @endif
                                     <ul>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                                        @if($listing->facebook_link)<li><a href="https://facebook.com/{{$listing->facebook_link}}"><i class="fab fa-facebook-f"></i></a></li>@endif
+                                        @if($listing->x_link)<li><a href="https://twitter.com/{{$listing->x_link}}"><i class="fab fa-twitter"></i></a></li>@endif
+                                        @if($listing->instagram_link)<li><a href="https://instagram.com/{{$listing->instagram_link}}"><i class="fab fa-instagram"></i></a></li>@endif
+                                        @if($listing->linkedin_link)<li><a href="https://linkedin.com/{{$listing->linkedin_link}}"><i class="fab fa-linkedin-in"></i></a></li>@endif
+                                        @if($listing->whatsapp_link)    <li><a href="https://whatsapp.com/{{$listing->whatsapp_link}}"><i class="fab fa-whatsapp"></i></a></li>@endif
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="listing_det_side_open_hour">
                                     <h5>Opening Hours</h5>
-                                    <p>Saturday <span>10:00 AM - 06:00 PM</span></p>
-                                    <p>Sunday <span>Close</span></p>
-                                    <p>Monday <span>10:00 AM - 06:00 PM</span></p>
-                                    <p>Yuesday <span>10:00 AM - 06:00 PM</span></p>
-                                    <p>Wednesday <span>10:00 AM - 06:00 PM</span></p>
-                                    <p>Thursday <span>10:00 AM - 06:00 PM</span></p>
-                                    <p>Friday <span>10:00 AM - 06:00 PM</span></p>
+                                    @foreach($listing->schedules as $row)
+                                        <p>{{$row->day}} <span>{!! $row->status ? '<span class="text-danger">Closed</span>' : str($row->start_time)->limit(5,"")  ." - ".  str($row->end_time)->limit(5,'') !!}</span></p>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-12">
@@ -244,29 +240,26 @@
                                         </form>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="listing_det_side_list">
-                                    <h5>Similar Listing</h5>
-                                    <a href="#" class="sidebar_blog_single">
-                                        <div class="sidebar_blog_img">
-                                            <img src="images/location_1.jpg" alt="blog" class="imgofluid w-100">
-                                        </div>
-                                        <div class="sidebar_blog_text">
-                                            <h5>One Thing Separates Creators From Consumers</h5>
-                                            <p> <span>Jul 29 2021 </span> 2 Comment </p>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="sidebar_blog_single">
-                                        <div class="sidebar_blog_img">
-                                            <img src="images/location_1.jpg" alt="blog" class="imgofluid w-100">
-                                        </div>
-                                        <div class="sidebar_blog_text">
-                                            <h5>One Thing Separates Creators From Consumers</h5>
-                                            <p> <span>Jul 29 2021 </span> 2 Comment </p>
-                                        </div>
-                                    </a>
+                            @if(count($similarListing) > 0 )
+                                <div class="col-12">
+                                    <div class="listing_det_side_list">
+                                        <h5>Similar Listing</h5>
+                                        @foreach($similarListing as $listing)
+                                            <a href="{{route('listing.show',$listing->slug)}}" class="sidebar_blog_single">
+                                                <div class="sidebar_blog_img">
+                                                    <img src="{{asset($listing->image)}}" alt="{{$listing->title}}" class="imgofluid w-100">
+                                                </div>
+                                                <div class="sidebar_blog_text">
+                                                    <h5>{{$listing->title}}</h5>
+                                                    <p> <span>{{date('Y/m/d',strtotime($listing->created_at))}}</span> 2 Comment </p>
+                                                </div>
+                                            </a>
+                                        @endforeach
+
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>

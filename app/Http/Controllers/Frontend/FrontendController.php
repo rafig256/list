@@ -44,6 +44,9 @@ class FrontendController extends Controller
 
     public function showListing(Listing $listing) :view
     {
-        return view('frontend.pages.lisiting-view',compact('listing'));
+        $similarListing = Listing::query()->where('category_id',$listing->category_id)->
+        where('id','!=',$listing->id)->
+        orderBy('id','DESC')->take(4)->get();
+        return view('frontend.pages.lisiting-view',compact('listing','similarListing'));
     }
 }
