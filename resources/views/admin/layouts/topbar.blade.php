@@ -98,7 +98,7 @@
                 </ul>
             </li>
 
-
+    {{--Location--}}
             <li class="menu single-menu ">
                 <a href="#uiKit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -111,7 +111,7 @@
 
                 </ul>
             </li>
-
+{{--            Amenity--}}
             <li class="menu single-menu">
                 <a href="#amenity" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -139,68 +139,20 @@
                 </ul>
             </li>
 
-            <li class="menu single-menu">
+            <li class="menu single-menu {{setActive(['admin.package.index','admin.package.create'])}}">
                 <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
-                        <span>Forms</span>
+                        <span>Package</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="forms"  data-parent="#topAccordion">
-                    <li>
-                        <a href="form_bootstrap_basic.html"> Basic </a>
+                <ul class="collapse submenu list-unstyled " id="forms"  data-parent="#topAccordion">
+                    <li class="{{setActive(['admin.package.index'])}}">
+                        <a href="{{route('admin.package.index')}}"> All Packages </a>
                     </li>
-                    <li>
-                        <a href="form_input_group_basic.html"> Input Group </a>
-                    </li>
-                    <li>
-                        <a href="form_layouts.html"> Layouts </a>
-                    </li>
-                    <li>
-                        <a href="form_validation.html"> Validation </a>
-                    </li>
-                    <li>
-                        <a href="form_input_mask.html"> Input Mask </a>
-                    </li>
-                    <li>
-                        <a href="form_bootstrap_select.html"> Bootstrap Select </a>
-                    </li>
-                    <li>
-                        <a href="form_select2.html"> Select2 </a>
-                    </li>
-                    <li>
-                        <a href="form_bootstrap_touchspin.html"> TouchSpin </a>
-                    </li>
-                    <li>
-                        <a href="form_maxlength.html"> Maxlength </a>
-                    </li>
-                    <li>
-                        <a href="form_checkbox_radio.html"> Checkbox &amp; Radio </a>
-                    </li>
-                    <li>
-                        <a href="form_switches.html"> Switches </a>
-                    </li>
-                    <li>
-                        <a href="form_wizard.html"> Wizards </a>
-                    </li>
-                    <li>
-                        <a href="form_fileupload.html"> File Upload </a>
-                    </li>
-                    <li>
-                        <a href="form_quill.html"> Quill Editor </a>
-                    </li>
-                    <li>
-                        <a href="form_markdown.html"> Markdown Editor </a>
-                    </li>
-                    <li>
-                        <a href="form_date_range_picker.html"> Date &amp; Range Picker </a>
-                    </li>
-                    <li>
-                        <a href="form_clipboard.html"> Clipboard </a>
-                    </li>
-                    <li>
-                        <a href="form_typeahead.html"> Typeahead </a>
+                    <li class="{{setActive(['admin.package.create'])}}">
+                        <a href="{{route('admin.package.create')}}"> Create Packages </a>
                     </li>
                 </ul>
             </li>

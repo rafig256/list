@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboradController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PendingListingController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\HeroController;
@@ -60,5 +61,8 @@ Route::group([
     Route::post('/schedule/{listing}',[ScheduleController::class,'store'])->name('schedule.store');
     Route::put('/schedule/{listing}',[ScheduleController::class,'update'])->name('schedule.update');
     Route::get('/schedule/delete/{schedule}',[ScheduleController::class,'destroy'])->name('schedule.destroy');
+
+    //Packages
+    Route::resource('/package',PackageController::class);
 
 });
