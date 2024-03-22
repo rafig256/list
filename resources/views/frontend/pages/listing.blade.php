@@ -180,6 +180,11 @@
                     method : 'GET',
                     url : '{{route("listing.ajax-modal",":id")}}'.replace(":id",id),
                     data: {},
+                    beforeSend: function (){
+                            $('.modal-dialog').html(`<div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                        </div>`)
+                    },
                     success: function (response) {
                         $('.modal-dialog').html(response);
                     },
