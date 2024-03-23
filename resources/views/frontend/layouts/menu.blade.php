@@ -20,7 +20,7 @@
                     <a class="nav-link" href="listing_grid_view.html">listing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pricing.html">pricing</a>
+                    <a class="nav-link" href="{{route('packages')}}">pricing</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">pages <i class="far fa-chevron-down"></i></a>

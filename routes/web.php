@@ -25,7 +25,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/listing', [FrontendController::class, 'listing'])->name('listing');
 Route::get('/listing/ajax-modal/{listing}', [FrontendController::class, 'listingAjaxModal'])->name('listing.ajax-modal');
 Route::get('/list/{listing:slug}',[FrontendController::class, 'showListing'])->name('listing.show');
-
+Route::get('/packages',[FrontendController::class, 'packages'])->name('packages');
 
 
 Route::middleware('auth')->group(function () {

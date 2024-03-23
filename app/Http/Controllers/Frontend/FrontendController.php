@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Hero;
 use App\Models\Listing;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use function PHPUnit\Framework\assertDirectoryDoesNotExist;
@@ -15,12 +16,13 @@ class FrontendController extends Controller
     public function index() : View
     {
         $hero = Hero::query()->first();
-        $categories = Category::all();
+        $categories = Category::query()->where('status',1)->get();
+        $packages = Package::query()->where('status',1)->where('show_at_home',1)->take(3)->get();
         return view('frontend.home.index',[
             'hero'=>$hero,
             'categories' => $categories,
+            'packages' => $packages,
         ]);
-        $x = request()->routeIs($route);
     }
 
     public function listing(Request $request)
@@ -48,5 +50,11 @@ class FrontendController extends Controller
         where('id','!=',$listing->id)->
         orderBy('id','DESC')->take(4)->get();
         return view('frontend.pages.lisiting-view',compact('listing','similarListing'));
+    }
+
+    public function packages()
+    {
+        $packages = Package::query()->where('status',1)->get();
+        return view('frontend.pages.packages',compact('packages'));
     }
 }

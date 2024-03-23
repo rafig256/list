@@ -13,6 +13,7 @@
                 <div class="row">
                     <div class="col-xl-8 col-md-8 col-sm-8 col-8">
                         <h4>Package Table</h4>
+                        <p class="text-danger">Only three packages will be displayed on the main page</p>
                     </div>
                     <div class="col-xl-4 col-md-4 col-sm-4 col-4">
                         <a href="{{route('admin.package.create')}}" class="btn btn-primary mt-2 float-right">Add New Package</a>
