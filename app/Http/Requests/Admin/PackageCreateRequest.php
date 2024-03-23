@@ -30,7 +30,7 @@ class PackageCreateRequest extends FormRequest
             'num_of_photos' => ['required', 'integer'],
             'num_of_amenities' => ['required', 'integer'],
             'num_of_featured_listings' => ['required', 'integer'],
-            'show_at_home'=>['required','boolean'],
+            'show_at_home'=>['nullable','boolean'],
             'status'=>['required','boolean'],
         ];
     }

@@ -6,15 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PackageCreateRequest;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class PackageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index():View
     {
-        //
+        $packages = Package::all();
+        return view('admin.package.index',compact('packages'));
     }
 
     /**
@@ -52,35 +54,45 @@ class PackageController extends Controller
         return to_route('admin.package.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Package $package): View
     {
-        //
+        return view('admin.package.edit',compact('package'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PackageCreateRequest $request, Package $package)
     {
-        //
+        $package->update([
+            'type' => $request->type,
+            'name' => $request->name,
+            'price' => $request->price,
+            'num_of_days' => $request->num_of_days,
+            'num_of_listings' => $request->num_of_listings,
+            'num_of_photos' => $request->num_of_photos,
+            'num_of_amenities' => $request->num_of_amenities,
+            'num_of_featured_listings' => $request->num_of_featured_listings,
+            'show_at_home'=>$request->show_at_home ? $request->show_at_home : 0,
+            'status'=>$request->status,
+        ]);
+
+        toastr()->success('Package Updated Successfully');
+        return to_route('admin.package.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Package $package)
     {
-        //
+        $package->delete();
+        toastr()->warning('Package successfully Deleted');
+
+        return to_route('admin.package.index');
     }
 }

@@ -63,6 +63,6 @@ Route::group([
     Route::get('/schedule/delete/{schedule}',[ScheduleController::class,'destroy'])->name('schedule.destroy');
 
     //Packages
-    Route::resource('/package',PackageController::class);
+    Route::resource('/package',PackageController::class)->except(['show']);
 
 });

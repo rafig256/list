@@ -21,9 +21,9 @@ return new class extends Migration
             $table->integer('num_of_photos');
             $table->integer('num_of_amenities');
             $table->integer('num_of_featured_listings');
-            $table->boolean('show_at_home');
+            $table->boolean('show_at_home')->default(0);
             $table->boolean('status');
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }
