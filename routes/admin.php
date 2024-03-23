@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AmenityController;
 use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\ImageGalleryController;
 use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Admin\SettingController;
 
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -64,5 +65,8 @@ Route::group([
 
     //Packages
     Route::resource('/package',PackageController::class)->except(['show']);
+
+    //Setting
+    Route::get('/setting',[SettingController::class,'index'])->name('setting.index');
 
 });
