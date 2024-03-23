@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PackageCreateRequest;
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -26,9 +28,28 @@ class PackageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PackageCreateRequest $request)
     {
-        //
+        $newPackage = Package::query()->create([
+            'type' => $request->type,
+            'name' => $request->name,
+            'price' => $request->price,
+            'num_of_days' => $request->num_of_days,
+            'num_of_listings' => $request->num_of_listings,
+            'num_of_photos' => $request->num_of_photos,
+            'num_of_amenities' => $request->num_of_amenities,
+            'num_of_featured_listings' => $request->num_of_featured_listings,
+            'show_at_home'=>$request->show_at_home,
+            'status'=>$request->status,
+        ]);
+
+        if ($newPackage){
+            toastr()->success('Package Created Successfully');
+        }
+        else{
+            toastr()->warning('There was a problem with the save');
+        }
+        return to_route('admin.package.index');
     }
 
     /**
