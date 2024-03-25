@@ -20,7 +20,7 @@
 
                 <ul class="nav nav-pills mb-3 mt-3" id="icon-pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="icon-pills-home-tab" data-toggle="pill" href="#icon-pills-home"
+                        <a class="nav-link active" id="general" data-toggle="pill" href="#icon-pills-home"
                            role="tab" aria-controls="icon-pills-home" aria-selected="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -28,7 +28,7 @@
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
                             </svg>
-                            Home
+                            General
                         </a>
                     </li>
 
@@ -47,18 +47,67 @@
 
                 <div class="tab-content" id="icon-pills-tabContent">
                     <div class="tab-pane fade active show" id="icon-pills-home" role="tabpanel"
-                         aria-labelledby="icon-pills-home-tab">
-                        <p class="mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
+                         aria-labelledby="general">
+                        <div>
+                            <form name="general_setting" method="POST" action="">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="site_name">Site Name</label>
+                                            <input type="text" class="form-control mb-4" id="site_name" placeholder="site NAme">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="site_email">Site Email</label>
+                                            <input type="email" class="form-control mb-4" id="site_email" placeholder="Site Email" >
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="site_phone">Site phone</label>
+                                            <input type="number" class="form-control mb-4" id="site_phone" placeholder="Site phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="site_default_currency">Site Default Currency</label>
+                                            <select name="site_default_currency" id="site_default_currency" class="form-control mb-4 select2">
+                                                <option>Select</option>
+                                                @foreach(config('currencies.currency_list') as $key=>$currency)
+                                                    <option value="{{$key}}">{{$currency}} ({{$key}})</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="site_currency_icon">Site Currency Icon</label>
+                                            <input type="text" class="form-control mb-4" id="site_currency_icon" placeholder="Site Currency Icon">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="site_currency_position">Site Currency position</label>
+                                            <select name="site_currency_position" id="site_currency_position" class="form-control mb-4">
+                                                <option value="left">Left</option>
+                                                <option value="right">Right</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="tab-pane fade" id="icon-pills-contact" role="tabpanel"
