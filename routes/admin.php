@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\ImageGalleryController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\PaymentSettingController;
 
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -69,5 +70,8 @@ Route::group([
     //Setting
     Route::get('/setting',[SettingController::class,'index'])->name('setting.index');
     Route::post('/general-setting',[SettingController::class,'updateGeneral'])->name('general-setting.update');
+    //Payment Setting
+    Route::get('/payment-setting',[PaymentSettingController::class,'index'])->name('payment-setting.index');
+
 
 });
