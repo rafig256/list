@@ -49,18 +49,19 @@
                     <div class="tab-pane fade active show" id="icon-pills-home" role="tabpanel"
                          aria-labelledby="general">
                         <div>
-                            <form name="general_setting" method="POST" action="">
+                            <form name="general_setting" method="POST" action="{{route('admin.general-setting.update')}}">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="site_name">Site Name</label>
-                                            <input type="text" class="form-control mb-4" id="site_name" placeholder="site NAme">
+                                            <label for="site_name">Site Name <span class="text-danger">*</span></label>
+                                            <input required type="text" name="site_name" class="form-control mb-4" id="site_name" value="{{config('settings.site_name')}}" placeholder="site NAme">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="site_email">Site Email</label>
-                                            <input type="email" class="form-control mb-4" id="site_email" placeholder="Site Email" >
+                                            <label for="site_email">Site Email <span class="text-danger">*</span></label>
+                                            <input required type="email" name="site_email" class="form-control mb-4" id="site_email" value="{{config('settings.site_email')}}" placeholder="Site Email" >
                                         </div>
                                     </div>
                                 </div>
@@ -68,17 +69,17 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="site_phone">Site phone</label>
-                                            <input type="number" class="form-control mb-4" id="site_phone" placeholder="Site phone">
+                                            <label for="site_phone">Site phone <span class="text-danger">*</span></label>
+                                            <input required type="number" name="site_phone" class="form-control mb-4" id="site_phone" value="{{config('settings.site_phone')}}" placeholder="Site phone">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="site_default_currency">Site Default Currency</label>
-                                            <select name="site_default_currency" id="site_default_currency" class="form-control mb-4 select2">
+                                            <label for="site_default_currency">Site Default Currency <span class="text-danger">*</span></label>
+                                            <select name="site_default_currency" id="site_default_currency" class="form-control mb-4" required>
                                                 <option>Select</option>
                                                 @foreach(config('currencies.currency_list') as $key=>$currency)
-                                                    <option value="{{$key}}">{{$currency}} ({{$key}})</option>
+                                                    <option value="{{$key}}" @selected(config('settings.site_default_currency') == $key)>{{$currency}} ({{$key}})</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -88,16 +89,16 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="site_currency_icon">Site Currency Icon</label>
-                                            <input type="text" class="form-control mb-4" id="site_currency_icon" placeholder="Site Currency Icon">
+                                            <label for="site_currency_icon">Site Currency Icon <span class="text-danger">*</span></label>
+                                            <input required type="text" name="site_currency_icon" class="form-control mb-4" id="site_currency_icon" value="{{config('settings.site_currency_icon')}}" placeholder="Site Currency Icon">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="site_currency_position">Site Currency position</label>
-                                            <select name="site_currency_position" id="site_currency_position" class="form-control mb-4">
-                                                <option value="left">Left</option>
-                                                <option value="right">Right</option>
+                                            <label for="site_currency_position">Site Currency position <span class="text-danger">*</span></label>
+                                            <select name="site_currency_position" id="site_currency_position" class="form-control mb-4" required>
+                                                <option value="left" @selected(config('settings.site_currency_position') == 'left')>Left</option>
+                                                <option value="right" @selected(config('settings.site_currency_position') == 'right')>Right</option>
                                             </select>
                                         </div>
                                     </div>
@@ -108,17 +109,6 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="icon-pills-contact" role="tabpanel"
-                         aria-labelledby="icon-pills-contact-tab">
-                        <p class="dropcap  dc-outline-primary">
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
                     </div>
                 </div>
 
