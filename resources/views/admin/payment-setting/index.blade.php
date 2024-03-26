@@ -17,7 +17,7 @@
                 <ul class="nav nav-pills mb-3 mt-3" id="pills-tab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="paypal-setting" data-toggle="pill" href="#paypal" role="tab"
-                           aria-controls="pills-home" aria-selected="true">Home</a>
+                           aria-controls="pills-home" aria-selected="true">PayPal</a>
                     </li>
 
                     <li class="nav-item">

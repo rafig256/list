@@ -1,6 +1,6 @@
 <div class="tab-pane fade active show" id="paypal" role="tabpanel" aria-labelledby="paypal-setting">
     <div>
-        <form name="paypal_setting" method="POST" action="{{route('admin.general-setting.update')}}">
+        <form name="paypal_setting" method="POST" action="{{route('admin.paypal-setting.update')}}">
             @csrf
             <div class="row">
                 <div class="col-md-6">
@@ -29,8 +29,11 @@
                     <div class="form-group">
                         <label for="paypal_country">Paypal Country <span class="text-danger">*</span></label>
                         <select name="paypal_country" id="paypal_country" class="form-control mb-4" required>
-                            <option value="iran">Iran</option>
-                            <option value="usa">USA</option>
+                            <option value="">Select</option>
+                            @foreach(config('countries') as $key => $country)
+                                <option value="{{$key}}">{{$country}}</option>
+                            @endforeach
+
                         </select>
                     </div>
                 </div>
