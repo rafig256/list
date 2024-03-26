@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PaymentSetting;
+use App\Services\PaymentSettingsService;
 use Illuminate\Http\Request;
 
 class PaymentSettingController extends Controller
@@ -31,6 +32,11 @@ class PaymentSettingController extends Controller
                 ['value'=>$value]
             );
         }
+        
+        //update Catch
+        $paypalSettingsService = app(PaymentSettingsService::class);
+        $paypalSettingsService->clearCachedSettings();
+
         toastr()->success('paypal Setting is updated successfully');
         return redirect()->back();
     }
