@@ -73,6 +73,7 @@ Route::group([
     //Payment Setting
     Route::get('/payment-setting',[PaymentSettingController::class,'index'])->name('payment-setting.index');
     Route::post('/paypal-setting',[PaymentSettingController::class,'paypalSetting'])->name('paypal-setting.update');
+    Route::post('/aqayepardakht-setting',[PaymentSettingController::class,'aqayepardakhtSetting'])->name('aqayepardakht-setting.update');
 
 
 });

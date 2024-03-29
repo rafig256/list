@@ -22,13 +22,13 @@
 
                     <li class="nav-item">
                         <a class="nav-link" id="other" data-toggle="pill" href="#pills-contact" role="tab"
-                           aria-controls="pills-contact" aria-selected="false">Contact</a>
+                           aria-controls="pills-contact" aria-selected="false">Aqaye PArdakht</a>
                     </li>
 
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                     @include('admin.payment-setting.paypal.index')
-                    @include('admin.payment-setting.zarrinpal.index')
+                    @include('admin.payment-setting.aqayepardakht.index')
                 </div>
             </div>
         </div>

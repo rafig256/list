@@ -37,24 +37,23 @@
                 <div class="col-lg-8">
                     <div class="wsus__payment_area">
                         <div class="row">
-                            <div class="col-lg-3 col-6 col-sm-4">
-                                <a class="wsus__single_payment" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                   href="#">
-                                    <img src="images/pay_1.jpg" alt="payment method" class="img-fluid w-100">
-                                </a>
-                            </div>
-                            <div class="col-lg-3 col-6 col-sm-4">
-                                <a class="wsus__single_payment" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                   href="#">
-                                    <img src="images/pay_2.jpg" alt="payment method" class="img-fluid w-100">
-                                </a>
-                            </div>
-                            <div class="col-lg-3 col-6 col-sm-4">
-                                <a class="wsus__single_payment" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                   href="#">
-                                    <img src="images/pay_3.jpg" alt="payment method" class="img-fluid w-100">
-                                </a>
-                            </div>
+                            @if(config('payment.paypal_status') == 'active')
+                                <div class="col-lg-3 col-6 col-sm-4">
+                                    <a class="wsus__single_payment" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                       href="#">
+                                        <img src="{{asset('frontend/images/paypal.png')}}" alt="payment method" class="img-fluid w-100">
+                                    </a>
+                                </div>
+                            @endif
+
+                            @if(config('payment.aqayepardakht_status')  ==  'active')
+                                <div class="col-lg-3 col-6 col-sm-4">
+                                    <a class="wsus__single_payment" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                       href="#">
+                                        <img src="{{asset('frontend/images/aqayepardakht.jpeg')}}" alt="payment method" class="img-fluid w-100">
+                                    </a>
+                                </div>
+                        @endif
                         </div>
                     </div>
                 </div>

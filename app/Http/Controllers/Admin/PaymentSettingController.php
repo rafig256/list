@@ -32,12 +32,35 @@ class PaymentSettingController extends Controller
                 ['value'=>$value]
             );
         }
-        
+
         //update Catch
         $paypalSettingsService = app(PaymentSettingsService::class);
         $paypalSettingsService->clearCachedSettings();
 
         toastr()->success('paypal Setting is updated successfully');
+        return redirect()->back();
+    }
+
+    public function aqayepardakhtSetting(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'aqayepardakht_status' => ['required','in:active,inactive'],
+            'aqayepardakht_pin' => ['required'],
+        ]);
+
+        foreach ($validatedData as $key=>$value) {
+            PaymentSetting::query()->updateOrCreate(
+                ['key' => $key],
+                ['value' => $value]
+            );
+        }
+
+        //update Catch
+        $paypalSettingsService = app(PaymentSettingsService::class);
+        $paypalSettingsService->clearCachedSettings();
+
+        toastr()->success('AqayePardakht Setting is updated successfully');
         return redirect()->back();
     }
 }
