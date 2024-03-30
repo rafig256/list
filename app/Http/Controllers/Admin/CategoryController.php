@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryStoreRequest;
 use App\Models\Category;
 use App\Traits\FileUploadTrait;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Str;
@@ -18,9 +16,10 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(CategoryDataTable $dataTable): View | JsonResponse
+    public function index(): View
     {
-        return $dataTable->render('admin.category.index');
+        $categories = Category::query()->where('status',1)->get();
+        return view('admin.category.index',['categories'=>$categories]);
     }
 
     /**
@@ -41,12 +40,13 @@ class CategoryController extends Controller
         $background_image = $this->uploadImage($request,'background_image');
         Category::query()->create([
             'name'=> $request->name,
-            'slug'=> $request->slug,
+            'slug'=> Str::slug($request->slug),
             'parent_id' => $request->parent_id,
             'image_icon'=> $image_icon,
             'background_image'=> $background_image,
-            'show_at_home'=> Str::slug($request->show_at_home),
+            'show_at_home'=> $request->show_at_home ? $request->show_at_home : 0,
             'status'=> $request->status,
+            'price'=> $request->price,
         ]);
         toastr()->success('Category Created Successfully');
         return to_route('admin.category.index');
@@ -58,7 +58,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.category.edit',compact('category'));
+        $categories = Category::query()->where('status',1)->where('parent_id',Null)->select('id','name')->get();
+        return view('admin.category.edit',compact('category','categories'));
     }
 
     /**
@@ -80,6 +81,8 @@ class CategoryController extends Controller
 
         $category->update([
             'name'=> $request->name,
+            'price'=>$request->price,
+            'parent_id'=> $request->parent_id,
             'slug'=> Str::slug($request->slug),
             'image_icon'=> $image_icon,
             'background_image'=> $background_image,

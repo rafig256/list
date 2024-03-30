@@ -49,6 +49,7 @@
                                                                             <input type="text" name="slug" class="form-control mb-4" id="slug" required >
                                                                         </div>
                                                                     </div>
+
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="parent_id">Parent Category <span class="text-danger">*</span></label>
@@ -58,6 +59,13 @@
                                                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                                                 @endforeach
                                                                             </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="price">Price <span class="text-danger">*</span></label>
+                                                                            <input type="text" name="price" class="form-control mb-4" id="price" value="0" required >
                                                                         </div>
                                                                     </div>
 

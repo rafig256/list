@@ -24,7 +24,6 @@ class CategoryDataTable extends DataTable
 
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $edit = '<a href="' . route('admin.category.edit', $query->id) . '" class="btn btn-primary">Edit</a>';
                 $delete = '<form action="' . route('admin.category.destroy', $query->id) . '" method="POST" style="display: inline;">
 
                     ' . csrf_field() . '

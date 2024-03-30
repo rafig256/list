@@ -50,6 +50,26 @@
                                                                             <input type="text" name="slug" class="form-control mb-4" id="slug" value="{{$category->slug}}" required >
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="price">Price <span class="text-danger">*</span></label>
+                                                                            <input type="text" name="price" class="form-control mb-4" id="price" value="{{$category->price}}" required >
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="parent_id">Parent Category <span class="text-danger">*</span></label>
+                                                                        <select name="parent_id" id="parent_id" class="form-control">
+                                                                            <option value="">It is parent Category</option>
+                                                                            @foreach($categories as $row)
+                                                                                <option value="{{$row->id}}" @selected($category->parent_id === $row->id)>{{$row->name}}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                        </div>
+                                                                    </div>
+
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="show_at_home">Show At Home</label>
