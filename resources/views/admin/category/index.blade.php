@@ -27,7 +27,7 @@
                                     <tr>
                                         <td>{{++$loop->index}}</td>
                                         <td>{{$category->name}}</td>
-                                        <td>{{$category->parent_id}}</td>
+                                        <td>{!! $category->parent->name ?? "<span class = 'text-success'>GENERAL CATEGIRY</span>" !!}</td>
                                         <td><img src="{{asset($category->image_icon)}}" width="100px"></td>
                                         <td>{{$category->show_at_home == 1 ? 'Yes' : 'No'}}</td>
                                         <td>{{$category->price}}</td>

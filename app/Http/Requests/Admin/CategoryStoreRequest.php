@@ -24,7 +24,6 @@ class CategoryStoreRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-//                'unique:categories,name,'.$this->category->id,
                 $unique,
             ],
             'slug'=> 'required|string|max:255',
