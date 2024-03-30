@@ -28,7 +28,8 @@ class CategoryController extends Controller
      */
     public function create():View
     {
-        return view('admin.category.create');
+        $categories = Category::query()->where('status',1)->where('parent_id',Null)->select('id','name')->get();
+        return view('admin.category.create',compact('categories'));
     }
 
     /**
@@ -41,6 +42,7 @@ class CategoryController extends Controller
         Category::query()->create([
             'name'=> $request->name,
             'slug'=> $request->slug,
+            'parent_id' => $request->parent_id,
             'image_icon'=> $image_icon,
             'background_image'=> $background_image,
             'show_at_home'=> Str::slug($request->show_at_home),

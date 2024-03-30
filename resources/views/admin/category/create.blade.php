@@ -51,10 +51,16 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="show_at_home">Show At Home</label>
-                                                                            <input type="checkbox" name="show_at_home" id="show_at_home" value="1">
+                                                                            <label for="parent_id">Parent Category <span class="text-danger">*</span></label>
+                                                                            <select name="parent_id" id="parent_id" class="form-control">
+                                                                                <option value="">it is parent Category</option>
+                                                                                @foreach($categories as $category)
+                                                                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                                                                @endforeach
+                                                                            </select>
                                                                         </div>
                                                                     </div>
+
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="status">Status</label>
@@ -68,6 +74,16 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="show_at_home">Show At Home</label>
+                                                                            <input type="checkbox" name="show_at_home" id="show_at_home" value="1">
+                                                                        </div>
+                                                                    </div>
+
+
+
                                                                     <div class="col-md-6">
                                                                         <div class="input-group social-tweet mb-3">
                                                                             <button class="btn btn-success" type="submit">Create</button>

@@ -18,11 +18,12 @@ class CategoryStoreRequest extends FormRequest
         $rule = request()->isMethod('post') ? 'required' : 'sometimes';
 
         return [
+            'parent_id' => ['nullable','exists:categories,id'] ,
             'name' => [
                 'required',
                 'string',
                 'max:255',
-                'unique:categories,name,'.$this->category->id,
+                'unique:categories,name,'.$this->category,
             ],
             'slug'=> 'required|string|max:255',
             'image_icon' => $rule . '|image|max:1000',
