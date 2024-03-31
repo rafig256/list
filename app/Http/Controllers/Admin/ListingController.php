@@ -88,15 +88,17 @@ class ListingController extends Controller
      */
     public function edit(Listing $listing)
     {
-//        dd($listing->amenities());
-        $categories = \App\Models\Category::all();
+
+        $parentCategories = Category::query()->where(['status'=>1,'parent_id'=>NULL])->get();
+        $categories = Category::query()->where('status' , 1)->where('parent_id',$listing->category->parent_id)->get();
         $locations = Location::all();
         $amenity = Amenity::all();
         return view('admin.listing.edit',[
             'listing'=>$listing,
             'categories' => $categories,
             'locations' => $locations,
-            'amenities' => $amenity
+            'amenities' => $amenity,
+            'parentCategories' => $parentCategories,
             ]);
     }
 
