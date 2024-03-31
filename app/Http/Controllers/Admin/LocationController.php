@@ -38,12 +38,14 @@ class LocationController extends Controller
 
     public function edit(Location $location)
     {
-        return view('admin.location.edit',['location'=>$location]);
+        $parentLocations = Location::query()->where(['parent_id'=> null , 'status' => 1])->get();
+        return view('admin.location.edit',['location'=>$location,'parentLocations'=>$parentLocations]);
     }
 
     public function update(LocationCreateRequest $request, Location $location){
         $location->update([
             'name' => $request->name,
+            'parent_id' => $request->parent_id ? $request->parent_id : NULL ,
             'slug'=> \Str::slug($request->slug),
             'show_at_home'=>$request->show_at_home ? $request->show_at_home : 0,
             'status'=> $request->status,
