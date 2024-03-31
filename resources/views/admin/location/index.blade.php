@@ -26,6 +26,7 @@
                         <tr>
                             <th class="text-center">#</th>
                             <th>Name</th>
+                            <th>Parent</th>
                             <th>Slug</th>
                             <th>show At home</th>
                             <th>status</th>
@@ -37,6 +38,7 @@
                         <tr>
                                 <td class="text-center">{{$location->id}}</td>
                                 <td>{{$location->name}}</td>
+                                <td>{!! $location->parent->name ?? "<span class='text-success'>It is Parent Location</span>" !!}</td>
                                 <td>
                                     {{$location->slug}}
                                 </td>

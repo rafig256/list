@@ -9,4 +9,12 @@ class Location extends Model
 {
     protected $guarded = [];
     use HasFactory;
+
+    public function parent(){
+        return $this->belongsTo(Location::class , 'parent_id');
+    }
+
+    public function children(){
+        return $this->hasMany(Location::class , 'parent_id');
+    }
 }
