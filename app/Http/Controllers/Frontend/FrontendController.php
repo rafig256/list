@@ -16,12 +16,14 @@ class FrontendController extends Controller
     public function index() : View
     {
         $hero = Hero::query()->first();
-        $categories = Category::query()->where('status',1)->get();
+        $categories = Category::query()->where('status',1)->where('parent_id','!=',NULL)->get();
         $packages = Package::query()->where('status',1)->where('show_at_home',1)->take(3)->get();
+        $featuredCategories = Category::query()->where('parent_id',NULL)->where('show_at_home',1)->take(9)->get();
         return view('frontend.home.index',[
             'hero'=>$hero,
             'categories' => $categories,
             'packages' => $packages,
+            'featuredCategories'=>$featuredCategories,
         ]);
     }
 

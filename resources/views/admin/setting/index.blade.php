@@ -104,6 +104,17 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="num_sub_cat_in_home">Number of subCategory for show in home page <span class="text-danger">*</span></label>
+                                            <input required type="number" name="num_sub_cat_in_home" class="form-control mb-4" id="num_sub_cat_in_home" value="{{config('settings.num_sub_cat_in_home')}}" placeholder="number">
+                                            <small class="text-danger">The number of subcategories displayed at the bottom of the collection on the main page</small>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                                 <div class="">
                                     <button type="submit" class="btn btn-sm btn-primary">Save</button>
                                 </div>

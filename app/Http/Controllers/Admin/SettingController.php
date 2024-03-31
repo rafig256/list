@@ -23,6 +23,7 @@ class SettingController extends Controller
             'site_default_currency' => ['required','max:4'],
             'site_currency_icon' => ['required'],
             'site_currency_position' => ['required','in:left,right'],
+            'num_sub_cat_in_home' => ['required','numeric'],
         ]);
 
         foreach ($validatedData as $key => $value){
