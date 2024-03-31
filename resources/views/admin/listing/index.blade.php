@@ -26,6 +26,7 @@
                         <tr>
                             <th class="text-center">#</th>
                             <th>Name</th>
+                            <th>parent Category</th>
                             <th>Category</th>
                             <th>Location</th>
                             <th>User</th>
@@ -40,6 +41,9 @@
                             <tr>
                                 <td class="text-center">{{$listing->id}}</td>
                                 <td>{{$listing->title}}</td>
+                                <td>
+                                    {{$listing->category->parent?->name}}
+                                </td>
                                 <td>
                                     {{$listing->category->name}}
                                 </td>

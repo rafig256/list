@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ListingStoreRequest;
 use App\Http\Requests\Admin\ListingUpdateRequest;
 use App\Models\Amenity;
+use App\Models\Category;
 use App\Models\Listing;
 use App\Models\Location;
 use App\Traits\FileUploadTrait;
@@ -29,7 +30,7 @@ class ListingController extends Controller
      */
     public function create():View
     {
-        $categories = \App\Models\Category::all();
+        $categories = Category::query()->where(['status'=>1,'parent_id'=>NULL])->get();
         $locations = Location::all();
         $amenity = Amenity::all();
         return view('admin.listing.create',[
@@ -149,4 +150,13 @@ class ListingController extends Controller
         toastr()->warning('Listing Delete Successfully!');
         return to_route('admin.listing.index');
     }
+
+    public function getChildCategories(Request $request)
+    {
+        $parentId = $request->input('parent_id');
+        $childCategories = Category::query()->where('parent_id', $parentId)->get();
+        return response()->json($childCategories);
+    }
+
+
 }

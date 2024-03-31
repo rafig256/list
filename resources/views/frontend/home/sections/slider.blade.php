@@ -8,27 +8,11 @@
                             <span>
                                 <img src="{{asset($category->image_icon)}}" alt="{{$category->name}}" class="img-fluid w-100">
                             </span>
+                            <p class="text-muted">{{$category->parent->name}}</p>
                             <p>{{$category->name}}</p>
                         </a>
                     </div>
                 @endforeach
-
-                <div class="col-xl-2">
-                    <a href="#" class="wsus__category_single_slider">
-                            <span>
-                                <img src="{{asset('frontend/images/category_icon_3.png')}}" alt="category" class="img-fluid w-100">
-                            </span>
-                        <p>office</p>
-                    </a>
-                </div>
-                <div class="col-xl-2">
-                    <a href="#" class="wsus__category_single_slider color_4">
-                            <span>
-                                <img src="{{asset('frontend/images/category_icon_6.png')}}" alt="category" class="img-fluid w-100">
-                            </span>
-                        <p>university</p>
-                    </a>
-                </div>
             </div>
         </div>
     </div>

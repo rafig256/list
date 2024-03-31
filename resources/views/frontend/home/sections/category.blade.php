@@ -33,13 +33,14 @@
                                     </th>
                                     </thead>
                                     @foreach($row->childrens as $subcategory)
-                                        @if ($loop->iteration > config('settings.num_sub_cat_in_home'))
+
+                                        <tr>
+                                            <td>{{$loop->iteration." - ".$subcategory->name}} ({{count($subcategory->listings)}})</td>
+                                        </tr>
+                                        @if ($loop->iteration > config('settings.num_sub_cat_in_home')-1)
+                                            <td>More ...</td>
                                             @break
                                         @endif
-                                        <tr>
-                                            <td>{{$loop->iteration." - ".$subcategory->name}}</td>
-                                        </tr>
-
                                     @endforeach
                                 </table>
                             @endif

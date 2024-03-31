@@ -50,6 +50,8 @@ Route::group([
     Route::get('/listing/pending',[PendingListingController::class,'index'])->name('listing.pending.index');
     Route::post('/listing/pending',[PendingListingController::class,'update'])->name('listing.pending.update');
     Route::resource('/listing',ListingController::class)->except(['show']);
+    Route::post('/ajax/get-child-categories', [ListingController::class,'getChildCategories'])->name('Child_Categories');
+
 
     //Image Gallery Routes
     Route::get('/image-gallery/{listing}',[ImageGalleryController::class,'create'])->name('image-gallery.create');
@@ -63,6 +65,7 @@ Route::group([
     Route::post('/schedule/{listing}',[ScheduleController::class,'store'])->name('schedule.store');
     Route::put('/schedule/{listing}',[ScheduleController::class,'update'])->name('schedule.update');
     Route::get('/schedule/delete/{schedule}',[ScheduleController::class,'destroy'])->name('schedule.destroy');
+
 
     //Packages
     Route::resource('/package',PackageController::class)->except(['show']);
