@@ -22,6 +22,7 @@ class LocationCreateRequest extends FormRequest
                 'max:255',
                 Rule::unique('locations')->ignore($this->location),
             ],
+            'parent_id' => 'nullable|exists:locations,id',
             'slug' => 'required|min:3',
             'show_at_home' => 'boolean',
             'status' => 'boolean',

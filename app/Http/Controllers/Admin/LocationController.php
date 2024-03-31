@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\LocationCreateRequest;
 use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use phpDocumentor\Reflection\Types\Null_;
 
 class LocationController extends Controller
 {
@@ -18,12 +19,14 @@ class LocationController extends Controller
 
     public function create():View
     {
-        return view('admin.location.create');
+        $parentLocations = Location::query()->where(['parent_id'=> null , 'status' => 1])->get();
+        return view('admin.location.create',compact('parentLocations'));
     }
 
     public function store(LocationCreateRequest $request){
         Location::query()->create([
             'name' => $request->name,
+            'parent_id' => $request->parent_id ? $request->parent_id : NULL ,
             'slug'=> \Str::slug($request->slug),
             'show_at_home'=>$request->show_at_home ? $request->show_at_home : 0,
             'status'=> $request->status,
