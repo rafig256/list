@@ -51,6 +51,8 @@ Route::group([
     Route::post('/listing/pending',[PendingListingController::class,'update'])->name('listing.pending.update');
     Route::resource('/listing',ListingController::class)->except(['show']);
     Route::post('/ajax/get-child-categories', [ListingController::class,'getChildCategories'])->name('Child_Categories');
+    Route::post('/ajax/get-child-locations', [ListingController::class,'getChildLocations'])->name('Child_Locations');
+
 
 
     //Image Gallery Routes

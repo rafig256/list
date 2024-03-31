@@ -31,12 +31,14 @@ class ListingController extends Controller
     public function create():View
     {
         $categories = Category::query()->where(['status'=>1,'parent_id'=>NULL])->get();
+        $parentLocations = Location::query()->where(['status'=>1,'parent_id'=>NULL])->get();
         $locations = Location::all();
         $amenity = Amenity::all();
         return view('admin.listing.create',[
             'categories'=>$categories,
             'locations'=>$locations,
-            'amenities'=>$amenity
+            'amenities'=>$amenity,
+            'parentLocations'=>$parentLocations,
         ]);
     }
 
@@ -158,6 +160,13 @@ class ListingController extends Controller
         $parentId = $request->input('parent_id');
         $childCategories = Category::query()->where('parent_id', $parentId)->get();
         return response()->json($childCategories);
+    }
+
+    public function getChildLocations(Request $request)
+    {
+        $parentId = $request->input('parent_id');
+        $childLocations = Location::query()->where('parent_id', $parentId)->get();
+        return response()->json($childLocations);
     }
 
 
