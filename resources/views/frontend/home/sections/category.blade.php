@@ -12,7 +12,7 @@
             <div class="row">
                 @foreach($featuredCategories as $row)
                     <div class="col-xl-4 col-sm-6">
-                        <a href="#" class="wsus__category_single">
+                        <a href="{{route('listing',['parent_category'=>$row->slug])}}" class="wsus__category_single">
                             <div class="wsus__category_img">
                                 <img src="{{asset($row->background_image)}}" alt="img" class="img-fluid w-100">
                             </div>
@@ -35,7 +35,7 @@
                                     @foreach($row->childrens as $subcategory)
 
                                         <tr>
-                                            <td>{{$loop->iteration." - ".$subcategory->name}} ({{count($subcategory->listings)}})</td>
+                                            <td>{{$loop->iteration}} - <a href="{{route('listing',['category'=>$subcategory->slug])}}"> {{$subcategory->name}} </a>({{count($subcategory->listings)}})</td>
                                         </tr>
                                         @if ($loop->iteration > config('settings.num_sub_cat_in_home')-1)
                                             <td>More ...</td>

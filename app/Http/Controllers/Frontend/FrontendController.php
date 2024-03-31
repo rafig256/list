@@ -31,11 +31,25 @@ class FrontendController extends Controller
     {
 
         $listings = Listing::query()->where(['is_approved' => 1 ,'status' => 1]);
-        $listings->when($request->has('category'), function ($query) use ($request){
-            $query->whereHas('category',function ($query)use ($request){
-                $query->where('slug',$request->category);
+//        $listings->when($request->has('category'), function ($query) use ($request){
+//            $query->whereHas('category',function ($query)use ($request){
+//                $query->where('slug',$request->category);
+//            });
+//        });
+
+
+        $listings = Listing::query()->where(['is_approved' => 1, 'status' => 1])->first();
+
+        if ($request->has('parent_category')) {
+           $parentCategorySlug = $request->parent_category;
+           $parentCategory = Category::where('slug', $parentCategorySlug)->first();
+           $listings = Listing::query()->whereIn('category_id',$parentCategory->childrens()->pluck('id')->toArray());
+        } elseif ($request->has('category')) {
+            $categorySlug = $request->category;
+            $listings->whereHas('category', function ($query) use ($categorySlug) {
+                $query->where('slug', $categorySlug);
             });
-        });
+        }
 
         $listings = $listings->paginate(6);
         return view('frontend.pages.listing',compact('listings'));

@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
     Route::put('/profile', [FrontendProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile-password', [FrontendProfileController::class, 'updatePassword'])->name('profile.password');
 
-    //Listing Route
+    //Listing User Route
     Route::resource('/listing', ListingController::class)->except('show');
     Route::resource('/gallery',AgentListingGalleryController::class)->except(['index','update','edit','show']);
     //Schedule Route
