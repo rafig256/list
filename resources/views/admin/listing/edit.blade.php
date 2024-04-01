@@ -56,9 +56,9 @@
                                                             </div>
 
                                                             <div class="col-sm-6">
-                                                                <label for="parent_id" class="dob-input">parent Category <span class="text-danger">*</span> </label>
+                                                                <label for="category_parent_id" class="dob-input">parent Category <span class="text-danger">*</span> </label>
                                                                 <div class="form-group mr-1">
-                                                                    <select class="form-control" id="parent_id" required>
+                                                                    <select class="form-control" id="category_parent_id" required>
                                                                         <option value="" disabled>Select</option>
                                                                         @foreach($parentCategories as $category)
                                                                             <option value="{{$category->id}}" @selected($listing->category->parent_id == $category->id)>{{$category->name}}</option>
@@ -80,10 +80,23 @@
                                                             </div>
 
                                                             <div class="col-sm-6">
+                                                                <label for="location_parent_id" class="dob-input">parent Location <span class="text-danger">*</span> </label>
+                                                                <div class="form-group mr-1">
+                                                                    <select class="form-control" id="location_parent_id" required>
+                                                                        <option value="" disabled>Select</option>
+                                                                        @foreach($parentLocations as $locationRow)
+                                                                            <option value="{{$locationRow->id}}" @selected($listing->location->parent_id == $locationRow->id)>{{$locationRow->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-sm-6">
                                                                 <label for="location_id" class="dob-input"> Location <span class="text-danger">*</span> </label>
                                                                 <div class="form-group mr-1">
                                                                     <select class="form-control" name="location_id" id="location_id" required>
-                                                                        <option value="">Select</option>
+                                                                        <option value="" disabled>Select</option>
                                                                         @foreach($locations as $location)
                                                                             <option value="{{$location->id}}" @selected($listing->location_id == $location->id)> {{$location->name}}</option>
                                                                         @endforeach
@@ -286,7 +299,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="seo_description">Seo Description <span class="text-danger">*</span></label>
+                                                    <label for="seo_description">Seo Description </label>
                                                     <input type="text" name="seo_description" class="form-control mb-4" id="seo_description" placeholder="seo description" value="{!! $listing->seo_description ?? '' !!}" >
                                                 </div>
                                             </div>
@@ -294,8 +307,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            </div>
+                        </div>
                     </div>
                 </div>
                 </form>
@@ -334,7 +346,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#parent_id').change(function() {
+            $('#category_parent_id').change(function() {
                 var parentId = $(this).val();
                 var token = "{{ csrf_token() }}";
                 $.ajax({
@@ -349,6 +361,35 @@
                         $('#category_id').empty(); // پاک کردن گزینه‌های قبلی
                         $.each(response, function(index, category) {
                             $('#category_id').append($('<option>', {
+                                value: category.id,
+                                text: category.name
+                            }));
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#location_parent_id').change(function() {
+                var parentId = $(this).val();
+                var token = "{{ csrf_token() }}";
+                $.ajax({
+                    url: '/admin/ajax/get-child-locations',
+                    method: 'POST',
+                    data: {
+                        parent_id: parentId ,
+                        _token: token // اضافه کردن توکن CSRF به داده‌های ارسالی
+                    },
+                    success: function(response) {
+                        // پر کردن گزینه‌های مجموعه‌های فرزند با داده‌های دریافتی
+                        $('#location_id').empty(); // پاک کردن گزینه‌های قبلی
+                        $.each(response, function(index, category) {
+                            $('#location_id').append($('<option>', {
                                 value: category.id,
                                 text: category.name
                             }));

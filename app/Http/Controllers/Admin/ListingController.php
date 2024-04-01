@@ -92,8 +92,9 @@ class ListingController extends Controller
     {
 
         $parentCategories = Category::query()->where(['status'=>1,'parent_id'=>NULL])->get();
+        $parentLocations = Location::query()->where(['status'=>1,'parent_id'=>NULL])->get();
         $categories = Category::query()->where('status' , 1)->where('parent_id',$listing->category->parent_id)->get();
-        $locations = Location::all();
+        $locations = Location::query()->where('status', 1)->where('parent_id',$listing->location->parent_id)->get();
         $amenity = Amenity::all();
         return view('admin.listing.edit',[
             'listing'=>$listing,
@@ -101,6 +102,7 @@ class ListingController extends Controller
             'locations' => $locations,
             'amenities' => $amenity,
             'parentCategories' => $parentCategories,
+            'parentLocations'=>$parentLocations,
             ]);
     }
 
