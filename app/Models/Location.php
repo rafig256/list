@@ -17,4 +17,8 @@ class Location extends Model
     public function children(){
         return $this->hasMany(Location::class , 'parent_id');
     }
+
+    public function listings(){
+        return $this->hasMany(Listing::class , 'location_id');
+    }
 }

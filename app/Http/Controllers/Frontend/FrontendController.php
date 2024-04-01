@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Hero;
 use App\Models\Listing;
+use App\Models\Location;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -19,11 +20,18 @@ class FrontendController extends Controller
         $categories = Category::query()->where('status',1)->where('parent_id','>',0)->get();
         $packages = Package::query()->where('status',1)->where('show_at_home',1)->take(3)->get();
         $featuredCategories = Category::query()->where('parent_id',NULL)->where('show_at_home',1)->take(9)->get();
+        $locations = Location::query()->with('listings',function ($query){
+            $query->where(['is_featured' => 1,'status'=>1,'is_approved'=>1])->limit(12);
+        })->where(['status'=>1 , 'show_at_home'=>1 ,])->where('parent_id','>',0)->take(20)->get();
+        $parentLocations = Location::query()->where(['status'=>1 , 'show_at_home'=>1 ,'parent_id'=> NULL])->get();
+//dd($locations);
         return view('frontend.home.index',[
             'hero'=>$hero,
             'categories' => $categories,
             'packages' => $packages,
             'featuredCategories'=>$featuredCategories,
+            'parentLocations' => $parentLocations,
+            'locations' => $locations,
         ]);
     }
 
