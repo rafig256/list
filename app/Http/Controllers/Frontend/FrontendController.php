@@ -24,7 +24,9 @@ class FrontendController extends Controller
             $query->where(['is_featured' => 1,'status'=>1,'is_approved'=>1])->limit(12);
         })->where(['status'=>1 , 'show_at_home'=>1 ,])->where('parent_id','>',0)->take(20)->get();
         $parentLocations = Location::query()->where(['status'=>1 , 'show_at_home'=>1 ,'parent_id'=> NULL])->get();
-//dd($locations);
+
+        $listingsFeature = Listing::query()->where(['status'=>1 , 'is_approved' => 1 , 'is_featured' => 1])->orderBy('id','desc')->get();
+
         return view('frontend.home.index',[
             'hero'=>$hero,
             'categories' => $categories,
@@ -32,6 +34,7 @@ class FrontendController extends Controller
             'featuredCategories'=>$featuredCategories,
             'parentLocations' => $parentLocations,
             'locations' => $locations,
+            'listingsFeature' => $listingsFeature
         ]);
     }
 
@@ -39,14 +42,6 @@ class FrontendController extends Controller
     {
 
         $listings = Listing::query()->where(['is_approved' => 1 ,'status' => 1]);
-//        $listings->when($request->has('category'), function ($query) use ($request){
-//            $query->whereHas('category',function ($query)use ($request){
-//                $query->where('slug',$request->category);
-//            });
-//        });
-
-
-        $listings = Listing::query()->where(['is_approved' => 1, 'status' => 1])->first();
 
         if ($request->has('parent_category')) {
            $parentCategorySlug = $request->parent_category;
@@ -56,6 +51,12 @@ class FrontendController extends Controller
             $categorySlug = $request->category;
             $listings->whereHas('category', function ($query) use ($categorySlug) {
                 $query->where('slug', $categorySlug);
+            });
+        }elseif ($request->has('location')){
+            $locationSlug = $request->location;
+            $listings->whereHas('location', function ($query) use ($locationSlug){
+
+                $query->where(['slug'=> $locationSlug , 'status' => 1]);
             });
         }
 

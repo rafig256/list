@@ -101,7 +101,6 @@
 
                 <div class="col-lg-9">
                     <div class="row">
-
                         @foreach($listings as $listing)
                             <div class="col-xl-4 col-sm-6">
                                 <div class="wsus__featured_single">
@@ -110,8 +109,9 @@
                                         <a href="#" class="love"><i class="fas fa-heart"></i></a>
                                         <a href="{{route('listing',['category'=>$listing->category->slug])}}" class="small_text">{{$listing->category->name}}</a>
                                     </div>
-                                    <a class="map" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-id="{{$listing->id}}" href="#"><i
-                                            class="fas fa-info"></i></a>
+                                    <a class="map" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-id="{{$listing->id}}" href="#">
+                                        <i class="fas fa-info"></i>
+                                    </a>
                                     <div class="wsus__featured_single_text">
                                         <p class="list_rating">
                                             <i class="fas fa-star"></i>

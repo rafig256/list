@@ -31,11 +31,12 @@
                                     <a href="#" class="love"><i class="fas fa-heart"></i></a>
                                     <div class="wsus__category_text">
                                             <a href="{{route('listing',['category'=>$listing->category->slug])}}" class="small_text">{{$listing->category->name}}</a>
-                                            <span class="small_text">{{$location->name}}</span>
+                                            <a href="{{route('listing',['location'=>$location->slug])}}" class="small_text">{{$location->name}}</a>
                                     </div>
                                 </div>
-                                <a class="map" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-id="{{$listing->id}}" href="#"><i
-                                        class="fas fa-info"></i></a>
+                                <a class="map" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-id="{{$listing->id}}" href="#">
+                                    <i class="fas fa-info"></i>
+                                </a>
                                 <div class="wsus__featured_single_text">
                                     <p class="list_rating">
                                         <i class="fas fa-star"></i>

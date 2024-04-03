@@ -12,121 +12,31 @@
     </div>
     <div class="container">
         <div class="row listing_slider">
-            <div class="col-xl-3">
-                <div class="wsus__featured_single">
-                    <div class="wsus__featured_single_img">
-                        <img src="{{asset('frontend/images/location_1.jpg')}}" alt="images" class="img-fluid w-100">
-                        <a href="#" class="love"><i class="fas fa-heart"></i></a>
-                        <a href="#" class="small_text">market</a>
-                    </div>
-                    <a class="map" data-bs-toggle="modal" data-bs-target="#exampleModal2" href="#"><i
-                            class="fas fa-info"></i></a>
-                    <div class="wsus__featured_single_text">
-                        <p class="list_rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(5 review)</span>
-                        </p>
-                        <a href="#">school and child care</a>
-                        <p class="address"> Washington, Illinois</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3">
-                <div class="wsus__featured_single">
-                    <div class="wsus__featured_single_img">
-                        <img src="images/location_2.jpg" alt="images" class="img-fluid w-100">
-                        <a href="#" class="love"><i class="fas fa-heart"></i></a>
-                        <a href="#" class="small_text">school</a>
-                    </div>
-                    <a class="map" data-bs-toggle="modal" data-bs-target="#exampleModal2" href="#"><i
-                            class="fas fa-info"></i></a>
-                    <div class="wsus__featured_single_text">
-                        <p class="list_rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(5 review)</span>
-                        </p>
-                        <a href="#">school and child care</a>
-                        <p class="address"> Washington, Illinois</p>
+            @foreach($listingsFeature as $listing)
+                <div class="col-xl-3">
+                    <div class="wsus__featured_single">
+                        <div class="wsus__featured_single_img">
+                            <img src="{{asset($listing->image)}}" alt="{{$listing->title}}" class="img-fluid w-100">
+                            <a href="{{route('listing',['category'=>$listing->category->slug])}}" class="small_text">{{$listing->category->name}}</a>
+                        </div>
+                        <a class="map" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-id="{{$listing->id}}" href="#">
+                            <i class="fas fa-info"></i>
+                        </a>
+                        <div class="wsus__featured_single_text">
+                            <p class="list_rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(5 review)</span>
+                            </p>
+                            <a href="{{route('listing.show',$listing->slug)}}">{{$listing->title}}</a>
+                            <p class="address"> {{$listing->location->name}}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-3">
-                <div class="wsus__featured_single">
-                    <div class="wsus__featured_single_img">
-                        <img src="images/location_3.jpg" alt="images" class="img-fluid w-100">
-                        <a href="#" class="love"><i class="fas fa-heart"></i></a>
-                        <a href="#" class="small_text">shopping mall</a>
-                    </div>
-                    <a class="map" data-bs-toggle="modal" data-bs-target="#exampleModal2" href="#"><i
-                            class="fas fa-info"></i></a>
-                    <div class="wsus__featured_single_text">
-                        <p class="list_rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(5 review)</span>
-                        </p>
-                        <a href="#">school and child care</a>
-                        <p class="address"> Washington, Illinois</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3">
-                <div class="wsus__featured_single">
-                    <div class="wsus__featured_single_img">
-                        <img src="images/location_4.jpg" alt="images" class="img-fluid w-100">
-                        <a href="#" class="love"><i class="fas fa-heart"></i></a>
-                        <a href="#" class="small_text">park</a>
-                    </div>
-                    <a class="map" data-bs-toggle="modal" data-bs-target="#exampleModal2" href="#"><i
-                            class="fas fa-info"></i></a>
-                    <div class="wsus__featured_single_text">
-                        <p class="list_rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(5 review)</span>
-                        </p>
-                        <a href="#">school and child care</a>
-                        <p class="address"> Washington, Illinois</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3">
-                <div class="wsus__featured_single">
-                    <div class="wsus__featured_single_img">
-                        <img src="images/location_5.jpg" alt="images" class="img-fluid w-100">
-                        <a href="#" class="love"><i class="fas fa-heart"></i></a>
-                        <a href="#" class="small_text">school and college</a>
-                    </div>
-                    <a class="map" data-bs-toggle="modal" data-bs-target="#exampleModal2" href="#"><i
-                            class="fas fa-info"></i></a>
-                    <div class="wsus__featured_single_text">
-                        <p class="list_rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(5 review)</span>
-                        </p>
-                        <a href="#">school and child care</a>
-                        <p class="address"> Washington, Illinois</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

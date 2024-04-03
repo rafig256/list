@@ -94,3 +94,29 @@
     ===========================-->
 
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.map').click(function (){
+                let id = $(this).data('id');
+                $.ajax({
+                    method : 'GET',
+                    url : '{{route("listing.ajax-modal",":id")}}'.replace(":id",id),
+                    data: {},
+                    beforeSend: function (){
+                        $('.modal-dialog').html(`<div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                        </div>`)
+                    },
+                    success: function (response) {
+                        $('.modal-dialog').html(response);
+                    },
+                    error: function (xhr,status,error){
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+@endpush
