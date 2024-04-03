@@ -113,7 +113,19 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="site_timezone">Time Zone {{config('settings.site_timezone')}}<span class="text-danger">*</span></label>
+                                            <select name="site_timezone" id="site_timezone" class="form-control" required>
+                                                <option value="" selected disabled>Select Time Zone</option>
+                                                @foreach(config('time-zone') as $key => $timeZone)
+                                                    <option value="{{$key}}" @selected(config('settings.site_timezone') == $key)>{{$timeZone}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+
 
                                 <div class="">
                                     <button type="submit" class="btn btn-sm btn-primary">Save</button>

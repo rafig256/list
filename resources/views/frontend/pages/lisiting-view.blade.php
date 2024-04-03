@@ -61,7 +61,7 @@
                                     @if($listing->is_featured)<li><a href="#"><i class="far fa-star"></i> Featured</a></li>@endif
                                     <li><a href="#"><i class="fal fa-heart"></i> Add to Favorite</a></li>
                                     <li><a href="#"><i class="fal fa-eye"></i> {{$listing->views}}</a></li>
-                                    <li><a href="#">Open</a></li>
+                                    <li><a href="#">{{$openState}}</a></li>
                                 </ul>
                             </div>
                         </div>

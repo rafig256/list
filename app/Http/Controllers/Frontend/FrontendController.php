@@ -8,6 +8,7 @@ use App\Models\Hero;
 use App\Models\Listing;
 use App\Models\Location;
 use App\Models\Package;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use function PHPUnit\Framework\assertDirectoryDoesNotExist;
@@ -40,7 +41,6 @@ class FrontendController extends Controller
 
     public function listing(Request $request)
     {
-
         $listings = Listing::query()->where(['is_approved' => 1 ,'status' => 1]);
 
         if ($request->has('parent_category')) {
@@ -71,10 +71,13 @@ class FrontendController extends Controller
 
     public function showListing(Listing $listing) :view
     {
+        dd(now()->format('H:i:s'));
+        $openStatus = Schedule::query()->where('listing_id',$listing->id)->where('day',\Str::lower(date('l')))->first();
+        $openState = date('H:i:s') > $openStatus->start_time && date('H:i:s') < $openStatus->end_time ? 'open' : 'close';
         $similarListing = Listing::query()->where('category_id',$listing->category_id)->
         where('id','!=',$listing->id)->
         orderBy('id','DESC')->take(4)->get();
-        return view('frontend.pages.lisiting-view',compact('listing','similarListing'));
+        return view('frontend.pages.lisiting-view',compact('listing','similarListing','openState'));
     }
 
     public function packages()
