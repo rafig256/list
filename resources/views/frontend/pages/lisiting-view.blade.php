@@ -220,14 +220,17 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="listing_det_side_open_hour">
-                                    <h5>Opening Hours</h5>
-                                    @foreach($listing->schedules as $row)
-                                        <p>{{$row->day}} <span>{!! $row->status ? '<span class="text-danger">Closed</span>' : str($row->start_time)->limit(5,"")  ." - ".  str($row->end_time)->limit(5,'') !!}</span></p>
-                                    @endforeach
+                            @if($listing->schedules->count() > 0)
+                                <div class="col-12">
+                                    <div class="listing_det_side_open_hour">
+                                        <h5>Opening Hours</h5>
+                                        @foreach($listing->schedules as $row)
+                                            <p>{{$row->day}} <span>{!! $row->status ? '<span class="text-danger">Closed</span>' : str($row->start_time)->limit(5,"")  ." - ".  str($row->end_time)->limit(5,'') !!}</span></p>
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
+
                             <div class="col-12">
                                 <div class="listing_det_side_contact">
                                     <h5>quick contact</h5>

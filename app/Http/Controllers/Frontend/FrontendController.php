@@ -71,9 +71,15 @@ class FrontendController extends Controller
 
     public function showListing(Listing $listing) :view
     {
-        dd(now()->format('H:i:s'));
         $openStatus = Schedule::query()->where('listing_id',$listing->id)->where('day',\Str::lower(date('l')))->first();
-        $openState = date('H:i:s') > $openStatus->start_time && date('H:i:s') < $openStatus->end_time ? 'open' : 'close';
+        if (!$openStatus){
+            $openState = 'Not Set opening time for this day';
+        }elseif( $openStatus->status !== 0){
+            $openState = 'closed for '.$openStatus->day;
+        }
+        else{
+            $openState = date('H:i:s') > $openStatus->start_time && date('H:i:s') < $openStatus->end_time ? 'open' : 'close';
+        }
         $similarListing = Listing::query()->where('category_id',$listing->category_id)->
         where('id','!=',$listing->id)->
         orderBy('id','DESC')->take(4)->get();
