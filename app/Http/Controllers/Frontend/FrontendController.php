@@ -83,6 +83,7 @@ class FrontendController extends Controller
         $similarListing = Listing::query()->where('category_id',$listing->category_id)->
         where('id','!=',$listing->id)->
         orderBy('id','DESC')->take(4)->get();
+        $listing->increment('views');
         return view('frontend.pages.lisiting-view',compact('listing','similarListing','openState'));
     }
 
