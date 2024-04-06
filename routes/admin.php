@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ImageGalleryController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PaymentSettingController;
+use App\Http\Controllers\Admin\ReviewCatController;
 
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -80,5 +81,7 @@ Route::group([
     Route::post('/paypal-setting',[PaymentSettingController::class,'paypalSetting'])->name('paypal-setting.update');
     Route::post('/aqayepardakht-setting',[PaymentSettingController::class,'aqayepardakhtSetting'])->name('aqayepardakht-setting.update');
 
+    //Review
+    Route::resource('/review-cat',ReviewCatController::class)->except(['show']);
 
 });
