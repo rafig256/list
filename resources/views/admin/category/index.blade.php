@@ -17,6 +17,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Parent Category</th>
+                                <th>Review Category</th>
                                 <th>Icon</th>
                                 <th>Home</th>
                                 <th>Price</th>
@@ -28,6 +29,10 @@
                                         <td>{{++$loop->index}}</td>
                                         <td>{{$category->name}}</td>
                                         <td>{!! $category->parent->name ?? "<span class = 'text-success'>GENERAL CATEGIRY</span>" !!}</td>
+                                        <td>@foreach($category->review_cats as $reviewCat)
+                                                <span class="badge badge-secondary mb-1"> {{$reviewCat->name}} </span><br>
+                                            @endforeach
+                                        </td>
                                         <td><img src="{{asset($category->image_icon)}}" width="100px"></td>
                                         <td>{{$category->show_at_home == 1 ? 'Yes' : 'No'}}</td>
                                         <td>{{$category->price}}</td>

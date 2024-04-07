@@ -61,8 +61,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        $review_cats = Review_cat::all();
         $categories = Category::query()->where('status',1)->where('parent_id',Null)->select('id','name')->get();
-        return view('admin.category.edit',compact('category','categories'));
+        return view('admin.category.edit',compact('category','categories','review_cats'));
     }
 
     /**
@@ -92,6 +93,8 @@ class CategoryController extends Controller
             'show_at_home'=> $request->show_at_home ? $request->show_at_home : 0,
             'status'=> $request->status,
         ]);
+
+        $category->review_cats()->sync($request->review_cats_id);
         toastr()->success('Category Update Successfully');
         return to_route('admin.category.index');
     }

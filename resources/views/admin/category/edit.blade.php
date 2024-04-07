@@ -69,13 +69,19 @@
                                                                         </select>
                                                                         </div>
                                                                     </div>
-
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="show_at_home">Show At Home</label>
-                                                                            <input type="checkbox" name="show_at_home" id="show_at_home" @checked($category->show_at_home) value="1">
+@if($category->parent_id !== NULL)
+                                                                        <div class="col-md-12">
+                                                                            <label for="review_cats_id">Review Category</label>
+                                                                            <div class="form-group row">
+                                                                                @foreach($review_cats as $review_category)
+                                                                                    <div class="col-3">
+                                                                                        <input type="checkbox" name="review_cats_id[]" @checked($category->review_cats->contains($review_category->id)) value="{{$review_category->id}}"> {{$review_category->name}}
+                                                                                    </div>
+                                                                                @endforeach
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+@endif
+
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="status">Status</label>
@@ -89,6 +95,14 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="show_at_home">Show At Home</label>
+                                                                            <input type="checkbox" name="show_at_home" id="show_at_home" @checked($category->show_at_home) value="1">
+                                                                        </div>
+                                                                    </div>
+
                                                                     <div class="col-md-6">
                                                                         <div class="input-group social-tweet mb-3">
                                                                             <button class="btn btn-success" type="submit">Update</button>

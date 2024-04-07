@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('category_review_cat', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories');
-            $table->foreignId('review_cat_id')->constrained('review_cats');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('review_cat_id')->constrained('review_cats')->onDelete('cascade');
             $table->timestamps();
         });
     }
