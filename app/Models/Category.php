@@ -23,4 +23,8 @@ class Category extends Model
     public function listings(){
         return $this->hasMany(Listing::class);
     }
+
+    public function review_cats(){
+        return $this->belongsToMany(Review_cat::class,'category_review_cat','category_id','review_cat_id');
+    }
 }

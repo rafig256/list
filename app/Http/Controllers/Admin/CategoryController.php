@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryStoreRequest;
 use App\Models\Category;
+use App\Models\Review_cat;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -27,8 +28,9 @@ class CategoryController extends Controller
      */
     public function create():View
     {
+        $review_cats = Review_cat::all();
         $categories = Category::query()->where('status',1)->where('parent_id',Null)->select('id','name')->get();
-        return view('admin.category.create',compact('categories'));
+        return view('admin.category.create',compact('categories','review_cats'));
     }
 
     /**
@@ -38,7 +40,7 @@ class CategoryController extends Controller
     {
         $image_icon = $this->uploadImage($request,'image_icon');
         $background_image = $this->uploadImage($request,'background_image');
-        Category::query()->create([
+        $category = Category::query()->create([
             'name'=> $request->name,
             'slug'=> Str::slug($request->slug),
             'parent_id' => $request->parent_id,
@@ -48,6 +50,7 @@ class CategoryController extends Controller
             'status'=> $request->status,
             'price'=> $request->price,
         ]);
+        $category->review_cats()->attach($request->review_cats_id);
         toastr()->success('Category Created Successfully');
         return to_route('admin.category.index');
     }
