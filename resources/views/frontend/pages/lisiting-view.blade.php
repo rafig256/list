@@ -171,30 +171,38 @@
                                         ducimus magni facilis delectus.</p>
                                 </div>
                             </div>
-                            <form class="input_comment">
-                                <h5>add a review</h5>
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="wsus__select_rating">
-                                            <i class="fas fa-star"></i>
-                                            <select class="select_2" name="state">
-                                                <option value="">select rating</option>
-                                                <option value=""> 1 </option>
-                                                <option value=""> 2 </option>
-                                                <option value=""> 3 </option>
-                                                <option value=""> 4 </option>
-                                                <option value=""> 5 </option>
-                                            </select>
+                            @auth()
+                                <form class="input_comment">
+                                    <h5>add a review</h5>
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="wsus__select_rating">
+                                                <i class="fas fa-star"></i>
+                                                <select class="select_2" name="state">
+                                                    <option value="">select rating</option>
+                                                    <option value=""> 1 </option>
+                                                    <option value=""> 2 </option>
+                                                    <option value=""> 3 </option>
+                                                    <option value=""> 4 </option>
+                                                    <option value=""> 5 </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="blog_single_input">
+                                                <textarea cols="3" rows="5" placeholder="Comment"></textarea>
+                                                <button type="submit" class="read_btn">submit review</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-12">
-                                        <div class="blog_single_input">
-                                            <textarea cols="3" rows="5" placeholder="Comment"></textarea>
-                                            <button type="submit" class="read_btn">submit review</button>
-                                        </div>
-                                    </div>
+                                </form>
+                            @endauth
+                            @guest()
+                                <div class="alert alert-warning">
+                                    Please <a href="{{ route('login') }}"> login</a> For Submit a review
                                 </div>
-                            </form>
+                            @endguest
+
                         </div>
                     </div>
                 </div>
