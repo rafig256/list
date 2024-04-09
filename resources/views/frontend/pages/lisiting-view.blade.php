@@ -175,33 +175,40 @@
                                 <form class="input_comment" method="post" action="{{route('review.store')}}">
                                     @csrf
                                     <h5>add a review</h5>
-                                    <div class="row">
-                                        <div class="col-xl-12">
-                                            <div class="wsus__select_rating">
-                                                <i class="fas fa-star"></i>
-                                                <select class="select_2" name="state">
-                                                    <option value="">select rating</option>
-                                                    <option value=""> 1 </option>
-                                                    <option value=""> 2 </option>
-                                                    <option value=""> 3 </option>
-                                                    <option value=""> 4 </option>
-                                                    <option value=""> 5 </option>
-                                                    <option value=""> 6 </option>
-                                                    <option value=""> 7 </option>
-                                                    <option value=""> 8 </option>
-                                                    <option value=""> 9 </option>
-                                                    <option value=""> 10 </option>
-                                                </select>
+                                        <div class="row">
+                                            @foreach($listing->category->review_cats as $reviewCat)
+                                            <div class="col-xl-2">
+                                                <div class="box align-middle">
+                                                    {{$reviewCat->name}}
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-10">
+                                                <div class="wsus__select_rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <select class="select_2" name="state">
+                                                        <option value="">select rating</option>
+                                                        <option value="1"> 1 </option>
+                                                        <option value="2"> 2 </option>
+                                                        <option value="3"> 3 </option>
+                                                        <option value="4"> 4 </option>
+                                                        <option value="5" > 5 </option>
+                                                        <option value="6"> 6 </option>
+                                                        <option value="7"> 7 </option>
+                                                        <option value="8"> 8 </option>
+                                                        <option value="9"> 9 </option>
+                                                        <option value="10" selected> 10 </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            <div class="col-xl-12">
+                                                <div class="blog_single_input">
+                                                    <textarea name="text" cols="3" rows="5" placeholder="Comment"></textarea>
+                                                    <input name="listing_id" type="hidden" value="{{$listing->id}}">
+                                                    <button type="submit" class="read_btn">submit review</button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-12">
-                                            <div class="blog_single_input">
-                                                <textarea name="text" cols="3" rows="5" placeholder="Comment"></textarea>
-                                                <input name="listing_id" type="hidden" value="{{$listing->id}}">
-                                                <button type="submit" class="read_btn">submit review</button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </form>
                             @endauth
                             @guest()
