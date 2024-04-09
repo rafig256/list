@@ -172,7 +172,8 @@
                                 </div>
                             </div>
                             @auth()
-                                <form class="input_comment">
+                                <form class="input_comment" method="post" action="{{route('review.store')}}">
+                                    @csrf
                                     <h5>add a review</h5>
                                     <div class="row">
                                         <div class="col-xl-12">
@@ -185,12 +186,18 @@
                                                     <option value=""> 3 </option>
                                                     <option value=""> 4 </option>
                                                     <option value=""> 5 </option>
+                                                    <option value=""> 6 </option>
+                                                    <option value=""> 7 </option>
+                                                    <option value=""> 8 </option>
+                                                    <option value=""> 9 </option>
+                                                    <option value=""> 10 </option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-xl-12">
                                             <div class="blog_single_input">
-                                                <textarea cols="3" rows="5" placeholder="Comment"></textarea>
+                                                <textarea name="text" cols="3" rows="5" placeholder="Comment"></textarea>
+                                                <input name="listing_id" type="hidden" value="{{$listing->id}}">
                                                 <button type="submit" class="read_btn">submit review</button>
                                             </div>
                                         </div>

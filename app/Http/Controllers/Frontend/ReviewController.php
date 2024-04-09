@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -20,7 +21,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -28,7 +29,20 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'text' => 'required | min:3 | max: 2000',
+            'listing_id' => 'required | exists:listings,id'
+        ]);
+
+        $review = Review::query()->insert([
+            'text' => $request->text ,
+            'listing_id' => $request->listing_id,
+            'user_id' => \Auth::user()->id,
+            'created_at' => now(),
+        ]);
+
+        toastr()->success('Review Created Successfully');
+        return redirect()->back();
     }
 
     /**
