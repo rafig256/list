@@ -82,6 +82,7 @@ Route::group([
     Route::post('/aqayepardakht-setting',[PaymentSettingController::class,'aqayepardakhtSetting'])->name('aqayepardakht-setting.update');
 
     //Review
+    Route::resource('/review',\App\Http\Controllers\Admin\ReviewController::class)->except(['show']);
     Route::resource('/review-cat',ReviewCatController::class)->except(['show']);
 
 });
