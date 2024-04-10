@@ -185,18 +185,11 @@
                                             <div class="col-xl-10">
                                                 <div class="wsus__select_rating">
                                                     <i class="fas fa-star"></i>
-                                                    <select class="select_2" name="state">
+                                                    <select class="select_2" name="points[{{$reviewCat->id}}]">
                                                         <option value="">select rating</option>
-                                                        <option value="1"> 1 </option>
-                                                        <option value="2"> 2 </option>
-                                                        <option value="3"> 3 </option>
-                                                        <option value="4"> 4 </option>
-                                                        <option value="5" > 5 </option>
-                                                        <option value="6"> 6 </option>
-                                                        <option value="7"> 7 </option>
-                                                        <option value="8"> 8 </option>
-                                                        <option value="9"> 9 </option>
-                                                        <option value="10" selected> 10 </option>
+                                                        @for($i = 1 ; $i <= 10 ; ++$i)
+                                                            <option value="{{$i}}" @selected($i == 8)> {{$i}} </option>
+                                                        @endfor
                                                     </select>
                                                 </div>
                                             </div>

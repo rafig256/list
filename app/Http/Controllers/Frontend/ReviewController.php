@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Review;
+use App\Models\ReviewPoints;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -34,12 +35,22 @@ class ReviewController extends Controller
             'listing_id' => 'required | exists:listings,id'
         ]);
 
-        $review = Review::query()->insert([
+        $review = Review::query()->create([
             'text' => $request->text ,
             'listing_id' => $request->listing_id,
             'user_id' => \Auth::user()->id,
-            'created_at' => now(),
+            'updated_at' => NULL,
         ]);
+        foreach ($request->points as $key => $point){
+            if ($point){
+                ReviewPoints::query()->create([
+                    'review_id' => $review->id,
+                    'review_cat_id' => $key,
+                    'point' => $point,
+                    'rate' => \Auth::user()->rate,
+                ]);
+            }
+        }
 
         toastr()->success('Review Created Successfully');
         return redirect()->back();
