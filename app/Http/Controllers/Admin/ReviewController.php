@@ -18,46 +18,6 @@ class ReviewController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Review $review)
@@ -66,5 +26,24 @@ class ReviewController extends Controller
         toastr()->warning('Review deleted successfully');
 
         return to_route('admin.review.index');
+    }
+
+    public function activate(Review $review)
+    {
+        $review->updateOrFail([
+            'status' => 1
+        ]);
+
+        toastr()->success('review activated successfully');
+        return redirect()->back();
+    }
+
+    public function disable(Review $review){
+        $review->updateOrFail([
+            'status' => 0
+        ]);
+
+        toastr()->warning('review disabled successfully');
+        return redirect()->back();
     }
 }

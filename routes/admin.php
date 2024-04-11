@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\ReviewCatController;
+use App\Http\Controllers\Admin\ReviewController;
 
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -82,7 +83,10 @@ Route::group([
     Route::post('/aqayepardakht-setting',[PaymentSettingController::class,'aqayepardakhtSetting'])->name('aqayepardakht-setting.update');
 
     //Review
-    Route::resource('/review',\App\Http\Controllers\Admin\ReviewController::class)->except(['show']);
+    Route::get('/review',[ReviewController::class, 'index'])->name('review.index');
+    Route::delete('/review/{review}',[ReviewController::class, 'destroy'])->name('review.destroy');
+    Route::get('/review/activate/{review}',[ReviewController::class , 'activate'])->name('review.activate');
+    Route::get('/review/disable/{review}',[ReviewController::class , 'disable'])->name('review.disable');
     Route::resource('/review-cat',ReviewCatController::class)->except(['show']);
 
 });
