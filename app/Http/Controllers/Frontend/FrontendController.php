@@ -8,6 +8,7 @@ use App\Models\Hero;
 use App\Models\Listing;
 use App\Models\Location;
 use App\Models\Package;
+use App\Models\Review;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -80,11 +81,14 @@ class FrontendController extends Controller
         else{
             $openState = date('H:i:s') > $openStatus->start_time && date('H:i:s') < $openStatus->end_time ? 'open' : 'close';
         }
+        $reviews = Review::query()
+//            ->with('user')
+            ->where(['listing_id'=> $listing->id , 'status' => 1])->paginate(10);
         $similarListing = Listing::query()->where('category_id',$listing->category_id)->
         where('id','!=',$listing->id)->
         orderBy('id','DESC')->take(4)->get();
         $listing->increment('views');
-        return view('frontend.pages.lisiting-view',compact('listing','similarListing','openState'));
+        return view('frontend.pages.lisiting-view',compact('listing','similarListing','openState','reviews'));
     }
 
     public function packages()

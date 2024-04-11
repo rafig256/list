@@ -102,75 +102,33 @@
                             </div>
                         @endif
                         <div class="wsus__listing_review">
-                            <h4>reviews 04</h4>
-                            <div class="wsus__single_comment">
-                                <div class="wsus__single_comment_img">
-                                    <img src="images/user_large_img.jpg" alt="comment" class="img-fluid w-100">
+                            <h4>reviews {{$reviews->count()}}</h4>
+                            @foreach($reviews as $review)
+                                <div class="wsus__single_comment">
+                                    <div class="wsus__single_comment_img">
+                                        <img src="{{asset($review->user->avatar)}}" alt="{{$review->user->name}}" class="img-fluid w-100">
+                                    </div>
+                                    <div class="wsus__single_comment_text">
+                                        <h5>{{$review->user->name}}</h5>
+                                        <table>
+                                                @foreach($review->points as $point)
+                                                    <tr>
+                                                        <td>{{$point->reviewCategory->name}}:</td>
+                                                        <td>
+                                                            @for($i= 1 ; $i <=10 ; $i++)
+                                                                <i @class(['fas fa-star' => $point->point + 1 > $i ,'far fa-star' => $point->$point < $i]) style="color: gold"></i>
+                                                            @endfor
+                                                    </tr>
+                                                @endforeach
+                                        </table>
+                                        <span>{{date('Y-m-d',strtotime($review->created_at))}}</span>
+                                        <p>
+                                            {{$review->text}}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="wsus__single_comment_text">
-                                    <h5>sumon ali<span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span></h5>
-                                    <span>01-Dec-2021</span>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime placeat
-                                        ducimus.</p>
-                                </div>
-                            </div>
-                            <div class="wsus__single_comment">
-                                <div class="wsus__single_comment_img">
-                                    <img src="images/card_img.jpg" alt="comment" class="img-fluid w-100">
-                                </div>
-                                <div class="wsus__single_comment_text">
-                                    <h5>shimul sign <span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span></h5>
-                                    <span>21-Nov-2021</span>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime placeat
-                                        ducimus magni facilis delectus.</p>
-                                </div>
-                            </div>
-                            <div class="wsus__single_comment">
-                                <div class="wsus__single_comment_img">
-                                    <img src="images/user_large_img.jpg" alt="comment" class="img-fluid w-100">
-                                </div>
-                                <div class="wsus__single_comment_text">
-                                    <h5>sumon ali<span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span></h5>
-                                    <span>01-Dec-2021</span>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime placeat
-                                        ducimus.</p>
-                                </div>
-                            </div>
-                            <div class="wsus__single_comment">
-                                <div class="wsus__single_comment_img">
-                                    <img src="images/card_img.jpg" alt="comment" class="img-fluid w-100">
-                                </div>
-                                <div class="wsus__single_comment_text">
-                                    <h5>shimul sign <span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span></h5>
-                                    <span>21-Nov-2021</span>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime placeat
-                                        ducimus magni facilis delectus.</p>
-                                </div>
-                            </div>
+                            @endforeach
+
                             @auth()
                                 <form class="input_comment" method="post" action="{{route('review.store')}}">
                                     @csrf
