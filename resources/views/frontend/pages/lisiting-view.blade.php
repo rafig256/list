@@ -128,7 +128,12 @@
                                     </div>
                                 </div>
                             @endforeach
-
+<!-- review Paginate -->
+                            <div id="pagination">
+                                @if($reviews->hasPages())
+                                    {{$reviews->links()}}
+                                @endif
+                            </div>
                             @auth()
                                 <form class="input_comment" method="post" action="{{route('review.store')}}">
                                     @csrf

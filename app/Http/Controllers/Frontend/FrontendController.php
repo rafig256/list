@@ -82,7 +82,7 @@ class FrontendController extends Controller
             $openState = date('H:i:s') > $openStatus->start_time && date('H:i:s') < $openStatus->end_time ? 'open' : 'close';
         }
         $reviews = Review::query()
-//            ->with('user')
+            ->with('user')
             ->where(['listing_id'=> $listing->id , 'status' => 1])->paginate(10);
         $similarListing = Listing::query()->where('category_id',$listing->category_id)->
         where('id','!=',$listing->id)->
