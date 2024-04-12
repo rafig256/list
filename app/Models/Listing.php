@@ -10,6 +10,7 @@ class Listing extends Model
 {
 
     protected $guarded = [];
+    protected $appends = ['averageStar'];
     use HasFactory, SoftDeletes;
 
     public function amenities()
@@ -35,5 +36,23 @@ class Listing extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
+
+    public function getAverageStarAttribute()
+    {
+        $listingPoints = ListingPoints::query()->where(['listing_id' => $this->id])->get();
+        if ($listingPoints->isEmpty()){
+            return 0;
+        }
+        foreach ($listingPoints as $listingPoint){
+            $sumStar =+ $listingPoint->sum_star;
+            $sumCountReview =+ $listingPoint->count_review;
+        }
+        $averageStar = $sumStar / $sumCountReview;
+        return $averageStar;
     }
 }

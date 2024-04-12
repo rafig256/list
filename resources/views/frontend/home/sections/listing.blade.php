@@ -24,12 +24,10 @@
                         </a>
                         <div class="wsus__featured_single_text">
                             <p class="list_rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>(5 review)</span>
+                                @for($i = 1 ; $i<=5 ; $i++)
+                                    <i @class(['fas' => $listing->averageStar/2 > $i, 'far' => $listing->averageStar/2 <= $i ,'fa-star']) class="fas fa-star"></i>
+                                @endfor
+                                <span>({{$listing->reviews->count()}} review)</span>
                             </p>
                             <a href="{{route('listing.show',$listing->slug)}}">{{$listing->title}}</a>
                             <p class="address"> {{$listing->location->name}}</p>

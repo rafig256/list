@@ -40,22 +40,27 @@
             <div class="row">
                 <div class="col-xl-8 col-lg-7">
                     <div class="listing_details_text">
-                        <div class="listing_det_header">
-                            <div class="listing_det_header_img">
-                                <img src="{{asset($listing->image)}}" alt="logo" class="img-fluid w-100">
+                        <div class="listing_det_header" >
+                            <div class="d-flex justify-content-between">
+                                <div class="listing_det_header_img col-4">
+                                    <img src="{{asset($listing->image)}}" alt="logo" class="img-fluid w-100">
+                                </div>
+                                <div class="col-8 d-flex flex-column" style="direction: rtl">
+                                    <p><b>{{number_format($listing->averageStar,1)}}</b> <span>({{$reviews->total()}} review)</span></p>
+                                    @foreach($listingPoints as $pointList)
+                                        {{$pointList->reviewCategory->name}}
+                                        <p class="rating">
+                                        @for($i = 1 ; $i < 11 ;  $i++)
+                                            <i @class(['fas' => $pointList->averageStar > $i , 'far' => $pointList->averageStar <= $i ,'fa-star']) style="color: gold" ></i>
+                                        @endfor
+                                        </p>
+                                    @endforeach
+                                </div>
+
                             </div>
                             <div class="listing_det_header_text">
                                 <h6>{{$listing->title}}</h6>
                                 <p class="host_name">Hosted by <a href="agent_public_profile.html">{{$listing->user->name}}</a></p>
-                                <p class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <b>4.5</b>
-                                    <span>(12 review)</span>
-                                </p>
                                 <ul>
                                     @if($listing->is_verified) <li><a href="#"><i class="far fa-check"></i> Verified</a></li> @endif
                                     @if($listing->is_featured)<li><a href="#"><i class="far fa-star"></i> Featured</a></li>@endif
@@ -102,7 +107,7 @@
                             </div>
                         @endif
                         <div class="wsus__listing_review">
-                            <h4>reviews {{$reviews->total()}}</h4>
+                            <h4>reviews {{$reviews->total()    }}</h4>
                             @foreach($reviews as $review)
                                 <div class="wsus__single_comment">
                                     <div class="wsus__single_comment_img">

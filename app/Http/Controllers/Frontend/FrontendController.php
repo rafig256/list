@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Hero;
 use App\Models\Listing;
+use App\Models\ListingPoints;
 use App\Models\Location;
 use App\Models\Package;
 use App\Models\Review;
@@ -87,8 +88,9 @@ class FrontendController extends Controller
         $similarListing = Listing::query()->where('category_id',$listing->category_id)->
         where('id','!=',$listing->id)->
         orderBy('id','DESC')->take(4)->get();
+        $listingPoints = ListingPoints::query()->where('listing_id' , $listing->id)->get();
         $listing->increment('views');
-        return view('frontend.pages.lisiting-view',compact('listing','similarListing','openState','reviews'));
+        return view('frontend.pages.lisiting-view',compact('listing','similarListing','openState','reviews','listingPoints'));
     }
 
     public function packages()

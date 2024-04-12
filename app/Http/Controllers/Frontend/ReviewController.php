@@ -43,6 +43,7 @@ class ReviewController extends Controller
             'user_id' => \Auth::user()->id,
             'updated_at' => NULL,
         ]);
+        $rate = \Auth::user()->rate;
         foreach ($request->points as $key => $point){
             if ($point){
                 ReviewPoints::query()->create([
@@ -51,13 +52,17 @@ class ReviewController extends Controller
                     'point' => $point,
                     'rate' => \Auth::user()->rate,
                 ]);
-//                ListingPoints::query()->updateOrCreate(
-//                    ['listing_id' => $request->listing_id, 'review_cat_id' => $key],
-//                    [
-//                        'review_count' => \Auth::user()->rate,
-//                        'sum_star' => 10,
-//                    ]
-//                );
+                $listingPoint = ListingPoints::query()->where(['listing_id' => $request->listing_id, 'review_cat_id' => $key]);
+                if ($listingPoint->exists()){
+                    $listingPoint->incrementEach(['count_review' => $rate , 'sum_star' => $rate * $point]);
+                }else{
+                    ListingPoints::query()->create([
+                        'listing_id' => $request->listing_id,
+                        'review_cat_id' => $key,
+                        'count_review' => $rate,
+                        'sum_star' =>$rate * $point
+                    ]);
+                }
             }
         }
 

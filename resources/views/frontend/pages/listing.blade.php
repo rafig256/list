@@ -114,12 +114,10 @@
                                     </a>
                                     <div class="wsus__featured_single_text">
                                         <p class="list_rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <span>(5 review)</span>
+                                            @for($i = 1 ; $i<=5 ; $i++)
+                                                <i @class(['fas' => $listing->averageStar/2 > $i, 'far' => $listing->averageStar/2 <= $i ,'fa-star']) class="fas fa-star"></i>
+                                            @endfor
+                                            <span>({{$listing->reviews->count()}} review)</span>
                                         </p>
                                         <a href="{{route('listing.show',$listing->slug)}}">{{$listing->title}}</a>
                                         <p class="address"> {{$listing->location->name}}</p>
@@ -130,24 +128,9 @@
 
                         <div class="col-12">
                             <div id="pagination">
-                                <nav aria-label="">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i
-                                                    class="fas fa-chevron-left"></i></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">01</a></li>
-                                        <li class="page-item" aria-current="page">
-                                            <a class="page-link" href="#">02</a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">03</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">04</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">05</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                @if($listings->hasPages())
+                                    {{$listings->links()}}
+                                @endif
                             </div>
                         </div>
                     </div>
