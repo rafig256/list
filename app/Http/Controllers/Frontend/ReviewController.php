@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ListingPoints;
 use App\Models\Review;
 use App\Models\ReviewPoints;
 use Illuminate\Http\Request;
+use function Sodium\increment;
 
 class ReviewController extends Controller
 {
@@ -49,6 +51,13 @@ class ReviewController extends Controller
                     'point' => $point,
                     'rate' => \Auth::user()->rate,
                 ]);
+//                ListingPoints::query()->updateOrCreate(
+//                    ['listing_id' => $request->listing_id, 'review_cat_id' => $key],
+//                    [
+//                        'review_count' => \Auth::user()->rate,
+//                        'sum_star' => 10,
+//                    ]
+//                );
             }
         }
 

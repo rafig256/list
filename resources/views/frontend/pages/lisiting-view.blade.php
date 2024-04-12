@@ -102,7 +102,7 @@
                             </div>
                         @endif
                         <div class="wsus__listing_review">
-                            <h4>reviews {{$reviews->count()}}</h4>
+                            <h4>reviews {{$reviews->total()}}</h4>
                             @foreach($reviews as $review)
                                 <div class="wsus__single_comment">
                                     <div class="wsus__single_comment_img">
