@@ -226,6 +226,14 @@
                                         </form>
                                 </div>
                             </div>
+
+                            <div class="col-12">
+                                <div class="listing_det_side_contact">
+                                    <h5>Violation report</h5>
+                                    <button type="submit" class="read_btn" data-bs-toggle="modal" data-bs-target="#reportModal">Report</button>
+                                </div>
+                            </div>
+
                             @if(count($similarListing) > 0 )
                                 <div class="col-12">
                                     <div class="listing_det_side_list">
@@ -255,5 +263,36 @@
     <!--==========================
         LISTING DETAILS END
     ===========================-->
+
+    <!-- Start Modal -->
+    <section id="wsus__map_popup">
+        <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="btn-close popup_close" data-bs-dismiss="modal" aria-label="Close"><i
+                            class="far fa-times"></i></button>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 col-xl-12 col-md-12">
+                                <div class="">
+                                    <h3 class="mb-2">Violation Report This Listing</h3>
+                                    <form action="" method="POST">
+                                        @csrf
+                                        <input class="form-control mb-2" type="email" placeholder="Email*">
+                                        <input class="form-control mb-2 " type="text" placeholder="Phone*">
+                                        <input class="form-control mb-2 " type="text" placeholder="Subject*">
+                                        <textarea class="form-control mb-2  " cols="3" rows="5" placeholder="Message*"></textarea>
+                                        <button type="submit" class="btn btn-sm btn-warning mt-2">send Report</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- End Modal -->
 @endsection
 
