@@ -276,12 +276,11 @@
                             <div class="col-12 col-xl-12 col-md-12">
                                 <div class="">
                                     <h3 class="mb-2">Violation Report This Listing</h3>
-                                    <form action="" method="POST">
+                                    <form action="{{route('report')}}" method="POST">
                                         @csrf
-                                        <input class="form-control mb-2" type="email" placeholder="Email*">
-                                        <input class="form-control mb-2 " type="text" placeholder="Phone*">
-                                        <input class="form-control mb-2 " type="text" placeholder="Subject*">
-                                        <textarea class="form-control mb-2  " cols="3" rows="5" placeholder="Message*"></textarea>
+                                        <input class="form-control mb-2 " name="name" type="text" placeholder="Name*">
+                                        <input class="form-control mb-2" name="email" type="email" placeholder="Email*">
+                                        <textarea class="form-control mb-2" name="message" cols="3" rows="5" placeholder="Message*"></textarea>
                                         <button type="submit" class="btn btn-sm btn-warning mt-2">send Report</button>
                                     </form>
                                 </div>

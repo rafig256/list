@@ -105,4 +105,9 @@ class FrontendController extends Controller
 
         return view('frontend.pages.checkout',compact('package'));
     }
+
+    public function report(Request $request)
+    {
+        dd($request->all());
+    }
 }

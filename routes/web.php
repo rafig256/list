@@ -28,6 +28,7 @@ Route::get('/list/{listing:slug}',[FrontendController::class, 'showListing'])->n
 Route::get('/packages',[FrontendController::class, 'packages'])->name('packages');
 Route::get('/checkout/{id}',[FrontendController::class, 'checkout'])->name('checkout.index');
 Route::post('/review',[\App\Http\Controllers\Frontend\ReviewController::class, 'store'])->middleware('auth')->name('review.store');
+Route::post('/report',[FrontendController::class, 'report'])->name('report');
 
 
 Route::middleware('auth')->group(function () {
