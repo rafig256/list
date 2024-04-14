@@ -9,6 +9,7 @@ use App\Models\Listing;
 use App\Models\ListingPoints;
 use App\Models\Location;
 use App\Models\Package;
+use App\Models\Report;
 use App\Models\Review;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
@@ -106,8 +107,25 @@ class FrontendController extends Controller
         return view('frontend.pages.checkout',compact('package'));
     }
 
+    /** Submit report */
     public function report(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'name' => ['required ',' max:255'],
+            'email' => ['required ',' max:255' ,'email'],
+            'message' => ['required ',' max:255'],
+            'listing_id' => ['required', 'integer', 'exists:listings,id']
+        ]);
+
+        $report = Report::query()->create([
+            'listing_id' => $request->listing_id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message
+            ]);
+
+        toastr()->success('Report submitted successfully!');
+
+        return redirect()->back();
     }
 }

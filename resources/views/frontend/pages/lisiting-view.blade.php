@@ -278,8 +278,9 @@
                                     <h3 class="mb-2">Violation Report This Listing</h3>
                                     <form action="{{route('report')}}" method="POST">
                                         @csrf
-                                        <input class="form-control mb-2 " name="name" type="text" placeholder="Name*">
-                                        <input class="form-control mb-2" name="email" type="email" placeholder="Email*">
+                                        <input type="hidden" name="listing_id" value="{{$listing->id}}">
+                                        <input class="form-control mb-2 " name="name" type="text" placeholder="Name*" value="{{auth()->user()?->name}}">
+                                        <input class="form-control mb-2" name="email" type="email" placeholder="Email*" value="{{auth()->user()?->email}}">
                                         <textarea class="form-control mb-2" name="message" cols="3" rows="5" placeholder="Message*"></textarea>
                                         <button type="submit" class="btn btn-sm btn-warning mt-2">send Report</button>
                                     </form>
