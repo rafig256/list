@@ -139,7 +139,7 @@
                 </ul>
             </li>
 
-            <li class="menu single-menu {{setActive(['admin.package.index','admin.package.create','admin.review-cat.create','admin.review-cat.index','admin.review.index'])}}">
+            <li class="menu single-menu {{setActive(['admin.package.index','admin.package.create','admin.review-cat.create','admin.review-cat.index','admin.review.index','admin.report.index'])}}">
                 <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
@@ -152,7 +152,7 @@
                         <a href="{{route('admin.review.index')}}"> view review </a>
                     </li>
                     <li class="{{setActive(['admin.review-cat.create'])}}">
-                        <a href="{{route('admin.review-cat.create')}}"> creat review category </a>
+                        <a href="{{route('admin.review-cat.create')}}"> create review category </a>
                     </li>
                     <li class="{{setActive(['admin.review-cat.index'])}}">
                         <a href="{{route('admin.review-cat.index')}}"> review categories </a>
@@ -164,6 +164,10 @@
                     <li class="{{setActive(['admin.package.create'])}}">
                         <a href="{{route('admin.package.create')}}"> Create Packages </a>
                     </li>
+                    <li class="{{setActive(['admin.report.index'])}}">
+                        <a href="{{route('admin.report.index')}}"> report list </a>
+                    </li>
+
                 </ul>
             </li>
 

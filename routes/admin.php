@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\AmenityController;
 use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\ImageGalleryController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PaymentSettingController;
@@ -89,4 +90,6 @@ Route::group([
     Route::get('/review/disable/{review}',[ReviewController::class , 'disable'])->name('review.disable');
     Route::resource('/review-cat',ReviewCatController::class)->except(['show']);
 
+    //report
+    Route::get('/report',[ReportController::class , 'index'])->name('report.index');
 });
