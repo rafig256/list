@@ -92,4 +92,5 @@ Route::group([
 
     //report
     Route::get('/report',[ReportController::class , 'index'])->name('report.index');
+    Route::delete('/report/{report}',[ReportController::class , 'destroy'])->name('report.destroy');
 });

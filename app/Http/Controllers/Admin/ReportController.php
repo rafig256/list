@@ -14,8 +14,11 @@ class ReportController extends Controller
         return view('admin.report.index' , compact('reports'));
     }
 
-    public function show($id)
+    public static function destroy(Report $report)
     {
-        //
+        $report->delete();
+
+        toastr()->success('Report Deleted Successfully');
+        return redirect()->back();
     }
 }
