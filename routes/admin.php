@@ -21,6 +21,11 @@ use App\Http\Controllers\Admin\ReviewController;
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
 Route::get('/admin/forget',[AdminAuthController::class,'forget'])->name('admin.forget');
+//ajax
+Route::post('admin/ajax/get-child-categories', [ListingController::class,'getChildCategories'])->name('Child_Categories');
+Route::post('admin/ajax/get-child-locations', [ListingController::class,'getChildLocations'])->name('Child_Locations');
+
+
 
 Route::group([
     'prefix' => 'admin',
@@ -53,8 +58,6 @@ Route::group([
     Route::get('/listing/pending',[PendingListingController::class,'index'])->name('listing.pending.index');
     Route::post('/listing/pending',[PendingListingController::class,'update'])->name('listing.pending.update');
     Route::resource('/listing',ListingController::class)->except(['show']);
-    Route::post('/ajax/get-child-categories', [ListingController::class,'getChildCategories'])->name('Child_Categories');
-    Route::post('/ajax/get-child-locations', [ListingController::class,'getChildLocations'])->name('Child_Locations');
 
 
 

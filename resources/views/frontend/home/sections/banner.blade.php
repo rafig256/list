@@ -16,23 +16,30 @@
                             <input type="text" placeholder="What we are looking for?">
                         </div>
                         <div class="wsus__search_area">
-                            <select class="select_2" name="state">
+                            <select class="select_2" id="category_parent_id" name="">
                                 <option value="">categories</option>
-                                <option value="">categories 1</option>
-                                <option value="">categories 2</option>
-                                <option value="">categories 3</option>
-                                <option value="">categories 4</option>
-                                <option value="">categories 5</option>
+                                @foreach($parentCategories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="wsus__search_area">
-                            <select class="select_2" name="state">
+                            <select class="select_2" id="category_id" name="state">
+                                <option value="">First select the collection</option>
+                            </select>
+                        </div>
+                        <div class="wsus__search_area">
+                            <select class="select_2" name="state" id="location_parent_id">
                                 <option value="">location</option>
-                                <option value="">location 1</option>
-                                <option value="">location 2</option>
-                                <option value="">location 3</option>
-                                <option value="">location 4</option>
-                                <option value="">location 5</option>
+                                @foreach($parentLocations as $location)
+                                    <option value="{{$location->id}}">{{$location->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="wsus__search_area">
+                            <select class="select_2" id="location_id" name="location_id">
+                                <option value="">First select the location</option>
                             </select>
                         </div>
                         <div class="wsus__search_area m-0">

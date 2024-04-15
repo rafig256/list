@@ -21,6 +21,7 @@ class FrontendController extends Controller
     public function index() : View
     {
         $hero = Hero::query()->first();
+        $parentCategories = Category::query()->where(['status' => 1 , 'parent_id' => NULL])->get();
         $categories = Category::query()->where('status',1)->where('parent_id','>',0)->get();
         $packages = Package::query()->where('status',1)->where('show_at_home',1)->take(3)->get();
         $featuredCategories = Category::query()->where('parent_id',NULL)->where('show_at_home',1)->take(9)->get();
@@ -38,7 +39,8 @@ class FrontendController extends Controller
             'featuredCategories'=>$featuredCategories,
             'parentLocations' => $parentLocations,
             'locations' => $locations,
-            'listingsFeature' => $listingsFeature
+            'listingsFeature' => $listingsFeature,
+            'parentCategories'=>$parentCategories,
         ]);
     }
 
