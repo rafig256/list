@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Listing;
 use App\Models\Location;
 use App\Traits\FileUploadTrait;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ListingController extends Controller
@@ -143,5 +144,34 @@ class ListingController extends Controller
 
         toastr()->warning('Listing Delete Successfully!');
         return to_route('user.listing.index');
+    }
+
+    //Ajax
+    public function getChildCategories(Request $request)
+    {
+        $slug = $request->parent_slug;
+        $childCategories = Category::query()
+            ->whereHas('parent', function ($query) use ($slug) {
+                $query->where('slug', $slug);
+            })
+            ->where('status', 1)
+            ->get();
+
+        return response()->json($childCategories);
+    }
+
+
+    public function getChildLocations(Request $request)
+    {
+
+        $slug = $request->parent_slug;
+        $childCategories = Location::query()
+            ->whereHas('parent', function ($query) use ($slug) {
+                $query->where('slug', $slug);
+            })
+            ->where('status', 1)
+            ->get();
+
+        return response()->json($childCategories);
     }
 }

@@ -122,21 +122,21 @@
 
     <script>
         $(document).ready(function() {
-            $('#category_parent_id').change(function() {
-                var parentId = $(this).val();
+            $('#category_parent_slug').change(function() {
+                var parentSlug = $(this).val();
                 var token = "{{ csrf_token() }}";
                 $.ajax({
-                    url: '/admin/ajax/get-child-categories',
+                    url: '/ajax/get-child-categories',
                     method: 'POST',
                     data: {
-                        parent_id: parentId,
+                        parent_slug: parentSlug,
                         _token: token
                     },
                     success: function(response) {
-                        $('#category_id').empty(); // پاک کردن گزینه‌های قبلی
+                        $('#category_slug').empty(); // پاک کردن گزینه‌های قبلی
                         if (response.length === 0) {
                             // اگر زیرمجموعه‌ای وجود نداشت، گزینه "NO DATA" را اضافه کنید
-                            $('#category_id').append($('<option>', {
+                            $('#category_slug').append($('<option>', {
                                 value: '',
                                 text: 'NO DATA',
                                 disabled: true
@@ -144,8 +144,8 @@
                         } else {
                             // پر کردن گزینه‌های مجموعه‌های فرزند با داده‌های دریافتی
                             $.each(response, function(index, category) {
-                                $('#category_id').append($('<option>', {
-                                    value: category.id,
+                                $('#category_slug').append($('<option>', {
+                                    value: category.slug,
                                     text: category.name
                                 }));
                             });
@@ -162,28 +162,28 @@
 
     <script>
         $(document).ready(function() {
-            $('#location_parent_id').change(function() {
-                var parentId = $(this).val();
+            $('#location_parent_slug').change(function() {
+                var parentSlug = $(this).val();
                 var token = "{{ csrf_token() }}";
                 $.ajax({
-                    url: '/admin/ajax/get-child-locations',
+                    url: '/ajax/get-child-locations',
                     method: 'POST',
                     data: {
-                        parent_id: parentId ,
+                        parent_slug: parentSlug ,
                         _token: token // اضافه کردن توکن CSRF به داده‌های ارسالی
                     },
                     success: function(response) {
-                        $('#location_id').empty(); // پاک کردن گزینه‌های قبلی
+                        $('#location_slug').empty(); // پاک کردن گزینه‌های قبلی
                         if (response.length === 0) {
                             // اگر زیرمجموعه‌ای وجود نداشت، گزینه "NO DATA" را اضافه کنید
-                            $('#location_id').append($('<option>', {
+                            $('#location_slug').append($('<option>', {
                                 value: '',
                                 text: 'NO DATA',
                                 disabled: true
                             }));
                         }else {
                             $.each(response, function(index, category) {
-                                $('#location_id').append($('<option>', {
+                                $('#location_slug').append($('<option>', {
                                     value: category.id,
                                     text: category.name
                                 }));

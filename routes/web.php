@@ -29,6 +29,10 @@ Route::get('/packages',[FrontendController::class, 'packages'])->name('packages'
 Route::get('/checkout/{id}',[FrontendController::class, 'checkout'])->name('checkout.index');
 Route::post('/review',[\App\Http\Controllers\Frontend\ReviewController::class, 'store'])->middleware('auth')->name('review.store');
 Route::post('/report',[FrontendController::class, 'report'])->name('report');
+//Ajax
+Route::post('ajax/get-child-categories', [ListingController::class,'getChildCategories']);
+Route::post('ajax/get-child-locations', [ListingController::class,'getChildLocations']);
+
 
 
 Route::middleware('auth')->group(function () {

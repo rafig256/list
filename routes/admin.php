@@ -21,9 +21,7 @@ use App\Http\Controllers\Admin\ReviewController;
 
 Route::get('/admin/login',[AdminAuthController::class,'login'])->name('admin.login');
 Route::get('/admin/forget',[AdminAuthController::class,'forget'])->name('admin.forget');
-//ajax
-Route::post('admin/ajax/get-child-categories', [ListingController::class,'getChildCategories'])->name('Child_Categories');
-Route::post('admin/ajax/get-child-locations', [ListingController::class,'getChildLocations'])->name('Child_Locations');
+
 
 
 
@@ -59,7 +57,9 @@ Route::group([
     Route::post('/listing/pending',[PendingListingController::class,'update'])->name('listing.pending.update');
     Route::resource('/listing',ListingController::class)->except(['show']);
 
-
+    //ajax
+    Route::post('admin/ajax/get-child-categories', [ListingController::class,'getChildCategories'])->name('Child_Categories');
+    Route::post('admin/ajax/get-child-locations', [ListingController::class,'getChildLocations'])->name('Child_Locations');
 
     //Image Gallery Routes
     Route::get('/image-gallery/{listing}',[ImageGalleryController::class,'create'])->name('image-gallery.create');

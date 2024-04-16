@@ -16,29 +16,29 @@
                             <input type="text" placeholder="What we are looking for?">
                         </div>
                         <div class="wsus__search_area">
-                            <select class="select_2" id="category_parent_id" name="">
+                            <select class="select_2" id="category_parent_slug" name="">
                                 <option value="">categories</option>
                                 @foreach($parentCategories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    <option value="{{$category->slug}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="wsus__search_area">
-                            <select class="select_2" id="category_id" name="state">
+                            <select class="select_2" id="category_slug" name="state">
                                 <option value="">First select the collection</option>
                             </select>
                         </div>
                         <div class="wsus__search_area">
-                            <select class="select_2" name="state" id="location_parent_id">
+                            <select class="select_2" name="state" id="location_parent_slug">
                                 <option value="">location</option>
                                 @foreach($parentLocations as $location)
-                                    <option value="{{$location->id}}">{{$location->name}}</option>
+                                    <option value="{{$location->slug}}">{{$location->name}}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="wsus__search_area">
-                            <select class="select_2" id="location_id" name="location_id">
+                            <select class="select_2" id="location_slug" name="location_id">
                                 <option value="">First select the location</option>
                             </select>
                         </div>
