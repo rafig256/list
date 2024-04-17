@@ -1,17 +1,17 @@
 <div class="tab-pane fade" id="pusher" role="tabpanel" aria-labelledby="contact">
-    <form name="pusher_setting" method="POST" action="#">
+    <form name="pusher_setting" method="POST" action="{{route('admin.pusher-setting.update')}}">
         @csrf
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="app_id">app id <span class="text-danger">*</span></label>
-                    <input required type="text" name="app_id" class="form-control mb-4" id="app_id" value="{{config('settings.app_id')}}" placeholder="App Id">
+                    <label for="pusher_app_id">app id <span class="text-danger">*</span></label>
+                    <input required type="text" name="pusher_app_id" class="form-control mb-4" id="pusher_app_id" value="{{config('settings.pusher_app_id')}}" placeholder="App Id">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="key">Key <span class="text-danger">*</span></label>
-                    <input required type="email" name="key" class="form-control mb-4" id="key" value="{{config('settings.key')}}" placeholder="Key" >
+                    <label for="pusher_key">Key <span class="text-danger">*</span></label>
+                    <input required type="text" name="pusher_key" class="form-control mb-4" id="pusher_key" value="{{config('settings.pusher_key')}}" placeholder="Key" >
                 </div>
             </div>
         </div>
@@ -19,15 +19,15 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="secret">Secret <span class="text-danger">*</span></label>
-                    <input required type="number" name="secret" class="form-control mb-4" id="secret" value="{{config('settings.secret')}}" placeholder="Secret">
+                    <label for="pusher_secret">Secret <span class="text-danger">*</span></label>
+                    <input required type="text" name="pusher_secret" class="form-control mb-4" id="pusher_secret" value="{{config('settings.pusher_secret')}}" placeholder="Secret">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="cluster">Cluster <span class="text-danger">*</span></label>
-                    <input required type="text" name="cluster" class="form-control mb-4" id="cluster" value="{{config('settings.cluster')}}" placeholder="Cluster">
+                    <label for="pusher_cluster">Cluster <span class="text-danger">*</span></label>
+                    <input required type="text" name="pusher_cluster" class="form-control mb-4" id="pusher_cluster" value="{{config('settings.pusher_cluster')}}" placeholder="Cluster">
                 </div>
             </div>
 
@@ -37,17 +37,17 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="site_currency_position">Active Pusher <span class="text-danger">*</span></label>
-                    <select name="site_currency_position" id="site_currency_position" class="form-control mb-4" required>
-                        <option value="active" >Active</option>
-                        <option value="disable" >disable</option>
+                    <label for="pusher_active">Active Pusher <span class="text-danger">*</span></label>
+                    <select name="pusher_active" id="pusher_active" class="form-control mb-4" required>
+                        <option value="1" @selected(config('settings.pusher_active'))>Active</option>
+                        <option value="0" @selected(!config('settings.pusher_active'))>disable</option>
                     </select>
                 </div>
             </div>
         </div>
 
         <div class="">
-            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+            <button type="submit" class="btn btn-sm btn-primary">Save Pusher Data</button>
         </div>
     </form>
 </div>
