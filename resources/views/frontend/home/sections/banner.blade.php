@@ -25,7 +25,7 @@
                         </div>
                         <div class="wsus__search_area">
                             <select class="select_2" id="category_slug" name="category">
-                                <option value="">First select the collection</option>
+                                <option value="">select collection</option>
                             </select>
                         </div>
                         <div class="wsus__search_area">
@@ -39,7 +39,7 @@
 
                         <div class="wsus__search_area">
                             <select class="select_2" id="location_slug" name="location">
-                                <option value="">First select the location</option>
+                                <option value="">select location</option>
                             </select>
                         </div>
                         <div class="wsus__search_area m-0">
@@ -51,3 +51,4 @@
         </div>
     </div>
 </section>
+

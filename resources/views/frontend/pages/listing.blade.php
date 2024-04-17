@@ -13,86 +13,44 @@
                     <form>
                         <div class="listing_grid_sidbar">
                             <div class="sidebar_line">
-                                <input type="text" placeholder="Search">
+                                <input type="text" placeholder="Search" name="search">
                                 <button type="submit"><i class="far fa-search"></i></button>
                             </div>
                             <div class="sidebar_line_select">
-                                <select class="select_2" name="state">
+                                <select class="select_2" id="category_parent_slug" name="parent_category">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->slug}}">{{$category->name}}</option>
+                                    @endforeach
                                     <option value="">categorys</option>
-                                    <option value="">category 1</option>
-                                    <option value="">category 2</option>
-                                    <option value="">category 3</option>
-                                    <option value="">category 4</option>
-                                    <option value="">category 5</option>
                                 </select>
                             </div>
                             <div class="sidebar_line_select">
-                                <select class="select_2" name="state">
+                                <select class="select_2" id="category_slug" name="category">
+                                    <option value="">First select the collection</option>
+                                </select>
+                            </div>
+                            <div class="sidebar_line_select">
+                                <select class="select_2" name="parent_location" id="location_parent_slug">
                                     <option value="">location</option>
-                                    <option value="">location 1</option>
-                                    <option value="">location 2</option>
-                                    <option value="">location 3</option>
-                                    <option value="">location 4</option>
-                                    <option value="">location 5</option>
+                                    @foreach($locations as $location)
+                                        <option value="{{$location->slug}}">{{$location->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="sidebar_line_select">
+                                <select class="select_2" id="location_slug" name="location">
+                                    <option value="">First select the location</option>
                                 </select>
                             </div>
                             <div class="wsus__pro_check">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="flexCheckIndeterminate4">
-                                    <label class="form-check-label" for="flexCheckIndeterminate4">
-                                        Heating
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="flexCheckIndeterminate5">
-                                    <label class="form-check-label" for="flexCheckIndeterminate5">
-                                        Smoking Allow
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="flexCheckIndeterminate6">
-                                    <label class="form-check-label" for="flexCheckIndeterminate6">
-                                        Icon
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="flexCheckIndeterminate7">
-                                    <label class="form-check-label" for="flexCheckIndeterminate7">
-                                        Parking
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="flexCheckIndeterminate">
-                                    <label class="form-check-label" for="flexCheckIndeterminate">
-                                        Air Condition
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="flexCheckIndeterminate1">
-                                    <label class="form-check-label" for="flexCheckIndeterminate1">
-                                        Internet
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="flexCheckIndeterminate2">
-                                    <label class="form-check-label" for="flexCheckIndeterminate2">
-                                        Terrace
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="flexCheckIndeterminate3">
-                                    <label class="form-check-label" for="flexCheckIndeterminate3">
-                                        Wi-Fi
-                                    </label>
-                                </div>
+                                @foreach($amenities as $amenity)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="{{$amenity->id}}">
+                                        <label class="form-check-label" >
+                                            {{$amenity->name}}
+                                        </label>
+                                    </div>
+                                @endforeach
                             </div>
                             <button class="read_btn" type="submit">search</button>
                         </div>
@@ -178,4 +136,15 @@
             });
         });
     </script>
+
+    @push('scripts')
+        <script>
+            // create token for use the getChildCategories and getChildLocations
+            window.token = {
+                csrfToken: '{{ csrf_token() }}'
+            };
+        </script>
+        <script src="{{asset('frontend/js/getChildCategories.js')}}"></script>
+        <script src="{{asset('frontend/js/getChildLocations.js')}}"></script>
+    @endpush
 @endpush

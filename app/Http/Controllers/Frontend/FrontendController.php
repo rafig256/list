@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Amenity;
 use App\Models\Category;
 use App\Models\Hero;
 use App\Models\Listing;
@@ -83,9 +84,12 @@ class FrontendController extends Controller
             });
         }
 
-        
+        $categories = Category::query()->where('status',1)->where('parent_id' , NULL)->get();
+        $locations = Location::query()->where('status' , 1)->where('parent_id' , NULL)->get();
+        $amenities = Amenity::query()->where('status' , 1)->get();
+
         $listings = $listings->paginate(6);
-        return view('frontend.pages.listing',compact('listings'));
+        return view('frontend.pages.listing',compact('listings','categories','locations','amenities'));
     }
 
     public function listingAjaxModal(Listing $listing)
