@@ -182,10 +182,10 @@
                                 disabled: true
                             }));
                         }else {
-                            $.each(response, function(index, category) {
+                            $.each(response, function(index, location) {
                                 $('#location_slug').append($('<option>', {
-                                    value: category.id,
-                                    text: category.name
+                                    value: location.slug,
+                                    text: location.name
                                 }));
                             });
                         }

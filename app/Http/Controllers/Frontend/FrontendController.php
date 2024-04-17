@@ -48,16 +48,34 @@ class FrontendController extends Controller
     {
         $listings = Listing::query()->where(['is_approved' => 1 ,'status' => 1]);
 
-        if ($request->has('parent_category')) {
+        if ($request->has('search') && $request->filled('search')) {
+
+            $listings->where(function ($query) use ($request) {
+                $query->where('title', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('description', 'LIKE', '%' . $request->search . '%');
+            });
+        }
+
+        if ($request->has('parent_category') && $request->filled('parent_category')) {
            $parentCategorySlug = $request->parent_category;
            $parentCategory = Category::where('slug', $parentCategorySlug)->first();
-           $listings = Listing::query()->whereIn('category_id',$parentCategory->childrens()->pluck('id')->toArray());
-        } elseif ($request->has('category')) {
+           $listings->whereIn('category_id',$parentCategory->childrens()->pluck('id')->toArray());
+        }
+
+        if ($request->has('category') && $request->filled('category')) {
             $categorySlug = $request->category;
             $listings->whereHas('category', function ($query) use ($categorySlug) {
                 $query->where('slug', $categorySlug);
             });
-        }elseif ($request->has('location')){
+        }
+
+        if ($request->has('parent_location') && $request->filled('parent_location')) {
+            $parentLocationSlug = $request->parent_location;
+            $parentLocation = Location::where('slug', $parentLocationSlug)->first();
+            $listings->whereIn('location_id',$parentLocation->children()->pluck('id')->toArray());
+        }
+
+        if ($request->has('location') && $request->filled('location')){
             $locationSlug = $request->location;
             $listings->whereHas('location', function ($query) use ($locationSlug){
 
@@ -65,6 +83,7 @@ class FrontendController extends Controller
             });
         }
 
+        
         $listings = $listings->paginate(6);
         return view('frontend.pages.listing',compact('listings'));
     }

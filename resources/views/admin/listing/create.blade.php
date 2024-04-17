@@ -266,7 +266,7 @@
                                 <div class="row">
                                     <div class="col-md-11 mx-auto">
                                         <div class="form-group">
-                                            <label for="description">Description</label>
+                                            <label for="description">Description <span class="text-danger">*</span></label>
                                             <textarea class="form-control" name="description" id="description" placeholder="about listing" rows="10">{{old('description')}}</textarea>
                                         </div>
                                     </div>

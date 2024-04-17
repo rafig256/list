@@ -58,8 +58,8 @@ Route::group([
     Route::resource('/listing',ListingController::class)->except(['show']);
 
     //ajax
-    Route::post('admin/ajax/get-child-categories', [ListingController::class,'getChildCategories'])->name('Child_Categories');
-    Route::post('admin/ajax/get-child-locations', [ListingController::class,'getChildLocations'])->name('Child_Locations');
+    Route::post('/ajax/get-child-categories', [ListingController::class,'getChildCategories'])->name('Child_Categories');
+    Route::post('/ajax/get-child-locations', [ListingController::class,'getChildLocations'])->name('Child_Locations');
 
     //Image Gallery Routes
     Route::get('/image-gallery/{listing}',[ImageGalleryController::class,'create'])->name('image-gallery.create');
