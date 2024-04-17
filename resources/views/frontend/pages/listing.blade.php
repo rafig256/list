@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <form>
+                    <form action="{{route('listing')}}" method="get">
                         <div class="listing_grid_sidbar">
                             <div class="sidebar_line">
                                 <input type="text" placeholder="Search" name="search">
@@ -18,6 +18,7 @@
                             </div>
                             <div class="sidebar_line_select">
                                 <select class="select_2" id="category_parent_slug" name="parent_category">
+                                    <option value="">Select</option>
                                     @foreach($categories as $category)
                                         <option value="{{$category->slug}}">{{$category->name}}</option>
                                     @endforeach
@@ -45,7 +46,7 @@
                             <div class="wsus__pro_check">
                                 @foreach($amenities as $amenity)
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="{{$amenity->id}}">
+                                        <input class="form-check-input" type="checkbox" value="{{$amenity->slug}}" name="amenity[]">
                                         <label class="form-check-label" >
                                             {{$amenity->name}}
                                         </label>

@@ -84,6 +84,13 @@ class FrontendController extends Controller
             });
         }
 
+        if ($request->has('amenity') && is_array($request->amenity)){
+            $getAmenity = Amenity::query()->whereIn('slug',$request->amenity)->pluck('id');
+            $listings->whereHas('amenities', function ($query) use ($getAmenity){
+                $query->whereIn('amenity_id',$getAmenity);
+            });
+        }
+
         $categories = Category::query()->where('status',1)->where('parent_id' , NULL)->get();
         $locations = Location::query()->where('status' , 1)->where('parent_id' , NULL)->get();
         $amenities = Amenity::query()->where('status' , 1)->get();
