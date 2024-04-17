@@ -13,14 +13,14 @@
                     <form action="{{route('listing')}}" method="get">
                         <div class="listing_grid_sidbar">
                             <div class="sidebar_line">
-                                <input type="text" placeholder="Search" name="search">
+                                <input type="text" placeholder="Search" name="search" value="{{request()->search}}">
                                 <button type="submit"><i class="far fa-search"></i></button>
                             </div>
                             <div class="sidebar_line_select">
                                 <select class="select_2" id="category_parent_slug" name="parent_category">
-                                    <option value="">Select</option>
+                                    <option>Select</option>
                                     @foreach($categories as $category)
-                                        <option value="{{$category->slug}}">{{$category->name}}</option>
+                                        <option value="{{$category->slug}}" @selected(request()->parent_category == $category->slug)>{{$category->name}}</option>
                                     @endforeach
                                     <option value="">categorys</option>
                                 </select>
@@ -34,7 +34,7 @@
                                 <select class="select_2" name="parent_location" id="location_parent_slug">
                                     <option value="">location</option>
                                     @foreach($locations as $location)
-                                        <option value="{{$location->slug}}">{{$location->name}}</option>
+                                        <option value="{{$location->slug}}" @selected(request()->parent_location == $location->slug)>{{$location->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -46,7 +46,7 @@
                             <div class="wsus__pro_check">
                                 @foreach($amenities as $amenity)
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="{{$amenity->slug}}" name="amenity[]">
+                                        <input class="form-check-input" type="checkbox" value="{{$amenity->slug}}" name="amenity[]" @checked( (request()->has('amenity') && is_array(request()->amenity)) ? in_array($amenity->slug , request()->amenity):false) >
                                         <label class="form-check-label" >
                                             {{$amenity->name}}
                                         </label>
