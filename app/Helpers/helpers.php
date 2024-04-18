@@ -19,7 +19,7 @@ if (! function_exists('setActive')) {
     if (!function_exists('addCurrencyIcon')){
         function addCurrencyIcon(string $amount) : string
         {
-            if (config('setting.site_currency_position') == 'left'){
+            if (config('settings.site_currency_position') == 'left'){
                 return config('settings.site_currency_icon').$amount;
             }else{
                 return $amount.config('settings.site_currency_icon');

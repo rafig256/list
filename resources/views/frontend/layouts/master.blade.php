@@ -22,6 +22,12 @@
     <!--    toastr  -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" class="rel">
     @stack('css')
+
+    <script>
+        var PUSHER_APP_KEY = "{{config('settings.pusher_key')}}";
+        var PUSHER_APP_CLUSTER = "{{config('settings.pusher_cluster')}}";
+    </script>
+    @vite(['resources/css/app.css' , 'resources/js/app.js'])
 </head>
 
 <body>
