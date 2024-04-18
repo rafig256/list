@@ -50,7 +50,7 @@ class SettingController extends Controller
             'pusher_cluster' => 'required',
             'pusher_active' => 'required |boolean'
         ]);
-//dd($validatedData);
+
         foreach ($validatedData as $key => $value){
             Setting::query()->updateOrCreate(
                 ['key' =>$key],
