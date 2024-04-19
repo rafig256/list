@@ -31,7 +31,7 @@
                 <div class="col-xl-4 col-md-6 col-lg-4">
                     <div class="single_blog">
                         <div class="img">
-                            <img src="images/blog_2.jpg" alt="bloh images" class="img-fluid w-100">
+                            <img src="{{asset('frontend/images/blog_1.jpg')}}" alt="bloh images" class="img-fluid w-100">
                         </div>
                         <div class="text">
 

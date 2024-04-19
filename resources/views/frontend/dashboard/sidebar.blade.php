@@ -10,7 +10,7 @@
         <li><a href="dsahboard_wishlist.html"><i class="far fa-heart"></i> Wishlist</a></li>
         <li><a href="dsahboard_order.html"><i class="fal fa-notes-medical"></i> Orders</a></li>
         <li><a href="dsahboard_package.html"><i class="fal fa-gift-card"></i> Package</a></li>
-        <li><a href="dsahboard_message.html"><i class="far fa-comments-alt"></i> Message</a></li>
+        <li><a href="{{route('user.message')}}"><i class="far fa-comments-alt"></i> Message</a></li>
         <li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf

@@ -877,7 +877,7 @@ button {
   COUNTER PART START
 ========================*/
 #wsus__counter {
-	background: url(../images/counter_bg.jpg);
+	/*background: url(../images/counter_bg.jpg);*/
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;

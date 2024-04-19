@@ -35,7 +35,7 @@
                 <div class="col-xl-6">
                     <div class="wsus__single_clients">
                         <div class="text">
-                            <img src="images/team-2.jpg" alt="clients" class="img-fluid">
+                            <img src="{{asset('frontend/images/team-2.jpg')}}" alt="clients" class="img-fluid">
                             <p class="c_name">Kritsofer Nolan
                                 <span class="c_det">Property Owner</span>
                             </p>
@@ -56,7 +56,7 @@
                 <div class="col-xl-6">
                     <div class="wsus__single_clients">
                         <div class="text">
-                            <img src="images/team-2.jpg" alt="clients" class="img-fluid">
+                            <img src="{{asset('frontend/images/team-2.jpg')}}" alt="clients" class="img-fluid">
                             <p class="c_name">Kritsofer Nolan
                                 <span class="c_det">Property Owner</span>
                             </p>

@@ -54,6 +54,9 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
     Route::get('/schedule/{listing}',[AgentScheduleConrtoller::class,'create'])->name('schedule.create');
     Route::post('/schedule/{listing}',[AgentScheduleConrtoller::class,'store'])->name('schedule.store');
     Route::put('/schedule/{listing}',[AgentScheduleConrtoller::class,'update'])->name('schedule.update');
+
+    //Chat
+    Route::get('/message',[\App\Http\Controllers\Frontend\CahtController::class , 'index'])->name('message');
 });
 
 require __DIR__.'/auth.php';

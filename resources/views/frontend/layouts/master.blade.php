@@ -27,7 +27,7 @@
         var PUSHER_APP_KEY = "{{config('settings.pusher_key')}}";
         var PUSHER_APP_CLUSTER = "{{config('settings.pusher_cluster')}}";
     </script>
-    @vite(['resources/css/app.css' , 'resources/js/app.js'])
+    @vite([ 'resources/js/app.js'])
 </head>
 
 <body>
