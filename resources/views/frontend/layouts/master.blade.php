@@ -81,15 +81,23 @@
         <div class="header">
             <h6>Let's Chat - Online</h6>
         </div>
-        <div class="text-center p-2">
-            <span>Please fill out the form to start chat!</span>
-        </div>
-        <div class="chat-form">
-            <input type="text" class="form-control" placeholder="Name">
-            <input type="text" class="form-control" placeholder="Email">
-            <textarea class="form-control" placeholder="Your Text Message"></textarea>
-            <button class="btn btn-success btn-block">Submit</button>
-        </div>
+        @if (!isset($_COOKIE['ishtap_user_phone']))
+            <div class="text-center p-2">
+                <span>Please fill out the form to start chat!</span>
+            </div>
+            <div class="chat-form">
+                <form id="chatForm">
+                    @csrf
+                    <input type="text" name="name" class="form-control" id="chatName" placeholder="Name*">
+                    <input type="text" name="phone" id="chatPhone" class="form-control" placeholder="Phone*">
+                    <input type="hidden" name="user_id" id="chatUserId" value="">
+                    <textarea class="form-control" name="message" id="chatMessage" placeholder="Your Text Message"></textarea>
+                    <button class="btn btn-success btn-block" id="submitChat">Send</button>
+                </form>
+            </div>
+        @else
+            کوکی ست شده است
+        @endif
     </div>
 </div>
 <!-- End Chat -->
@@ -120,6 +128,59 @@
 <script src="{{asset('frontend/js/main.js')}}"></script>
 <!-- BEGIN TOASTR SCRIPTS -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<!-- chat -->
+
+<script>
+    $(document).ready(function(){
+        $('.chat-btn').click(function(){
+
+            {{--let ishtapUserPhoneCookie = {{request()->cookie('ishtap_user_phone') ?? ""}};--}}
+            let ishtapUserPhoneCookie = {{isset($_COOKIE['ishtap_user_phone']) ? 'true' : 'false'}};
+            let loggedIn = {{ auth()->check() ? 'true' : 'false' }};
+
+            if (ishtapUserPhoneCookie) {
+                //there is cookie
+                console.log('there is cookie: '+ishtapUserPhoneCookie);
+                $('.chat-form').html(`<div><textarea>${$("#chatMessage").val()}</textarea></div>`);
+            } else {
+                //there is Not cookie
+                console.log('not cookie');
+                if(loggedIn){
+                    $('#chatName').val('{{ auth()->user()?->name }}').prop('readonly', true);
+                    $('#chatPhone').val('{{ auth()->user()?->phone }}').prop('readonly' , true);
+                    $('#chatUserId').val('{{ auth()->user()?->id }}');
+                }
+            }
+        })
+
+        $("#chatForm").submit(function(event) {
+            event.preventDefault(); // جلوگیری از ارسال فرم به صفحه دیگر
+            var user_id = "{{ auth()->user()?->id }}"; // در صورتی که کاربر لاگین شده باشد
+            // جمع‌آوری داده‌های فرم
+            var formData = {
+                name: $("#chatName").val(),
+                phone: $("#chatPhone").val(),
+                message: $("#chatMessage").val(),
+                user_id: user_id,
+                _token: "{{ csrf_token() }}"
+            };
+
+            // ارسال داده‌ها به سرور با استفاده از Ajax
+            $.ajax({
+                type: "POST",
+                url: "{{route('chat.create')}}", // آدرس سمت سرور
+                data: formData,
+                success: function(response) {
+                    // پردازش پاسخ از سرور
+                    $('.chat-form').html(`<div><span>${$("#chatMessage").val()}</span></div>`);
+                }
+            });
+        });
+    });
+</script>
+
+
 @if($errors->any())
     <script>
         @foreach($errors->all() as $error)

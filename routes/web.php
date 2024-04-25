@@ -29,6 +29,11 @@ Route::get('/packages',[FrontendController::class, 'packages'])->name('packages'
 Route::get('/checkout/{id}',[FrontendController::class, 'checkout'])->name('checkout.index');
 Route::post('/review',[\App\Http\Controllers\Frontend\ReviewController::class, 'store'])->middleware('auth')->name('review.store');
 Route::post('/report',[FrontendController::class, 'report'])->name('report');
+
+//Chat guest
+Route::post('/chat' ,[\App\Http\Controllers\Frontend\ChatController::class , 'create'])->name('chat.create');
+//Chat Ajax
+
 //Ajax
 Route::post('ajax/get-child-categories', [ListingController::class,'getChildCategories']);
 Route::post('ajax/get-child-locations', [ListingController::class,'getChildLocations']);
@@ -55,8 +60,8 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
     Route::post('/schedule/{listing}',[AgentScheduleConrtoller::class,'store'])->name('schedule.store');
     Route::put('/schedule/{listing}',[AgentScheduleConrtoller::class,'update'])->name('schedule.update');
 
-    //Chat
-    Route::get('/message',[\App\Http\Controllers\Frontend\CahtController::class , 'index'])->name('message');
+    //Chat logged in user
+    Route::get('/message',[\App\Http\Controllers\Frontend\ChatController::class , 'index'])->name('message');
 });
 
 require __DIR__.'/auth.php';
