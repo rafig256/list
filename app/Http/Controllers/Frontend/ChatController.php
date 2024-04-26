@@ -45,7 +45,7 @@ class ChatController extends Controller
 
     public function findMessage(Request $request) {
         $chat = Chat::query()->with('messages')->where('cookie', $request->cookie)->first();
-        $messages = $chat->messages;
+        $messages = $chat->messages->take(6);
         // تبدیل تاریخ به مدت زمان گذشته
         foreach ($messages as $message) {
             $message->time = Carbon::parse($message->created_at)->diffForHumans();
