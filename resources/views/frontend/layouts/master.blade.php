@@ -82,21 +82,25 @@
             <h6>Let's Chat - Online</h6>
         </div>
         @if (!isset($_COOKIE['ishtap_user_phone']))
-            <div class="text-center p-2">
-                <span>Please fill out the form to start chat!</span>
-            </div>
-            <div class="chat-form">
-                <form id="chatForm">
-                    @csrf
-                    <input type="text" name="name" class="form-control" id="chatName" placeholder="Name*">
-                    <input type="text" name="phone" id="chatPhone" class="form-control" placeholder="Phone*">
-                    <input type="hidden" name="user_id" id="chatUserId" value="">
-                    <textarea class="form-control" name="message" id="chatMessage" placeholder="Your Text Message"></textarea>
-                    <button class="btn btn-success btn-block" id="submitChat">Send</button>
-                </form>
+            <div class="chat">
+                <div class="text-center p-2">
+                    <span>Please fill out the form to start chat!</span>
+                </div>
+                <div class="chat-form">
+                    <form id="chatForm">
+                        @csrf
+                        <input type="text" name="name" class="form-control" id="chatName" placeholder="Name*">
+                        <input type="text" name="phone" id="chatPhone" class="form-control" placeholder="Phone*">
+                        <input type="hidden" name="user_id" id="chatUserId" value="">
+                        <textarea class="form-control" name="message" id="chatMessage" placeholder="Your Text Message"></textarea>
+                        <button class="btn btn-success btn-block" id="submitChat">Send</button>
+                    </form>
+                </div>
             </div>
         @else
-            کوکی ست شده است
+            <div class="chat">
+                کوکی ست شده است
+            </div>
         @endif
     </div>
 </div>
@@ -141,8 +145,7 @@
 
             if (ishtapUserPhoneCookie) {
                 //there is cookie
-                console.log('there is cookie: '+ishtapUserPhoneCookie);
-                $('.chat-form').html(`<div><textarea>${$("#chatMessage").val()}</textarea></div>`);
+                findMessage('{{request()->cookie('ishtap_user_phone')}}');
             } else {
                 //there is Not cookie
                 console.log('not cookie');
@@ -173,11 +176,35 @@
                 data: formData,
                 success: function(response) {
                     // پردازش پاسخ از سرور
-                    $('.chat-form').html(`<div><span>${$("#chatMessage").val()}</span></div>`);
+                    $('.chat').html(`<div><span>${$("#chatMessage").val()}</span></div>`);
                 }
             });
         });
     });
+
+
+    function processResponse(response) {
+        $('.chat').empty();
+        $.each(response.messages, function(index, message) {
+            $('.chat').append(`<div class="alert alert-success">${message.message}<br><small>${message.created_at}</small></div>`);
+        });
+    }
+
+
+    function findMessage(cookie) {
+        console.log('cookie: '+ cookie);
+        $.ajax({
+            type: "POST",
+            url: "{{route('chat.findMessage')}}", // آدرس سمت سرور
+            data: {
+                cookie: cookie,
+                _token: "{{ csrf_token() }}"},
+            success: function(response) {
+                // پردازش پاسخ از سرور
+                processResponse(response);
+            }
+        });
+    }
 </script>
 
 

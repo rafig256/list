@@ -22,12 +22,13 @@ class ChatController extends Controller
             'message' => 'required',
             'user_id' => 'nullable|exists:users,id'
         ]);
-
+        $cookie = \Str::random(10);
         // ذخیره‌ی اطلاعات در دیتابیس
         $chat = Chat::query()->create([
             'name' => $request->name,
             'mobile' => $request->phone,
             'user_id' => $request->user_id ?? NULL,
+            'cookie' => $cookie,
         ]);
 
         Message::query()->create([
@@ -35,9 +36,17 @@ class ChatController extends Controller
             'message' => $request->message
         ]);
         $response = new Response('chat created');
-        $response->withCookie(cookie('ishtap_user_phone', $request->phone, 60*24*30));
+        $response->withCookie(cookie('ishtap_user_phone', $cookie , 60));
         // ایجاد کوکی با نام "ishtap_user_phone" و ذخیره‌ی شماره تلفن در آن
         return $response;
     }
 
+    public function findMessage(Request $request) {
+        $chat = Chat::query()->with('messages')->where('cookie', $request->cookie)->first();
+        $messages = $chat->messages;
+        return response()->json([
+            'success' => true,
+            'messages' => $messages,
+        ]);
+    }
 }

@@ -10,4 +10,9 @@ class message extends Model
 
     protected $guarded = [];
     use HasFactory;
+
+    public function chat()
+    {
+        return $this->belongsTo(Chat::class);
+    }
 }

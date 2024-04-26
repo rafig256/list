@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('mobile');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('admin_id')->nullable()->constrained('users','id')->onDelete('cascade');
+            $table->string('cookie',10)->unique();
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
