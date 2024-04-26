@@ -98,3 +98,12 @@ label.chat-btn{
     position: fixed;
     bottom: 70px;
 }
+.chat-box{
+    padding: 15px;
+}
+.chat-box #chatForm input {
+    margin-bottom: 5px;
+}
+.chat , .wrapper {
+    background-color: #dfdff3
+}

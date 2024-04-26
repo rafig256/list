@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Chat;
 use App\Models\Message;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -41,12 +42,37 @@ class ChatController extends Controller
         return $response;
     }
 
+
     public function findMessage(Request $request) {
         $chat = Chat::query()->with('messages')->where('cookie', $request->cookie)->first();
         $messages = $chat->messages;
+        // تبدیل تاریخ به مدت زمان گذشته
+        foreach ($messages as $message) {
+            $message->time = Carbon::parse($message->created_at)->diffForHumans();
+        }
+
         return response()->json([
             'success' => true,
             'messages' => $messages,
         ]);
     }
+
+    public function addMessage(Request $request)
+    {
+        $request->validate([
+            'cookie' => 'required',
+            'message' => 'required'
+        ]);
+        $chat_id = Chat::query()->where(['cookie'=> $request->cookie , 'status' => 1])->latest('id')->value('id');
+        $message = Message::query()->create([
+            'chat_id' => $chat_id,
+            'message' => $request->message,
+        ]);
+        return response()->json([
+            'success' => true,
+            'messages' => 'message sent',
+        ]);
+
+    }
 }
+

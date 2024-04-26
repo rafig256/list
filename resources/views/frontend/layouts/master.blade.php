@@ -79,14 +79,14 @@
     <label class="chat-btn" for="check"> <i class="fa fa-commenting-o comment"></i> <i class="fa fa-close close"></i> </label>
     <div class="wrapper">
         <div class="header">
-            <h6>Let's Chat - Online</h6>
+            <h6>Online Support</h6>
         </div>
         @if (!isset($_COOKIE['ishtap_user_phone']))
             <div class="chat">
                 <div class="text-center p-2">
                     <span>Please fill out the form to start chat!</span>
                 </div>
-                <div class="chat-form">
+                <div class="chat-box">
                     <form id="chatForm">
                         @csrf
                         <input type="text" name="name" class="form-control" id="chatName" placeholder="Name*">
@@ -98,8 +98,15 @@
                 </div>
             </div>
         @else
-            <div class="chat">
+            <div class="chat chat-box">
                 کوکی ست شده است
+            </div>
+            <div class="chat-form">
+                <form id="sendMessage">
+                    @csrf
+                    <textarea class="form-control" name="message" id="chatMessageArea" placeholder="Your Text Message"></textarea>
+                    <button class="btn btn-success btn-block" id="submitChat">Send</button>
+                </form>
             </div>
         @endif
     </div>
@@ -157,10 +164,30 @@
             }
         })
 
+        //add message
+        $("#sendMessage").submit(function (event){
+            event.preventDefault();
+            let message = $('#chatMessageArea').val();
+            $.ajax({
+                type: "POST",
+                url: "{{route('chat.addMessage')}}",
+                data: {
+                    message: message,
+                    cookie : '{{request()->cookie('ishtap_user_phone')}}',
+                    _token: "{{ csrf_token() }}"
+                } ,
+                success: function(response) {
+                    if (response.success){
+                        $('.chat-box').append(`<div class="alert alert-success messageBox">${message}<br><p style='font-size: 10px'>Now</p></div>`);
+                        $('#chatMessageArea').val('');
+                    }
+                }
+            });
+        });
+
         $("#chatForm").submit(function(event) {
-            event.preventDefault(); // جلوگیری از ارسال فرم به صفحه دیگر
-            var user_id = "{{ auth()->user()?->id }}"; // در صورتی که کاربر لاگین شده باشد
-            // جمع‌آوری داده‌های فرم
+            event.preventDefault();
+            var user_id = "{{ auth()->user()?->id }}";
             var formData = {
                 name: $("#chatName").val(),
                 phone: $("#chatPhone").val(),
@@ -168,8 +195,6 @@
                 user_id: user_id,
                 _token: "{{ csrf_token() }}"
             };
-
-            // ارسال داده‌ها به سرور با استفاده از Ajax
             $.ajax({
                 type: "POST",
                 url: "{{route('chat.create')}}", // آدرس سمت سرور
@@ -186,7 +211,7 @@
     function processResponse(response) {
         $('.chat').empty();
         $.each(response.messages, function(index, message) {
-            $('.chat').append(`<div class="alert alert-success">${message.message}<br><small>${message.created_at}</small></div>`);
+            $('.chat').append(`<div class="alert alert-success messageBox">${message.message}<br><p style='font-size: 10px'>${message.time}</p></div>`);
         });
     }
 

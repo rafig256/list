@@ -34,6 +34,7 @@ Route::post('/report',[FrontendController::class, 'report'])->name('report');
 //Chat Ajax
 Route::post('/chat' ,[\App\Http\Controllers\Frontend\ChatController::class , 'create'])->name('chat.create');
 Route::post('/chat/find_message' ,[\App\Http\Controllers\Frontend\ChatController::class , 'findMessage'])->name('chat.findMessage');
+Route::post('/chat/add_message' ,[\App\Http\Controllers\Frontend\ChatController::class , 'addMessage'])->name('chat.addMessage');
 
 //Ajax
 Route::post('ajax/get-child-categories', [ListingController::class,'getChildCategories']);
