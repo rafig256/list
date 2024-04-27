@@ -98,14 +98,15 @@
                 </div>
             </div>
         @else
-            <div class="chat chat-box">
-                کوکی ست شده است
+            <div class="chat chat-box text-center">
+               <span class="btn btn-info btn-sm">مشاهده ی سوابق</span>
             </div>
             <div class="chat-form">
                 <form id="sendMessage">
                     @csrf
                     <textarea class="form-control" name="message" id="chatMessageArea" placeholder="Your Text Message"></textarea>
-                    <button class="btn btn-success btn-block" id="submitChat">Send</button>
+                    <input type="hidden" id="firstCookie" value="{{request()->cookie('ishtap_user_phone')}}">
+                    <button class="btn btn-success btn-block" id="submitSendMessage">Send</button>
                 </form>
             </div>
         @endif
@@ -142,11 +143,10 @@
 
 <!-- chat -->
 
+
 <script>
     $(document).ready(function(){
         $('.chat-btn').click(function(){
-
-            {{--let ishtapUserPhoneCookie = {{request()->cookie('ishtap_user_phone') ?? ""}};--}}
             let ishtapUserPhoneCookie = {{isset($_COOKIE['ishtap_user_phone']) ? 'true' : 'false'}};
             let loggedIn = {{ auth()->check() ? 'true' : 'false' }};
 
@@ -164,27 +164,20 @@
             }
         })
 
-        //add message
-        $("#sendMessage").submit(function (event){
+
+        //تنظیم اجرا شدن تابع در زمان سابمیت شدن فرم
+        $(document).on('submit', '#submitSecondaryMessage', function(event) {
             event.preventDefault();
-            let message = $('#chatMessageArea').val();
-            $.ajax({
-                type: "POST",
-                url: "{{route('chat.addMessage')}}",
-                data: {
-                    message: message,
-                    cookie : '{{request()->cookie('ishtap_user_phone')}}',
-                    _token: "{{ csrf_token() }}"
-                } ,
-                success: function(response) {
-                    if (response.success){
-                        $('.chat-box').append(`<div class="alert alert-success messageBox">${message}<br><p style='font-size: 10px'>Now</p></div>`);
-                        $('#chatMessageArea').val('');
-                    }
-                }
-            });
+            addMessage(event);
         });
 
+        $("#sendMessage").submit(function(event) {
+            event.preventDefault();
+            addMessage(event);
+        });
+
+
+        //create cookie and add first message
         $("#chatForm").submit(function(event) {
             event.preventDefault();
             var user_id = "{{ auth()->user()?->id }}";
@@ -199,15 +192,49 @@
                 type: "POST",
                 url: "{{route('chat.create')}}", // آدرس سمت سرور
                 data: formData,
-                success: function(response) {
+                success: function(response, status, xhr) {
+                    console.log(response);
+                    var OriginalCookie = xhr.getResponseHeader("OriginalCookie");
+                    console.log("Cookie Value: " + OriginalCookie);
                     // پردازش پاسخ از سرور
-                    $('.chat').html(`<div><span>${$("#chatMessage").val()}</span></div>`);
+                    $('.chat').html(`<div class="chat chat-box">
+                    <div class="alert alert-success messageBox">${$("#chatMessage").val()}<br><p style='font-size: 10px'>Now</p></div>
+            </div>
+            <div class="chat-form">
+                <form id="submitSecondaryMessage">
+                    @csrf
+                    <textarea class="form-control" name="message" id="chatMessageArea" placeholder="Your Text Message"></textarea>
+                    <input type="hidden" id="firstCookie" name="cookie" value="${OriginalCookie}">
+                    <button class="btn btn-success btn-block">Send</button>
+                </form>
+            </div>`);
                 }
             });
         });
     });
 
+    function addMessage(event){
+        let message = $('#chatMessageArea').val();
+        let cookie = $('#firstCookie').val();
+        console.log('first coolie value:'+cookie);
+        $.ajax({
+            type: "POST",
+            url: "{{route('chat.addMessage')}}",
+            data: {
+                message: message,
+                cookie : cookie,
+                _token: "{{ csrf_token() }}"
+            } ,
+            success: function(response) {
+                if (response.success){
+                    $('.chat-box').append(`<div class="alert alert-success messageBox">${message}<br><p style='font-size: 10px'>Now</p></div>`);
+                    $('#chatMessageArea').val('');
+                }
+            }
+        });
+    }
 
+    //insert secondary messages in chatBox function
     function processResponse(response) {
         $('.chat').empty();
         $.each(response.messages, function(index, message) {
@@ -215,7 +242,7 @@
         });
     }
 
-
+    //find Message function
     function findMessage(cookie) {
         console.log('cookie: '+ cookie);
         $.ajax({
@@ -224,12 +251,14 @@
             data: {
                 cookie: cookie,
                 _token: "{{ csrf_token() }}"},
+
             success: function(response) {
                 // پردازش پاسخ از سرور
                 processResponse(response);
             }
         });
     }
+
 </script>
 
 

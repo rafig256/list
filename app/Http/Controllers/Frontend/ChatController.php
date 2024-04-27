@@ -38,8 +38,8 @@ class ChatController extends Controller
         ]);
         $response = new Response('chat created');
         $response->withCookie(cookie('ishtap_user_phone', $cookie , 60));
-        // ایجاد کوکی با نام "ishtap_user_phone" و ذخیره‌ی شماره تلفن در آن
-        return $response;
+
+        return $response->header('OriginalCookie',$cookie);
     }
 
 
