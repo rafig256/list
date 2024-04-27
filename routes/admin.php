@@ -99,4 +99,7 @@ Route::group([
     //report
     Route::get('/report',[ReportController::class , 'index'])->name('report.index');
     Route::delete('/report/{report}',[ReportController::class , 'destroy'])->name('report.destroy');
+
+    //chat
+    Route::get('/chat',[\App\Http\Controllers\Admin\ChatController::class , 'index'])->name('chat.index');
 });

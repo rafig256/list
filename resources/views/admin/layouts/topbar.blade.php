@@ -175,97 +175,16 @@
                 <a href="#page" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-                        <span>Pages</span>
+                        <span>Support</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="page"  data-parent="#topAccordion">
                     <li>
-                        <a href="pages_helpdesk.html"> Helpdesk </a>
+                        <a href="{{route('admin.chat.index')}}"> Chat </a>
                     </li>
                     <li>
                         <a href="pages_contact_us.html"> Contact Form </a>
-                    </li>
-                    <li>
-                        <a href="pages_faq.html"> FAQ </a>
-                    </li>
-                    <li>
-                        <a href="pages_faq2.html"> FAQ 2 </a>
-                    </li>
-                    <li>
-                        <a href="pages_privacy.html"> Privacy Policy </a>
-                    </li>
-                    <li>
-                        <a href="pages_coming_soon.html"> Coming Soon </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.profile.show')}}"> Profile </a>
-                    </li>
-                    <li>
-                        <a href="user_account_setting.html"> Account Settings </a>
-                    </li>
-                    <li class="sub-sub-submenu-list">
-                        <a href="#pages-error" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Error <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="collapse list-unstyled sub-submenu" id="pages-error" data-parent="#setting">
-                            <li>
-                                <a href="pages_error404.html"> 404 </a>
-                            </li>
-                            <li>
-                                <a href="pages_error500.html"> 500 </a>
-                            </li>
-                            <li>
-                                <a href="pages_error503.html"> 503 </a>
-                            </li>
-                            <li>
-                                <a href="pages_maintenence.html"> Maintanence </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sub-sub-submenu-list">
-                        <a href="#user-login" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Login <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="collapse list-unstyled sub-submenu" id="user-login" data-parent="#page">
-                            <li>
-                                <a href="auth_login.html"> Login </a>
-                            </li>
-                            <li>
-                                <a href="auth_login_boxed.html"> Login Boxed </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sub-sub-submenu-list">
-                        <a href="#user-register" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Register <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="collapse list-unstyled sub-submenu" id="user-register" data-parent="#page">
-                            <li>
-                                <a href="auth_register.html"> Register </a>
-                            </li>
-                            <li>
-                                <a href="auth_register_boxed.html"> Register Boxed </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sub-sub-submenu-list">
-                        <a href="#user-passRecovery" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Password Recovery <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="collapse list-unstyled sub-submenu" id="user-passRecovery" data-parent="#page">
-                            <li>
-                                <a href="auth_pass_recovery.html"> Recover ID </a>
-                            </li>
-                            <li>
-                                <a href="auth_pass_recovery_boxed.html"> Recover ID Boxed </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sub-sub-submenu-list">
-                        <a href="#user-lockscreen" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Lockscreen <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="collapse list-unstyled sub-submenu" id="user-lockscreen" data-parent="#page">
-                            <li>
-                                <a href="auth_lockscreen.html"> Unlock </a>
-                            </li>
-                            <li>
-                                <a href="auth_lockscreen_boxed.html"> Unlock Boxed </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </li>
