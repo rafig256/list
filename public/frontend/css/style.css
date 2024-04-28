@@ -5811,7 +5811,5 @@ button.trashIcon, a.editIcon{
 a.editIcon{
     background: black !important;
 }
-.messageBox{
-    padding: 5px;
-    margin: 3px 5px;
-}
+
+

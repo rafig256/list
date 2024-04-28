@@ -100,6 +100,8 @@ label.chat-btn{
     bottom: 70px;
 }
 .chat-box{
+    display: flex;
+    flex-direction: column;
     padding: 5px;
 }
 .chat-box #chatForm input {
@@ -107,4 +109,17 @@ label.chat-btn{
 }
 .chat , .wrapper {
     background-color: #dfdff3
+}
+
+.message-box{
+    padding: 5px;
+    margin: 3px 5px;
+    border-radius: 5px;
+    width: fit-content;
+}
+.messageRight{
+    background-color: #a0a0f7;
+}
+.messageLeft{
+    background-color: #f7a0a0;
 }

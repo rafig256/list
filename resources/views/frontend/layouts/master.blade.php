@@ -98,7 +98,7 @@
                 </div>
             </div>
         @else
-            <div class="chat chat-box text-center">
+            <div class="chat chat-box">
                <span class="btn btn-info btn-sm">مشاهده ی سوابق</span>
             </div>
             <div class="chat-form">
@@ -198,7 +198,7 @@
                     console.log("Cookie Value: " + OriginalCookie);
                     // پردازش پاسخ از سرور
                     $('.chat').html(`<div class="chat chat-box">
-                    <div class="alert alert-success messageBox">${$("#chatMessage").val()}<br><p style='font-size: 10px'>Now</p></div>
+                    <div class="alert alert-success">${$("#chatMessage").val()}<br><p style='font-size: 10px'>Now</p></div>
             </div>
             <div class="chat-form">
                 <form id="submitSecondaryMessage">
@@ -238,9 +238,12 @@
     function processResponse(response) {
         $('.chat').empty();
         $.each(response.messages, function(index, message) {
-            $('.chat').append(`<div class="alert alert-success messageBox">${message.message}<br><p style='font-size: 10px'>${message.time}</p></div>`);
+            const senderType = message.sender_type;
+            const messageClass = senderType === 'user' ? 'messageRight' : 'messageLeft';
+            $('.chat').append(`<div class="message-box ${messageClass}">${message.message}<br><p style='font-size: 10px'>${message.time}</p></div>`);
         });
     }
+
 
     //find Message function
     function findMessage(cookie) {
