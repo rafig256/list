@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('chat_id')->constrained()->onDelete('cascade');
             $table->string('message');
+            $table->enum('sender_type',['user','admin']);
             $table->boolean('seen')->default(0);
             $table->timestamps();
         });

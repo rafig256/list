@@ -12,12 +12,9 @@
 <!--  BEGIN CONTENT AREA  -->
 <div id="content" class="main-content">
     <div class="layout-px-spacing">
-
         <div class="chat-section layout-top-spacing">
             <div class="row">
-
                 <div class="col-xl-12 col-lg-12 col-md-12">
-
                     <div class="chat-system">
                         <div class="hamburger"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu mail-menu d-lg-none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div>
                         <div class="user-list-box">
@@ -27,14 +24,14 @@
                             </div>
                             <div class="people">
                                 @foreach($chats as $chat)
-                                    <div class="person" data-chat="person6">
+                                    <div class="person" data-chat="{{$chat->id}}">
                                         <div class="user-info">
                                             <div class="f-head">
                                                 <img src="{{$chat->sender ? asset($chat->sender->avatar) : asset('admin/assets/img/90x90.jpg')}}" alt="avatar">
                                             </div>
                                             <div class="f-body">
                                                 <div class="meta-info">
-                                                    <span class="user-name" data-name="Nia Hillyer">{{$chat->name}}</span>
+                                                    <span class="user-name" data-name="{{$chat->name}}">{{$chat->name}}</span>
                                                     <span class="user-meta-time">start: {{str($chat->created_at)->limit(10,'')}}</span>
                                                 </div>
                                                 <div class="meta-info justify-content-between">
@@ -45,21 +42,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-
-                                <div class="person border-none" data-chat="person12">
-                                    <div class="user-info">
-                                        <div class="f-head">
-                                            <img src="assets/img/90x90.jpg" alt="avatar">
-                                        </div>
-                                        <div class="f-body">
-                                            <div class="meta-info">
-                                                <span class="user-name" data-name="Grace Roberts">Grace Roberts</span>
-                                                <span class="user-meta-time">2:09 PM</span>
-                                            </div>
-                                            <span class="preview">Wasup for the third time like is you bling bitch</span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="chat-box">
@@ -149,107 +131,8 @@
                                 </div>
                                 <div class="chat-conversation-box">
                                     <div id="chat-conversation-box-scroll" class="chat-conversation-box-scroll">
-                                        <div class="chat" data-chat="person1">
-                                            <div class="conversation-start">
-                                                <span>Today, 6:48 AM</span>
-                                            </div>
-                                            <div class="bubble you">
-                                                Hello,
-                                            </div>
-                                            <div class="bubble you">
-                                                It's me.
-                                            </div>
-                                            <div class="bubble you">
-                                                I have a question regarding project.
-                                            </div>
-                                        </div>
-                                        <div class="chat" data-chat="person2">
-                                            <div class="conversation-start">
-                                                <span>Today, 5:38 PM</span>
-                                            </div>
-                                            <div class="bubble you">
-                                                Hello!
-                                            </div>
-                                            <div class="bubble me">
-                                                Hey!
-                                            </div>
-                                            <div class="bubble me">
-                                                How was your day so far.
-                                            </div>
-                                            <div class="bubble you">
-                                                It was a bit dramatic.
-                                            </div>
-                                        </div>
-                                        <div class="chat" data-chat="person3">
-                                            <div class="conversation-start">
-                                                <span>Today, 3:38 AM</span>
-                                            </div>
-                                            <div class="bubble me">
-                                                Hey Buddy.
-                                            </div>
-                                            <div class="bubble me">
-                                                What's up
-                                            </div>
-                                            <div class="bubble you">
-                                                I am sick
-                                            </div>
-                                            <div class="bubble you">
-                                                Not comming to office today.
-                                            </div>
-                                        </div>
-                                        <div class="chat" data-chat="person4">
-                                            <div class="conversation-start">
-                                                <span>Yesterday, 4:20 PM</span>
-                                            </div>
-                                            <div class="bubble you">
-                                                Hi, collect your check
-                                            </div>
-                                            <div class="bubble me">
-                                                Ok, I will be there in 10 mins
-                                            </div>
-                                        </div>
-                                        <div class="chat" data-chat="person5">
-                                            <div class="conversation-start">
-                                                <span>Today, 6:28 AM</span>
-                                            </div>
-                                            <div class="bubble you">
-                                                Hi
-                                            </div>
-                                            <div class="bubble you">
-                                                Uploaded files to server.
-                                            </div>
-                                        </div>
-                                        <div class="chat" data-chat="person6">
-                                            <div class="conversation-start">
-                                                <span>Monday, 1:27 PM</span>
-                                            </div>
-                                            <div class="bubble you">
-                                                Hi, I am back from vacation
-                                            </div>
-                                            <div class="bubble you">
-                                                How are you?
-                                            </div>
-                                            <div class="bubble me">
-                                                Welcom Back
-                                            </div>
-                                            <div class="bubble me">
-                                                I am all well
-                                            </div>
-                                            <div class="bubble you">
-                                                Coffee?
-                                            </div>
-                                        </div>
-                                        <div class="chat" data-chat="person7">
-                                        </div>
-                                        <div class="chat" data-chat="person8">
-                                        </div>
-                                        <div class="chat" data-chat="person9">
-                                        </div>
-                                        <div class="chat" data-chat="person10">
-                                        </div>
-                                        <div class="chat" data-chat="person11">
-                                        </div>
-                                        <div class="chat" data-chat="person12">
+                                        <div class="chat">
+
                                         </div>
                                     </div>
                                 </div>
@@ -277,4 +160,27 @@
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="{{asset('admin/assets/js/apps/mailbox-chat.js')}}"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
+
+    <script>
+        function findMessage(findChat) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('admin.chat.showMessage') }}",
+                data: {
+                    id: findChat,
+                    _token: "{{ csrf_token() }}",
+                },
+                success: function (response) {
+                    // ایجاد دیوها برای هر پیام
+                    $.each(response, function (index, message) {
+                        console.log(message.message);
+                        var chatDiv = $('<div class="bubble ' + (message.sender_type === 'user' ? 'me' : 'you') + '">');
+                        chatDiv.text(message.message); // جایگذاری مقدار پیام در دیو
+                        $('.chat').append(chatDiv); // اضافه کردن دیو به داخل دیو با کلاس chat
+                    });
+                }
+            });
+        }
+    </script>
+
 @endpush

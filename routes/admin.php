@@ -102,4 +102,6 @@ Route::group([
 
     //chat
     Route::get('/chat',[\App\Http\Controllers\Admin\ChatController::class , 'index'])->name('chat.index');
+    Route::post('/chat',[\App\Http\Controllers\Admin\ChatController::class , 'show'])->name('chat.showMessage');
+
 });

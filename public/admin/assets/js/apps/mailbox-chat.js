@@ -26,7 +26,10 @@ $('.user-list-box .person').on('click', function(event) {
         $('.user-list-box .person').removeClass('active');
         $('.chat-box .chat-box-inner').css('height', '100%');
         $(this).addClass('active');
-        $('.chat[data-chat = '+findChat+']').addClass('active-chat');
+        //add my code
+        findMessage(findChat);
+        $('.chat').empty();
+        $('.chat').addClass('active-chat');
     }
     if ($(this).parents('.user-list-box').hasClass('user-list-box-show')) {
       $(this).parents('.user-list-box').removeClass('user-list-box-show');
