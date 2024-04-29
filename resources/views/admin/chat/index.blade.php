@@ -162,6 +162,7 @@
     <!-- END PAGE LEVEL SCRIPTS -->
 
     <script>
+        //Show records of exchanged chats
         function findMessage(findChat) {
             $.ajax({
                 type: "POST",
@@ -174,10 +175,29 @@
                     // ایجاد دیوها برای هر پیام
                     $.each(response, function (index, message) {
                         console.log(message.message);
-                        var chatDiv = $('<div class="bubble ' + (message.sender_type === 'user' ? 'me' : 'you') + '">');
+                        var chatDiv = $('<div class="bubble ' + (message.sender_type === 'user' ? 'you' : 'me') + '">');
                         chatDiv.text(message.message); // جایگذاری مقدار پیام در دیو
                         $('.chat').append(chatDiv); // اضافه کردن دیو به داخل دیو با کلاس chat
                     });
+                }
+            });
+        }
+
+        //add admin message to database
+        function addAdminMessageChat(message,chatId){
+            var route = "{{route('admin.chat.addMessage')}}";
+            var admin_id = {{auth()->user()->id}};
+            $.ajax({
+                type: "POST",
+                url: route,
+                data: {
+                    message: message,
+                    _token: "{{ csrf_token() }}",
+                    admin_id: admin_id,
+                    chat_id: chatId,
+                },
+                success: function (response) {
+                    console.log(response);
                 }
             });
         }

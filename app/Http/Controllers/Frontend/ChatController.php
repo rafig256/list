@@ -37,7 +37,7 @@ class ChatController extends Controller
             'message' => $request->message
         ]);
         $response = new Response('chat created');
-        $response->withCookie(cookie('ishtap_user_phone', $cookie , 60));
+        $response->withCookie(cookie('ishtap_user_phone', $cookie , 60*24*30*6));
 
         return $response->header('OriginalCookie',$cookie);
     }

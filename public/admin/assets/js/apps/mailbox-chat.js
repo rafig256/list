@@ -26,8 +26,12 @@ $('.user-list-box .person').on('click', function(event) {
         $('.user-list-box .person').removeClass('active');
         $('.chat-box .chat-box-inner').css('height', '100%');
         $(this).addClass('active');
-        //add my code
+        //add Rafig code
         findMessage(findChat);
+        var chatMessagesDiv = $('.chat.active'); // جایی که می‌خواهید اسکرول کنید
+        console.log(chatMessagesDiv);
+        // chatMessagesDiv.scrollTop(chatMessagesDiv[0].scrollHeight);
+        //end Rafig code
         $('.chat').empty();
         $('.chat').addClass('active-chat');
     }
@@ -145,6 +149,10 @@ $('.mail-write-box').on('keydown', function(event) {
     if(event.key === 'Enter') {
         var chatInput = $(this);
         var chatMessageValue = chatInput.val();
+        //add Rafig code to add message in database
+        let chatId = $(".person.active").attr('data-chat');
+        addAdminMessageChat(chatMessageValue , chatId );
+        //End Rafig
         if (chatMessageValue === '') { return; }
         $messageHtml = '<div class="bubble me">' + chatMessageValue + '</div>';
         var appendMessage = $(this).parents('.chat-system').find('.active-chat').append($messageHtml);
