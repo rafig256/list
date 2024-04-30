@@ -99,7 +99,7 @@
             </div>
         @else
             <div class="chat chat-box">
-               <span class="btn btn-info btn-sm">مشاهده ی سوابق</span>
+               <span class="btn btn-info btn-sm" id="view-records">مشاهده ی سوابق</span>
             </div>
             <div class="chat-form">
                 <form id="sendMessage">
@@ -152,7 +152,7 @@
 
             if (ishtapUserPhoneCookie) {
                 //there is cookie
-                findMessage('{{request()->cookie('ishtap_user_phone')}}');
+                findMessage();
             } else {
                 //there is Not cookie
                 console.log('not cookie');
@@ -195,7 +195,6 @@
                 success: function(response, status, xhr) {
                     console.log(response);
                     var OriginalCookie = xhr.getResponseHeader("OriginalCookie");
-                    console.log("Cookie Value: " + OriginalCookie);
                     // پردازش پاسخ از سرور
                     $('.chat').html(`<div class="chat chat-box">
                     <div class="alert alert-success">${$("#chatMessage").val()}<br><p style='font-size: 10px'>Now</p></div>
@@ -216,7 +215,6 @@
     function addMessage(event){
         let message = $('#chatMessageArea').val();
         let cookie = $('#firstCookie').val();
-        console.log('first coolie value:'+cookie);
         $.ajax({
             type: "POST",
             url: "{{route('chat.addMessage')}}",
@@ -246,8 +244,8 @@
 
 
     //find Message function
-    function findMessage(cookie) {
-        console.log('cookie: '+ cookie);
+    function findMessage() {
+        let cookie = '{{request()->cookie('ishtap_user_phone')}}'
         $.ajax({
             type: "POST",
             url: "{{route('chat.findMessage')}}", // آدرس سمت سرور
@@ -261,6 +259,8 @@
             }
         });
     }
+
+    $('#view-records').click(findMessage());
 
 </script>
 
