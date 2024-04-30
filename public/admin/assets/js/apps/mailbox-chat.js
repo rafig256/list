@@ -28,9 +28,6 @@ $('.user-list-box .person').on('click', function(event) {
         $(this).addClass('active');
         //add Rafig code
         findMessage(findChat);
-        var chatMessagesDiv = $('.chat.active'); // جایی که می‌خواهید اسکرول کنید
-
-        // chatMessagesDiv.scrollTop(chatMessagesDiv[0].scrollHeight);
         //end Rafig code
         $('.chat').empty();
         $('.chat').addClass('active-chat');

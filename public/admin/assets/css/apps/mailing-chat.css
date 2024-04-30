@@ -27,7 +27,7 @@
   .chat-system .hamburger {
     display: none; }
   .chat-system .user-list-box {
-    width: 30%;
+    width: 40%;
     max-width: 400px;
     border-left: 1px solid #ebedf2;
     border-bottom-right-radius: 6px;

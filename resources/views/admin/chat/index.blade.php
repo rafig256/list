@@ -174,11 +174,11 @@
                 success: function (response) {
                     // ایجاد دیوها برای هر پیام
                     $.each(response, function (index, message) {
-                        console.log(message.message);
                         var chatDiv = $('<div class="bubble ' + (message.sender_type === 'user' ? 'you' : 'me') + '">');
                         chatDiv.text(message.message); // جایگذاری مقدار پیام در دیو
                         $('.chat').append(chatDiv); // اضافه کردن دیو به داخل دیو با کلاس chat
                     });
+                    scrollBottom(); //For Scroll
                 }
             });
         }
@@ -200,6 +200,11 @@
                     console.log(response);
                 }
             });
+        }
+
+        function scrollBottom() {
+            let mainChatInbox = $('.chat-conversation-box');
+            mainChatInbox.scrollTop(mainChatInbox.prop("scrollHeight"));
         }
     </script>
 

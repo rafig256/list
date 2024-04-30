@@ -8,6 +8,7 @@ use App\Models\Message;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Events\Message as EventMessage;
 
 class ChatController extends Controller
 {
@@ -36,6 +37,9 @@ class ChatController extends Controller
             'chat_id' => $chat->id,
             'message' => $request->message
         ]);
+
+        //connect to chanel
+        broadcast(new EventMessage($request->message , $cookie));
         $response = new Response('chat created');
         $response->withCookie(cookie('ishtap_user_phone', $cookie , 60*24*30*6));
 
