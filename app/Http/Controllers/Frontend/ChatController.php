@@ -40,6 +40,7 @@ class ChatController extends Controller
 
         //connect to chanel
         broadcast(new EventMessage($request->message , $cookie));
+
         $response = new Response('chat created');
         $response->withCookie(cookie('ishtap_user_phone', $cookie , 60*24*30*6));
 
@@ -53,7 +54,7 @@ class ChatController extends Controller
             ->pluck('id')
             ->first();
 
-        $messages = message::query()->where('chat_id' , $chatId)->orderBy('id', 'desc')->take(6)->get();
+        $messages = message::query()->where('chat_id' , $chatId)->orderBy('id','desc')->take(6)->get();
 
         // تبدیل تاریخ به مدت زمان گذشته
         foreach ($messages as $message) {

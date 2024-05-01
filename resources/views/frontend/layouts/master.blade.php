@@ -18,7 +18,6 @@
 
     <link rel="stylesheet" href="{{asset('/frontend/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('/frontend/css/responsive.css')}}">
-    <!-- <link rel="stylesheet" href="css/rtl.css"> -->
     <!--    toastr  -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" class="rel">
     <!-- chat -->
@@ -29,7 +28,7 @@
         var PUSHER_APP_KEY = "{{config('settings.pusher_key')}}";
         var PUSHER_APP_CLUSTER = "{{config('settings.pusher_cluster')}}";
     </script>
-    @vite([ 'resources/js/app.js'])
+    @vite([ 'resources/js/app.js' , 'resources/js/frontend.js'])
 </head>
 
 <body>
@@ -81,6 +80,7 @@
         <div class="header">
             <h6>Online Support</h6>
         </div>
+
         @if (!isset($_COOKIE['ishtap_user_phone']))
             <div class="chat">
                 <div class="text-center p-2">
@@ -152,10 +152,10 @@
 
             if (ishtapUserPhoneCookie) {
                 //there is cookie
+                // console.log('there is cookie and cookie State is: '+ishtapUserPhoneCookie);
                 findMessage();
             } else {
                 //there is Not cookie
-                console.log('not cookie');
                 if(loggedIn){
                     $('#chatName').val('{{ auth()->user()?->name }}').prop('readonly', true);
                     $('#chatPhone').val('{{ auth()->user()?->phone }}').prop('readonly' , true);
@@ -225,7 +225,7 @@
             } ,
             success: function(response) {
                 if (response.success){
-                    $('.chat-box').append(`<div class="alert alert-success messageBox">${message}<br><p style='font-size: 10px'>Now</p></div>`);
+                    $('.chat-box').prepend(`<div class="message-box messageRight">${message}<br><p style='font-size: 10px'>Now</p></div>`);
                     $('#chatMessageArea').val('');
                 }
             }
@@ -236,6 +236,7 @@
     function processResponse(response) {
         $('.chat').empty();
         $.each(response.messages, function(index, message) {
+            console.log(message.message);
             const senderType = message.sender_type;
             const messageClass = senderType === 'user' ? 'messageRight' : 'messageLeft';
             $('.chat').append(`<div class="message-box ${messageClass}">${message.message}<br><p style='font-size: 10px'>${message.time}</p></div>`);
@@ -245,7 +246,7 @@
 
     //find Message function
     function findMessage() {
-        let cookie = '{{request()->cookie('ishtap_user_phone')}}'
+        let cookie = '{{request()->cookie('ishtap_user_phone')}}';
         $.ajax({
             type: "POST",
             url: "{{route('chat.findMessage')}}", // آدرس سمت سرور

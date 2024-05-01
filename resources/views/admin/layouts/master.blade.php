@@ -23,7 +23,11 @@
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
     @stack('css')
-
+    <script>
+        var PUSHER_APP_KEY = "{{config('settings.pusher_key')}}";
+        var PUSHER_APP_CLUSTER = "{{config('settings.pusher_cluster')}}";
+    </script>
+    @vite(['resources/js/app.js','resources/js/admin.js'])
 </head>
 <body class="alt-menu sidebar-noneoverflow">
 <!-- BEGIN LOADER -->

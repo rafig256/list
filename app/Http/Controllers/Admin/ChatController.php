@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\Message as EventMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Chat;
 use App\Models\message;
@@ -38,6 +39,10 @@ class ChatController extends Controller
         ]);
 
         $chat = Chat::query()->where('id',$request->chat_id)->where('admin_id',NULL)->update(['admin_id' => $request->admin_id]);
+        $cookie = Chat::query()->where('id' , $request->chat_id)->select('cookie')->first();
+
+        broadcast(new EventMessage($request->message , $cookie->cookie));
+
         if ($chat){
             return response()->json(['message' => 'Message sent successfully']);
         }else{
