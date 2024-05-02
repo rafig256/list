@@ -190,6 +190,8 @@
                 (e) =>
                 {
                     console.log(e);
+                    $('.chat').append(`<div class="bubble you">${e.message}</div>`)
+                    scrollBottom(); //For Scroll
                 }
             );
         }
