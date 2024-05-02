@@ -1,6 +1,8 @@
-console.log('9XT6Pdxeu5');
+let cookie = $('#firstCookie').val();
+console.log('cookie is: '+cookie);
 
-window.Echo.private('message-'+'9XT6Pdxeu5').listen(
+// window.Echo.private('message-'+'hP2aHCYoew').listen(
+window.Echo.channel('message-'+cookie).listen(
     'Message',
     (e) =>
         {
