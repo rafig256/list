@@ -99,7 +99,7 @@
             </div>
         @else
             <div class="chat chat-box">
-               <span class="btn btn-info btn-sm" id="view-records">مشاهده ی سوابق</span>
+{{--               <span class="btn btn-info btn-sm" id="view-records">مشاهده ی سوابق</span>--}}
             </div>
             <div class="chat-form">
                 <form id="sendMessage">
@@ -152,7 +152,7 @@
 
             if (ishtapUserPhoneCookie) {
                 //there is cookie
-                // console.log('there is cookie and cookie State is: '+ishtapUserPhoneCookie);
+                console.log('there is cookie and cookie State is: '+ishtapUserPhoneCookie);
                 findMessage();
             } else {
                 //there is Not cookie
@@ -162,7 +162,7 @@
                     $('#chatUserId').val('{{ auth()->user()?->id }}');
                 }
             }
-        })
+        });
 
 
         //تنظیم اجرا شدن تابع در زمان سابمیت شدن فرم
@@ -261,7 +261,7 @@
         });
     }
 
-    $('#view-records').click(findMessage());
+    // $('#view-records').click(findMessage());
 
 </script>
 

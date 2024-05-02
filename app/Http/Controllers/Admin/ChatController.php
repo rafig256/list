@@ -26,7 +26,8 @@ class ChatController extends Controller
         $request->validate([
             'message' => 'required',
             'chat_id' => 'required|exists:chats,id',
-            'admin_id' => 'required|exists:users,id'
+            'admin_id' => 'required|exists:users,id',
+            'cookie' => 'required|size:10'
         ]);
 
         //seen
@@ -39,9 +40,9 @@ class ChatController extends Controller
         ]);
 
         $chat = Chat::query()->where('id',$request->chat_id)->where('admin_id',NULL)->update(['admin_id' => $request->admin_id]);
-        $cookie = Chat::query()->where('id' , $request->chat_id)->select('cookie')->first();
+//        $cookie = Chat::query()->where('id' , $request->chat_id)->select('cookie')->first();
 
-        broadcast(new EventMessage($request->message , $cookie->cookie));
+        broadcast(new EventMessage($request->message , $request->cookie));
 
         if ($chat){
             return response()->json(['message' => 'Message sent successfully']);

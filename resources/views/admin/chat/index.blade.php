@@ -24,7 +24,7 @@
                             </div>
                             <div class="people">
                                 @foreach($chats as $chat)
-                                    <div class="person" data-chat="{{$chat->id}}">
+                                    <div class="person" data-chat="{{$chat->id}}" data-cookie="{{$chat->cookie}}">
                                         <div class="user-info">
                                             <div class="f-head">
                                                 <img src="{{$chat->sender ? asset($chat->sender->avatar) : asset('admin/assets/img/90x90.jpg')}}" alt="avatar">
@@ -181,10 +181,21 @@
                     scrollBottom(); //For Scroll
                 }
             });
+            //create
+            let cookie = $('.person.active').attr('data-cookie');
+            console.log('cookie is: '+cookie);
+            // window.Echo.private('message-'+'hP2aHCYoew').listen(
+            window.Echo.channel('message-'+cookie).listen(
+                'Message',
+                (e) =>
+                {
+                    console.log(e);
+                }
+            );
         }
 
         //add admin message to database
-        function addAdminMessageChat(message,chatId){
+        function addAdminMessageChat(message,chatId, cookie){
             var route = "{{route('admin.chat.addMessage')}}";
             var admin_id = {{auth()->user()->id}};
             $.ajax({
@@ -195,6 +206,7 @@
                     _token: "{{ csrf_token() }}",
                     admin_id: admin_id,
                     chat_id: chatId,
+                    cookie : cookie,
                 },
                 success: function (response) {
                     console.log(response);

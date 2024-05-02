@@ -147,8 +147,10 @@ $('.mail-write-box').on('keydown', function(event) {
         var chatInput = $(this);
         var chatMessageValue = chatInput.val();
         //add Rafig code to add message in database
-        let chatId = $(".person.active").attr('data-chat');
-        addAdminMessageChat(chatMessageValue , chatId );
+        let person = $(".person.active");
+        let chatId = person.attr('data-chat');
+        let cookie = person.attr('data-cookie');
+        addAdminMessageChat(chatMessageValue , chatId , cookie);
         //End Rafig
         if (chatMessageValue === '') { return; }
         $messageHtml = '<div class="bubble me">' + chatMessageValue + '</div>';

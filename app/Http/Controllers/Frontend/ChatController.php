@@ -79,6 +79,9 @@ class ChatController extends Controller
             'message' => $request->message,
             'sender_type' => 'user',
         ]);
+
+        broadcast(new EventMessage($request->message , $request->cookie));
+
         return response()->json([
             'success' => true,
             'messages' => 'message sent',
