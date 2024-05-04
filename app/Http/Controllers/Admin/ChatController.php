@@ -19,7 +19,8 @@ class ChatController extends Controller
 
     public function show(Request $request){
         $messages = message::query()->where('chat_id', $request->id)->select('message','sender_type')->get();
-        return response()->json($messages);
+        $data = ['cookie' => $request->cookie , 'messages' => $messages];
+        return response()->json($data);
     }
 
     public function addMessage(Request $request){

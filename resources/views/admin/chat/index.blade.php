@@ -163,17 +163,19 @@
 
     <script>
         //Show records of exchanged chats
-        function findMessage(findChat) {
+        function findMessage(findChat , dataCookie) {
             $.ajax({
                 type: "POST",
                 url: "{{ route('admin.chat.showMessage') }}",
                 data: {
                     id: findChat,
+                    cookie: dataCookie,
                     _token: "{{ csrf_token() }}",
                 },
                 success: function (response) {
+                    console.log(response.cookie);
                     // ایجاد دیوها برای هر پیام
-                    $.each(response, function (index, message) {
+                    $.each(response.messages, function (index, message) {
                         var chatDiv = $('<div class="bubble ' + (message.sender_type === 'user' ? 'you' : 'me') + '">');
                         chatDiv.text(message.message); // جایگذاری مقدار پیام در دیو
                         $('.chat').append(chatDiv); // اضافه کردن دیو به داخل دیو با کلاس chat
@@ -181,7 +183,7 @@
                     scrollBottom(); //For Scroll
                 }
             });
-            //create
+            //listening pusher and show data in place
             let cookie = $('.person.active').attr('data-cookie');
             console.log('cookie is: '+cookie);
             // window.Echo.private('message-'+'hP2aHCYoew').listen(
