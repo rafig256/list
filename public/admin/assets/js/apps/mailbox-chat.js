@@ -29,6 +29,7 @@ $('.user-list-box .person').on('click', function(event) {
         //add Rafig code
         let dataCookie = $(this).attr('data-cookie');
         findMessage(findChat , dataCookie);
+        $('.chat-box .chat-box-inner').attr('data-cookie',dataCookie);
         //end Rafig code
         $('.chat').empty();
         $('.chat').addClass('active-chat');

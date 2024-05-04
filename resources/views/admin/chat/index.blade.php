@@ -191,9 +191,12 @@
                 'Message',
                 (e) =>
                 {
+                    let currentCookie = $('.chat-box-inner').attr('data-cookie');
                     console.log(e);
-                    $('.chat').append(`<div class="bubble you">${e.message}</div>`)
-                    scrollBottom(); //For Scroll
+                    if (currentCookie == e.cookie){
+                        $('.chat').append(`<div class="bubble you">${e.message}</div>`)
+                        scrollBottom(); //For Scroll
+                    }
                 }
             );
         }
