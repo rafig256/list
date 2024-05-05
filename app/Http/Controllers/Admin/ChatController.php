@@ -41,9 +41,8 @@ class ChatController extends Controller
         ]);
 
         $chat = Chat::query()->where('id',$request->chat_id)->where('admin_id',NULL)->update(['admin_id' => $request->admin_id]);
-//        $cookie = Chat::query()->where('id' , $request->chat_id)->select('cookie')->first();
 
-        broadcast(new EventMessage($request->message , $request->cookie));
+        broadcast(new EventMessage($request->message , $request->cookie , 'admin'));
 
         if ($chat){
             return response()->json(['message' => 'Message sent successfully']);

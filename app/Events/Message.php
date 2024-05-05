@@ -15,13 +15,15 @@ class Message implements ShouldBroadcast
 
     public $message;
     public $cookie;
+    public $sender;
     /**
      * Create a new event instance.
      */
-    public function __construct($message , $cookie)
+    public function __construct($message , $cookie , $sender)
     {
         $this->message = $message;
         $this->cookie = $cookie;
+        $this->sender = $sender;
     }
 
     /**
@@ -32,7 +34,6 @@ class Message implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-//            new PrivateChannel('message-'.$this->cookie),
             new Channel('message-'.$this->cookie),
         ];
     }
@@ -41,6 +42,7 @@ class Message implements ShouldBroadcast
         return [
             'message' => $this->message,
             'cookie' => $this->cookie,
+            'sender' => $this->sender,
         ];
     }
 }
