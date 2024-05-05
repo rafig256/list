@@ -13,12 +13,15 @@ class ChatController extends Controller
 {
     public function index() :View
     {
-        $chats = Chat::where('admin_id', auth()->user()->id)->orWhere('admin_id', null)->get();
+        $chats = Chat::query()->withCount(['messages'=> function($query){
+            $query->where(['sender_type'=> 'user' , 'seen'=>0]);
+        }])->where('admin_id', auth()->user()->id)->orWhere('admin_id', null)->get();
         return view('admin.chat.index',compact('chats'));
     }
 
     public function show(Request $request){
         $messages = message::query()->where('chat_id', $request->id)->select('message','sender_type')->get();
+        message::query()->where('chat_id' , $request->id)->update(['seen' => 1]);
         $data = ['cookie' => $request->cookie , 'messages' => $messages];
         return response()->json($data);
     }

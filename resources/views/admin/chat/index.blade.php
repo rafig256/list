@@ -27,7 +27,7 @@
                                     <div class="person" data-chat="{{$chat->id}}" data-cookie="{{$chat->cookie}}">
                                         <div class="user-info">
                                             <div class="f-head">
-                                                <img src="{{$chat->sender ? asset($chat->sender->avatar) : asset('admin/assets/img/90x90.jpg')}}" alt="avatar">
+                                                <img @class(['new-message'=>$chat->messages_count]) src="{{$chat->sender ? asset($chat->sender->avatar) : asset('admin/assets/img/90x90.jpg')}}" alt="avatar">
                                             </div>
                                             <div class="f-body">
                                                 <div class="meta-info">
@@ -196,9 +196,11 @@
                     console.log(e);
                     console.log('currentCookie: '+ currentCookie);
 
-                    if (currentCookie == e.cookie){
-                        $('.chat').append(`<div class="bubble you">${e.message}</div>`)
-                        scrollBottom(); //For Scroll
+                    if (currentCookie === e.cookie){
+                        if (e.sender === 'user'){
+                            $('.chat').append(`<div class="bubble you">${e.message}</div>`)
+                            scrollBottom(); //For Scroll
+                        }
                     }
 
                     //add circle green shadow to user that receive message

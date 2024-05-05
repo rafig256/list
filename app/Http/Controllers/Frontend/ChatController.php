@@ -55,7 +55,7 @@ class ChatController extends Controller
             ->first();
 
         $messages = message::query()->where('chat_id' , $chatId)->orderBy('id','desc')->take(6)->get();
-
+        message::query()->where(['chat_id' => $chatId , 'sender_type' => 'admin'])->update(['seen' => 1]);
         // تبدیل تاریخ به مدت زمان گذشته
         foreach ($messages as $message) {
             $message->time = Carbon::parse($message->created_at)->diffForHumans();

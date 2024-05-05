@@ -73,15 +73,26 @@
 
 
 <!-- Chat -->
+
 <div>
+    @php
+        $messages = false;
+        $isCookie = isset($_COOKIE['ishtap_user_phone']);
+        if ($isCookie){
+            $messages = \App\Models\message::query()->where(['seen'=> 0 , 'sender_type' => 'admin'])
+            ->whereHas('chat', function($query) {
+                $query->where(['cookie' => request()->cookie('ishtap_user_phone'), 'status' => 1]);
+                })->count();
+        }
+    @endphp
 <input type="checkbox" id="check">
-    <label class="chat-btn" for="check"> <i class="fa fa-commenting-o comment"></i> <i class="fa fa-close close"></i> </label>
+    <label class="chat-btn {{$messages ? 'spinner-grow' : ''}}" for="check"> <i class="fa fa-commenting-o comment"></i> <i class="fa fa-close close"></i> </label>
     <div class="wrapper">
         <div class="header">
             <h6>Online Support</h6>
         </div>
 
-        @if (!isset($_COOKIE['ishtap_user_phone']))
+        @if (!$isCookie)
             <div class="chat">
                 <div class="text-center p-2">
                     <span>Please fill out the form to start chat!</span>
@@ -147,6 +158,7 @@
 <script>
     $(document).ready(function(){
         $('.chat-btn').click(function(){
+            $(this).removeClass('spinner-grow');
             let ishtapUserPhoneCookie = {{isset($_COOKIE['ishtap_user_phone']) ? 'true' : 'false'}};
             let loggedIn = {{ auth()->check() ? 'true' : 'false' }};
 
