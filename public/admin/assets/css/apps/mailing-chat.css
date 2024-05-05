@@ -663,3 +663,5 @@
     background-image: none; }
     .chat-system .chat-box .overlay-video-call.onConnect {
       background-attachment: local; } }
+/* Rafig code */
+.new-message {border: 5px solid #10ff6d !important}

@@ -183,20 +183,29 @@
                     scrollBottom(); //For Scroll
                 }
             });
+
             //listening pusher and show data in place
             let cookie = $('.person.active').attr('data-cookie');
             console.log('cookie is: '+cookie);
-            // window.Echo.private('message-'+'hP2aHCYoew').listen(
+
             window.Echo.channel('message-'+cookie).listen(
                 'Message',
                 (e) =>
                 {
                     let currentCookie = $('.chat-box-inner').attr('data-cookie');
                     console.log(e);
+                    console.log('currentCookie: '+ currentCookie);
+
                     if (currentCookie == e.cookie){
                         $('.chat').append(`<div class="bubble you">${e.message}</div>`)
                         scrollBottom(); //For Scroll
                     }
+
+                    //add circle green shadow to user that receive message
+                    let temp = $(`.person[data-cookie='${e.cookie}']`);
+                    let temp2 = temp.find('.user-info');
+                    let temp3 = temp2.find('.f-head');
+                    temp3.find('img').addClass('new-message');
                 }
             );
         }

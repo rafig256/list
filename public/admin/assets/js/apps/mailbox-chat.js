@@ -27,6 +27,10 @@ $('.user-list-box .person').on('click', function(event) {
         $('.chat-box .chat-box-inner').css('height', '100%');
         $(this).addClass('active');
         //add Rafig code
+        let temp = $(this).find('.user-info');
+        let temp2 = temp.find('.f-head');
+        temp2.find('img').removeClass('new-message');
+        console.log('show temp in mailbox-chat.js: '+ temp2.html());
         let dataCookie = $(this).attr('data-cookie');
         findMessage(findChat , dataCookie);
         $('.chat-box .chat-box-inner').attr('data-cookie',dataCookie);
