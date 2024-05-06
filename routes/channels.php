@@ -24,3 +24,7 @@ Broadcast::channel('message-{cookie}', function ($user, $cookie) {
 
     return (int) $user->id === (int) $chat->admin_id;
 });
+
+Broadcast::channel('online', function ($user){
+    return $user;
+});
