@@ -77,16 +77,45 @@ class TestimonialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Testimonial $testimonial)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'image' => 'nullable|image|max:1024',
+            'role' => 'required',
+            'rating' => 'required|integer',
+            'description' => 'required|min:20',
+            'status' => 'required|boolean'
+        ]);
+        if ($request->hasFile('image')){
+            $image_patch = $this->uploadImage($request,'image');
+        }else{
+            $image_patch = $testimonial->image;
+        }
+
+        $testimonial->update([
+            'name' => $request->name,
+            'role' => $request->role,
+            'image' => $image_patch ,
+            'rating' => $request->rating,
+            'description' => $request->description,
+            'status' => $request->status
+        ]);
+
+        toastr()->success('Testimonial updated successfully!');
+
+        return to_route('admin.testimonial.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Testimonial $testimonial)
     {
-        //
+        $testimonial->delete();
+
+        toastr()->success('Testimonial deleted successfully!');
+
+        return to_route('admin.testimonial.index');
     }
 }
