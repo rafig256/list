@@ -100,6 +100,9 @@ Route::group([
     Route::get('/report',[ReportController::class , 'index'])->name('report.index');
     Route::delete('/report/{report}',[ReportController::class , 'destroy'])->name('report.destroy');
 
+    //Testimonial
+    Route::resource('/testimonial',\App\Http\Controllers\Admin\TestimonialController::class);
+
     //chat
     Route::get('/chat',[\App\Http\Controllers\Admin\ChatController::class , 'index'])->name('chat.index');
     Route::post('/chat',[\App\Http\Controllers\Admin\ChatController::class , 'show'])->name('chat.showMessage');

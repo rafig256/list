@@ -12,6 +12,7 @@ trait FileUploadTrait
             $image = $request->{$inputName};
             $ext = $image->getClientOriginalExtension();
             $imagName = 'media'.uniqid().'.'.$ext ;
+
             $image->move(public_path($prePath),$imagName);
 
             $exceptPath = '/default';

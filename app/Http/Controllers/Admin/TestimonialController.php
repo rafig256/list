@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Testimonial;
+use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
 {
+    use FileUploadTrait;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $testimonials = Testimonial::all();
+        return view('admin.testimonial.index', compact('testimonials'));
     }
 
     /**
@@ -20,7 +24,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.testimonial.create');
     }
 
     /**
@@ -28,7 +32,29 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'image' => 'required',
+            'role' => 'required',
+            'rating' => 'required|integer',
+            'description' => 'required|min:20'
+        ]);
+
+
+        $image_patch = $this->uploadImage($request,'image');
+
+        Testimonial::query()->create([
+            'name' => $request->name,
+            'role' => $request->role,
+            'image' => $image_patch ,
+            'rating' => $request->rating,
+            'description' => $request->description,
+            'status' => $request->status
+        ]);
+
+        toastr()->success('Testimonial created successfully!');
+
+        return to_route('admin.testimonial.index');
     }
 
     /**
