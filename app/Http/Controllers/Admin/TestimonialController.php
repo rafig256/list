@@ -34,10 +34,11 @@ class TestimonialController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'image' => 'required',
+            'image' => 'required|image|max:1024',
             'role' => 'required',
             'rating' => 'required|integer',
-            'description' => 'required|min:20'
+            'description' => 'required|min:20',
+            'status' => 'required|boolean'
         ]);
 
 
@@ -68,9 +69,9 @@ class TestimonialController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Testimonial $testimonial)
     {
-        //
+        return view('admin.testimonial.edit',compact('testimonial'));
     }
 
     /**
