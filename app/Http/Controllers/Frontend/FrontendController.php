@@ -14,6 +14,7 @@ use App\Models\Package;
 use App\Models\Report;
 use App\Models\Review;
 use App\Models\Schedule;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -32,6 +33,7 @@ class FrontendController extends Controller
         $parentLocations = Location::query()->where(['status'=>1 , 'show_at_home'=>1 ,'parent_id'=> NULL])->get();
 
         $listingsFeature = Listing::query()->where(['status'=>1 , 'is_approved' => 1 , 'is_featured' => 1])->orderBy('id','desc')->get();
+        $testimonials = Testimonial::query()->where('status' , 1)->take(6)->get();
 
         return view('frontend.home.index',[
             'hero'=>$hero,
@@ -42,6 +44,7 @@ class FrontendController extends Controller
             'locations' => $locations,
             'listingsFeature' => $listingsFeature,
             'parentCategories'=>$parentCategories,
+            'testimonials' => $testimonials
         ]);
     }
 

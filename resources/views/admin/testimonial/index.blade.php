@@ -27,8 +27,9 @@
                                 <thead>
                                 <tr>
                                     <td>#</td>
-                                    <td>name</td>
-                                    <td>role</td>
+                                    <td>Name <br> Role</td>
+                                    <td>star</td>
+                                    <td style="width: 40%">description</td>
                                     <td>image</td>
                                     <td>status</td>
                                     <td>Actions</td>
@@ -38,8 +39,9 @@
                                 @foreach($testimonials as $testimonial)
                                     <tr>
                                         <td class="text-center">{{$testimonial->id}}</td>
-                                        <td>{{$testimonial->name}}</td>
-                                        <td>{{$testimonial->role}}</td>
+                                        <td>{{$testimonial->name}}<br>{{$testimonial->role}}</td>
+                                        <td>{{$testimonial->rating}} / 10</td>
+                                        <td style="max-width: 40%">{{$testimonial->description}} </td>
                                         <td><img src="{{asset($testimonial->image)}}" alt="{{$testimonial->name}}" width="100px"> </td>
                                         <td>{!! $testimonial->status ? '<span class="badge badge-success"> Active </span>' : '<span class="badge badge-danger"> DeActive </span>' !!}</td>
                                         <td class="text-center">
