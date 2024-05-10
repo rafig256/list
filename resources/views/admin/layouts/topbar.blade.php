@@ -114,6 +114,12 @@
                     <li class="sub-sub-submenu-list">
                         <a href="{{route('admin.blog-category.index')}}">Blog Categories</a>
                     </li>
+                    <li class="sub-sub-submenu-list">
+                        <a href="{{route('admin.post.index')}}">Posts</a>
+                    </li>
+                    <li class="sub-sub-submenu-list">
+                        <a href="{{route('admin.post.create')}}">create Post</a>
+                    </li>
 
                 </ul>
             </li>
