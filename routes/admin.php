@@ -101,7 +101,13 @@ Route::group([
     Route::delete('/report/{report}',[ReportController::class , 'destroy'])->name('report.destroy');
 
     //Testimonial
-    Route::resource('/testimonial',\App\Http\Controllers\Admin\TestimonialController::class);
+    Route::resource('/testimonial',\App\Http\Controllers\Admin\TestimonialController::class)->except(['show']);
+
+    //Blog Category
+    Route::resource('/blog-category', \App\Http\Controllers\Admin\BlogCategoryController::class)->except(['show']);
+
+    //Post
+    Route::resource('/post', \App\Http\Controllers\Admin\PostController::class);
 
     //chat
     Route::get('/chat',[\App\Http\Controllers\Admin\ChatController::class , 'index'])->name('chat.index');
