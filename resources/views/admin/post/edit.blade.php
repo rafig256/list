@@ -19,6 +19,7 @@
             <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
                 <form id="addPost" action="{{route('admin.post.update' , $post->id)}}" enctype="multipart/form-data" method="POST" class="">
                     @csrf
+                    @method('PUT')
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                         <div class="section social">
@@ -94,7 +95,7 @@
                                             </div>
                                             <div class="col-xl-2 col-lg-12 col-md-4">
                                                 <div class="upload mt-4 pr-md-4">
-                                                    <input type="file" name="image" id="input-file-max-fs" class="dropify" data-default-file="{{asset($post->image)}}" data-max-file-size="2M" required/>
+                                                    <input type="file" name="image" id="input-file-max-fs" class="dropify" data-default-file="{{asset($post->image)}}" data-max-file-size="1M"/>
                                                     <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i> Upload New Image</p>
                                                 </div>
                                             </div>

@@ -14,8 +14,10 @@ class PostCreateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $unique = request()->isMethod('post') ? 'unique:posts,title'  : 'unique:posts,title,' . $this->post->id;
+
         return [
-            'title' => 'required|string|max:255|unique:posts,title',
+            'title' => 'required|string|max:255|'.$unique,
             'slug' => 'required|string|max:255',
             'image' => 'nullable|file',
             'is_popular' => 'required|boolean',

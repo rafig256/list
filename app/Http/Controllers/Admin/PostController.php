@@ -41,7 +41,7 @@ class PostController extends Controller
         $imagePatch = $this->uploadImage($request,'image');
         $post = Post::query()->create([
             'title' => $request->title,
-            'slug' => $request->slug,
+            'slug' => \Str::slug($request->slug,'-','fa'),
             'listing_id' => $request->listing_id ?? NULL,
             'user_id' => \Auth::user()->id,
             'image' => $imagePatch,
@@ -79,9 +79,27 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PostCreateRequest $request,Post $post)
     {
-        //
+        if ($request->hasFile('image')){
+            $imagePatch = $this->uploadImage($request,'image');
+            $post->update(['image' => $imagePatch]);
+        }
+        $post->update([
+            'title' => $request->title,
+            'slug' => \Str::slug($request->slug,'-'),
+            'listing_id' => $request->listing_id ?? NULL,
+            'is_popular' => $request->is_popular,
+            'status' => $request->status,
+            'description' => $request->description,
+            'seo_title'=>$request->seo_title,
+            'seo_description'=>$request->seo_description,
+        ]);
+
+        toastr()->success('the post updated successfully!');
+
+        return to_route('admin.post.index');
+
     }
 
     /**
