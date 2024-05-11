@@ -69,9 +69,11 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        $listing = Listing::query()->where('user_id' , \Auth::user()->id)->get();
+        $blogCategories = BlogCategory::query()->where('status' , 1)->get();
+        return view('admin.post.edit',compact('post','listing' , 'blogCategories'));
     }
 
     /**
