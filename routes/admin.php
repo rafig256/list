@@ -109,6 +109,12 @@ Route::group([
     //Post
     Route::resource('/post', \App\Http\Controllers\Admin\PostController::class);
 
+    //comment
+    Route::get('/comments',[\App\Http\Controllers\Admin\CommentController::class , 'index'])->name('comment.index');
+    Route::delete('/comment/{comment}' , [\App\Http\Controllers\Admin\CommentController::class , 'destroy'])->name('comment.destroy');
+    Route::get('/comment/activate/{comment}',[\App\Http\Controllers\Admin\CommentController::class , 'activate'])->name('comment.activate');
+    Route::get('/comment/disable/{comment}',[\App\Http\Controllers\Admin\CommentController::class , 'disable'])->name('comment.disable');
+
     //chat
     Route::get('/chat',[\App\Http\Controllers\Admin\ChatController::class , 'index'])->name('chat.index');
     Route::post('/chat',[\App\Http\Controllers\Admin\ChatController::class , 'show'])->name('chat.showMessage');

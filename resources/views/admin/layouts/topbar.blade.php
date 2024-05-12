@@ -120,7 +120,9 @@
                     <li class="sub-sub-submenu-list">
                         <a href="{{route('admin.post.create')}}">create Post</a>
                     </li>
-
+                    <li class="sub-sub-submenu-list">
+                        <a href="{{route('admin.comment.index')}}">Comments</a>
+                    </li>
                 </ul>
             </li>
 {{--            testimonial--}}

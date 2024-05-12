@@ -28,8 +28,9 @@
                         <p>{!! $post->description !!}</p>
                         <!-- Comment -->
                         <div class="blog_comment_area">
-                            <h5 class="wsus__single_comment_heading">Total Comment 05</h5>
+                            <h5 class="wsus__single_comment_heading">Total Comment {{$post->comments->count()}}</h5>
                             @foreach($post->comments as $comment)
+                                @if($comment->status)
                                 <div class="wsus__single_comment">
                                     <div class="wsus__single_comment_img">
                                         <img src="{{$post->user->avatar}}" alt="{{$post->user->name}}" class="img-fluid w-100">
@@ -40,6 +41,7 @@
                                         <p>{{$comment->comment}}</p>
                                     </div>
                                 </div>
+                                @endif
                             @endforeach
 
                             @auth()

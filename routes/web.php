@@ -30,10 +30,10 @@ Route::get('/checkout/{id}',[FrontendController::class, 'checkout'])->name('chec
 Route::post('/review',[\App\Http\Controllers\Frontend\ReviewController::class, 'store'])->middleware('auth')->name('review.store');
 Route::post('/report',[FrontendController::class, 'report'])->name('report');
 //Blog
-Route::get('/blog' , [FrontendController::class , 'blog'] )->name('blog.index');
-Route::get('/blog/{post}',[FrontendController::class , 'blogShow'])->name('blog.show');
-Route::get('/blog/{id}/{post:slug}',[FrontendController::class , 'blogShowWithSlug'])->name('blog.show.slug');
-Route::post('/comment',[FrontendController::class , 'comment'])->name('comment.add');
+Route::get('/blog' , [\App\Http\Controllers\Frontend\BlogController::class , 'blog'] )->name('blog.index');
+Route::get('/blog/{post}',[\App\Http\Controllers\Frontend\BlogController::class , 'blogShow'])->name('blog.show');
+Route::get('/blog/{id}/{post:slug}',[\App\Http\Controllers\Frontend\BlogController::class , 'blogShowWithSlug'])->name('blog.show.slug');
+Route::post('/comment',[\App\Http\Controllers\Frontend\BlogController::class , 'comment'])->name('comment.add');
 
 
 //Chat guest
