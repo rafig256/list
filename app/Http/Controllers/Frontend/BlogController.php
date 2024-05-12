@@ -12,18 +12,21 @@ class BlogController extends Controller
 {
     public function blogShowCommon($post){
         $post->increment('views');
+        $popularPosts = Post::query()->where('is_popular' , 1 )->where('id','!=',$post->id)->take(5)->get();
         $blogCategories = BlogCategory::query()->withCount([
             'posts' => function($query){
                 $query->where('status' , 1);
             }
         ])->where('status' , 1)->get();
 
-        return $blogCategories;
+        return ['blogCategories' => $blogCategories,'popularPosts' => $popularPosts];
     }
     public function blogShow(Post $post)
     {
-        $blogCategories = $this->blogShowCommon($post);
-        return view('frontend.pages.blog-view' , compact('post' , 'blogCategories'));
+        $data = $this->blogShowCommon($post);
+        $blogCategories = $data['blogCategories'];
+        $popularPosts = $data['popularPosts'];
+        return view('frontend.pages.blog-view' , compact('post' , 'blogCategories','popularPosts'));
     }
 
     public function blogShowWithSlug( $id ,Post $post)
@@ -31,9 +34,11 @@ class BlogController extends Controller
         if ($post->id !== (int) $id){
             abort( 403,'The link you are looking for does not exist');
         }
-        $blogCategories = $this->blogShowCommon($post);
+        $data = $this->blogShowCommon($post);
+        $blogCategories = $data['blogCategories'];
+        $popularPosts = $data['popularPosts'];
 
-        return view('frontend.pages.blog-view' , compact('post','blogCategories'));
+        return view('frontend.pages.blog-view' , compact('post','blogCategories' , 'popularPosts'));
     }
 
     public function blog(Request $request)
