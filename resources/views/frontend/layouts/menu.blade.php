@@ -36,7 +36,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog.html">blog</a>
+                    <a class="nav-link" href="{{route('blog.index')}}">blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">contact us</a>

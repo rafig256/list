@@ -29,6 +29,11 @@ Route::get('/packages',[FrontendController::class, 'packages'])->name('packages'
 Route::get('/checkout/{id}',[FrontendController::class, 'checkout'])->name('checkout.index');
 Route::post('/review',[\App\Http\Controllers\Frontend\ReviewController::class, 'store'])->middleware('auth')->name('review.store');
 Route::post('/report',[FrontendController::class, 'report'])->name('report');
+//Blog
+Route::get('/blog' , [FrontendController::class , 'blog'] )->name('blog.index');
+Route::get('/blog/{post}',[FrontendController::class , 'blogShow'])->name('blog.show');
+Route::get('/blog/{id}/{post:slug}',[FrontendController::class , 'blogShowWithSlug'])->name('blog.show.slug');
+
 
 //Chat guest
 //Chat Ajax

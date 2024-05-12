@@ -11,58 +11,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-4 col-md-6 col-lg-4">
-                    <div class="single_blog">
-                        <div class="img">
-                            <img src="{{asset('frontend/images/blog_1.jpg')}}" alt="bloh images" class="img-fluid w-100">
-                        </div>
-                        <div class="text">
-                            <span><i class="fal fa-calendar-alt"></i> 05 Julay 2021</span>
-                            <span><i class="fas fa-user"></i> by admin</span>
-                            <a href="#" class="title">How to create a Portfolio</a>
-                            <p>Lorem Ipsum is simply dummy of the printing typesetting industry. Lorem Ipsum has
-                                been
-                                simply dummy of the printing </p>
-                            <a class="read_btn" href="blog_details.html">learn more <i
-                                    class="far fa-chevron-double-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4">
-                    <div class="single_blog">
-                        <div class="img">
-                            <img src="{{asset('frontend/images/blog_1.jpg')}}" alt="bloh images" class="img-fluid w-100">
-                        </div>
-                        <div class="text">
-
-                            <span><i class="fal fa-calendar-alt"></i> 05 Julay 2021</span>
-                            <span><i class="fas fa-user"></i> by admin</span>
-                            <a href="#" class="title">Maecenas tincidunt vehicula</a>
-                            <p>Lorem Ipsum is simply dummy of the printing typesetting industry. Lorem Ipsum has
-                                been
-                                simply dummy of the printing </p>
-                            <a class="read_btn" href="blog_details.html">learn more <i
-                                    class="far fa-chevron-double-right"></i></a>
+                @foreach($posts as $post)
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="single_blog">
+                            <div class="img">
+                                <img src="{{asset($post->image)}}" alt="{{$post->title}}" class="img-fluid w-100">
+                            </div>
+                            <div class="text">
+                                <span><i class="fal fa-calendar-alt"></i> {{date('d M Y', strtotime($post->created_at))}}</span>
+                                <span><i class="fas fa-user"></i> by {{$post->user->name}}</span>
+                                <a href="#" class="title">{{$post->title}}</a>
+                                <p>{!! str($post->description)->limit(100) !!} </p>
+                                <a class="read_btn" href="{{route('blog.show.slug',[$post->id,$post->slug])}}">learn more <i class="far fa-chevron-double-right"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4">
-                    <div class="single_blog">
-                        <div class="img">
-                            <img src="{{asset('frontend/images/blog_3.jpg')}}" alt="bloh images" class="img-fluid w-100">
-                        </div>
-                        <div class="text">
-                            <span><i class="fal fa-calendar-alt"></i> 05 Julay 2021</span>
-                            <span><i class="fas fa-user"></i> by admin</span>
-                            <a href="#" class="title">How to create a Resume</a>
-                            <p>Lorem Ipsum is simply dummy of the printing typesetting industry. Lorem Ipsum has
-                                been
-                                simply dummy of the printing </p>
-                            <a class="read_btn" href="blog_details.html">learn more <i
-                                    class="far fa-chevron-double-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

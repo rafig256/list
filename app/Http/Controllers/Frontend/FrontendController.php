@@ -11,6 +11,7 @@ use App\Models\ListingPoints;
 use App\Models\Location;
 use App\Models\message;
 use App\Models\Package;
+use App\Models\Post;
 use App\Models\Report;
 use App\Models\Review;
 use App\Models\Schedule;
@@ -34,6 +35,7 @@ class FrontendController extends Controller
 
         $listingsFeature = Listing::query()->where(['status'=>1 , 'is_approved' => 1 , 'is_featured' => 1])->orderBy('id','desc')->get();
         $testimonials = Testimonial::query()->where('status' , 1)->take(6)->get();
+        $posts = Post::query()->where('status' , 1)->take(3)->get();
 
         return view('frontend.home.index',[
             'hero'=>$hero,
@@ -44,7 +46,8 @@ class FrontendController extends Controller
             'locations' => $locations,
             'listingsFeature' => $listingsFeature,
             'parentCategories'=>$parentCategories,
-            'testimonials' => $testimonials
+            'testimonials' => $testimonials,
+            'posts' => $posts,
         ]);
     }
 
@@ -162,5 +165,25 @@ class FrontendController extends Controller
         toastr()->success('Report submitted successfully!');
 
         return redirect()->back();
+    }
+
+    public function blogShow(Post $post)
+    {
+        $post->increment('views');
+        return view('frontend.pages.blog-view' , compact('post'));
+    }
+
+    public function blogShowWithSlug( $id ,Post $post)
+    {
+        if ($post->id !== (int) $id){
+            abort( 403,'The link you are looking for does not exist');
+        }
+        $post->increment('views');
+        return view('frontend.pages.blog-view' , compact('post'));
+    }
+
+    public function blog()
+    {
+        return view('frontend.pages.blog-index');
     }
 }
