@@ -29,81 +29,38 @@
                         <!-- Comment -->
                         <div class="blog_comment_area">
                             <h5 class="wsus__single_comment_heading">Total Comment 05</h5>
-                            <div class="wsus__single_comment">
-                                <div class="wsus__single_comment_img">
-                                    <img src="images/user_large_img.jpg" alt="comment" class="img-fluid w-100">
-                                </div>
-                                <div class="wsus__single_comment_text">
-                                    <h5>sumon jahan</h5>
-                                    <span>01-Dec-2021</span>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime placeat
-                                        ducimus magni facilis delectus.</p>
-                                </div>
-                            </div>
-                            <div class="wsus__single_comment">
-                                <div class="wsus__single_comment_img">
-                                    <img src="images/card_img.jpg" alt="comment" class="img-fluid w-100">
-                                </div>
-                                <div class="wsus__single_comment_text">
-                                    <h5>shimul sign</h5>
-                                    <span>21-Nov-2021</span>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime placeat
-                                        ducimus magni facilis delectus.</p>
-                                </div>
-                            </div>
-                            <div class="wsus__single_comment">
-                                <div class="wsus__single_comment_img">
-                                    <img src="images/user_large_img.jpg" alt="comment" class="img-fluid w-100">
-                                </div>
-                                <div class="wsus__single_comment_text">
-                                    <h5>sumon jahan</h5>
-                                    <span>01-Dec-2021</span>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime placeat
-                                        ducimus magni facilis delectus.</p>
-                                </div>
-                            </div>
-                            <div class="wsus__single_comment">
-                                <div class="wsus__single_comment_img">
-                                    <img src="images/card_img.jpg" alt="comment" class="img-fluid w-100">
-                                </div>
-                                <div class="wsus__single_comment_text">
-                                    <h5>shimul sign</h5>
-                                    <span>21-Nov-2021</span>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime placeat
-                                        ducimus magni facilis delectus.</p>
-                                </div>
-                            </div>
-                            <form class="input_comment">
-                                <h5>post a Comment </h5>
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <div class="blog_single_input">
-                                            <input type="text" placeholder="Name">
-                                        </div>
+                            @foreach($post->comments as $comment)
+                                <div class="wsus__single_comment">
+                                    <div class="wsus__single_comment_img">
+                                        <img src="{{$post->user->avatar}}" alt="{{$post->user->name}}" class="img-fluid w-100">
                                     </div>
-                                    <div class="col-xl-6">
-                                        <div class="blog_single_input">
-                                            <input type="email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="blog_single_input">
-                                            <input type="text" placeholder="Phone">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="blog_single_input">
-                                            <input type="text" placeholder="Subject">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="blog_single_input">
-                                            <textarea cols="3" rows="5" placeholder="Message"></textarea>
-                                            <button type="submit" class="read_btn">send</button>
-                                        </div>
+                                    <div class="wsus__single_comment_text">
+                                        <h5>{{$post->user->name}}</h5>
+                                        <span>{{date('d M Y',strtotime($comment->created_at))}}</span>
+                                        <p>{{$comment->comment}}</p>
                                     </div>
                                 </div>
-                            </form>
+                            @endforeach
+
+                            @auth()
+                                <form class="input_comment" method="post" action="{{route('comment.add')}}">
+                                    @csrf
+                                    <h5>post a Comment </h5>
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="blog_single_input">
+                                                <input type="hidden" name="post_id" value="{{$post->id}}">
+                                                <textarea name="comment" cols="3" rows="5" placeholder="Message"></textarea>
+                                                <button type="submit" class="read_btn">send</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            @endauth
+                            @guest
+                                <div class="alert alert-warning ">Please <a href="{{route('login')}}">log in</a> for add a comment! </div>
+                            @endguest
+
                         </div>
                     </div>
                 </div>

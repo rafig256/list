@@ -33,6 +33,7 @@ Route::post('/report',[FrontendController::class, 'report'])->name('report');
 Route::get('/blog' , [FrontendController::class , 'blog'] )->name('blog.index');
 Route::get('/blog/{post}',[FrontendController::class , 'blogShow'])->name('blog.show');
 Route::get('/blog/{id}/{post:slug}',[FrontendController::class , 'blogShowWithSlug'])->name('blog.show.slug');
+Route::post('/comment',[FrontendController::class , 'comment'])->name('comment.add');
 
 
 //Chat guest

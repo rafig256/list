@@ -24,4 +24,8 @@ class Post extends Model
     public function listing (){
         return $this->belongsTo(Listing::class);
     }
+
+    public function comments(){
+        return $this->hasMany(BlogComment::class, 'post_id', 'id');
+    }
 }
