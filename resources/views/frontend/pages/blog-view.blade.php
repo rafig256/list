@@ -20,7 +20,7 @@
                             <li><a href="#"><i class="fal fa-eye"></i> {{$post->views}} Views</a></li>
                             <li><i class="fal fa-tags"></i>
                                 @foreach($post->blogCategories as $category)
-                                    <span class="btn btn-sm"><a href="#" class="text-white">{{$category->name}}</a></span>
+                                    <span class="btn btn-sm"><a href="{{route('blog.index' , ['category' => $category->slug])}}" class="text-white">{{$category->name}}</a></span>
                                 @endforeach
                             </li>
                         </ul>
@@ -117,13 +117,11 @@
                             </form>
                         </div>
                         <div class="blog_category">
-                            <h4>search</h4>
+                            <h4>Category</h4>
                             <ul>
-                                <li><a href="#">Fitness <span>10</span></a></li>
-                                <li><a href="#">Lifestyle <span>7</span></a></li>
-                                <li><a href="#">Event <span>21</span></a></li>
-                                <li><a href="#">Bar & Cafe <span>14</span></a></li>
-                                <li><a href="#">Food & Drink <span>5</span></a></li>
+                                @foreach($blogCategories as $category)
+                                <li><a href="{{route('blog.index',['category' => $category->slug])}}">{{$category->name}} <span>{{$category->posts_count}}</span></a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="sidebar_blog">

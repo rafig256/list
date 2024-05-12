@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Amenity;
+use App\Models\BlogCategory;
 use App\Models\Category;
 use App\Models\Hero;
 use App\Models\Listing;
@@ -170,7 +171,12 @@ class FrontendController extends Controller
     public function blogShow(Post $post)
     {
         $post->increment('views');
-        return view('frontend.pages.blog-view' , compact('post'));
+        $blogCategories = BlogCategory::query()->withCount([
+            'posts' => function($query){
+                $query->where('status' , 1);
+            }
+        ])->where('status' , 1)->get();
+        return view('frontend.pages.blog-view' , compact('post' , 'blogCategories'));
     }
 
     public function blogShowWithSlug( $id ,Post $post)
@@ -179,7 +185,12 @@ class FrontendController extends Controller
             abort( 403,'The link you are looking for does not exist');
         }
         $post->increment('views');
-        return view('frontend.pages.blog-view' , compact('post'));
+        $blogCategories = BlogCategory::query()->withCount([
+            'posts' => function($query){
+            $query->where('status' , 1);
+            }
+        ])->where('status' , 1)->get();
+        return view('frontend.pages.blog-view' , compact('post','blogCategories'));
     }
 
     public function blog(Request $request)
@@ -189,7 +200,12 @@ class FrontendController extends Controller
                 $query->where('title' , 'LIKE' , '%'.$request->search.'%')
                 ->orWhere('description' , 'LIKE' , '%'.$request->search.'%');
             })
-            ->paginate(1);
+            ->when($request->has('category') && $request->filled('category'), function ($query) use ($request){
+                $query->whereHas('blogCategories' , function ($subQuery) use ($request){
+                    $subQuery->where('slug',$request->category );
+                });
+            })
+            ->paginate(6);
         return view('frontend.pages.blog-index',compact('posts'));
     }
 }
