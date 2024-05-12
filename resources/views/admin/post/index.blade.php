@@ -39,7 +39,7 @@
                         @foreach($posts as $post)
                             <tr>
                                 <td class="text-center">{{$post->id}}</td>
-                                <td>{{$post->title}}</td>
+                                <td><a href="{{route('admin.post.show' , $post->id)}}">{{$post->title}}</a> </td>
                                 <td>{{$post->user?->name}}</td>
                                 <td>{{$post->listing?->title}}</td>
                                 <td>{{$post->views}}</td>
