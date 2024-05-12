@@ -33,135 +33,34 @@
         <div class="blog_part_overlay">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-sm-6 col-lg-4">
-                        <div class="single_blog">
-                            <div class="img">
-                                <img src="images/blog_1.jpg" alt="bloh images" class="img-fluid w-100">
-                            </div>
-                            <div class="text">
-                                <span><i class="fal fa-calendar-alt"></i> 05 Julay 2021</span>
-                                <span><i class="fas fa-user"></i> by admin</span>
-                                <a href="#" class="title">How to create a Portfolio</a>
-                                <p>Lorem Ipsum is simply dummy of the printing typesetting industry. Lorem Ipsum has
-                                    been
-                                    simply dummy of the printing </p>
-                                <a class="read_btn" href="blog_details.html">learn more <i
-                                        class="far fa-chevron-double-right"></i></a>
+                    @foreach($posts as $post)
+                        <div class="col-xl-4 col-sm-6 col-lg-4">
+                            <div class="single_blog">
+                                <div class="img">
+                                    <img src="{{$post->image}}" alt="bloh images" class="img-fluid w-100">
+                                </div>
+                                <div class="text">
+                                    <span><i class="fal fa-calendar-alt"></i> {{date('d M Y' , strtotime($post->created_at))}}</span>
+                                    <span><i class="fas fa-user"></i> by {{$post->user->name}}</span>
+                                    <a href="{{route('blog.show',$post->id)}}" class="title">{{$post->title}}</a>
+                                    <p>{!! $post->description !!}</p>
+                                    <a class="read_btn" href="{{route('blog.show.slug',[$post->id, $post->slug])}}">learn more <i class="far fa-chevron-double-right"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-sm-6 col-lg-4">
-                        <div class="single_blog">
-                            <div class="img">
-                                <img src="images/blog_2.jpg" alt="bloh images" class="img-fluid w-100">
-                            </div>
-                            <div class="text">
+                    @endforeach
+                </div>
 
-                                <span><i class="fal fa-calendar-alt"></i> 05 Julay 2021</span>
-                                <span><i class="fas fa-user"></i> by admin</span>
-                                <a href="#" class="title">Maecenas tincidunt vehicula</a>
-                                <p>Lorem Ipsum is simply dummy of the printing typesetting industry. Lorem Ipsum has
-                                    been
-                                    simply dummy of the printing </p>
-                                <a class="read_btn" href="blog_details.html">learn more <i
-                                        class="far fa-chevron-double-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-sm-6 col-lg-4">
-                        <div class="single_blog">
-                            <div class="img">
-                                <img src="images/blog_3.jpg" alt="bloh images" class="img-fluid w-100">
-                            </div>
-                            <div class="text">
-                                <span><i class="fal fa-calendar-alt"></i> 05 Julay 2021</span>
-                                <span><i class="fas fa-user"></i> by admin</span>
-                                <a href="#" class="title">How to create a Resume</a>
-                                <p>Lorem Ipsum is simply dummy of the printing typesetting industry. Lorem Ipsum has
-                                    been
-                                    simply dummy of the printing </p>
-                                <a class="read_btn" href="blog_details.html">learn more <i
-                                        class="far fa-chevron-double-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-sm-6 col-lg-4">
-                        <div class="single_blog">
-                            <div class="img">
-                                <img src="images/blog_4.jpg" alt="bloh images" class="img-fluid w-100">
-                            </div>
-                            <div class="text">
-                                <span><i class="fal fa-calendar-alt"></i> 05 Julay 2021</span>
-                                <span><i class="fas fa-user"></i> by admin</span>
-                                <a href="#" class="title">How to create a Portfolio</a>
-                                <p>Lorem Ipsum is simply dummy of the printing typesetting industry. Lorem Ipsum has
-                                    been
-                                    simply dummy of the printing </p>
-                                <a class="read_btn" href="blog_details.html">learn more <i
-                                        class="far fa-chevron-double-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-sm-6 col-lg-4">
-                        <div class="single_blog">
-                            <div class="img">
-                                <img src="images/blog_5.jpg" alt="bloh images" class="img-fluid w-100">
-                            </div>
-                            <div class="text">
 
-                                <span><i class="fal fa-calendar-alt"></i> 05 Julay 2021</span>
-                                <span><i class="fas fa-user"></i> by admin</span>
-                                <a href="#" class="title">Maecenas tincidunt vehicula</a>
-                                <p>Lorem Ipsum is simply dummy of the printing typesetting industry. Lorem Ipsum has
-                                    been
-                                    simply dummy of the printing </p>
-                                <a class="read_btn" href="blog_details.html">learn more <i
-                                        class="far fa-chevron-double-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-sm-6 col-lg-4">
-                        <div class="single_blog">
-                            <div class="img">
-                                <img src="images/blog_6.jpg" alt="bloh images" class="img-fluid w-100">
-                            </div>
-                            <div class="text">
-                                <span><i class="fal fa-calendar-alt"></i> 05 Julay 2021</span>
-                                <span><i class="fas fa-user"></i> by admin</span>
-                                <a href="#" class="title">How to create a Resume</a>
-                                <p>Lorem Ipsum is simply dummy of the printing typesetting industry. Lorem Ipsum has
-                                    been
-                                    simply dummy of the printing </p>
-                                <a class="read_btn" href="blog_details.html">learn more <i
-                                        class="far fa-chevron-double-right"></i></a>
-                            </div>
-                        </div>
+                <div class="col-12">
+                    <div id="pagination">
+                        @if($posts->hasPages())
+                            {{$posts->withQueryString()->links()}}
+                        @endif
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div id="pagination">
-                            <nav aria-label="">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i
-                                                class="fas fa-chevron-left"></i></a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item" aria-current="page">
-                                        <a class="page-link" href="#">02</a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="#">03</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">04</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">05</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </section>

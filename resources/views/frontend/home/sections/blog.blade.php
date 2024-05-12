@@ -20,7 +20,7 @@
                             <div class="text">
                                 <span><i class="fal fa-calendar-alt"></i> {{date('d M Y', strtotime($post->created_at))}}</span>
                                 <span><i class="fas fa-user"></i> by {{$post->user->name}}</span>
-                                <a href="#" class="title">{{$post->title}}</a>
+                                <a href="{{route('blog.show.slug',[$post->id,$post->slug])}}" class="title">{{$post->title}}</a>
                                 <p>{!! str($post->description)->limit(100) !!} </p>
                                 <a class="read_btn" href="{{route('blog.show.slug',[$post->id,$post->slug])}}">learn more <i class="far fa-chevron-double-right"></i></a>
                             </div>

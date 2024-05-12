@@ -182,8 +182,14 @@ class FrontendController extends Controller
         return view('frontend.pages.blog-view' , compact('post'));
     }
 
-    public function blog()
+    public function blog(Request $request)
     {
-        return view('frontend.pages.blog-index');
+        $posts = Post::query()->where('status' , 1)
+            ->when($request->has('search') && $request->filled('search'), function($query) use($request){
+                $query->where('title' , 'LIKE' , '%'.$request->search.'%')
+                ->orWhere('description' , 'LIKE' , '%'.$request->search.'%');
+            })
+            ->paginate(1);
+        return view('frontend.pages.blog-index',compact('posts'));
     }
 }

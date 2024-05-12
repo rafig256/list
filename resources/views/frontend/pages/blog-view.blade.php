@@ -26,6 +26,7 @@
                         </ul>
                         <h4>{{$post->title}}</h4>
                         <p>{!! $post->description !!}</p>
+                        <!-- Comment -->
                         <div class="blog_comment_area">
                             <h5 class="wsus__single_comment_heading">Total Comment 05</h5>
                             <div class="wsus__single_comment">
@@ -110,8 +111,8 @@
                     <div class="blog_sidebar">
                         <div class="blog_search">
                             <h4>search</h4>
-                            <form>
-                                <input type="text" placeholder="Search">
+                            <form method="GET" action="{{route('blog.index')}}">
+                                <input type="text" name="search" placeholder="Search">
                                 <button type="submit"><i class="far fa-search"></i></button>
                             </form>
                         </div>
