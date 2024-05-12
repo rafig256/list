@@ -65,6 +65,26 @@
                                                                 </div>
                                                             </div>
                                                         </li>
+
+                                                        <li class="list-group-item list-group-item-action">
+                                                            <div class="media">
+                                                                <div class="d-flex mr-3">
+                                                                    <svg fill="#000000" width="50px" height="50px" viewBox="-7.5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                                        <title>category</title>
+                                                                        <path d="M2.594 4.781l-1.719 1.75h15.5l-1.719-1.75h-12.063zM17.219 13.406h-17.219v-6.031h17.219v6.031zM12.063 11.688v-1.719h-6.875v1.719h0.844v-0.875h5.156v0.875h0.875zM17.219 20.313h-17.219v-6.031h17.219v6.031zM12.063 18.594v-1.75h-6.875v1.75h0.844v-0.875h5.156v0.875h0.875zM17.219 27.188h-17.219v-6h17.219v6zM12.063 25.469v-1.719h-6.875v1.719h0.844v-0.875h5.156v0.875h0.875z"></path>
+                                                                    </svg>
+                                                                    <div class="media-body pl-2 pr-2">
+                                                                        <h6 class="tx-inverse">Category</h6>
+                                                                        <p class="mg-b-0">
+                                                                            @foreach($post->blogCategories as $category)
+                                                                                <span class="badge badge-secondary"> {{$category->name}} </span>
+                                                                            @endforeach
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
                                                         <li class="list-group-item list-group-item-action">
                                                             <div class="media">
                                                                 <div class="d-flex mr-3">
