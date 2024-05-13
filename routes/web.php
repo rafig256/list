@@ -35,6 +35,8 @@ Route::get('/blog/{post}',[\App\Http\Controllers\Frontend\BlogController::class 
 Route::get('/blog/{id}/{post:slug}',[\App\Http\Controllers\Frontend\BlogController::class , 'blogShowWithSlug'])->name('blog.show.slug');
 Route::post('/comment',[\App\Http\Controllers\Frontend\BlogController::class , 'comment'])->name('comment.add');
 
+//ABout PAge
+Route::get('/about' , [\App\Http\Controllers\Frontend\PageController::class , 'about'])->name('about');
 
 //Chat guest
 //Chat Ajax

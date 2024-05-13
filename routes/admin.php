@@ -43,6 +43,10 @@ Route::group([
     Route::get('/hero',[HeroController::class,'index'])->name('hero.index');
     Route::put('/hero',[HeroController::class,'update'])->name('hero.update');
 
+    //Pages
+    Route::get('/about',[\App\Http\Controllers\Admin\PageController::class , 'about'])->name('about.show');
+    Route::put('/about',[\App\Http\Controllers\Admin\PageController::class , 'update'])->name('about.update');
+
     //Category Route
     Route::resource('/category',CategoryController::class)->except(['show']);
 

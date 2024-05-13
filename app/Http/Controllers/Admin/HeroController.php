@@ -26,7 +26,7 @@ class HeroController extends Controller
             [
                 'id'=> 1,
                 'background'=> !empty($filePatch) ? $filePatch : $request->old_background,
-                'title'=> $request->title,
+                'titre'=> $request->title,
                 'sub_title'=> $request->sub_title,
             ]
         );
