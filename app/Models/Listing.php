@@ -55,4 +55,9 @@ class Listing extends Model
         $averageStar = $sumStar / $sumCountReview;
         return $averageStar;
     }
+
+    public function post()
+    {
+        return $this->hasOne(Post::class);
+    }
 }

@@ -83,6 +83,18 @@
                                 @endforeach
                             </ul>
                         </div>
+                        @if($post->listing_id)
+                            <div class="blog_category">
+                                <h4>listing</h4>
+                                <div>
+                                    <img src="{{$post->listing->image}}" alt="{{$post->listing->title}}" class="imgofluid w-100">
+                                </div>
+                                <div class="sidebar_blog_text" style="float: none; margin-top: 15px">
+                                    <h5><a href="{{route('listing.show',$post->listing->slug)}}"> {{$post->listing->title}}</a></h5>
+                                    <p> <span>{{date('d M Y' , strtotime($post->listing->created_at))}} </span> {{$post->listing->location->name}} </p>
+                                </div>
+                            </div>
+                        @endif
                         <div class="sidebar_blog">
                             <h4>Popular Post</h4>
                             @foreach($popularPosts as $popular)

@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title','listing view')
+@section('title',$listing->title)
 
 @section('content')
     <!--==========================
@@ -214,18 +214,22 @@
                                 </div>
                             @endif
 
-                            <div class="col-12">
-                                <div class="listing_det_side_contact">
-                                    <h5>quick contact</h5>
-                                        <form type="text" placeholder="Name*">
-                                            <input type="email" placeholder="Email*">
-                                            <input type="text" placeholder="Phone*">
-                                            <input type="text" placeholder="Subject*">
-                                            <textarea cols="3" rows="5" placeholder="Message*"></textarea>
-                                            <button type="submit" class="read_btn">send</button>
-                                        </form>
+                            @if($listing->post)
+                                <div class="col-12">
+                                    <div class="listing_det_side_list">
+                                        <h5>Similar Blog Post</h5>
+                                            <a href="{{route('blog.show.slug',[$listing->post->id, $listing->post->slug])}}" class="sidebar_blog_single">
+                                                <div class="sidebar_blog_img">
+                                                    <img src="{{asset($listing->post->image)}}" alt="{{$listing->post->title}}" class="imgofluid w-100">
+                                                </div>
+                                                <div class="sidebar_blog_text">
+                                                    <h5>{{$listing->post->title}}</h5>
+                                                    <p> <span>{{date('Y/m/d',strtotime($listing->post->created_at))}}</span>{{$listing->post->comments->count()}} Comment </p>
+                                                </div>
+                                            </a>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <div class="col-12">
                                 <div class="listing_det_side_contact">
@@ -245,7 +249,7 @@
                                                 </div>
                                                 <div class="sidebar_blog_text">
                                                     <h5>{{$listing->title}}</h5>
-                                                    <p> <span>{{date('Y/m/d',strtotime($listing->created_at))}}</span> 2 Comment </p>
+                                                    <p> <span>{{date('Y/m/d',strtotime($listing->created_at))}}</span>{{$listing->reviews->count()}} Review/s </p>
                                                 </div>
                                             </a>
                                         @endforeach
