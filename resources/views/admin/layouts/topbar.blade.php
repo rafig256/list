@@ -216,6 +216,9 @@
                     <li>
                         <a href="{{route('admin.payment-setting.index')}}"> payment</a>
                     </li>
+                    <li>
+                        <a href="{{route('admin.menu.index')}}"> Menu</a>
+                    </li>
                 </ul>
             </li>
         </ul>

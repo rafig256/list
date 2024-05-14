@@ -89,6 +89,8 @@ Route::group([
     Route::post('/general-setting',[SettingController::class,'updateGeneral'])->name('general-setting.update');
     Route::post('/pusher-setting',[SettingController::class,'updatePusher'])->name('pusher-setting.update');
 
+    //Menu
+    Route::get('/menu', [\App\Http\Controllers\Admin\MenuController::class , 'index'])->name('menu.index');
 
     //Payment Setting
     Route::get('/payment-setting',[PaymentSettingController::class,'index'])->name('payment-setting.index');
