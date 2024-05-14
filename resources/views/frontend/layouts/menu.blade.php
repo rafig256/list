@@ -10,37 +10,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('about')}}">about</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="listing_grid_view.html">listing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('packages')}}">pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">pages <i class="far fa-chevron-down"></i></a>
-                    <ul class="menu_droapdown">
-                        <li><a href="list_category.html">list category</a></li>
-                        <li><a href="blog_details.html">blog details</a></li>
-                        <li><a href="listing_details.html">listing details</a></li>
-                        <li><a href="dsahboard.html">dashboard</a></li>
-                        <li><a href="agent_public_profile.html">agent profile</a></li>
-                        <li><a href="payment_page.html">Payment Page</a></li>
-                        <li><a href="privacy_policy.html">Privacy Policy</a></li>
-                        <li><a href="terms_conditions.html">Terms Conditions</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('blog.index')}}">blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">contact us</a>
-                </li>
+                @foreach(Menu::getByName('Home') as $menu)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{$menu['link']}}">{!! $menu['child'] ? '<i class="far fa-chevron-down"></i>' : '' !!} {{$menu['label']}}</a>
+                        @if($menu['child'])
+                            <ul class="menu_droapdown">
+                                @foreach($menu['child'] as $child)
+                                    <li><a href="{{$child['link']}}">{{$child['label']}}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endforeach
             </ul>
             <a class="user_btn" href="dsahboard.html"><i class="far fa-plus"></i> add listing</a>
         </div>

@@ -166,7 +166,7 @@ $currentUrl = url()->current();
                                                         @endif
 
                                                         <ul class="menu ui-sortable" id="menu-to-edit"
-                                                            style="display: block;">
+                                                            style="display: block; direction: ltr">
                                                             @if(isset($menus))
                                                                 @foreach($menus as $m)
                                                                     <li id="menu-item-{{$m->id}}"
