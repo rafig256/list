@@ -43,6 +43,9 @@
                     <li>
                         <a href="{{route('admin.about.show')}}"> About </a>
                     </li>
+                    <li>
+                        <a href="{{route('admin.contact.show')}}"> Contact </a>
+                    </li>
                 </ul>
             </li>
 

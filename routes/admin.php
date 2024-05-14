@@ -45,7 +45,9 @@ Route::group([
 
     //Pages
     Route::get('/about',[\App\Http\Controllers\Admin\PageController::class , 'about'])->name('about.show');
-    Route::put('/about',[\App\Http\Controllers\Admin\PageController::class , 'update'])->name('about.update');
+    Route::put('/about',[\App\Http\Controllers\Admin\PageController::class , 'about_update'])->name('about.update');
+    Route::get('/contact' , [\App\Http\Controllers\Admin\PageController::class , 'contact'])->name('contact.show');
+    Route::put('/contact' , [\App\Http\Controllers\Admin\PageController::class , 'contact_update'])->name('contact.update');
 
     //Category Route
     Route::resource('/category',CategoryController::class)->except(['show']);
