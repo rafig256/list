@@ -69,6 +69,19 @@ $currentUrl = url()->current();
                                                                         </label>
                                                                     </p>
 
+                                                                    <p id="menu-item-name-wrap">
+                                                                        <label class="howto"
+                                                                               for="custom-menu-item-url">
+                                                                            <span>Pages</span>&nbsp;
+                                                                            <select name="" id="custom-menu-page-url" class="regular-text menu-item-textbox input-with-default-title">
+                                                                                <option selected disabled>Select</option>
+                                                                                @foreach(config('pages') as $page => $url)
+                                                                                    <option value="{{$url}}">{{$page}}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </label>
+                                                                    </p>
+
                                                                     @if(!empty($roles))
                                                                         <p id="menu-item-role_id-wrap">
                                                                             <label class="howto"
