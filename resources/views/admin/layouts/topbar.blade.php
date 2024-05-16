@@ -28,7 +28,7 @@
                 </ul>
             </li>
 
-            <li class="menu single-menu {{setActive(['admin.hero.index'])}}">
+            <li class="menu single-menu {{setActive(['admin.hero.index','admin.about.show','admin.contact.show','admin.testimonial.index','admin.testimonial.create'])}}">
                 <a href="#app" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-cpu"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
@@ -45,6 +45,12 @@
                     </li>
                     <li>
                         <a href="{{route('admin.contact.show')}}"> Contact </a>
+                    </li>
+                    <li class="sub-sub-submenu-list">
+                        <a href="{{route('admin.testimonial.index')}}">All Testimonial</a>
+                    </li>
+                    <li class="sub-sub-submenu-list">
+                        <a href="{{route('admin.testimonial.create')}}">create Testimonial</a>
                     </li>
                 </ul>
             </li>
@@ -131,23 +137,22 @@
                     </li>
                 </ul>
             </li>
-{{--            testimonial--}}
-            <li class="menu single-menu" {{setActive(['admin.testimonial.index', 'admin.testimonial.create'])}}>
+{{--            Role --}}
+            <li class="menu single-menu {{setActive(['admin.role.index','admin.role.create'])}}">
                 <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                        <span>testimonial</span>
+                        <span>Role</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
-                <ul class="collapse submenu list-unstyled"  data-parent="#topAccordion">
+                <ul class="collapse submenu list-unstyled" data-parent="#topAccordion">
                     <li class="sub-sub-submenu-list">
-                        <a href="{{route('admin.testimonial.index')}}">All Testimonial</a>
+                        <a href="{{route('admin.comment.index')}}">Roles</a>
                     </li>
                     <li class="sub-sub-submenu-list">
-                        <a href="{{route('admin.testimonial.create')}}">create Testimonial</a>
+                        <a href="{{route('admin.role.create')}}">Create Role</a>
                     </li>
-
                 </ul>
             </li>
 

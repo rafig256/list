@@ -80,6 +80,8 @@ Route::group([
     Route::put('/schedule/{listing}',[ScheduleController::class,'update'])->name('schedule.update');
     Route::get('/schedule/delete/{schedule}',[ScheduleController::class,'destroy'])->name('schedule.destroy');
 
+    //Role
+    Route::resource('/role' , \App\Http\Controllers\Admin\RoleController::class);
 
     //Packages
     Route::resource('/package',PackageController::class)->except(['show']);
