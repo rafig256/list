@@ -75,6 +75,9 @@ class RoleController extends Controller
             'permissions' => 'required'
         ]);
 
+        if ($role->name == 'Super Admin'){
+            abort(403,'You cannot edit this user!');
+        }
         $role->update(['name' => $request->role]);
         $role->syncPermissions($request->permissions);
 
@@ -89,6 +92,9 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        if ($role->name == 'Super Admin'){
+            abort(403,'You cannot delete this user!');
+        }
         $role->delete();
 
         toastr()->success('Role deleted successfully!');
