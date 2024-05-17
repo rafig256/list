@@ -4,6 +4,7 @@
 @push('css')
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link href="{{asset('admin/assets/css/users/account-setting.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/css/forms/switches.css')}}">
     <!--  END CUSTOM STYLE FILE  -->
 @endpush
 @section('content')
@@ -30,6 +31,23 @@
                                                                             <label for="role">Role <span class="text-danger">*</span></label>
                                                                             <input type="text" name="role" class="form-control mb-4" id="role" required>
                                                                         </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                    <div class="col-md-12">
+                                                                        @foreach($permissions as $group_name => $subPermissions)
+                                                                            <p>{{$group_name}}</p>
+                                                                            <div class="form-group" >
+                                                                                @foreach($subPermissions as $permission)
+                                                                                    <div class="row">
+                                                                                        <div class="pr-2">{{$permission['name']}}:</div>
+                                                                                        <label class="switch s-icons s-outline s-outline-primary mr-2">
+                                                                                            <input type="checkbox" name="permissions[]" value="{{$permission['id']}}">
+                                                                                            <span class="slider round"></span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        @endforeach
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="input-group social-tweet mb-3">
