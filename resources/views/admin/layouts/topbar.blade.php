@@ -148,7 +148,7 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" data-parent="#topAccordion">
                     <li class="sub-sub-submenu-list">
-                        <a href="{{route('admin.comment.index')}}">Roles</a>
+                        <a href="{{route('admin.role.index')}}">Roles</a>
                     </li>
                     <li class="sub-sub-submenu-list">
                         <a href="{{route('admin.role.create')}}">Create Role</a>

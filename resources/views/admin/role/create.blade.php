@@ -14,7 +14,7 @@
                 <div class="account-content">
                     <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
                         <div class="">
-                            <form id="general-info" class="" enctype="multipart/form-data" method="POST" action="{{route('admin.review-cat.store')}}">
+                            <form id="add-role" method="POST" action="{{route('admin.role.store')}}">
                                 @csrf
                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing section general-info">
                                     <div class="info">
@@ -41,7 +41,7 @@
                                                                                     <div class="row">
                                                                                         <div class="pr-2">{{$permission['name']}}:</div>
                                                                                         <label class="switch s-icons s-outline s-outline-primary mr-2">
-                                                                                            <input type="checkbox" name="permissions[]" value="{{$permission['id']}}">
+                                                                                            <input type="checkbox" name="permissions[]" value="{{$permission['name']}}">
                                                                                             <span class="slider round"></span>
                                                                                         </label>
                                                                                     </div>
@@ -71,8 +71,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-    <!--  BEGIN CUSTOM SCRIPTS FILE  -->
-    <script src="{{asset('admin/assets/js/users/account-settings.js')}}"></script>
-    <!--  END CUSTOM SCRIPTS FILE  -->
-@endpush
