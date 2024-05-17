@@ -57,24 +57,42 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Role $role)
     {
-        //
+        $rolePermissions = $role->permissions->pluck('name')->toArray();
+//        dd($rolePermissions);
+        $permissions = Permission::all()->groupBy('group_name');
+        return view('admin.role.edit' ,compact('role' , 'permissions' , 'rolePermissions'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'role' => 'required|string|unique:roles,name',
+            'permissions' => 'required'
+        ]);
+
+        $role->update(['name' => $request->role]);
+        $role->syncPermissions($request->permissions);
+
+        toastr()->success('Role updated successfully!');
+
+        return to_route('admin.role.index');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+
+        toastr()->success('Role deleted successfully!');
+
+        return to_route('admin.role.index');
     }
 }
