@@ -19,9 +19,9 @@ class UserSeeder extends Seeder
                 'email'=>'rafig_256@yahoo.com',
                 'password'=>bcrypt('256256'),
                 'user_type'=>'admin',
-                'phone'=>'09127846225',
+                'phone'=>'09357846225',
                 'address'=>'iran',
-                'website'=>'https://rafig256.ir',
+                'website'=>'https://rafig.ir',
                 'avatar'=>'/default/avatar.png',
                 'banner'=>'/default/breadcroumb_bg.jpg'
             ],
@@ -37,5 +37,8 @@ class UserSeeder extends Seeder
                 'banner'=>'/default/breadcroumb_bg.jpg'
             ]
         ]);
+
+        $user = User::where('name' , 'Rafig Khiyavi')->first();
+        $user->assignRole('Super Admin');
     }
 }

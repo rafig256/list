@@ -36,9 +36,14 @@
                                 <td class="text-center">{{$role->id}}</td>
                                 <td>{{$role->name}}</td>
                             <td>
-                                @foreach($role->permissions as $permission)
-                                    <span class="badge badge-primary m-1"> {{$permission->name}} </span>
-                                @endforeach
+                                @if($role->name == 'Super Admin')
+                                    <span class="badge badge-danger m-1"> All Permissions </span>
+                                @else
+                                    @foreach($role->permissions as $permission)
+                                        <span class="badge badge-primary m-1"> {{$permission->name}} </span>
+                                    @endforeach
+                                @endif
+
                             </td>
                                 <td class="text-center">
                                     <ul class="table-controls" style="display: inline-flex">
