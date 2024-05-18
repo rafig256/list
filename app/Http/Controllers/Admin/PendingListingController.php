@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class PendingListingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:pending listing'])->only(['index']);
+        $this->middleware(['permission:pending update'])->only(['update']);
+    }
+
     public function index()
     {
         $listings = Listing::query()->where('is_approved' , 0)->get();

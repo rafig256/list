@@ -11,6 +11,15 @@ use phpDocumentor\Reflection\Types\Null_;
 
 class LocationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['permission:location index'])->only(['index']);
+        $this->middleware(['permission:location create'])->only(['create','store']);
+        $this->middleware(['permission:location update'])->only(['edit','update']);
+        $this->middleware(['permission:location delete'])->only(['destroy']);
+    }
+
     public function index():View
     {
         $locations = Location::all();

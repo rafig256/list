@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:listing review'])->only(['index','destroy']);
+    }
     /**
      * Display a listing of the resource.
      */

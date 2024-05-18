@@ -81,7 +81,7 @@ Route::group([
     Route::get('/schedule/delete/{schedule}',[ScheduleController::class,'destroy'])->name('schedule.destroy');
 
     //Role
-    Route::resource('/role' , \App\Http\Controllers\Admin\RoleController::class);
+    Route::resource('/role' , \App\Http\Controllers\Admin\RoleController::class)->except(['show']);
 
     //Packages
     Route::resource('/package',PackageController::class)->except(['show']);

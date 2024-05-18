@@ -12,6 +12,12 @@ use Illuminate\View\View;
 class ImageGalleryController extends Controller
 {
     use FileUploadTrait;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:gallery create'])->only(['create','store']);
+        $this->middleware(['permission:gallery delete'])->only(['destroy']);
+    }
     public function create(Listing $listing) :View
     {
         $images = $listing->ImagesGallery;

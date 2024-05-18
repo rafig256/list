@@ -12,6 +12,12 @@ class PageController extends Controller
 {
     use FileUploadTrait;
 
+    public function __construct()
+    {
+        $this->middleware(['permission:about page update'])->only(['about','about_update']);
+        $this->middleware(['permission:contact page update'])->only(['contact','contact_update']);
+    }
+
     public function about()
     {
         $about = About::query()->first();

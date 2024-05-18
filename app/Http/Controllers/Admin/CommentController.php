@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:blog comment'])->only(['index','destroy']);
+    }
     public function index(){
         $comments = BlogComment::all();
         return view('admin.comment.index' , compact('comments'));

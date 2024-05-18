@@ -9,6 +9,13 @@ use Illuminate\Validation\Rule;
 
 class ReviewCatController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:review category index'])->only(['index']);
+        $this->middleware(['permission:review category create'])->only(['create','store']);
+        $this->middleware(['permission:review category update'])->only(['edit','update']);
+        $this->middleware(['permission:review category delete'])->only(['destroy']);
+    }
     /**
      * Display a listing of the resource.
      */

@@ -11,6 +11,10 @@ use Illuminate\View\View;
 
 class ChatController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:message index']);
+    }
     public function index() :View
     {
         $chats = Chat::query()->withCount(['messages'=> function($query){

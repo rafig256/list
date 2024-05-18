@@ -12,6 +12,14 @@ use Illuminate\View\View;
 
 class AmenityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:amenity index'])->only(['index']);
+        $this->middleware(['permission:amenity create'])->only(['create','store']);
+        $this->middleware(['permission:amenity update'])->only(['edit','update']);
+        $this->middleware(['permission:amenity delete'])->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      */

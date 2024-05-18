@@ -14,6 +14,16 @@ use Str;
 class CategoryController extends Controller
 {
     use FileUploadTrait;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:listing category index'])->only(['index']);
+        $this->middleware(['permission:listing category create'])->only(['create','store']);
+        $this->middleware(['permission:listing category update'])->only(['edit','update']);
+        $this->middleware(['permission:listing category delete'])->only(['destroy']);
+    }
+
+
     /**
      * Display a listing of the resource.
      */

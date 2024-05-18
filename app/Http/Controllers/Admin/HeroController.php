@@ -12,6 +12,12 @@ use Illuminate\View\View;
 class HeroController extends Controller
 {
     use FileUploadTrait;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:hero-update']);
+    }
+
     public function index(): View{
         $hero = Hero::query()->first();
         return view('admin.hero.index',['hero'=>$hero]);

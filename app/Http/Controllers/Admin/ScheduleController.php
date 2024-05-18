@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:schedule index'])->only(['index']);
+        $this->middleware(['permission:schedule create'])->only(['create','store']);
+        $this->middleware(['permission:schedule update'])->only(['update']);
+        $this->middleware(['permission:schedule delete'])->only(['destroy']);
+    }
 
     public function index()
     {

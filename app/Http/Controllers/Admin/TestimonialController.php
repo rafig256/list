@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 class TestimonialController extends Controller
 {
     use FileUploadTrait;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:testimonial index'])->only(['index']);
+        $this->middleware(['permission:testimonial create'])->only(['create','store']);
+        $this->middleware(['permission:testimonial update'])->only(['edit','update']);
+        $this->middleware(['permission:testimonial delete'])->only(['destroy']);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -56,14 +64,6 @@ class TestimonialController extends Controller
         toastr()->success('Testimonial created successfully!');
 
         return to_route('admin.testimonial.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**

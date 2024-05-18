@@ -9,6 +9,10 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:access management index']);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -46,13 +50,6 @@ class RoleController extends Controller
         return to_route('admin.role.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

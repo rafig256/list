@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class BlogCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:blog category index'])->only(['index']);
+        $this->middleware(['permission:blog category create'])->only(['create','store']);
+        $this->middleware(['permission:blog category update'])->only(['edit','update']);
+        $this->middleware(['permission:blog category delete'])->only(['destroy']);
+    }
     /**
      * Display a listing of the resource.
      */
