@@ -153,6 +153,9 @@
                     <li class="sub-sub-submenu-list">
                         <a href="{{route('admin.role.create')}}">Create Role</a>
                     </li>
+                    <li class="sub-sub-submenu-list">
+                        <a href="{{route('admin.user.index')}}">Users</a>
+                    </li>
                 </ul>
             </li>
 
