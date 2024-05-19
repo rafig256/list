@@ -12,6 +12,15 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
     use FileUploadTrait;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:user index'])->only(['index']);
+        $this->middleware(['permission:user create'])->only(['create','store']);
+        $this->middleware(['permission:user update'])->only(['edit','update']);
+        $this->middleware(['permission:user delete'])->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -35,7 +44,34 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $avatar = $this->uploadImage($request , 'avatar');
+        $banner = $this->uploadImage($request , 'banner');
+        $user = new User();
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->user_type = $request->user_type;
+        $user->address = $request->address;
+        $user->rate = $request->rate;
+        $user->in_link = $request->in_link;
+        $user->x_link = $request->x_link;
+        $user->fb_link = $request->fb_link;
+        $user->instagram_link = $request->instagram_link;
+        $user->wa_link = $request->wa_link;
+        $user->website = $request->website;
+        $user->about = $request->about;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->avatar = $avatar;
+        $user->banner = $banner;
+        $user->save();
 
+        if ($request->role !== 'none' && $request->user_type == 'admin'){
+            $user->assignRole($request->role);
+        }
+
+        toastr()->success('user created successfully!');
+
+        return to_route('admin.user.index');
     }
 
     /**
