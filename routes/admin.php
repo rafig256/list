@@ -84,7 +84,7 @@ Route::group([
     Route::resource('/role' , \App\Http\Controllers\Admin\RoleController::class)->except(['show']);
 
     //User
-    Route::resource('/user',\App\Http\Controllers\Admin\UserController::class);
+    Route::resource('/user',\App\Http\Controllers\Admin\UserController::class)->except(['show']);
 
     //Packages
     Route::resource('/package',PackageController::class)->except(['show']);
