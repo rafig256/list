@@ -94,6 +94,13 @@
                                                                 </div>
                                                             </div>
 
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="password">Change password <span class="text-danger">*</span> </label>
+                                                                    <input type="password" name="password" class="form-control mb-4" id="password" placeholder="password">
+                                                                </div>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>

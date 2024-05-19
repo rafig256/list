@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserCreateRequest;
+use App\Http\Requests\Admin\UserUpdateRequest;
 use App\Models\User;
 use App\Traits\FileUploadTrait;
-use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -42,7 +42,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
         $avatar = $this->uploadImage($request , 'avatar');
         $banner = $this->uploadImage($request , 'banner');
@@ -86,8 +86,9 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserCreateRequest $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
+//        dd($request->all());
         $avatar = $this->uploadImage($request , 'avatar');
         $banner = $this->uploadImage($request , 'banner');
         $user->name = $request->name;
@@ -102,6 +103,7 @@ class UserController extends Controller
         $request->filled('wa_link') ?? $user->wa_link = $request->wa_link;
         $user->website = $request->website;
         $user->about = $request->about;
+        if ($request->filled('password')){$user->password = bcrypt($request->password);}
         if ($request->has('avatar')){$user->avatar = $avatar;}
         if ($request->has('banner')){$user->banner = $banner;}
         $user->save();

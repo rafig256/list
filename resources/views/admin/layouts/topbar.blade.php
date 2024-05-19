@@ -110,7 +110,8 @@
                 </ul>
             </li>
 
-    {{--Blog--}}
+            {{--Blog--}}
+            @can('blog index')
             <li class="menu single-menu ">
                 <a href="#uiKit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -137,7 +138,9 @@
                     </li>
                 </ul>
             </li>
-{{--            Role --}}
+            @endcan
+            {{-- Role --}}
+            @canany(['access management index','user index'])
             <li class="menu single-menu {{setActive(['admin.role.index','admin.role.create'])}}">
                 <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -147,18 +150,22 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled" data-parent="#topAccordion">
+                    @can('access management index')
                     <li class="sub-sub-submenu-list">
                         <a href="{{route('admin.role.index')}}">Roles</a>
                     </li>
                     <li class="sub-sub-submenu-list">
                         <a href="{{route('admin.role.create')}}">Create Role</a>
                     </li>
+                    @endcan
+                    @can('user index')
                     <li class="sub-sub-submenu-list">
                         <a href="{{route('admin.user.index')}}">Users</a>
                     </li>
+                    @endcan
                 </ul>
             </li>
-
+            @endcanany
             <li class="menu single-menu {{setActive(['admin.package.index','admin.package.create','admin.review-cat.create','admin.review-cat.index','admin.review.index','admin.report.index'])}}">
                 <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">

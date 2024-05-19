@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserCreateRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
 
     /**
@@ -15,14 +15,13 @@ class UserCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255','unique:users,name'],
+            'name' => ['required', 'string', 'max:255' , 'unique:users,name,'.$this->user->id],
             'phone' => ['required'],
             'rate' => ['required','integer'],
             'user_type' => 'in:admin,user',
             'address' => 'required|min:5',
             'role' => 'required',
-            'email' => ['required','unique:users,email'],
-            'password' => ['required','min:4'],
+            'password' => 'nullable|min:4'
         ];
     }
 }
