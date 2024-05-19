@@ -7,10 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin/plugins/dropify/dropify.min.css')}}">
     <link href="{{asset('admin/assets/css/users/account-setting.css')}}" rel="stylesheet" type="text/css" />
     <!--  END CUSTOM STYLE FILE  -->
-
-    <!--- SELECT2 -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/plugins/select2/select2.min.css')}}">
-
 @endpush
 @section('content')
     <div class="account-settings-container layout-top-spacing">
@@ -56,23 +52,23 @@
                                                             </div>
 
                                                             <div class="col-sm-6">
-                                                                <label for="role" class="dob-input">Role <span class="text-danger">*</span> </label>
+                                                                <label for="user_type" class="dob-input">User Type <span class="text-danger">*</span> </label>
                                                                 <div class="form-group mr-1">
-                                                                    <select class="form-control" name="role" id="role" required>
-                                                                        <option value="" disabled>Select</option>
-                                                                        @foreach($roles as $role)
-                                                                            <option value="{{$role->id}}">{{$role->name}}</option>
-                                                                        @endforeach
+                                                                    <select class="form-control" id="user_type" name="user_type" required>
+                                                                        <option value="admin" @selected($user->user_type == 'admin')>admin</option>
+                                                                        <option value="user" @selected($user->user_type == 'user')>user</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-sm-6">
-                                                                <label for="user_type" class="dob-input">User Type <span class="text-danger">*</span> </label>
+                                                                <label for="role" class="dob-input">Role For Admin Type user <span class="text-danger">*</span> </label>
                                                                 <div class="form-group mr-1">
-                                                                    <select class="form-control" id="user_type" name="user_type" required>
-                                                                        <option value="admin">admin</option>
-                                                                        <option value="user">user</option>
+                                                                    <select class="form-control" name="role" id="role" required>
+                                                                        <option value="none" @selected($user->getRoleNames()->first() == '')>none</option>
+                                                                        @foreach($roles as $role)
+                                                                            <option value="{{$role->name}}" @selected($user->getRoleNames()->first() == $role->name)>{{$role->name}}</option>
+                                                                        @endforeach
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -94,7 +90,7 @@
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
                                                                     <label for="email">Email <span class="text-danger">*</span> </label>
-                                                                    <input type="email" name="email" class="form-control mb-4" id="email" placeholder="Email" value="{{$user->email}}" required>
+                                                                    <input type="email" class="form-control mb-4" id="email" placeholder="Email" value="{{$user->email}}" readonly >
                                                                 </div>
                                                             </div>
 
