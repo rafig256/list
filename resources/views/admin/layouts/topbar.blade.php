@@ -27,7 +27,7 @@
                     </li>
                 </ul>
             </li>
-
+            @canany(['hero update','about page update','contact page update','testimonial index'])
             <li class="menu single-menu {{setActive(['admin.hero.index','admin.about.show','admin.contact.show','admin.testimonial.index','admin.testimonial.create'])}}">
                 <a href="#app" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -37,24 +37,28 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="app" data-parent="#topAccordion">
-                    <li>
-                        <a href="{{route('admin.hero.index')}}"> hero </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.about.show')}}"> About </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.contact.show')}}"> Contact </a>
-                    </li>
-                    <li class="sub-sub-submenu-list">
-                        <a href="{{route('admin.testimonial.index')}}">All Testimonial</a>
-                    </li>
+                    @can('hero update')
+                    <li><a href="{{route('admin.hero.index')}}"> hero </a></li>
+                    @endcan
+                    @can('about page update')
+                    <li><a href="{{route('admin.about.show')}}"> About </a></li>
+                    @endcan
+                    @can('contact page update')
+                    <li><a href="{{route('admin.contact.show')}}"> Contact </a></li>
+                    @endcan
+                    @can('testimonial index')
+                    <li class="sub-sub-submenu-list"><a href="{{route('admin.testimonial.index')}}">All Testimonial</a></li>
+                    @endcan
+                    @can('testimonial create')
                     <li class="sub-sub-submenu-list">
                         <a href="{{route('admin.testimonial.create')}}">create Testimonial</a>
                     </li>
+                    @endcan
                 </ul>
             </li>
+            @endcanany
 
+            @canany(['listing index','gallery create','gallery delete','location index','amenity index'])
             <li class="menu single-menu {{setActive([
     'admin.category.index',
     'admin.category.create',
@@ -75,40 +79,39 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="components" data-parent="#topAccordion">
-                    <li>
-                        <a href="{{route('admin.category.index')}}"> Categories </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.category.create')}}">create Categories </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.location.index')}}"> Locations </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.location.create')}}"> Create Location </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.amenity.index')}}"> Amenity </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.amenity.create')}}"> Create Amenity </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.listing.index')}}"> All listing </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.listing.create')}}"> create listing </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.listing.pending.index')}}"> Pending listing </a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.schedule.index')}}"> All Schedule </a>
-                    </li>
-
+                    @can('listing category index')
+                    <li><a href="{{route('admin.category.index')}}"> Categories </a></li>
+                    @endcan
+                    @can('listing category create')
+                    <li><a href="{{route('admin.category.create')}}">create Categories </a></li>
+                    @endcan
+                    @can('location index')
+                    <li><a href="{{route('admin.location.index')}}"> Locations </a></li>
+                    @endcan
+                    @can('location create')
+                    <li><a href="{{route('admin.location.create')}}"> Create Location </a></li>
+                    @endcan
+                    @can('amenity index')
+                    <li><a href="{{route('admin.amenity.index')}}"> Amenity </a></li>
+                    @endcan
+                    @can('amenity update')
+                    <li><a href="{{route('admin.amenity.create')}}"> Create Amenity </a></li>
+                    @endcan
+                    @can('listing index')
+                    <li><a href="{{route('admin.listing.index')}}"> All listing </a></li>
+                    @endcan
+                    @can('listing create')
+                    <li><a href="{{route('admin.listing.create')}}"> create listing </a></li>
+                    @endcan
+                    @can('pending listing')
+                    <li><a href="{{route('admin.listing.pending.index')}}"> Pending listing </a></li>
+                    @endcan
+                    @can('schedule index')
+                    <li><a href="{{route('admin.schedule.index')}}"> All Schedule </a></li>
+                    @endcan
                 </ul>
             </li>
+            @endcanany
 
             {{--Blog--}}
             @can('blog index')
@@ -121,23 +124,14 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="uiKit" data-parent="#topAccordion">
-                    <li class="sub-sub-submenu-list">
-                        <a href="{{route('admin.blog-category.create')}}">create Blog Category</a>
-                    </li>
-                    <li class="sub-sub-submenu-list">
-                        <a href="{{route('admin.blog-category.index')}}">Blog Categories</a>
-                    </li>
-                    <li class="sub-sub-submenu-list">
-                        <a href="{{route('admin.post.index')}}">Posts</a>
-                    </li>
-                    <li class="sub-sub-submenu-list">
-                        <a href="{{route('admin.post.create')}}">create Post</a>
-                    </li>
-                    <li class="sub-sub-submenu-list">
-                        <a href="{{route('admin.comment.index')}}">Comments</a>
-                    </li>
+                    @can('blog category create')<li class="sub-sub-submenu-list"><a href="{{route('admin.blog-category.create')}}">create Blog Category</a></li>@endcan
+                    @can('blog category index')<li class="sub-sub-submenu-list"><a href="{{route('admin.blog-category.index')}}">Blog Categories</a></li>@endcan
+                    @can('blog index')<li class="sub-sub-submenu-list"><a href="{{route('admin.post.index')}}">Posts</a></li>@endcan
+                    @can('blog create')<li class="sub-sub-submenu-list"><a href="{{route('admin.post.create')}}">create Post</a></li>@endcan
+                    @can('blog comment')<li class="sub-sub-submenu-list"><a href="{{route('admin.comment.index')}}">Comments</a></li>@endcan
                 </ul>
             </li>
+
             @endcan
             {{-- Role --}}
             @canany(['access management index','user index'])
