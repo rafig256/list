@@ -33,57 +33,6 @@
                         <p>message</p>
                     </div>
                 </div>
-                <div class="col-xl-12">
-                    <div class="active_package">
-                        <h4>Active Package</h4>
-                        <div class="table-responsive">
-                            <table class="table dashboard_table">
-                                <tbody>
-                                <tr>
-                                    <td class="active_left">Package name</td>
-                                    <td class="package_right">Free</td>
-                                </tr>
-                                <tr>
-                                    <td class="active_left">Price</td>
-                                    <td class="package_right">$50</td>
-                                </tr>
-                                <tr>
-                                    <td class="active_left">Purchase Date</td>
-                                    <td class="package_right">15 October, 2021</td>
-                                </tr>
-                                <tr>
-                                    <td class="active_left">Expired Date</td>
-                                    <td class="package_right">14 November, 2021</td>
-                                </tr>
-                                <tr>
-                                    <td class="active_left">Package name</td>
-                                    <td class="package_right">Free</td>
-                                </tr>
-                                <tr>
-                                    <td class="active_left">Maximum Listing </td>
-                                    <td class="package_right">10</td>
-                                </tr>
-                                <tr>
-                                    <td class="active_left">Maximum Aminities</td>
-                                    <td class="package_right">5</td>
-                                </tr>
-                                <tr>
-                                    <td class="active_left">Maximum Photo</td>
-                                    <td class="package_right">5</td>
-                                </tr>
-                                <tr>
-                                    <td class="active_left">Maximum Video</td>
-                                    <td class="package_right">10</td>
-                                </tr>
-                                <tr>
-                                    <td class="active_left">Featured Listing Available</td>
-                                    <td class="package_right">no</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

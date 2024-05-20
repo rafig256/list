@@ -72,7 +72,7 @@
                         </div>
                         <div class="listing_det_text">
                             <p>
-                                {!! $listing->description !!}}
+                                {!! $listing->description !!}
                             </p>
                         </div>
                         <div class="listing_det_Photo">

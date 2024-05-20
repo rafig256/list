@@ -1,14 +1,14 @@
 <?php
 
 
-use App\Http\Controllers\Frontend\ListingController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\Frontend\DashboradController;
-use App\Http\Controllers\Frontend\ProfileController as FrontendProfileController;
+use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\Frontend\AgentListingGalleryController;
 use App\Http\Controllers\Frontend\AgentScheduleConrtoller;
+use App\Http\Controllers\Frontend\DashboradController;
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\ListingController;
+use App\Http\Controllers\Frontend\ProfileController as FrontendProfileController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +72,10 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
 
     //Chat logged in user
     Route::get('/message',[\App\Http\Controllers\Frontend\ChatController::class , 'index'])->name('message');
+
+    //review
+    Route::get('/review' , [\App\Http\Controllers\Client\ReviewController::class , 'index'])->name('review.index');
+    Route::put('/review/{review}' , [\App\Http\Controllers\Client\ReviewController::class , 'update'])->name('review.update');
 });
 
 require __DIR__.'/auth.php';
