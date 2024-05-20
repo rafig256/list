@@ -27,6 +27,8 @@
                     </li>
                 </ul>
             </li>
+
+{{--Pages--}}
             @canany(['hero update','about page update','contact page update','testimonial index'])
             <li class="menu single-menu {{setActive(['admin.hero.index','admin.about.show','admin.contact.show','admin.testimonial.index','admin.testimonial.create'])}}">
                 <a href="#app" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -58,6 +60,7 @@
             </li>
             @endcanany
 
+{{--Listing--}}
             @canany(['listing index','gallery create','gallery delete','location index','amenity index'])
             <li class="menu single-menu {{setActive([
     'admin.category.index',
@@ -113,7 +116,7 @@
             </li>
             @endcanany
 
-            {{--Blog--}}
+{{--Blog--}}
             @can('blog index')
             <li class="menu single-menu ">
                 <a href="#uiKit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -133,7 +136,8 @@
             </li>
 
             @endcan
-            {{-- Role --}}
+
+{{-- Role --}}
             @canany(['access management index','user index'])
             <li class="menu single-menu {{setActive(['admin.role.index','admin.role.create'])}}">
                 <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -160,7 +164,10 @@
                 </ul>
             </li>
             @endcanany
-            <li class="menu single-menu {{setActive(['admin.package.index','admin.package.create','admin.review-cat.create','admin.review-cat.index','admin.review.index','admin.report.index'])}}">
+
+{{--Listing Review--}}
+            @canany(['listing review','review category index'])
+            <li class="menu single-menu {{setActive(['admin.package.index','admin.package.create','admin.review-cat.create','admin.review-cat.index','admin.review.index'])}}">
                 <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
@@ -169,48 +176,32 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled "  data-parent="#topAccordion">
-                    <li class="{{setActive(['admin.review.index'])}}">
-                        <a href="{{route('admin.review.index')}}"> view review </a>
-                    </li>
-                    <li class="{{setActive(['admin.review-cat.create'])}}">
-                        <a href="{{route('admin.review-cat.create')}}"> create review category </a>
-                    </li>
-                    <li class="{{setActive(['admin.review-cat.index'])}}">
-                        <a href="{{route('admin.review-cat.index')}}"> review categories </a>
-                    </li>
-
-                    <li class="{{setActive(['admin.package.index'])}}">
-                        <a href="{{route('admin.package.index')}}"> All Packages </a>
-                    </li>
-                    <li class="{{setActive(['admin.package.create'])}}">
-                        <a href="{{route('admin.package.create')}}"> Create Packages </a>
-                    </li>
-                    <li class="{{setActive(['admin.report.index'])}}">
-                        <a href="{{route('admin.report.index')}}"> report list </a>
-                    </li>
-
+                    @can('listing review')<li class="{{setActive(['admin.review.index'])}}"><a href="{{route('admin.review.index')}}"> view review </a></li>@endcan
+                    @can('review category update')<li class="{{setActive(['admin.review-cat.create'])}}"><a href="{{route('admin.review-cat.create')}}"> create review category </a></li>@endcan
+                    @can('review category index')<li class="{{setActive(['admin.review-cat.index'])}}"><a href="{{route('admin.review-cat.index')}}"> review categories </a></li>@endcan
                 </ul>
             </li>
+            @endcanany
 
+{{--Support--}}
+            @can('message index')
             <li class="menu single-menu">
-                <a href="#page" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-                        <span>Support</span>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </a>
-                <ul class="collapse submenu list-unstyled" id="page"  data-parent="#topAccordion">
-                    <li>
-                        <a href="{{route('admin.chat.index')}}"> Chat </a>
-                    </li>
-                    <li>
-                        <a href="pages_contact_us.html"> Contact Form </a>
-                    </li>
-                </ul>
-            </li>
+                    <a href="#page" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                            <span>Support</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </a>
+                    <ul class="collapse submenu list-unstyled" id="page"  data-parent="#topAccordion">
+                        <li><a href="{{route('admin.chat.index')}}"> Chat </a></li>
+                    </ul>
+                </li>
+            @endcan
 
-            <li class="menu single-menu {{setActive(['admin.setting.index','admin.payment-setting.index'])}}">
+{{--Setting--}}
+            @canany(['settings','menu builder index','report index'])
+            <li class="menu single-menu {{setActive(['admin.setting.index','admin.payment-setting.index','admin.report.index'])}}">
                 <a href="#setting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
@@ -219,17 +210,15 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="setting" data-parent="#topAccordion">
-                    <li>
-                        <a href="{{route('admin.setting.index')}}"> original</a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.payment-setting.index')}}"> payment</a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.menu.index')}}"> Menu</a>
-                    </li>
+                    @can('settings')<li><a href="{{route('admin.setting.index')}}"> original</a></li>
+                    <li><a href="{{route('admin.payment-setting.index')}}"> payment</a></li>@endcan
+                    @can('menu builder index')<li><a href="{{route('admin.menu.index')}}"> Menu</a></li>@endcan
+                    @can('report index')<li class="{{setActive(['admin.report.index'])}}"><a href="{{route('admin.report.index')}}"> report list </a></li>@endcan
+                    <li class="{{setActive(['admin.package.index'])}}"><a href="{{route('admin.package.index')}}"> All Packages </a></li>
+                    <li class="{{setActive(['admin.package.create'])}}"><a href="{{route('admin.package.create')}}"> Create Packages </a></li>
                 </ul>
             </li>
+            @endcanany
         </ul>
     </nav>
 </div>
