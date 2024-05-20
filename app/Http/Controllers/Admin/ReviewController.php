@@ -27,6 +27,7 @@ class ReviewController extends Controller
     public function destroy(Review $review)
     {
         $review->delete();
+        // TODO: management listing_points Table
         toastr()->warning('Review deleted successfully');
 
         return to_route('admin.review.index');

@@ -7,6 +7,7 @@ use App\Models\ListingPoints;
 use App\Models\Review;
 use App\Models\ReviewPoints;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use function Sodium\increment;
 
 class ReviewController extends Controller
@@ -14,9 +15,10 @@ class ReviewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $reviews = \Auth::user()->reviews;
+        return view('frontend.dashboard.review.index' ,compact('reviews'));
     }
 
     /**
@@ -89,9 +91,23 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request , Review $review)
     {
-        //
+        $old_rate = $review->points->pluck('rate')->first();
+        $new_rate = \Auth::user()->rate;
+
+        $review->update(['text' => $request->text]);
+        foreach($review->points as $point){
+            ListingPoints::query()->where(['listing_id' => $review->listing_id , 'review_cat_id' => $point->review_cat_id ])
+                ->incrementEach([
+                    'sum_star' => ($new_rate * $request->points[$point->review_cat_id]) - ($old_rate * (int)$review->points->where('review_cat_id' ,$point->review_cat_id )->pluck('point')->first()),
+                    'count_review' => $new_rate - $old_rate
+                ]);
+            $point->update(['point' => $request->points[$point->review_cat_id] , 'rate' => $new_rate]);
+        }
+
+        toastr()->success('Review Updated Successfully!');
+        return redirect()->back();
     }
 
     /**

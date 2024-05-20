@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="my_listing">
-    <h4>basic information</h4>
+    <h4>basic information (Current Rate: {{$user->rate}})</h4>
     <form name="changeProfile" method="POST" action="{{route('user.profile.update')}}" enctype="multipart/form-data">
         @csrf
         @method('PUT')

@@ -74,8 +74,8 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
     Route::get('/message',[\App\Http\Controllers\Frontend\ChatController::class , 'index'])->name('message');
 
     //review
-    Route::get('/review' , [\App\Http\Controllers\Client\ReviewController::class , 'index'])->name('review.index');
-    Route::put('/review/{review}' , [\App\Http\Controllers\Client\ReviewController::class , 'update'])->name('review.update');
+    Route::get('/review' , [\App\Http\Controllers\Frontend\ReviewController::class , 'index'])->name('review.index');
+    Route::put('/review/{review}' , [\App\Http\Controllers\Frontend\ReviewController::class , 'update'])->name('review.update');
 });
 
 require __DIR__.'/auth.php';

@@ -10,11 +10,11 @@
                         @foreach($reviews as $review)
                             <div class="visitor_rev_single mt-2">
                                 <div class="visitor_rev_img">
-                                    <img src="{{asset($review->user->avatar)}}" alt="{{$review->user->name}}" class="img-fluid w-100">
+                                    <img src="{{asset($review->listing->image)}}" alt="{{$review->listing->slug}}" class="img-fluid w-100">
                                 </div>
                                 <div class="visitor_rev_text">
                                     <div class="d-flex flex-row justify-content-between">
-                                        <div><a class="title" href="#"> {{$review->user->name}}</span></a>  <span>{{date('d M Y', strtotime($review->created_at))}}</div>
+                                        <div><a class="title" href="#"> {{$review->listing->title}}</span></a>  <span>{{date('d M Y', strtotime($review->created_at))}}</div>
                                         <div>Rate: {{$review->points->first()->rate}}</div>
                                     </div>
                                     <div>
