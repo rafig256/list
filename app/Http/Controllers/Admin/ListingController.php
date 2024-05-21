@@ -30,7 +30,7 @@ class ListingController extends Controller
      */
     public function index()
     {
-        $listings = Listing::all();
+        $listings = Listing::query()->where('is_approved', 1)->get();
         return view('admin.listing.index',['listings' => $listings]);
     }
 

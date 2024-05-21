@@ -89,8 +89,8 @@
 
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label for="email">Email <span class="text-danger">*</span> </label>
-                                                            <input type="email" name="email" class="form-control mb-4" id="email" placeholder="Email" value="{{old('email')}}" required>
+                                                            <label for="email">Email </label>
+                                                            <input type="email" name="email" class="form-control mb-4" id="email" placeholder="Email" value="{{old('email' ?? "")}}">
                                                         </div>
                                                     </div>
 

@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Listing;
 use App\Models\ListingPoints;
 use App\Models\Review;
 use App\Models\ReviewPoints;
+use App\Traits\ReviewTrait;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use function Sodium\increment;
 
 class ReviewController extends Controller
 {
+
+    use ReviewTrait;
     /**
      * Display a listing of the resource.
      */
@@ -113,8 +116,18 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Review $review)
     {
-        //
+        $this->reviewDestroy($review);
+
+        return redirect()->back();
+
+    }
+
+    public function reviewVisitor()
+    {
+        $listingReviews = Listing::where('user_id' , \Auth::user()->id)->get();
+
+        return view('frontend.dashboard.review.visitor' ,compact('listingReviews'));
     }
 }

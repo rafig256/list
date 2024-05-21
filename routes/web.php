@@ -76,6 +76,8 @@ Route::group(['middleware' => 'auth','prefix' => '/user','as'=>'user.'],function
     //review
     Route::get('/review' , [\App\Http\Controllers\Frontend\ReviewController::class , 'index'])->name('review.index');
     Route::put('/review/{review}' , [\App\Http\Controllers\Frontend\ReviewController::class , 'update'])->name('review.update');
+    Route::delete('/review/{review}' , [\App\Http\Controllers\Frontend\ReviewController::class , 'destroy'])->name('review.destroy');
+    Route::get('/review-visitor', [\App\Http\Controllers\Frontend\ReviewController::class , 'reviewVisitor'])->name('review.visitor');
 });
 
 require __DIR__.'/auth.php';

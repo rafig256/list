@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ListingPoints;
 use App\Models\Review;
-use Illuminate\Support\Facades\DB;
+use App\Traits\ReviewTrait;
 
 
 class ReviewController extends Controller
 {
+    use ReviewTrait;
     public function __construct()
     {
         $this->middleware(['permission:listing review'])->only(['index','destroy']);
@@ -29,28 +29,7 @@ class ReviewController extends Controller
 
     public function destroy(Review $review)
     {
-        try {
-            DB::beginTransaction();
-
-            $rate = $review->points()->pluck('rate')->first();
-            $listing_id = $review->listing_id;
-
-            foreach ($review->points as $point) {
-                $review_cat_id = $point->review_cat_id;
-                ListingPoints::query()->where(['listing_id' => $listing_id, 'review_cat_id' => $review_cat_id])
-                    ->decrementEach(['count_review' => $rate, 'sum_star' => $rate * $point->point]);
-            }
-
-            // TODO: management listing_points Table
-
-            toastr()->success('Review deleted successfully');
-            $review->delete();
-
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
-            toastr()->error('Error deleting review: ' . $e->getMessage());
-        }
+        $this->reviewDestroy($review);
 
         return to_route('admin.review.index');
     }

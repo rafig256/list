@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('description');
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('address');
             $table->string('website')->nullable();
             $table->string('facebook_link')->nullable();

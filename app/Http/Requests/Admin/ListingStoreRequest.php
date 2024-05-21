@@ -23,7 +23,7 @@ class ListingStoreRequest extends FormRequest
             "location_id" => "required|integer|exists:locations,id",
             "address" => "required|string|max:255",
             'phone' => 'required|string|min:6|max:14',
-            "email" => "required|email",
+            "email" => "nullable|email",
             "map_embed_code" => 'nullable|string|max:255',
             "website" => "nullable|url",
             "amenity_id.*" => "integer",

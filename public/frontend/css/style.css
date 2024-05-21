@@ -5811,5 +5811,14 @@ button.trashIcon, a.editIcon{
 a.editIcon{
     background: black !important;
 }
-
-
+.rafig-box{
+    border-radius: 5px 5px 0 0;
+    padding: 5px;
+    background-color: white;
+    transition: background-color 1s ease;
+}
+.rafig-box:hover {
+    background-color: #f3b75f;
+    cursor: pointer;
+    transition: background-color 1s ease;
+}

@@ -8,13 +8,15 @@ class AgentListingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return $this->listing->user_id == auth()->id();
-    }
+ *
+* public function authorize(): bool
+    * {
+        * return $this->listing->user_id == auth()->id();
+    * }
 
-    /**
+
+     * /
+     * /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -30,7 +32,7 @@ class AgentListingRequest extends FormRequest
             "location_id" => "required|integer|exists:locations,id",
             "address" => "required|string|max:255",
             'phone' => 'required|string|min:6|max:14',
-            "email" => "required|email",
+            "email" => "nullable|email",
             "map_embed_code" => 'nullable|string|max:255',
             "website" => "nullable|url",
             "amenity_id.*" => "integer",

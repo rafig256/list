@@ -7,6 +7,7 @@
         <li><a href="{{route('user.profile.index')}}"><i class="far fa-user"></i> My Profile</a></li>
         <li><a href="{{route('user.listing.index')}}"><i class="fas fa-list-ul"></i> My Listing</a></li>
         <li><a href="{{route('user.review.index')}}"><i class="far fa-star"></i> My Review</a></li>
+        <li><a href="{{route('user.review.visitor')}}"><i class="far fa-star"></i> Visitor Review</a></li>
         <li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf

@@ -30,7 +30,14 @@
                                         <span class="small_text">{{$review->text}}</span>
                                         <ul>
                                             <li><a href="#" data-review="{{$review->id}}" class="edit"><i class="fal fa-edit"></i> edit</a></li>
-                                            <li><a href="#"><i class="fal fa-trash-alt"></i> delete</a></li>
+                                            <li>
+                                                <form action="{{route('user.review.destroy' , $review->id)}}" class="pt-0" method="POST" onclick="return confirm('Are you sure?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" style="background-color: red; padding: 5px 20px; font-size: 12px; border-radius: 3px"><i class="fal fa-trash-alt"></i> delete</button>
+                                                </form>
+                                            </li>
+
                                         </ul>
                                     </div>
 
