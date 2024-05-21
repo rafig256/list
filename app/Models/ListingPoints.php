@@ -22,6 +22,9 @@ class ListingPoints extends Model
 
     public function getAverageStarAttribute()
     {
+        if ($this->count_review == 0){
+            return 0;
+        }
         return $this->sum_star / $this->count_review ;
     }
 }

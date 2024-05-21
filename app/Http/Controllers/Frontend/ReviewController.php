@@ -96,7 +96,7 @@ class ReviewController extends Controller
         $old_rate = $review->points->pluck('rate')->first();
         $new_rate = \Auth::user()->rate;
 
-        $review->update(['text' => $request->text]);
+        $review->update(['text' => $request->text , 'status' => 0]);
         foreach($review->points as $point){
             ListingPoints::query()->where(['listing_id' => $review->listing_id , 'review_cat_id' => $point->review_cat_id ])
                 ->incrementEach([
@@ -106,7 +106,7 @@ class ReviewController extends Controller
             $point->update(['point' => $request->points[$point->review_cat_id] , 'rate' => $new_rate]);
         }
 
-        toastr()->success('Review Updated Successfully!');
+        toastr()->success('Your comment has been successfully updated. It will be displayed after management approval!');
         return redirect()->back();
     }
 

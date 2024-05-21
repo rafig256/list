@@ -51,7 +51,7 @@
                                         {{$pointList->reviewCategory->name}}
                                         <p class="rating">
                                         @for($i = 1 ; $i < 11 ;  $i++)
-                                            <i @class(['fas' => $pointList->averageStar > $i , 'far' => $pointList->averageStar <= $i ,'fa-star']) style="color: gold" ></i>
+                                            <i @class(['fas' => $pointList->averageStar >= $i , 'far' => $pointList->averageStar <= $i ,'fa-star']) style="color: gold" ></i>
                                         @endfor
                                         </p>
                                     @endforeach

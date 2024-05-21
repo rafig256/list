@@ -15,6 +15,7 @@
                                 <div class="visitor_rev_text">
                                     <div class="d-flex flex-row justify-content-between">
                                         <div><a class="title" href="#"> {{$review->listing->title}}</span></a>  <span>{{date('d M Y', strtotime($review->created_at))}}</div>
+                                        <div><span @style(['padding: 0px 5px; border-radius: 5px; color:white;','background-color: green' => $review->status == 1 , 'background-color: red' => $review->status == 0 ])>{{$review->status ? 'verified' : 'pending'}}</span> </div>
                                         <div>Rate: {{$review->points->first()->rate}}</div>
                                     </div>
                                     <div>

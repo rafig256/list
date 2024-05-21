@@ -52,6 +52,8 @@ class Listing extends Model
             $sumStar =+ $listingPoint->sum_star;
             $sumCountReview =+ $listingPoint->count_review;
         }
+        if ($sumCountReview == 0)
+        {return 0;}
         $averageStar = $sumStar / $sumCountReview;
         return $averageStar;
     }
