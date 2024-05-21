@@ -66,6 +66,7 @@
     border: 1px solid #e0e6ed;
     margin: 0 0 12px 0; }
   .icon--counter-container .ico-counter {
+    text-align: center;
     font-size: 25px;
     color: #3b3f5c;
     margin-bottom: 0; }

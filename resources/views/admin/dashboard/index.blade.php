@@ -2,13 +2,21 @@
 
 @section('title','Admin | Dashboard')
 
+@push('css')
+    <!--  BEGIN CUSTOM STYLE FILE  -->
+    <link href="{{asset('admin/assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('admin/assets/css/components/custom-counter.css')}}" rel="stylesheet" type="text/css">
+    <!--  END CUSTOM STYLE FILE  -->
+@endpush
+
 @section('content')
     <div class="page-header">
         <div class="page-title">
             <h3>Analytics Dashboard</h3>
         </div>
         <div class="dropdown filter custom-dropdown-icon">
-            <a class="dropdown-toggle btn" href="#" role="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text"><span>Show</span> : Daily Analytics</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+            <a class="dropdown-toggle btn" href="#" role="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text"><span>Show</span> : Daily Analytics</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather counter-ico feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>            </a>
 
             <div class="dropdown-menu" aria-labelledby="filterDropdown">
                 <a class="dropdown-item" data-value="<span>Show</span> : Daily Analytics" href="javascript:void(0);">Daily Analytics</a>
@@ -21,424 +29,80 @@
     </div>
 
     <div class="row layout-top-spacing">
-
-
-
-        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
             <div class="widget-four">
                 <div class="widget-heading">
-                    <h5 class="">Visitors by Browser</h5>
+                    <h5 class="">statistics</h5>
                 </div>
-                <div class="widget-content">
-                    <div class="vistorsBrowser">
-                        <div class="browser-list">
-                            <div class="w-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chrome"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
-                            </div>
-                            <div class="w-browser-details">
-                                <div class="w-browser-info">
-                                    <h6>Chrome</h6>
-                                    <p class="browser-count">65%</p>
-                                </div>
-                                <div class="w-browser-stats">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-gradient-primary" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="icon--counter-container">
+
+                    <div class="counter-container">
+
+                        <div class="counter-content">
+                            <h1 class="ico-counter1 ico-counter">{{$users}}</h1>
                         </div>
 
-                        <div class="browser-list">
-                            <div class="w-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-compass"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
-                            </div>
-                            <div class="w-browser-details">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather counter-ico feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
 
-                                <div class="w-browser-info">
-                                    <h6>Safari</h6>
-                                    <p class="browser-count">25%</p>
-                                </div>
-
-                                <div class="w-browser-stats">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 35%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="browser-list">
-                            <div class="w-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                            </div>
-                            <div class="w-browser-details">
-
-                                <div class="w-browser-info">
-                                    <h6>Others</h6>
-                                    <p class="browser-count">15%</p>
-                                </div>
-
-                                <div class="w-browser-stats">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
+                        <p class="ico-counter-text">Users</p>
                     </div>
 
-                </div>
-            </div>
-        </div>
+                    <div class="counter-container">
 
-        <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-            <div class="row widget-statistic">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                    <div class="widget widget-one_hybrid widget-followers">
-                        <div class="widget-heading">
-                            <div class="w-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                            </div>
-                            <p class="w-value">31.6K</p>
-                            <h5 class="">Followers</h5>
+                        <div class="counter-content">
+                            <h1 class="ico-counter2 ico-counter">{{$listing}}</h1>
                         </div>
-                        <div class="widget-content">
-                            <div class="w-chart">
-                                <div id="hybrid_followers"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                    <div class="widget widget-one_hybrid widget-referral">
-                        <div class="widget-heading">
-                            <div class="w-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                            </div>
-                            <p class="w-value">1,900</p>
-                            <h5 class="">Referral</h5>
-                        </div>
-                        <div class="widget-content">
-                            <div class="w-chart">
-                                <div id="hybrid_followers1"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                    <div class="widget widget-one_hybrid widget-engagement">
-                        <div class="widget-heading">
-                            <div class="w-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                            </div>
-                            <p class="w-value">18.2%</p>
-                            <h5 class="">Engagement</h5>
-                        </div>
-                        <div class="widget-content">
-                            <div class="w-chart">
-                                <div id="hybrid_followers3"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-            <div class="widget widget-chart-three">
-                <div class="widget-heading">
-                    <div class="">
-                        <h5 class="">Unique Visitors</h5>
+                        <svg width="24px" height="24px" viewBox="0 0 60 60" stroke="currentColor" class="feather counter-ico feather-user">
+                            <g id="People"stroke-width="1">
+                                <g id="Icon-11">
+                                    <path d="M28,27 L28,30 L32,30 L32,27 L32,22 L28,22 L28,27 Z M8,27 C8,26.448 8.448,26 9,26 L26,26 L26,22 C26,20.897 26.897,20 28,20 L32,20 C33.103,20 34,20.897 34,22 L34,26 L51,26 C51.552,26 52,26.448 52,27 C52,27.552 51.552,28 51,28 L34,28 L34,30 C34,31.103 33.103,32 32,32 L28,32 C26.897,32 26,31.103 26,30 L26,28 L9,28 C8.448,28 8,27.552 8,27 L8,27 Z M30.03,29 C30.583,29 31.03,28.552 31.03,28 C31.03,27.448 30.583,27 30.03,27 L30.02,27 C29.468,27 29.025,27.448 29.025,28 C29.025,28.552 29.478,29 30.03,29 L30.03,29 Z M7,10 C6.449,10 6,10.449 6,11 L6,40 L54,40 L54,11 C54,10.449 53.551,10 53,10 L7,10 Z M26,8 L34,8 L34,6 L26,6 L26,8 Z M22,8 L24,8 L24,5 C24,4.448 24.448,4 25,4 L35,4 C35.552,4 36,4.448 36,5 L36,8 L38,8 L38,3 C38,2.449 37.551,2 37,2 L23,2 C22.449,2 22,2.449 22,3 L22,8 Z M7,8 L20,8 L20,3 C20,1.346 21.346,0 23,0 L37,0 C38.654,0 40,1.346 40,3 L40,8 L53,8 C54.654,8 56,9.346 56,11 L56,41 C56,41.552 55.552,42 55,42 L5,42 C4.448,42 4,41.552 4,41 L4,11 C4,9.346 5.346,8 7,8 L7,8 Z M39,54 L36,54 L36,53 C36,52.448 35.552,52 35,52 C34.448,52 34,52.448 34,53 L34,55 C34,55.552 34.448,56 35,56 L39,56 C40.123,56 41.295,56.914 41.775,58 L18.225,58 C18.705,56.914 19.877,56 21,56 L31,56 C31.552,56 32,55.552 32,55 C32,54.448 31.552,54 31,54 L26,54 L26,53 C26,52.448 25.552,52 25,52 C24.448,52 24,52.448 24,53 L24,54 L21,54 C18.43,54 16,56.43 16,59 C16,59.552 16.448,60 17,60 L43,60 C43.552,60 44,59.552 44,59 C44,56.43 41.57,54 39,54 L39,54 Z M30.02,44 C29.468,44 29.025,44.448 29.025,45 C29.025,45.552 29.478,46 30.03,46 C30.583,46 31.03,45.552 31.03,45 C31.03,44.448 30.583,44 30.03,44 L30.02,44 Z M60,9 L60,45 C60,47.804 57.804,50 55,50 L5,50 C1.898,50 0,45.468 0,43 L0,9 C0.191,6.167 2.386,4 5,4 L17,4 C17.552,4 18,4.448 18,5 C18,5.552 17.552,6 17,6 L5,6 C3.252,6 2.101,7.56 1.998,9.068 L2,43 C2,45.02 3.58,48 5,48 L55,48 C56.71,48 58,46.71 58,45 L58,9 C58,7.346 56.654,6 55,6 L43,6 C42.448,6 42,5.552 42,5 C42,4.448 42.448,4 43,4 L55,4 C57.757,4 60,6.243 60,9 L60,9 Z" id="job-desktop">
+
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                        <p class="ico-counter-text">Listings</p>
                     </div>
 
-                    <div class="dropdown  custom-dropdown">
-                        <a class="dropdown-toggle" href="#" role="button" id="uniqueVisitors" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="uniqueVisitors">
-                            <a class="dropdown-item" href="javascript:void(0);">View</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Update</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Download</a>
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="ico-counter3 ico-counter">{{$review}}</h1>
                         </div>
-                    </div>
-                </div>
 
-                <div class="widget-content">
-                    <div id="uniqueVisits"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-            <div class="widget widget-activity-three">
-
-                <div class="widget-heading">
-                    <h5 class="">Notifications</h5>
-                </div>
-
-                <div class="widget-content">
-
-                    <div class="mt-container mx-auto">
-                        <div class="timeline-line">
-
-                            <div class="item-timeline timeline-new">
-                                <div class="t-dot">
-                                    <div class="t-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                                </div>
-                                <div class="t-content">
-                                    <div class="t-uppercontent">
-                                        <h5>Logs</h5>
-                                        <span class="">27 Feb, 2020</span>
-                                    </div>
-                                    <p><span>Updated</span> Server Logs</p>
-                                    <div class="tags">
-                                        <div class="badge badge-primary">Logs</div>
-                                        <div class="badge badge-success">CPanel</div>
-                                        <div class="badge badge-warning">Update</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="item-timeline timeline-new">
-                                <div class="t-dot">
-                                    <div class="t-success"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
-                                </div>
-                                <div class="t-content">
-                                    <div class="t-uppercontent">
-                                        <h5>Mail</h5>
-                                        <span class="">28 Feb, 2020</span>
-                                    </div>
-                                    <p>Send Mail to <a href="javascript:void(0);">HR</a> and <a href="javascript:void(0);">Admin</a></p>
-                                    <div class="tags">
-                                        <div class="badge badge-primary">Admin</div>
-                                        <div class="badge badge-success">HR</div>
-                                        <div class="badge badge-warning">Mail</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="item-timeline timeline-new">
-                                <div class="t-dot">
-                                    <div class="t-danger"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                                </div>
-                                <div class="t-content">
-                                    <div class="t-uppercontent">
-                                        <h5>Task Completed</h5>
-                                        <span class="">01 Mar, 2020</span>
-                                    </div>
-                                    <p>Backup <span>Files EOD</span></p>
-                                    <div class="tags">
-                                        <div class="badge badge-primary">Backup</div>
-                                        <div class="badge badge-success">EOD</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="item-timeline timeline-new">
-                                <div class="t-dot">
-                                    <div class="t-warning"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg></div>
-                                </div>
-                                <div class="t-content">
-                                    <div class="t-uppercontent">
-                                        <h5>Collect Docs</h5>
-                                        <span class="">10 Mar, 2020</span>
-                                    </div>
-                                    <p>Collected documents from <a href="javascript:void(0);">Sara</a></p>
-                                    <div class="tags">
-                                        <div class="badge badge-success">Collect</div>
-                                        <div class="badge badge-warning">Docs</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="item-timeline timeline-new">
-                                <div class="t-dot">
-                                    <div class="t-dark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-server"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
-                                </div>
-                                <div class="t-content">
-                                    <div class="t-uppercontent">
-                                        <h5>Reboot</h5>
-                                        <span class="">06 Apr, 2020</span>
-                                    </div>
-                                    <p>Server rebooted successfully</p>
-                                    <div class="tags">
-                                        <div class="badge badge-warning">Reboot</div>
-                                        <div class="badge badge-primary">Server</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12 layout-spacing">
-            <div class="widget widget-one">
-                <div class="widget-heading">
-                    <h6 class="">Statistics</h6>
-                </div>
-                <div class="w-chart">
-                    <div class="w-chart-section">
-                        <div class="w-detail">
-                            <p class="w-title">Total Visits</p>
-                            <p class="w-stats">423,964</p>
-                        </div>
-                        <div class="w-chart-render-one">
-                            <div id="total-users"></div>
-                        </div>
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" class="feather counter-ico feather-user">
+                            <path opacity="0.5" d="M22 10.5V12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2H13.5" stroke="blue" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M17.3009 2.80624L16.652 3.45506L10.6872 9.41993C10.2832 9.82394 10.0812 10.0259 9.90743 10.2487C9.70249 10.5114 9.52679 10.7957 9.38344 11.0965C9.26191 11.3515 9.17157 11.6225 8.99089 12.1646L8.41242 13.9L8.03811 15.0229C7.9492 15.2897 8.01862 15.5837 8.21744 15.7826C8.41626 15.9814 8.71035 16.0508 8.97709 15.9619L10.1 15.5876L11.8354 15.0091C12.3775 14.8284 12.6485 14.7381 12.9035 14.6166C13.2043 14.4732 13.4886 14.2975 13.7513 14.0926C13.9741 13.9188 14.1761 13.7168 14.5801 13.3128L20.5449 7.34795L21.1938 6.69914C22.2687 5.62415 22.2687 3.88124 21.1938 2.80624C20.1188 1.73125 18.3759 1.73125 17.3009 2.80624Z" stroke="#1C274C" stroke-width="1.5"/>
+                            <path opacity="0.5" d="M16.6522 3.45508C16.6522 3.45508 16.7333 4.83381 17.9499 6.05034C19.1664 7.26687 20.5451 7.34797 20.5451 7.34797M10.1002 15.5876L8.4126 13.9" stroke="blue" stroke-width="1.5"/>
+                        </svg>
+                        <p class="ico-counter-text">Reviews</p>
                     </div>
 
-                    <div class="w-chart-section">
-                        <div class="w-detail">
-                            <p class="w-title">Paid Visits</p>
-                            <p class="w-stats">7,929</p>
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="ico-counter3 ico-counter">{{$post}}</h1>
                         </div>
-                        <div class="w-chart-render-one">
-                            <div id="paid-visits"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-            <div class="widget widget-card-four">
-                <div class="widget-content">
-                    <div class="w-content">
-                        <div class="w-info">
-                            <h6 class="value">$ 45,141</h6>
-                            <p class="">Expenses</p>
-                        </div>
-                        <div class="">
-                            <div class="w-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-            <div class="widget widget-account-invoice-two">
-                <div class="widget-content">
-                    <div class="account-box">
-                        <div class="info">
-                            <h5 class="">Pro Plan</h5>
-                            <p class="inv-balance">$10,344</p>
-                        </div>
-                        <div class="acc-action">
-                            <div class="">
-                                <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
-                                <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></a>
-                            </div>
-                            <a href="javascript:void(0);">Upgrade</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-            <div class="widget widget-card-one">
-                <div class="widget-content">
-
-                    <div class="media">
-                        <div class="w-img">
-                            <img src="assets/img/90x90.jpg" alt="avatar">
-                        </div>
-                        <div class="media-body">
-                            <h6>Jimmy Turner</h6>
-                            <p class="meta-date-time">Monday, Nov 18</p>
-                        </div>
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" class="feather counter-ico feather-user">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 15.6857L19.5 4.5H4.5V18.75L5.25 19.5L13.7205 19.5V19.5H15.2205V19.5H15.6857L19.5 15.6857ZM15.2205 17.8439L17.8437 15.2206H15.2205V17.8439ZM18 13.7206L18 6L6 6L6 18L13.7205 18V13.7206H18Z" fill="blue"/>
+                        </svg>
+                        <p class="ico-counter-text">Posts</p>
                     </div>
 
-                    <p>"Duis aute irure dolor" in reprehenderit in voluptate velit esse cillum "dolore eu fugiat" nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-
-                    <div class="w-action">
-                        <div class="card-like">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                            <span>551 Likes</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-            <div class="widget widget-five">
-                <div class="widget-content">
-
-                    <div class="header">
-                        <div class="header-body">
-                            <h6>Pending Tasks</h6>
-                            <p class="meta-date">Nov 2019</p>
-                        </div>
-                        <div class="task-action">
-                            <div class="dropdown  custom-dropdown">
-                                <a class="dropdown-toggle" href="#" role="button" id="pendingTask" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                                </a>
-
-                                <div class="dropdown-menu" aria-labelledby="pendingTask">
-                                    <a class="dropdown-item" href="javascript:void(0);">Add</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">View</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Update</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Clear All</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="w-content">
-                        <div class="">
-                            <p class="task-left">8</p>
-                            <p class="task-completed"><span>12 Done</span></p>
-                            <p class="task-hight-priority"><span>3 Task</span> with High priotity</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-            <div class="widget widget-card-two">
-                <div class="widget-content">
-
-                    <div class="media">
-                        <div class="w-img">
-                            <img src="assets/img/90x90.jpg" alt="avatar">
-                        </div>
-                        <div class="media-body">
-                            <h6>Dev Summit - New York</h6>
-                            <p class="meta-date-time">Bronx, NY</p>
-                        </div>
-                    </div>
-
-                    <div class="card-bottom-section">
-                        <h5>4 Members Going</h5>
-                        <div class="img-group">
-                            <img src="assets/img/90x90.jpg" alt="avatar">
-                            <img src="assets/img/90x90.jpg" alt="avatar">
-                            <img src="assets/img/90x90.jpg" alt="avatar">
-                            <img src="assets/img/90x90.jpg" alt="avatar">
-                        </div>
-                        <a href="javascript:void(0);" class="btn">View Details</a>
-                    </div>
                 </div>
             </div>
         </div>
 
     </div>
 @endsection
+
+@push('scripts')
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="{{asset('admin/assets/js/scrollspyNav.js')}}"></script>
+    <script src="{{asset('admin/plugins/counter/jquery.countTo.js')}}"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    assets/js/scrollspyNav.js
+    <!--  BEGIN CUSTOM SCRIPTS FILE  -->
+    <script src="{{asset('admin/assets/js/components/custom-counter.js')}}"></script>
+    <!--  END CUSTOM SCRIPTS FILE  -->
+@endpush
