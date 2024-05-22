@@ -107,4 +107,23 @@ class SettingController extends Controller
         toastr()->success($message);
         return redirect()->back();
     }
+
+    public function appearance(Request $request)
+    {
+        $validatedData = $request->validate(['default-color' => 'required']);
+
+        foreach ($validatedData as $key => $value){
+            Setting::query()->updateOrCreate(
+                ['key' =>$key],
+                ['value' => $value]
+            );
+        }
+        //reset cache
+        $settingsService = app(SettingsService::class);
+        $settingsService->clearCachedSettings();
+
+        toastr()->success('color Setting Updated Successfully');
+        return redirect()->back();
+
+    }
 }

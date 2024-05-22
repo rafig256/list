@@ -21,7 +21,6 @@
     <!--    toastr  -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" class="rel">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-
     @stack('css')
     @vite(['resources/js/app.js' , 'resources/js/admin.js'])
     <script>

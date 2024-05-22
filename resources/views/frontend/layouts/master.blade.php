@@ -22,6 +22,11 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" class="rel">
     <!-- chat -->
     <link rel="stylesheet" href="{{asset('frontend/css/chat.css')}}">
+    <style>
+        :root{
+            --colorPrimary: {{config('settings.default-color')}};
+        }
+    </style>
     @stack('css')
 
     <script>
