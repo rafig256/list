@@ -96,6 +96,9 @@ Route::group([
     Route::post('/logo-setting',[SettingController::class,'updateLogo'])->name('logo-setting.update');
     Route::post('/appearance-setting',[SettingController::class,'appearance'])->name('appearance-setting.update');
 
+    //clear database
+    Route::get('/clear-database',[\App\Http\Controllers\Admin\ClearDatabaseController::class,'index'])->name('clear-database');
+
     //Menu
     Route::get('/menu', [\App\Http\Controllers\Admin\MenuController::class , 'index'])->name('menu.index');
 

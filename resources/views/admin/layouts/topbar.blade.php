@@ -216,6 +216,7 @@
                     @can('report index')<li class="{{setActive(['admin.report.index'])}}"><a href="{{route('admin.report.index')}}"> report list </a></li>@endcan
                     <li class="{{setActive(['admin.package.index'])}}"><a href="{{route('admin.package.index')}}"> All Packages </a></li>
                     <li class="{{setActive(['admin.package.create'])}}"><a href="{{route('admin.package.create')}}"> Create Packages </a></li>
+                    <li class="{{setActive(['admin.package.create'])}} danger"><a href="{{route('admin.clear-database')}}"> Clear Database </a></li>
                 </ul>
             </li>
             @endcanany
