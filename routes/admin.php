@@ -93,6 +93,7 @@ Route::group([
     Route::get('/setting',[SettingController::class,'index'])->name('setting.index');
     Route::post('/general-setting',[SettingController::class,'updateGeneral'])->name('general-setting.update');
     Route::post('/pusher-setting',[SettingController::class,'updatePusher'])->name('pusher-setting.update');
+    Route::post('/logo-setting',[SettingController::class,'updateLogo'])->name('logo-setting.update');
 
     //Menu
     Route::get('/menu', [\App\Http\Controllers\Admin\MenuController::class , 'index'])->name('menu.index');

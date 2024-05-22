@@ -101,7 +101,6 @@
     <script src="{{asset('admin/assets/js/scrollspyNav.js')}}"></script>
     <script src="{{asset('admin/plugins/counter/jquery.countTo.js')}}"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
-    assets/js/scrollspyNav.js
     <!--  BEGIN CUSTOM SCRIPTS FILE  -->
     <script src="{{asset('admin/assets/js/components/custom-counter.js')}}"></script>
     <!--  END CUSTOM SCRIPTS FILE  -->

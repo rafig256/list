@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Services\SettingsService;
+use App\Traits\FileUploadTrait;
+use Doctrine\DBAL\Exception\DatabaseDoesNotExist;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
+    use FileUploadTrait;
     public function __construct()
     {
         $this->middleware(['permission:settings']);
@@ -69,5 +72,39 @@ class SettingController extends Controller
         toastr()->success('Pusher Setting Updated Successfully');
         return redirect()->back();
 
+    }
+
+    public function updateLogo(Request $request)
+    {
+        $request->validate([
+            'logo' => 'nullable|file|mimes:jpg,jpeg,png,ico,svg,gif|max:500',
+            'favicon' => 'nullable|file|mimes:jpg,jpeg,png,ico,svg,gif|max:500',
+        ]);
+        $message = '';
+
+        if ($request->has('logo')){
+            $logoPath = $this->uploadImage($request , 'logo' , config('settings.logo'));
+            Setting::updateOrCreate(
+                ['key' => 'logo'],
+                ['value' => !empty($logoPath) ? $logoPath : '']
+            );
+            $message = 'logo updated.';
+        }
+
+        if ($request->has('favicon')){
+            $faviconPath = $this->uploadImage($request , 'favicon' , config('settings.favicon'));
+            Setting::updateOrCreate(
+                ['key' => 'favicon'],
+                ['value' => !empty($faviconPath) ? $faviconPath : '']
+            );
+            $message .= ' favicon updated';
+        }
+
+        //reset cache
+        $settingsService = app(SettingsService::class);
+        $settingsService->clearCachedSettings();
+
+        toastr()->success($message);
+        return redirect()->back();
     }
 }
