@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
             ]
         ]);
 
-        $user = User::where('name' , 'Rafig Khiyavi')->first();
-        $user->assignRole('Super Admin');
+//        $user = User::where('name' , 'Rafig Khiyavi')->first();
+//        $user->assignRole('Super Admin');
     }
 }

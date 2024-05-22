@@ -22,7 +22,7 @@
                                         <div class="row">
                                             <div class="box alert-danger m-2 rounded p-2">
                                                 <span>With this action, all the information of your site will be deleted from the database. If you are not sure about doing this, consult the support of the site.</span>
-                                                <button class="btn btn-success mt-1" type="submit">Clear</button>
+                                                <button class="btn btn-success mt-1" onclick="return confirm('Are you sure?')" type="submit">Clear</button>
                                             </div>
                                         </div>
                                     </div>
