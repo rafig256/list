@@ -98,6 +98,7 @@ Route::group([
 
     //clear database
     Route::get('/clear-database',[\App\Http\Controllers\Admin\ClearDatabaseController::class,'index'])->name('clear-database');
+    Route::post('/clear-database',[\App\Http\Controllers\Admin\ClearDatabaseController::class,'run'])->name('clear-database.run');
 
     //Menu
     Route::get('/menu', [\App\Http\Controllers\Admin\MenuController::class , 'index'])->name('menu.index');

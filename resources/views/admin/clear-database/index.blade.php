@@ -13,9 +13,8 @@
                 <div class="account-content">
                     <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
                         <div class="">
-                            <form id="clear database" class="" enctype="multipart/form-data" method="POST" action="{{route('admin.about.update')}}">
+                            <form id="clear database" class="" enctype="multipart/form-data" method="POST" action="{{route('admin.clear-database.run')}}">
                                 @csrf
-                                @method('PUT')
                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing section general-info">
                                     <div class="info">
                                         <h5 class="">Clear Database</h5>

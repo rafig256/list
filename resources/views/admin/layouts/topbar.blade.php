@@ -1,13 +1,13 @@
 <div class="topbar-nav header navbar" role="banner">
     <nav id="topbar">
-        <ul class="navbar-nav theme-brand flex-row  text-center">
+        <ul class="navbar-nav theme-brand flex-row text-center">
             <li class="nav-item theme-logo">
-                <a href="index.html">
-                    <img src="assets/img/90x90.jpg" class="navbar-logo" alt="logo">
+                <a href="{{route('admin.dashboard.index')}}">
+                    <img src="{{asset(config('settings.favicon'))}}" class="navbar-logo" alt="logo">
                 </a>
             </li>
             <li class="nav-item theme-text">
-                <a href="index.html" class="nav-link"> CORK </a>
+                <a href="{{route('admin.dashboard.index')}}" class="nav-link"> {{config('settings.site_name')}} </a>
             </li>
         </ul>
 
@@ -216,7 +216,7 @@
                     @can('report index')<li class="{{setActive(['admin.report.index'])}}"><a href="{{route('admin.report.index')}}"> report list </a></li>@endcan
                     <li class="{{setActive(['admin.package.index'])}}"><a href="{{route('admin.package.index')}}"> All Packages </a></li>
                     <li class="{{setActive(['admin.package.create'])}}"><a href="{{route('admin.package.create')}}"> Create Packages </a></li>
-                    <li class="{{setActive(['admin.package.create'])}} danger"><a href="{{route('admin.clear-database')}}"> Clear Database </a></li>
+                    <li class="{{setActive(['admin.package.create'])}}"><a class="text-danger" href="{{route('admin.clear-database')}}"> Clear Database </a></li>
                 </ul>
             </li>
             @endcanany

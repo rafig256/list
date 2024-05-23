@@ -1,10 +1,14 @@
 <div class="header-container">
     <header class="header navbar navbar-expand-sm">
 
-        <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
+        <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </a>
 
         <div class="nav-logo align-self-center">
-            <a class="navbar-brand" href="index.html"><img alt="logo" src="{{asset('admin/assets/img/90x90.jpg')}}"> <span class="navbar-brand-name">CORK</span></a>
+            <a class="navbar-brand" href="{{route('admin.dashboard.index')}}">
+                <img alt="logo" src="{{asset(config('settings.favicon'))}}"> <span class="navbar-brand-name">{{config('settings.site_name')}}</span>
+            </a>
         </div>
 
         <ul class="navbar-item flex-row mr-auto">
@@ -31,72 +35,73 @@
                     </div>
                 </div>
             </li>
-
-            <li class="nav-item dropdown message-dropdown">
-                <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg><span class="badge badge-success"></span>
-                </a>
-                <div class="dropdown-menu p-0 position-absolute animated fadeInUp" aria-labelledby="messageDropdown">
-                    <div class="">
-                        <a class="dropdown-item">
-                            <div class="">
-
-                                <div class="media">
-                                    <div class="user-img">
-                                        <div class="avatar avatar-xl">
-                                            <span class="avatar-title rounded-circle">KY</span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
+            <!--
+                        <li class="nav-item dropdown message-dropdown">
+                            <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg><span class="badge badge-success"></span>
+                            </a>
+                            <div class="dropdown-menu p-0 position-absolute animated fadeInUp" aria-labelledby="messageDropdown">
+                                <div class="">
+                                    <a class="dropdown-item">
                                         <div class="">
-                                            <h5 class="usr-name">Kara Young</h5>
-                                            <p class="msg-title">ACCOUNT UPDATE</p>
-                                        </div>
-                                    </div>
-                                </div>
 
-                            </div>
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="">
-                                <div class="media">
-                                    <div class="user-img">
-                                        <div class="avatar avatar-xl">
-                                            <span class="avatar-title rounded-circle">DA</span>
+                                            <div class="media">
+                                                <div class="user-img">
+                                                    <div class="avatar avatar-xl">
+                                                        <span class="avatar-title rounded-circle">KY</span>
+                                                    </div>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="">
+                                                        <h5 class="usr-name">Kara Young</h5>
+                                                        <p class="msg-title">ACCOUNT UPDATE</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                    </div>
-                                    <div class="media-body">
+                                    </a>
+                                    <a class="dropdown-item">
                                         <div class="">
-                                            <h5 class="usr-name">Daisy Anderson</h5>
-                                            <p class="msg-title">ACCOUNT UPDATE</p>
+                                            <div class="media">
+                                                <div class="user-img">
+                                                    <div class="avatar avatar-xl">
+                                                        <span class="avatar-title rounded-circle">DA</span>
+                                                    </div>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="">
+                                                        <h5 class="usr-name">Daisy Anderson</h5>
+                                                        <p class="msg-title">ACCOUNT UPDATE</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="">
-
-                                <div class="media">
-                                    <div class="user-img">
-                                        <div class="avatar avatar-xl">
-                                            <span class="avatar-title rounded-circle">OG</span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
+                                    </a>
+                                    <a class="dropdown-item">
                                         <div class="">
-                                            <h5 class="usr-name">Oscar Garner</h5>
-                                            <p class="msg-title">ACCOUNT UPDATE</p>
+
+                                            <div class="media">
+                                                <div class="user-img">
+                                                    <div class="avatar avatar-xl">
+                                                        <span class="avatar-title rounded-circle">OG</span>
+                                                    </div>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="">
+                                                        <h5 class="usr-name">Oscar Garner</h5>
+                                                        <p class="msg-title">ACCOUNT UPDATE</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-
                             </div>
-                        </a>
-                    </div>
-                </div>
-            </li>
-
+                        </li>
+                        -->
+            <!--
             <li class="nav-item dropdown notification-dropdown">
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class="badge badge-success"></span>
@@ -154,11 +159,11 @@
                     </div>
                 </div>
             </li>
-
+            -->
             <li class="nav-item dropdown user-profile-dropdown order-lg-0 order-1">
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="user-profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media">
-                        <img src="{{asset('admin/assets/img/90x90.jpg')}}" class="img-fluid" alt="admin-profile">
+                        <img src="{{asset(auth()->user()->avatar)}}" class="img-fluid" alt="admin-profile">
                         <div class="media-body align-self-center">
                             <h6> {{auth()->user()->name}}</h6>
                         </div>
