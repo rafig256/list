@@ -13,8 +13,9 @@
         <div class="statbox widget box box-shadow">
             <div class="widget-header p-3">
                 <div class="row">
-                    <div class="col-xl-8 col-md-8 col-sm-8 col-8">
+                    <div class="col-xl-8 col-md-8 col-sm-8 col-8 d-flex just">
                         <h4>Schedule Table</h4>
+
                     </div>
                 </div>
             </div>

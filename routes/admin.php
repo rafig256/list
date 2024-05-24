@@ -100,6 +100,7 @@ Route::group([
     Route::post('/appearance-setting',[SettingController::class,'appearance'])->name('appearance-setting.update');
 
     //clear database
+    //clear database
     Route::get('/clear-database',[\App\Http\Controllers\Admin\ClearDatabaseController::class,'index'])->name('clear-database');
     Route::post('/clear-database',[\App\Http\Controllers\Admin\ClearDatabaseController::class,'run'])->name('clear-database.run');
 
