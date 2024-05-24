@@ -48,6 +48,9 @@ Route::group([
     Route::put('/about',[\App\Http\Controllers\Admin\PageController::class , 'about_update'])->name('about.update');
     Route::get('/contact' , [\App\Http\Controllers\Admin\PageController::class , 'contact'])->name('contact.show');
     Route::put('/contact' , [\App\Http\Controllers\Admin\PageController::class , 'contact_update'])->name('contact.update');
+    //section title
+    Route::get('/section-title' , [\App\Http\Controllers\Admin\SectionTitleController::class , 'index'])->name('section-title.index');
+    Route::put('/section-title' , [\App\Http\Controllers\Admin\SectionTitleController::class , 'update'])->name('section-title.update');
 
     //Category Route
     Route::resource('/category',CategoryController::class)->except(['show']);

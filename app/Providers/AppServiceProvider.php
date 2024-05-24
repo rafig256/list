@@ -47,6 +47,4 @@ class AppServiceProvider extends ServiceProvider
         // Set default pagination design
         Paginator::useBootstrap();
     }
-
-
 }

@@ -29,7 +29,7 @@
             </li>
 
 {{--Pages--}}
-            @canany(['hero update','about page update','contact page update','testimonial index'])
+            @canany(['hero update','about page update','contact page update','testimonial index','section title update'])
             <li class="menu single-menu {{setActive(['admin.hero.index','admin.about.show','admin.contact.show','admin.testimonial.index','admin.testimonial.create'])}}">
                 <a href="#app" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -54,6 +54,11 @@
                     @can('testimonial create')
                     <li class="sub-sub-submenu-list">
                         <a href="{{route('admin.testimonial.create')}}">create Testimonial</a>
+                    </li>
+                    @endcan
+                    @canany('section title update')
+                    <li class="sub-sub-submenu-list">
+                        <a href="{{route('admin.section-title.index')}}">Update Section Title</a>
                     </li>
                     @endcan
                 </ul>

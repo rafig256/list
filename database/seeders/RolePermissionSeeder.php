@@ -65,10 +65,11 @@ class RolePermissionSeeder extends Seeder
             array('id' => '52','name' => 'access management index','guard_name' => 'web','group_name' => 'permission','created_at' => '2024-05-18 13:27:07','updated_at' => '2024-05-18 13:27:07'),
             array('id' => '53','name' => 'menu builder index','guard_name' => 'web','group_name' => 'menu','created_at' => '2024-05-18 13:28:52','updated_at' => '2024-05-18 13:28:52'),
             array('id' => '54','name' => 'settings','guard_name' => 'web','group_name' => 'setting','created_at' => '2024-05-18 13:31:19','updated_at' => '2024-05-18 13:31:19'),
-            array('id' => '55','name' => 'user index','guard_name' => 'web','group_name' => NULL,'created_at' => '2024-05-19 15:16:34','updated_at' => '2024-05-19 15:16:34'),
-            array('id' => '56','name' => 'user update','guard_name' => 'web','group_name' => NULL,'created_at' => '2024-05-19 15:16:45','updated_at' => '2024-05-19 15:16:45'),
-            array('id' => '57','name' => 'user delete','guard_name' => 'web','group_name' => NULL,'created_at' => '2024-05-19 15:16:50','updated_at' => '2024-05-19 15:16:50'),
-            array('id' => '58','name' => 'user create','guard_name' => 'web','group_name' => NULL,'created_at' => '2024-05-19 15:17:33','updated_at' => '2024-05-19 15:17:33')
+            array('id' => '55','name' => 'user index','guard_name' => 'web','group_name' => 'user','created_at' => '2024-05-19 15:16:34','updated_at' => '2024-05-19 15:16:34'),
+            array('id' => '56','name' => 'user update','guard_name' => 'web','group_name' => 'user','created_at' => '2024-05-19 15:16:45','updated_at' => '2024-05-19 15:16:45'),
+            array('id' => '57','name' => 'user delete','guard_name' => 'web','group_name' => 'user','created_at' => '2024-05-19 15:16:50','updated_at' => '2024-05-19 15:16:50'),
+            array('id' => '58','name' => 'user create','guard_name' => 'web','group_name' => 'user','created_at' => '2024-05-19 15:17:33','updated_at' => '2024-05-19 15:17:33'),
+            array('id' => '59','name' => 'section title update','guard_name' => 'web','group_name' => 'section','created_at' => '2024-05-19 15:17:33','updated_at' => '2024-05-19 15:17:33')
         );
 
         $roles = array(

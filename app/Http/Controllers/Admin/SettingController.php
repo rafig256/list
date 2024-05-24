@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Services\SettingsService;
 use App\Traits\FileUploadTrait;
-use Doctrine\DBAL\Exception\DatabaseDoesNotExist;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
