@@ -89,15 +89,24 @@
                                                                                 <input type="checkbox" name="show_at_home" id="show_at_home" value="1">
                                                                             </div>
                                                                         </div>
+                                                                    @if($review_cats->count()>0)
                                                                     <div class="col-md-12">
                                                                         <label for="review_cats_id">Review Category</label>
                                                                         <div class="form-group row">
-                                                                            @foreach($review_cats as $review_category)
-                                                                                <div class="col-3">
-                                                                                    <input type="checkbox" name="review_cats_id[]" value="{{$review_category->id}}"> {{$review_category->name}}
-                                                                                </div>
-                                                                            @endforeach
+
+                                                                                @foreach($review_cats as $review_category)
+                                                                                    <div class="col-3">
+                                                                                        <input aria-label="review_cat" type="checkbox" name="review_cats_id[]" value="{{$review_category->id}}"> {{$review_category->name}}
+                                                                                    </div>
+                                                                                @endforeach
                                                                         </div>
+                                                                    @else
+                                                                        <div class="col-md-12 text-danger">
+                                                                            <p class="box alert-danger p-2 m-2 rounded">
+                                                                                No categories have been defined. Please define comment categories first. <a href="{{route('admin.review-cat.create')}}">create review category</a>
+                                                                            </p>
+                                                                        </div>
+                                                                    @endif
                                                                     </div>
 
 

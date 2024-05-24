@@ -69,6 +69,7 @@
                                                                         <div class="form-group">
                                                                             <label for="show_at_home">Show At Home</label>
                                                                             <input type="checkbox" name="show_at_home" @checked($location->show_at_home) id="show_at_home" value="1">
+                                                                            <small class="text-danger">checked to be displayed on the first page</small>
                                                                         </div>
                                                                     </div>
 

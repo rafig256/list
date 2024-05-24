@@ -9,7 +9,7 @@
                 <div class="account-content">
                     <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
                         <div class="row pt-5">
-                            <a href="{{route('admin.category.create')}}" class="btn btn-sm btn-success">create</a>
+                            <a href="{{route('admin.category.create')}}" class="btn btn-sm btn-success mb-2">create</a>
                         </div>
                         <div class="row">
                             <table class="table table-bordered">
@@ -34,7 +34,7 @@
                                             @endforeach
                                         </td>
                                         <td><img src="{{asset($category->image_icon)}}" width="100px"></td>
-                                        <td>{{$category->show_at_home == 1 ? 'Yes' : 'No'}}</td>
+                                        <td>{!! $category->show_at_home == 1 ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>' !!}</td>
                                         <td>{{$category->price}}</td>
                                         <td>
                                             <a href="{{route('admin.category.edit', $category->id)}}" class="btn btn-primary">Edit</a>

@@ -32,10 +32,10 @@ class FrontendController extends Controller
         $packages = Package::query()->where('status',1)->where('show_at_home',1)->take(3)->get();
         $featuredCategories = Category::query()->where('parent_id',NULL)->where('show_at_home',1)->take(9)->get();
         $locations = Location::query()->with('listings',function ($query){
-            $query->where(['is_featured' => 1,'status'=>1,'is_approved'=>1])->limit(12);
+            $query->where(['is_featured' => 1,'status'=>1,'is_approved'=>1])->limit(8);
         })->where(['status'=>1 , 'show_at_home'=>1 ,])->where('parent_id','>',0)->take(20)->get();
         $parentLocations = Location::query()->where(['status'=>1 , 'show_at_home'=>1 ,'parent_id'=> NULL])->get();
-
+//        dd($locations);
         $listingsFeature = Listing::query()->where(['status'=>1 , 'is_approved' => 1 , 'is_featured' => 1])->orderBy('id','desc')->get();
         $testimonials = Testimonial::query()->where('status' , 1)->take(6)->get();
         $posts = Post::query()->where('status' , 1)->take(3)->get();
