@@ -17,6 +17,7 @@ use App\Models\Post;
 use App\Models\Report;
 use App\Models\Review;
 use App\Models\Schedule;
+use App\Models\SectionTitle;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -38,7 +39,8 @@ class FrontendController extends Controller
         $listingsFeature = Listing::query()->where(['status'=>1 , 'is_approved' => 1 , 'is_featured' => 1])->orderBy('id','desc')->get();
         $testimonials = Testimonial::query()->where('status' , 1)->take(6)->get();
         $posts = Post::query()->where('status' , 1)->take(3)->get();
-
+        $sectionTitle = SectionTitle::all()->toArray();
+//dd(array_shift($sectionTitle));
         return view('frontend.home.index',[
             'hero'=>$hero,
             'categories' => $categories,
@@ -50,6 +52,7 @@ class FrontendController extends Controller
             'parentCategories'=>$parentCategories,
             'testimonials' => $testimonials,
             'posts' => $posts,
+            'sectionTitle' => array_shift($sectionTitle),
         ]);
     }
 

@@ -21,7 +21,7 @@
         CATEGORY SLIDER END
     ===========================-->
 
-
+@if($sectionTitle['features_status'])
     <!--==========================
         FEATURES PART START
     ===========================-->
@@ -29,6 +29,7 @@
     <!--==========================
         FEATURES PART END
     ===========================-->
+@endif
 
 
     <!--==========================
@@ -39,7 +40,7 @@
         COUNTER PART END
     ===========================-->
 
-
+@if($sectionTitle['categories_status'])
     <!--==========================
         OUR CATEGORY START
     ===========================-->
@@ -47,8 +48,9 @@
     <!--==========================
         OUR CATEGORY END
     ===========================-->
+@endif
 
-
+@if($sectionTitle['location_status'])
     <!--==========================
         OUR LOCATION START
     ===========================-->
@@ -56,8 +58,9 @@
     <!--==========================
         OUR LOCATION END
     ===========================-->
+@endif
 
-
+@if($sectionTitle['featuredListing_status'])
     <!--==========================
         FEATURED LISTING START
     ===========================-->
@@ -65,8 +68,9 @@
     <!--==========================
         FEATURED LISTING END
     ===========================-->
+@endif
 
-
+@if($sectionTitle['pricing_status'])
     <!--==========================
         OUR PACKAGE START
     ===========================-->
@@ -74,8 +78,9 @@
     <!--==========================
         OUR PACKAGE END
     ===========================-->
+@endif
 
-
+@if($sectionTitle['testimonials_status'])
     <!--============================
         TESTIMONIAL PART START
     ==============================-->
@@ -83,15 +88,18 @@
     <!--============================
         TESTIMONIAL PART END
     ==============================-->
+@endif
 
 
-    <!--==========================
+@if($sectionTitle['blogs_status'])
+        <!--==========================
         BLOG PART START
     ===========================-->
     @include('frontend.home.sections.blog')
     <!--==========================
         BLOG PART END
     ===========================-->
+@endif
 
 @endsection
 

@@ -3,9 +3,8 @@
         <div class="row">
             <div class="col-xl-5 m-auto">
                 <div class="wsus__heading_area">
-                    <h2>Our Features</h2>
-                    <p>Lorem ipsum dolor sit amet, qui assum oblique praesent te. Quo ei erant essent scaevola estut
-                        clita dolorem ei est mazim fuisset scribentur.</p>
+                    <h2>{{$sectionTitle['features_title']}}</h2>
+                    <p>{{$sectionTitle['features_text']}}</p>
                 </div>
             </div>
         </div>

@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-xl-5 m-auto">
                     <div class="wsus__heading_area">
-                        <h2>Testimonials</h2>
-                        <p>Testimonials Description</p>
+                        <h2>{{$sectionTitle['testimonials_title']}}</h2>
+                        <p>{{$sectionTitle['testimonials_text']}}</p>
                     </div>
                 </div>
             </div>
