@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Artisan;
+use Illuminate\Support\Facades\File;
 
 class ClearDatabaseController extends Controller
 {
@@ -16,6 +17,9 @@ class ClearDatabaseController extends Controller
     public function run(){
         //wipe database
         Artisan::call('migrate:refresh');
+
+        //clean uploads directory
+        $this->cleanDirectory();
 
         //seed default table and data
         Artisan::call('db:seed', ['--class' => 'UserSeeder']);
@@ -29,5 +33,10 @@ class ClearDatabaseController extends Controller
 
         toastr()->success('Database refresh');
         return redirect()->back();
+    }
+
+    public function cleanDirectory(){
+        $path = public_path('uploads');
+        File::cleanDirectory($path);
     }
 }
