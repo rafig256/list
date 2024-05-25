@@ -29,20 +29,20 @@
                                                                     <div class="row">
                                                                         <div class="col-md-8">
                                                                             <div class="form-group">
-                                                                                <label for="{{$section}}_title"> Title for {{$section}} <span class="text-danger">*</span></label>
-                                                                                <input type="text" name="{{$section}}_title" class="form-control mb-4" id="{{$section}}_title" value="{{@$sectionTitle[$section.'_title'] }}" >
+                                                                                <label for="{{@$section}}_title"> Title for {{@$section}} <span class="text-danger">*</span></label>
+                                                                                <input type="text" name="{{@$section}}_title" class="form-control mb-4" id="{{@$section}}_title" value="{{@$sectionTitle[$section.'_title'] }}" >
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group">
-                                                                                <label for="{{$section}}_status"> Status for {{$section}} <span class="text-danger">*</span></label>
-                                                                                <input type="checkbox" name="{{$section}}_status" style="width: 100%" class=" mb-4" id="{{$section}}_status" @checked($sectionTitle[$section.'_status']) value="1" >
+                                                                                <label for="{{@$section}}_status"> Status for {{@$section}} <span class="text-danger">*</span></label>
+                                                                                <input type="checkbox" name="{{@$section}}_status" style="width: 100%" class=" mb-4" id="{{@$section}}_status" @checked(@$sectionTitle[$section.'_status']) value="1" >
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-12">
                                                                             <div class="form-group">
-                                                                                <label for="{{$section}}_text">SubTitle for {{$section}}</label>
-                                                                                <textarea name="{{$section}}_text" class="form-control mb-4" id="{{$section}}_text">{{@$sectionTitle[$section.'_text'] }}</textarea>
+                                                                                <label for="{{@$section}}_text">SubTitle for {{@$section}}</label>
+                                                                                <textarea name="{{@$section}}_text" class="form-control mb-4" id="{{@$section}}_text">{{@$sectionTitle[$section.'_text'] }}</textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>

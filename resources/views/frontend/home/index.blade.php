@@ -21,15 +21,15 @@
         CATEGORY SLIDER END
     ===========================-->
 
-@if($sectionTitle['features_status'])
-    <!--==========================
+    @if(@$sectionTitle['features_status'])
+        <!--==========================
         FEATURES PART START
     ===========================-->
-    @include('frontend.home.sections.features')
-    <!--==========================
+        @include('frontend.home.sections.features')
+        <!--==========================
         FEATURES PART END
     ===========================-->
-@endif
+    @endif
 
 
     <!--==========================
@@ -40,66 +40,66 @@
         COUNTER PART END
     ===========================-->
 
-@if($sectionTitle['categories_status'])
-    <!--==========================
+    @if(@$sectionTitle['categories_status'])
+        <!--==========================
         OUR CATEGORY START
     ===========================-->
-    @include('frontend.home.sections.category')
-    <!--==========================
+        @include('frontend.home.sections.category')
+        <!--==========================
         OUR CATEGORY END
     ===========================-->
-@endif
+    @endif
 
-@if($sectionTitle['location_status'])
-    <!--==========================
+    @if(@$sectionTitle['location_status'])
+        <!--==========================
         OUR LOCATION START
     ===========================-->
-    @include('frontend.home.sections.location')
-    <!--==========================
+        @include('frontend.home.sections.location')
+        <!--==========================
         OUR LOCATION END
     ===========================-->
-@endif
+    @endif
 
-@if($sectionTitle['featuredListing_status'])
-    <!--==========================
+    @if(@$sectionTitle['featuredListing_status'])
+        <!--==========================
         FEATURED LISTING START
     ===========================-->
-    @include('frontend.home.sections.listing')
-    <!--==========================
+        @include('frontend.home.sections.listing')
+        <!--==========================
         FEATURED LISTING END
     ===========================-->
-@endif
+    @endif
 
-@if($sectionTitle['pricing_status'])
-    <!--==========================
+    @if(@$sectionTitle['pricing_status'])
+        <!--==========================
         OUR PACKAGE START
     ===========================-->
-    @include('frontend.home.sections.package')
-    <!--==========================
+        @include('frontend.home.sections.package')
+        <!--==========================
         OUR PACKAGE END
     ===========================-->
-@endif
+    @endif
 
-@if($sectionTitle['testimonials_status'])
-    <!--============================
+    @if(@$sectionTitle['testimonials_status'])
+        <!--============================
         TESTIMONIAL PART START
     ==============================-->
-    @include('frontend.home.sections.testimonial')
-    <!--============================
+        @include('frontend.home.sections.testimonial')
+        <!--============================
         TESTIMONIAL PART END
     ==============================-->
-@endif
+    @endif
 
 
-@if($sectionTitle['blogs_status'])
+    @if(@$sectionTitle['blogs_status'])
         <!--==========================
         BLOG PART START
     ===========================-->
-    @include('frontend.home.sections.blog')
-    <!--==========================
+        @include('frontend.home.sections.blog')
+        <!--==========================
         BLOG PART END
     ===========================-->
-@endif
+    @endif
 
 @endsection
 
